@@ -1,0 +1,24 @@
+<!-- include A-Frame obviously -->
+<script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+<body style='margin : 0px; overflow: hidden;'>
+  <a-scene 
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded arjs>
+    <!-- create your content here. just a box for now -->
+
+    <!-- define a camera which will move according to the marker position -->
+    <a-nft
+        type="nft"
+        url="/dtc_descriptor/dtc">
+          <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+			<a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
+      </a-nft>
+
+
+
+  </a-scene>
+
+</body>
