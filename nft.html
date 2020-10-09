@@ -33,7 +33,7 @@
   <!-- a-frame scene -->
   <a-scene
     vr-mode-ui="enabled: false;"
-    renderer="logarithmicDepthBuffer: true;"
+    renderer="logarithmicDepthBuffer: false;"
     embedded
     arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
   >
@@ -43,13 +43,18 @@
     <a-nft
       type="nft"
       url="/1"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+      size="0.1"
       emitevents="true"
 
     >
         <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
         <a-entity
             gltf-model="/pin.glb"
-            scale="5 5 5"
+            scale="30 30 30"
             position="50 150 0"
         >
         </a-entity>
