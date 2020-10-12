@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
     <!-- we import arjs version without NFT but with marker + location based support -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <body style="margin : 0px; overflow: hidden;">
@@ -11,7 +12,6 @@
           <a-marker preset="custom" type="pattern" url="/markers/1.patt">
               <a-entity
                 gltf-model='/CesiumMan.gltf'
-                scale="10 10 10"
                 animation-mixer
               >
               </a-entity>
@@ -22,7 +22,6 @@
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
               <a-entity
                 gltf-model='/CesiumMan.gltf'
-                scale="100 100 100"
                 animation-mixer
               >
               </a-entity>
@@ -32,7 +31,6 @@
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/5.patt">
               <a-entity
-                gltf-model='/CesiumMan.gltf'
                 scale="10 10 10"
               >
               </a-entity>
