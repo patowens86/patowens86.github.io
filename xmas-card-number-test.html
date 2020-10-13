@@ -9,11 +9,16 @@
       vr-mode-ui='enabled: false;'
       renderer="logarithmicDepthBuffer: true;"
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+          <a-assets>
+            <video id="video" autoplay loop="true" src="/video.mp4"></video>
+          </a-assets>
+
           <a-marker preset="hiro">
               <a-box position='0 0.2 0' color="black"></a-box>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/1.patt">
               <a-box position='0 0.5 0' color="red" material='opacity: 0.5;'></a-box>
+              <a-video src="#video" width="16" height="9" position="0 1 0"></a-video>
               <a-entity
                 gltf-model='/CesiumMan.gltf'
                 animation-mixer
