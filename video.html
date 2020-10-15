@@ -1,17 +1,14 @@
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
-    <!-- we import arjs version without NFT but with marker + location based support -->
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-
+<script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+<!-- Modified  version of aframe-ar to fire events when markers are found -->
+<script src="https://cdn.glitch.com/258e87dd-2cf6-4e89-bccc-be709c25ff79%2Faframe-ar.js?1525282400523"></script>
+<!-- Responding to marker detection events -->
+<script src="https://cdn.glitch.com/258e87dd-2cf6-4e89-bccc-be709c25ff79%2Faframe-play-on-scan.js?1525282448985"></script>
 
 
 <body style="margin : 0px; overflow: hidden;">
   
- <div class="overlay">
-   <button>
-    START   
-   </button>
-  </div> 
+
+  
   
  <a-scene embedded arjs="debugUIEnabled: false; sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-assets>
