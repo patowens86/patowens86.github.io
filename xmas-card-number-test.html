@@ -12,7 +12,7 @@
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
           <a-assets>
           <!-- Load video that is hosted on another server. See 'src' attribute: -->
-            <video id="gadgeteer-test" autoplay="true" loop="true" src="/video.mp4"></video>
+            <video id="gadgeteer-test" autoplay="true" loop="false" src="/video.mp4"></video>
             <video id="rick-test" autoplay="true" loop="true" src="/video-2.mp4"></video>
           </a-assets>
 
@@ -23,6 +23,12 @@
               <a-entity position= "0 1 -.5" scale="1.5 1 1">
                 <a-video play-on-scan src="#rick-test"></a-video>
               </a-entity>
+              <a-entity
+                gltf-model='/CesiumMan.gltf'
+                animation-mixer
+                rotation = "0 180 0"
+              >
+            </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/2.patt">
               <a-box position='0 0.5 0' color="blue" material='opacity: 0.5;'></a-box>
@@ -43,7 +49,6 @@
           <a-marker preset="custom" type="pattern" url="/markers/4.patt">
               <a-entity position= "0 1 -.5" scale="1.5 1 1">
                 <a-video play-on-scan src="#gadgeteer-test"></a-video>
-              </a-entity>
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/5.patt">
