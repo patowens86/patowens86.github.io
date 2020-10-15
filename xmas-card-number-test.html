@@ -14,7 +14,7 @@
           <!-- Load video that is hosted on another server. See 'src' attribute: -->
             <video id="gadgeteer-test" autoplay="true" loop="true" src="/video.mp4"></video>
             <video id="rick-test" autoplay="true" loop="false" src="/video-2.mp4"></video>
-            <audio id="eid" autoplay="true" loop ="false" src="/eidSong.mp3"></sound>
+            <audio id="eid" autoplay="true" loop="false" src="/eidSong.mp3"></sound>
           </a-assets>
 
           <a-marker preset="hiro">
@@ -38,7 +38,7 @@
                 animation-mixer
               >
               </a-entity>
-              <a-sound play-on-scan src="#eid"></a-sound>
+              <a-sound play-on-scan loop="false" src="#eid"></a-sound>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
               <a-box position='0 0.5 0' color="white" material='opacity: 0.5;'></a-box>
