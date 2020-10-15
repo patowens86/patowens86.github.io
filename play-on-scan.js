@@ -6,7 +6,7 @@ AFRAME.registerComponent('play-on-scan',
     var currentVideo;
     el.sceneEl.addEventListener('markerFound', function (ev) { // 
       currentVideo = ev.srcElement.querySelector("a-video");
-      if(currentVideo && currentVideo.getAttribute("src") && currentVideo.duration == 0 ){
+      if(currentVideo && currentVideo.getAttribute("src") && currentVideo.paused ){
         var video_el = document.querySelector(currentVideo.getAttribute("src"));
         video_el.play();
       }
