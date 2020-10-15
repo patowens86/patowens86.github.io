@@ -12,13 +12,13 @@ AFRAME.registerComponent('play-on-scan',
       }
     }); 
 
-    el.sceneEl.addEventListener('markerLost', function (ev) { // 
+    /el.sceneEl.addEventListener('markerLost', function (ev) { // 
       var childVideo = ev.srcElement.querySelector("a-video");
       if(childVideo && childVideo.getAttribute("src")){
         var video_el = document.querySelector(el.getAttribute("src"));
         video_el.pause();
         video_el.currentTime = 0;
       }
-    });
+    });/
   } 
 });
