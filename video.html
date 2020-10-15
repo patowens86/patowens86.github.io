@@ -16,12 +16,12 @@
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
     <a-assets>
       <!-- Load video that is hosted on another server. See 'src' attribute: -->
-      <video  id="video-test" autoplay="true" loop="true" src="/video.mp4"></video>
+      <video id="video-test" autoplay="true" loop="true" src="/video.mp4"></video>
     </a-assets>
 
     <a-marker preset="custom" type="pattern" url="/markers/1.patt">
-      <a-entity position= "0 1 1" scale="1 1.5 1" rotation="0 0 0">
-        <a-video play-on-scan src="#video-test"></a-video>
+      <a-entity position= "0 1 1" scale="1 1.5 1">
+        <a-video src="#video-test"></a-video>
       </a-entity>
     </a-marker>
 
