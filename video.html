@@ -1,0 +1,37 @@
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+
+
+<body style="margin : 0px; overflow: hidden;">
+  
+ <div class="overlay">
+   <button>
+    START   
+   </button>
+  </div> 
+  
+ <a-scene embedded arjs="debugUIEnabled: false; sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+    <a-assets>
+      <!-- Load video that is hosted on another server. See 'src' attribute: -->
+      <video  id="video-test" autoplay="true" loop="true" src="/video.mp4"></video>
+    </a-assets>
+
+    <a-marker preset="custom" type="pattern" url="/markers/1.patt">
+      <a-entity scale="1 1 1" rotation="-90 0 0">
+        <a-video play-on-scan src="#video-test"></a-video>
+      </a-entity>
+    </a-marker>
+
+    <a-entity camera> 
+      <a-entity 
+          position="0 0 0">
+      </a-entity>
+    </a-entity>
+
+  </a-scene>
+  
+
+</body>
