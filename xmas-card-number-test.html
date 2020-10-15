@@ -9,6 +9,11 @@
       vr-mode-ui='enabled: false;'
       renderer="logarithmicDepthBuffer: true;"
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+          <a-assets>
+          <!-- Load video that is hosted on another server. See 'src' attribute: -->
+            <video id="video-test" autoplay="true" loop="true" src="/video.mp4"></video>
+          </a-assets>
+      
           <a-marker preset="hiro">
               <a-box position='0 0.2 0' color="black"></a-box>
           </a-marker>
