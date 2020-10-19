@@ -20,7 +20,6 @@ AFRAME.registerComponent('play-on-scan',
         audio_el.play();
       }
     }); 
-
     /*el.sceneEl.addEventListener('markerLost', function (ev) { // 
       var childVideo = ev.srcElement.querySelector("a-video");
       if(childVideo && childVideo.getAttribute("src")){
