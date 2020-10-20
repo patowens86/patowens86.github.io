@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+<!--    <script src="/play-on-scan.js"></script> -->
+    <body style="margin : 0px; overflow: hidden;">
+  <a-scene
+      vr-mode-ui='enabled: false;'
+      renderer="logarithmicDepthBuffer: true;"
+      embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+<!--          <a-assets>
+            <video id="gadgeteer-test" autoplay="true" loop="true" src="/video.mp4"></video>
+            <video id="rick-test" autoplay="true" loop="false" src="/video-2.mp4"></video>
+            <audio id="eid" autoplay="true" loop="false" src="/eidSong.mp3"></sound>
+          </a-assets> -->
+
+          <a-marker preset="hiro">
+              <a-box position='0 0.2 0' color="black"></a-box>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/1v4.patt">
+              <a-box position='0 0.5 0' color="blue" material='opacity: 0.5;'></a-box>
+              <a-entity
+                gltf-model='/CesiumMan.gltf'
+                animation-mixer
+              >
+              </a-entity>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/2v4.patt">
+              <a-box position='0 0.5 0' color="green" material='opacity: 0.5;'></a-box>
+              <a-entity
+                gltf-model='/CesiumMan.gltf'
+                animation-mixer
+              >
+              </a-entity>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/3v4.patt">
+              <a-box position='0 0.5 0' color="white" material='opacity: 0.5;'></a-box>
+              <a-entity
+                gltf-model='/CesiumMan.gltf'
+                animation-mixer
+              >
+              </a-entity>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/4v4.patt">
+              <a-box position='0 0.5 0' color="black" material='opacity: 0.5;'></a-box>
+              <a-entity
+                gltf-model='/CesiumMan.gltf'
+                animation-mixer
+              >
+              </a-entity>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/5v4.patt">
+              <a-box position='0 0.5 0' color="yellow" material='opacity: 0.5;'></a-box>
+              <a-entity
+                gltf-model='/CesiumMan.gltf'
+                animation-mixer
+              >
+              </a-entity>
+          </a-marker>
+        <a-entity camera></a-entity>
+        </a-scene>
+    </body>
+</html>
