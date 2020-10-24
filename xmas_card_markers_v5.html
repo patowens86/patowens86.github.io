@@ -10,12 +10,14 @@
             init: function() {
                 this.el.addEventListener('click', () => {
                     alert('Clicked!')
+                    document.getElementById('box1').setAttribute('color', 'red')
                 });
         }});
     </script>
     <body style="margin : 0px; overflow: hidden;">
   <a-scene
       vr-mode-ui='enabled: false;'
+      raycaster="objects: [clickhandler];"
       renderer="logarithmicDepthBuffer: true;"
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
 <!--          <a-assets>
@@ -25,7 +27,7 @@
           </a-assets> -->
 
           <a-marker preset="custom" type="pattern" url="/markers/1v5.patt">
-              <a-box position='0 0.5 0' color="blue" material='opacity: 0.5;'></a-box>
+              <a-box id="box1" position='0 0.5 0' color="blue" material='opacity: 0.5;'></a-box>
               <a-entity
                 gltf-model='/CesiumMan.gltf'
                 animation-mixer
