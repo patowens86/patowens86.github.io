@@ -10,7 +10,7 @@
             init: function() {
                 this.el.addEventListener('click', () => {
                     alert('Clicked!')
-                    document.getElementById('box1').setAttribute('color', 'red')
+                    this.setAttribute('color', 'red')
                 });
         }});
     </script>
@@ -26,8 +26,8 @@
             <audio id="eid" autoplay="true" loop="false" src="/eidSong.mp3"></sound>
           </a-assets> -->
 
-          <a-marker clickhandler preset="custom" type="pattern" url="/markers/1v5.patt">
-              <a-box clickhandler id="box1" position='0 0.5 0' color="blue" material='opacity: 0.5;'></a-box>
+          <a-marker clickhandler class='clickable' preset="custom" type="pattern" url="/markers/1v5.patt">
+              <a-box clickhandler class='clickable' id="box1" position='0 0.5 0' color="blue" material='opacity: 0.5;'></a-box>
               <a-entity
                 gltf-model='/CesiumMan.gltf'
                 animation-mixer
