@@ -32,8 +32,10 @@ AFRAME.registerComponent('color-randomizer', {
 AFRAME.registerComponent('start-animation', {
   init: function () {
     var el = this.el;
+    var model = document.getElementById('running-man')
     el.addEventListener('click', (e) => {     
       this.el.setAttribute('visible', 'false')
+      model.setAttribute('visible','true')
     });
   }
 });
