@@ -31,7 +31,7 @@ AFRAME.registerComponent('refraction-shader', {
             vec3 color = texture2D( texture, p ).rgb;
             gl_FragColor = vec4( color, 1.0 );
         }`
-        var texture = new THREE.VideoTexture(this.el.sceneEl.systems.arjs.arToolkitSource.domElement)
+        var texture = new THREE.VideoTexture(this.el.sceneEl.systems.arjs['_arSession'].arSource.domElement)
         texture.minFilter =  THREE.NearestFilter
 
         this.material  = new THREE.ShaderMaterial({
