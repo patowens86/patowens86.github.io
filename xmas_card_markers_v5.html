@@ -9,15 +9,7 @@
       <script src="/components.js"></script>
   <script src="/cursor.js" defer></script>
 <!--    <script src="/play-on-scan.js"></script> -->
-    <script>
-        AFRAME.registerComponent('clickhandler', {
-            init: function() {
-                this.el.addEventListener('click', () => {
-                    alert('Clicked!')
-                    this.setAttribute('color', 'red')
-                });
-        }});
-    </script>
+
     <body style="margin : 0px; overflow: hidden;">
   <a-scene
       vr-mode-ui='enabled: false;'
@@ -31,7 +23,7 @@
           </a-assets> -->
 
           <a-marker preset="custom" type="pattern" url="/markers/1v5.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
-              <a-box clickhandler position='0 0.5 0' material='opacity: 0.5;' color-randomizer></a-box>
+              <a-box position='0 0.5 0' material='opacity: 0.5;' color-randomizer></a-box>
               <a-entity
                 gltf-model='/CesiumMan.gltf'
                 animation-mixer
