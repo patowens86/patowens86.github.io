@@ -35,7 +35,7 @@ AFRAME.registerComponent('start-animation', {
   },
   init: function () {
     var el = this.el;
-    var model = document.getElementById(name)
+    var model = document.getElementById(this.data.name)
     el.addEventListener('click', (e) => {     
       this.el.setAttribute('visible', 'false')
       model.setAttribute('visible','true')
