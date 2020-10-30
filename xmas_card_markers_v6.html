@@ -33,6 +33,8 @@
             <a-asset-item id="gift4" src="/models/Gift_wide_green.glb"></a-asset-item>
           </a-assets> 
 
+          <a-sound src="#jingle_bells" volume=".2"></a-sound>
+
           <a-marker preset="custom" type="pattern" url="/markers/1.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
               <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation='name: scene1;'></a-box>
               <a-entity id='scene1'
@@ -44,14 +46,16 @@
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/3.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
               <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation='name: scene3;'></a-box>
-              <a-entity id='scene3'
-                gltf-model='#s3'
-                animation-mixer
-                visible='false'
-              >
-              </a-entity>
-              <a-entity position= "0 1 -1" scale="1.5 1 1">
-                <a-video play-on-scan src="#trello"></a-video>
+              <a-entity id="scene3">
+                <a-entity
+                  gltf-model='#s3'
+                  animation-mixer
+                  visible='false'
+                >
+                </a-entity>
+                <a-entity position= "0 1 -1" scale="1.5 1 1">
+                  <a-video play-on-scan src="#trello"></a-video>
+                </a-entity>
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/4.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
@@ -68,6 +72,7 @@
               <a-entity id='scene6'
                 gltf-model='#s6'
                 animation-mixer
+                visible='false'
               >
               </a-entity>
           </a-marker>
