@@ -18,7 +18,7 @@
 
           <a-assets>
             <video id="trello" autoplay="true" loop="true" src="/videos/Trello.mp4"></video>
-            <audio id="jingle_bells" autoplay="true" loop="false" src="/audio/JingleBell_s.mp3"></sound>
+            <audio id="jingle_bells" autoplay="true" loop="false" src="/audio/JingleBells_s.mp3"></sound>
             <audio id="oh_xmas" autoplay="true" loop="false" src="/audio/OhXmas_s.mp3"></sound>
             <audio id="we_wish_you" autoplay="true" loop="false" src="/audio/WeWishYou_s.mp3"></sound>
             <a-asset-item id="s1" src="/models/CesiumMan.gltf"></a-asset-item>
@@ -33,7 +33,7 @@
             <a-asset-item id="gift4" src="/models/Gift_wide_green.glb"></a-asset-item>
           </a-assets> 
 
-          <a-sound src="#jingle_bells" volume=".2"></a-sound>
+          <a-sound src="#jingle_bells" autoplay="true" volume=".2"></a-sound>
 
           <a-marker preset="custom" type="pattern" url="/markers/1.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
               <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation='name: scene1;'></a-box>
@@ -46,11 +46,11 @@
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/3.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
               <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation='name: scene3;'></a-box>
-              <a-entity id="scene3">
+              <a-entity id="scene3" visible="false">
                 <a-entity
                   gltf-model='#s3'
                   animation-mixer
-                  visible='false'
+
                 >
                 </a-entity>
                 <a-entity position= "0 1 -1" scale="1.5 1 1">
