@@ -9,7 +9,7 @@
 <!--    <script src="/play-on-scan.js"></script> -->
 
     <body style="margin : 0px; overflow: hidden;">
-      
+
   <a-scene
       vr-mode-ui='enabled: false;'
       renderer="logarithmicDepthBuffer: true;"
@@ -23,7 +23,7 @@
             <a-asset-item id="s11" src="/models/CesiumMan.gltf"></a-asset-item>
           </a-assets> -->
 
-          <a-marker preset="custom" type="pattern" url="/markers/1v5.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
+          <a-marker preset="custom" type="pattern" url="/markers/1.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
               <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation='name: present1;'></a-box>
               <a-entity
                 gltf-model='#s1'
@@ -32,7 +32,7 @@
               >
               </a-entity>
           </a-marker>
-          <a-marker preset="custom" type="pattern" url="/markers/3v5.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
+          <a-marker preset="custom" type="pattern" url="/markers/3.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
               <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation='name: present2;'></a-box>
               <a-entity
                 gltf-model='#s3'
@@ -41,7 +41,7 @@
               >
               </a-entity>
           </a-marker>
-          <a-marker preset="custom" type="pattern" url="/markers/4v5.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
+          <a-marker preset="custom" type="pattern" url="/markers/4.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
               <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation='name: present3;'></a-box>
               <a-entity
                 gltf-model='#s4'
@@ -50,7 +50,7 @@
               >
               </a-entity>
           </a-marker>
-          <a-marker preset="custom" type="pattern" url="/markers/6v5.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
+          <a-marker preset="custom" type="pattern" url="/markers/6.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
               <a-box position='0 0.5 0' material='opacity: 0.5;' color-randomizer></a-box>
               <a-entity
                 gltf-model='#s6'
@@ -58,7 +58,7 @@
               >
               </a-entity>
           </a-marker>
-          <a-marker preset="custom" type="pattern" url="/markers/11v5.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
+          <a-marker preset="custom" type="pattern" url="/markers/11.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
               <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation='name: running-man;'></a-box>
               <a-entity id='running-man'
                 gltf-model='#s11'
