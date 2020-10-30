@@ -27,16 +27,19 @@
             <a-asset-item id="s6" src="/models/Santa.glb"></a-asset-item>
             <a-asset-item id="s11" src="/models/XmasTree.glb"></a-asset-item>
             <a-asset-item id="gift1" src="/models/Gift_Square.glb"></a-asset-item>
-            <a-asset-item id="gift2" src="/models/Gift_Square_polkadot.glb"></a-asset-item>
-            <a-asset-item id="gift3" src="/models/Gift_Tall.glb"></a-asset-item>
-            <a-asset-item id="gift4" src="/models/Gift_wide.glb"></a-asset-item>
-            <a-asset-item id="gift4" src="/models/Gift_wide_green.glb"></a-asset-item>
+            <a-asset-item id="gift3" src="/models/Gift_Square_polkadot.glb"></a-asset-item>
+            <a-asset-item id="gift4" src="/models/Gift_Tall.glb"></a-asset-item>
+            <a-asset-item id="gift6" src="/models/Gift_wide.glb"></a-asset-item>
+            <a-asset-item id="gift11" src="/models/Gift_wide_green.glb"></a-asset-item>
           </a-assets> 
 
           <a-sound src="#jingle_bells" autoplay="true" volume=".05"></a-sound>
 
           <a-marker preset="custom" type="pattern" url="/markers/1.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
-              <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation='name: scene1;'></a-box>
+              <a-entity
+                gltf-model='#gift1'
+                start-animation='name: scene1;'
+              >
               <a-entity id='scene1'
                 gltf-model='#s1'
                 animation-mixer
@@ -45,12 +48,14 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
-              <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation='name: scene3;'></a-box>
+              <a-entity
+                gltf-model='#gift3'
+                start-animation='name: scene3;'
+              >
               <a-entity id="scene3" visible="false">
                 <a-entity
                   gltf-model='#s3'
                   animation-mixer
-
                 >
                 </a-entity>
                 <a-entity position= "0 1 -1" scale="1.5 1 1">
@@ -59,7 +64,10 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/4.patt">
-              <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation='name: scene4;'></a-box>
+              <a-entity
+                gltf-model='#gift4'
+                start-animation='name: scene4;'
+              >
               <a-entity id='scene4'
                 gltf-model='#s4'
                 animation-mixer
@@ -68,7 +76,10 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/6.patt">
-              <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation="name: scene6"></a-box>
+              <a-entity
+                gltf-model='#gift6'
+                start-animation='name: scene6;'
+              >
               <a-entity id='scene6'
                 gltf-model='#s6'
                 animation-mixer
@@ -77,7 +88,10 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/11.patt">
-              <a-box position='0 0.5 0' material='opacity: 0.5;' start-animation='name: scene11;'></a-box>
+              <a-entity
+                gltf-model='#gift11'
+                start-animation='name: scene11;'
+              >
               <a-entity id='scene11'
                 gltf-model='#s11'
                 animation-mixer
