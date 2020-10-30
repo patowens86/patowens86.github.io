@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <body style="margin : 0px; overflow: hidden;">
+  <a-scene
+      vr-mode-ui='enabled: false;'
+      renderer="logarithmicDepthBuffer: true;"
+      embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+          <a-marker preset="hiro">
+              <a-box position='0 0.5 0' color="yellow"></a-box>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/1.patt">
+              <a-box position='0 0.5 0' color="blue"></a-box>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/2.patt">
+              <a-box position='0 0.5 0' color="red"></a-box>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/3.patt">
+              <a-box position='0 0.5 0' color="green"></a-box>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/4.patt">
+              <a-box position='0 0.5 0' color="yellow"></a-box>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/5.patt">
+              <a-box position='0 0.5 0' color="black"></a-box>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/6.patt">
+              <a-box position='0 0.5 0' color="white"></a-box>
+          </a-marker>
+        <a-entity camera></a-entity>
+        </a-scene>
+    </body>
+</html>
