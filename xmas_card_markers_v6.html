@@ -35,13 +35,13 @@
 
           <a-sound src="#jingle_bells" autoplay="true" volume=".05"></a-sound>
 
-          <a-marker preset="custom" type="pattern" url="/markers/1.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
-              <a-box position="0 .5 0" start-animation='name: scene1;'>
-              </a-box>
-              <!-- <a-entity
+          <a-marker preset="custom" type="pattern" url="/markers/1.patt" cursor="rayOrigin: mouse" raycaster="objects: a-entity">
+              <!-- <a-box position="0 .5 0" start-animation='name: scene1;'>
+              </a-box> -->
+              <a-entity
                 gltf-model='#gift1'
                 start-animation='name: scene1;'
-              > -->
+              >
               <a-entity id='scene1'
                 gltf-model='#s1'
                 animation-mixer
