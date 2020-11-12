@@ -40,11 +40,10 @@
               </a-box> -->
               <a-entity
               	id='box1'
-                gltf-model='/models/Gift_Square.glb'
-                
-              >
+                gltf-model='/models/Gift_Square.glb' 
+              ></a-entity>
 			  <a-box position='0 0.5 0' material='opacity: 0.0;' start-animation='name: scene1;'></a-box>
-          	  </a-entity>
+   
               <a-entity id='scene1'
                 gltf-model='/models/CesiumMan.gltf'
                 animation-mixer
@@ -53,11 +52,15 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
-              <a-entity
-                gltf-model='/models/Gift_Square_polkadot.glb'
-                start-animation='name: scene3;'
-              >
-              </a-entity>
+			  <a-box position='0 0.5 0' material='opacity: 0.0;' start-animation='name: scene1;'>
+	              <a-entity
+	                gltf-model='/models/Gift_Square_polkadot.glb'
+	                position="0 -0.5 0"
+	                start-animation='name: scene3;'
+	              >
+	              </a-entity>
+			  </a-box>
+
               <a-entity id="scene3" visible="false">
                 <a-entity
                   gltf-model='/models/elf.glb'
