@@ -40,7 +40,7 @@ AFRAME.registerComponent('start-animation', {
     el.addEventListener('click', (e) => {     
       this.el.setAttribute('visible', 'false')
       model.setAttribute('visible','true')
-      console.log("Make " + this.data.name + "visible")
+      console.log("Make " + this.data.name + " visible, right?")
       model.setAttribute('scale','2 2 2')
       console.log("Embiggen!")
     });
