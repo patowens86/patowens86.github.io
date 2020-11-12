@@ -41,7 +41,7 @@
               <a-entity
               	id='box1'
                 gltf-model='/models/Gift_Square.glb'
-                start-animation='self: box1; name: scene1;'
+                start-animation='name: scene1;'
               >
           	  </a-entity>
               <a-entity id='scene1'
@@ -61,6 +61,7 @@
                 <a-entity
                   gltf-model='/models/elf.glb'
                   animation-mixer
+                  visible="false"
                 >
                 </a-entity>
                 <a-entity position= "0 1 -1" scale="1.5 1 1">
@@ -77,7 +78,7 @@
               <a-entity id='#scene4'
                 gltf-model='/models/rudolph.glb'
                 animation-mixer
-                
+                visible="false"
               >
               </a-entity>
           </a-marker>
@@ -90,7 +91,7 @@
               <a-entity id='#scene6'
                 gltf-model='/models/Santa.glb'
                 animation-mixer
-                visible='true'
+                visible="false"
               >
               </a-entity>
           </a-marker>
@@ -103,7 +104,7 @@
               <a-entity id='#scene11'
                 gltf-model='/models/XmasTree.glb'
                 animation-mixer
-                visible='true'
+                visible="false"
               >
               </a-entity>
           </a-marker>
