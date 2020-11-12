@@ -38,7 +38,7 @@ AFRAME.registerComponent('start-animation', {
     var model = document.getElementById(this.data.name)
 
     el.addEventListener('click', (e) => {     
-      this.el.setAttribute('visible', 'false')
+      //this.el.setAttribute('visible', 'false')
       model.setAttribute('scale','2 2 2')
     });
   }
