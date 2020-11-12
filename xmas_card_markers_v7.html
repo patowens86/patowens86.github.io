@@ -1,0 +1,109 @@
+
+<html>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="/scripts/components.js"></script>
+    <script src="/scripts/play-on-scan.js"></script>
+    <script src="/scripts/cursor.js" defer></script>
+
+    <body style="margin : 0px; overflow: hidden;">
+  <a-scene
+      vr-mode-ui='enabled: false;'
+
+      renderer="logarithmicDepthBuffer: true;"
+      embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+<!--
+          <a-assets>
+            <video id="trello" autoplay="true" loop="true" src="/videos/Trello.mp4"></video>
+            <audio id="jingle_bells" autoplay="true" loop="false" src="/audio/JingleBells_s.mp3"></sound>
+            <audio id="oh_xmas" autoplay="true" loop="false" src="/audio/OhXmas_s.mp3"></sound>
+            <audio id="we_wish_you" autoplay="true" loop="false" src="/audio/WeWishYou_s.mp3"></sound>
+            <a-asset-item id="s1" src="/models/CesiumMan.gltf"></a-asset-item>
+            <a-asset-item id="s3" src="/models/elf.glb"></a-asset-item>
+            <a-asset-item id="s4" src="/models/rudolph.glb"></a-asset-item>
+            <a-asset-item id="s6" src="/models/Santa.glb"></a-asset-item>
+            <a-asset-item id="s11" src="/models/XmasTree.glb"></a-asset-item>
+            <a-asset-item id="gift1" src="/models/Gift_Square.glb"></a-asset-item>
+            <a-asset-item id="gift3" src="/models/Gift_Square_polkadot.glb"></a-asset-item>
+            <a-asset-item id="gift4" src="/models/Gift_Tall.glb"></a-asset-item>
+            <a-asset-item id="gift6" src="/models/Gift_wide.glb"></a-asset-item>
+            <a-asset-item id="gift11" src="/models/Gift_wide_green.glb"></a-asset-item>
+          </a-assets> 
+      -->
+
+          <a-sound src="/audio/JingleBells_s.mp3" autoplay="true" volume=".05"></a-sound>
+
+          <a-marker preset="custom" type="pattern" url="/markers/1.patt" cursor="rayOrigin: mouse" raycaster="objects: a-entity">
+              <!-- <a-box position="0 .5 0" start-animation='name: scene1;'>
+              </a-box> -->
+              <a-entity
+                gltf-model='/models/Gift_Square.glb'
+                start-animation='name: scene1;'
+              >
+              <a-entity id='scene1'
+                gltf-model='/models/CesiumMan.gltf'
+                animation-mixer
+                visible='false'
+              >
+              </a-entity>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/3.patt">
+              <a-entity
+                gltf-model='/models/Gift_Square_polkadot.glb'
+                start-animation='name: scene3;'
+              >
+              <a-entity id="scene3" visible="false">
+                <a-entity
+                  gltf-model='/models/elf.glb'
+                  animation-mixer
+                >
+                </a-entity>
+                <a-entity position= "0 1 -1" scale="1.5 1 1">
+                  <a-video play-on-scan src="/videos/Trello.mp4"></a-video>
+                </a-entity>
+              </a-entity>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/4.patt">
+              <a-entity
+                gltf-model='/models/Gift_Tall.glb'
+                start-animation='name: scene4;'
+              >
+              <a-entity id='scene4'
+                gltf-model='/models/rudolf.glb'
+                animation-mixer
+                visible='false'
+              >
+              </a-entity>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/6.patt">
+              <a-entity
+                gltf-model='/models/Gift_wide.glb'
+                start-animation='name: scene6;'
+              >
+              <a-entity id='scene6'
+                gltf-model='/models/Santa.glb'
+                animation-mixer
+                visible='false'
+              >
+              </a-entity>
+          </a-marker>
+          <a-marker preset="custom" type="pattern" url="/markers/11.patt">
+              <a-entity
+                gltf-model='#gift11'
+                start-animation='name: scene11;'
+              >
+              <a-entity id='scene11'
+                gltf-model='/models/Gift_wide_green.glb'
+                animation-mixer
+                visible='false'
+              >
+              </a-entity>
+          </a-marker>
+          <a-entity
+              camera>
+          </a-entity>
+        </a-scene>
+    </body>
+</html>
