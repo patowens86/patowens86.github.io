@@ -39,7 +39,9 @@ AFRAME.registerComponent('start-animation', {
 
     el.addEventListener('click', (e) => {     
       this.el.setAttribute('visible', false)
+      console.log(this.el + " is not visible")
       model.setAttribute('visible', true)
+      console.log(this.data.name + " is visible")
     });
   }
 });
