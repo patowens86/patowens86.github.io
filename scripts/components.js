@@ -40,6 +40,7 @@ AFRAME.registerComponent('start-animation', {
     el.addEventListener('click', (e) => {     
       //this.el.setAttribute('visible', 'false')
       model.setAttribute('scale','2 2 2')
+      console.log("Embiggen!")
     });
   }
 });
