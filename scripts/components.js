@@ -31,14 +31,16 @@ AFRAME.registerComponent('color-randomizer', {
 
 AFRAME.registerComponent('start-animation', {
   schema: {
+    self: {type: 'string'},
     name: {type: 'string'},
   },
   init: function () {
     var el = this.el;
+    var selfModel = document.getElementById(this.data.self)
     var model = document.getElementById(this.data.name)
 
     el.addEventListener('click', (e) => {     
-      this.el.setAttribute('visible', 'false')
+      selfModel.setAttribute('visible', 'false')
       model.setAttribute('visible','true')
       console.log("Make " + this.data.name + " visible, right?")
       model.setAttribute('scale','2 2 2')
