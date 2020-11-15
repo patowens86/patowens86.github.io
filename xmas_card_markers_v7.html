@@ -11,7 +11,7 @@
     <body style="margin : 0px; overflow: hidden;">
   <a-scene
       vr-mode-ui='enabled: false;'
-
+	  cursor="rayOrigin: mouse" raycaster="objects: a-box"
       renderer="logarithmicDepthBuffer: true;"
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
 <!--
@@ -35,7 +35,7 @@
 
           <a-sound src="/audio/JingleBells_s.mp3" autoplay="true" volume=".05"></a-sound>
 
-          <a-marker preset="custom" type="pattern" url="/markers/1.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
+          <a-marker preset="custom" type="pattern" url="/markers/1.patt" >
               <!-- <a-box position="0 .5 0" start-animation='name: scene1;'>
               </a-box> -->
 
@@ -61,7 +61,6 @@
 	                gltf-model='/models/Gift_Square_polkadot.glb'
               		scale="0.5 0.5 0.5"
               		position='0 -0.5 0'
-
 	              ></a-entity>
 			  </a-box>
 
