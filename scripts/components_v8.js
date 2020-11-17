@@ -46,7 +46,7 @@ AFRAME.registerComponent('start-animation', {
         scene.setAttribute('visible', false)
       }
       for (const gift of giftArray) {
-        console.log("Scene " + gift)
+        console.log("Gift " + gift)
         gift.setAttribute('visible', true)
       }     
       this.el.setAttribute('visible', false)
