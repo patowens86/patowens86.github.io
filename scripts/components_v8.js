@@ -29,6 +29,8 @@ AFRAME.registerComponent('color-randomizer', {
   }
 });
 
+
+
 AFRAME.registerComponent('start-animation', {
   schema: {
     name: {type: 'string'},
@@ -53,7 +55,81 @@ AFRAME.registerComponent('start-animation', {
       console.log(this.el.name + " is not visible")
       model.setAttribute('visible', true)
       console.log(this.data.name + " is visible")
-
     });
   }
 });
+
+AFRAME.registerComponent('toggle-audio', {
+  schema: {
+    name: {type: 'string'},
+  },
+  init: function () {
+
+    const audioButton = document.getElementById('audioIconContainer')
+//    const launchButton = document.getElementById('launchButton')
+    const audio = document.getElementById('songEntity')
+    const audioToggleIcon = document.getElementById('audioIcon')
+    const scene = document.querySelector('a-scene')
+    
+
+    
+    audioButton.style.display = 'block'
+    console.log("Audio button's display set to block? = " + audioButton.style.display)
+    
+    let isPlaying = false
+    let hasAudioStarted = false
+    const toggleAudio = () => {
+      if (isPlaying === true) {
+        audioToggleIcon.classList.remove('audioOn')
+        audioToggleIcon.classList.add('audioOff')
+        audio.components.sound.pauseSound();
+        isPlaying = false
+      }
+      else {
+        audioToggleIcon.classList.remove('audioOff')
+        audioToggleIcon.classList.add('audioOn')
+        audio.components.sound.playSound();
+        isPlaying = true
+      }
+    }
+    
+//    const startFireworksAudio = () => {
+//        audioToggleIcon.classList.remove('audioOff')
+//        audioToggleIcon.classList.add('audioOn')
+//        audio.components.sound.playSound();
+//        isPlaying = true
+//    }
+    
+    const startAudio = () => {
+      if (hasAudioStarted === false) {
+        audioToggleIcon.classList.remove('audioOff')
+        audioToggleIcon.classList.add('audioOn')
+        audio.components.sound.playSound();
+        isPlaying = true
+        hasAudioStarted = true
+      }
+    }
+    
+    audioButton.onclick = toggleAudio
+//    launchButton.onclick = startFireworksAudio
+    scene.onclick = startAudio
+  }
+});
+
+
+/*
+AFRAME.registerComponent('audio-toggle', {
+  schema: {
+    name: {type: 'string'},
+  },
+  init: function () {
+    const audioToggleIcon = document.getElementById('audioIcon')
+    audioToggleIcon.addEventListener('click', (e) => {
+      var sounds = document.getElementsByTagName('a-sound')
+      for(i=0; i<sounds.length; i++) {
+        sounds[i].setAttribute('volume', 0)
+        console.log(sounds[i] + " volume set to 0")
+      }
+    });
+  }
+});*/

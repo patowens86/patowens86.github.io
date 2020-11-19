@@ -1,0 +1,322 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+html {
+  font-family: 'Lato';
+}
+#loadBackground{
+  background-image: url('assets/header.svg'), url('assets/bg.png'), linear-gradient(white, rgba(255,255,255,0));
+  background-position:  top, center, center;
+  background-size: 200% auto, auto 100%, contain;
+  background-repeat: no-repeat;
+}
+
+#loadImage{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 1;
+  width: 45%;
+  height: 35%;
+}
+
+#requestingCameraIcon{
+  opacity: 0;
+}
+
+#requestingCameraPermissions{
+  /*background-image: url('assets/camera.png');
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;*/
+  opacity: 0;
+  background-color: transparent;
+}
+#audioIconContainer
+{
+  width: 15%;
+  height: auto;
+  position: absolute;
+  top: 2vmin;
+  right: 2vmin;
+  border-radius: 50%;
+}
+#audioIcon{
+
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 15vmin;
+  height: 15vmin;
+  left: 50%;
+  top: 50%;
+
+}
+.audioOn{
+  background-image: url('./assets/ic_volume_on1x.svg');
+}
+.audioOff{
+  background-image: url('./assets/ic_volume_off1x.svg');
+}
+#nextbutton {
+  width: 50vw;
+  height: auto;
+  position: absolute;
+  bottom: 6vh;
+  left: 25vw;
+  background-color: #AD50FF;
+  border: 0.2em solid white;
+  text-align: center;
+  color: #FFF;
+  border-radius: 100px;
+}
+
+#nextbutton:active {
+  background-color: white;
+  color: #AD50FF;
+}
+
+h2 {
+  font-size: 1.3em;
+  text-align: center;
+  font-family: monospace;
+}
+#launchContainer {
+  display: block;
+}
+#launchButton {
+  position: absolute;
+  bottom: 20px;
+  border-radius: 100px;
+  height: auto;
+  width: 85%;
+  background: #23f4cd;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  transition: width 0.5s;
+  pointer-events: auto;
+}
+#launchButton:active {
+  background: #38157b;
+  color: white;
+}
+#launchButton p {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  color: #38157b;
+  margin: 0;
+  padding: 12px 40px;
+  font-family: gilroy;
+}
+#tapIcon{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 8%;
+}
+
+#greetingBlurb{
+  display: block;
+  position: absolute;
+  color: white;
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: center;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15vmin;
+  z-index: 1;
+}
+
+#greetingBlurbText{
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#launchBlurb{
+  display: block;
+  position: absolute;
+  color: white;
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: center;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15vmin;
+  z-index: 1;
+}
+
+#launchBlurbText{
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#photoModeContainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+.photo #photoModeBG {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(220, 220, 220, 0.2);
+  z-index: 5;  
+  transition: 0.5s;
+}
+.a-canvas.blur {
+  filter: blur(5px);
+}
+#flash {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  z-index: 10;
+  opacity: 0;
+  transition: 0.5s;
+}
+.flash #flash {
+  opacity: 1;
+  transition: 0s;
+  pointer-events: auto;
+}
+#photoModeImage {
+  position: absolute;
+  max-width: 65%;
+  max-height: 75%;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 3vmin;
+  opacity: 0;
+  transition: 0.5s;
+}
+.photo #photoModeImage {
+  opacity: 1;
+  transition: 0s;
+  pointer-events: auto;
+}
+#shutterButton, #closeButton, #shareButton, #replayButton {
+  position: absolute;
+  bottom: 2vmax;
+  border-radius: 10vmin;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  pointer-events: auto;
+}
+#shutterButton {
+  background-image: url('./assets/camera.svg');
+  background-color: #23f4cd;
+  width: 15vmin;
+  height: 15vmin;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.photo #shutterButton {
+  display: none;
+}
+#closeButton {
+  background-image: url('./assets/close.png');
+  background-color: white;
+  display: none;
+  width: 8vmin;
+  height: 8vmin;
+  left: 82.5%;
+  transform: translateX(-50%);
+  top: 5%;
+}
+.photo #closeButton {
+  display: block;
+}
+#photoPrompts {
+  display: none;
+  bottom: 3vmax;
+  height: 15vmin;
+}
+#shareBlurb, #shareBlurbAlt {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 25vmin;
+  width: 65%;
+  color: white;
+  text-align: center;
+}
+.bold {
+  font-weight: bold;
+}
+#shareBlurbAlt {
+  display: none;
+}
+#shareButton, #replayButton {
+  width: 32vmin;
+  text-align: center;
+  border: 0.2em solid #23f4cd;
+  font-weight: bold;
+  line-height: 0.75;
+  font-size: 1.1em;
+}
+#shareButton p, #replayButton p {
+    pointer-events: none;
+}
+#shareButton {
+  background: #23f4cd;
+  right: 4vmax;
+  color: #38157b;
+}
+#shareButton:active, #replayButton:active {
+  border: 0.2em solid #38157b;
+  background: #38157b;
+  color: white;
+}
+#replayButton {
+  background: transparent;
+  left: 4vmax;
+  color: #23f4cd;
+}
+#replayButton.solo {
+  left: 50%;
+  transform: translate(-50%);
+}
+.photo #photoPrompts {
+  display: block;
+}
+#shareBox {
+  position: absolute;
+  background-color: white;
+  width: 90%;
+  height: 20vmin;
+  bottom: 4vmin;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 5vmin;
+  z-index: 10;
+  display: none;
+}
+#shareBox p {
+  display: inline-block;
+  background-color: blue;
+  height: 15vmin;
+  width: 15vmin;
+  border-radius: 7.5vmin;
+  margin: 0;
+  margin-left: 5.5vmin;
+  margin-top: 2.5vmin;
+  text-align: center;
+  line-height: 15vmin;
+  pointer-events: auto;
+}
+.share #shareBox {
+  display: block;
+}
