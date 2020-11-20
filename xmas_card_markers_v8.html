@@ -34,13 +34,13 @@
 	<!-- <div class="arjs-loader">
     	<div>Loading, please wait...</div>
   	</div> -->
-	<div id="audioIconContainer" style="display: none; z-index: 10">
+	<div id="audioIconContainer" style=" z-index: 10">
 	 <div id="audioIcon" class="audioOff"></div>
 	</div>
 
   <a-scene
       vr-mode-ui='enabled: false;'
-      audio-toggle
+      toggle-audio
       renderer="logarithmicDepthBuffer: true;"
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
 <!--
@@ -62,13 +62,13 @@
           </a-assets> 
       -->
 
-          <a-sound src="/audio/JingleBells_s.mp3" autoplay="true" volume=".05"></a-sound>
+          <a-sound id="song" src="/audio/JingleBells_s.mp3" autoplay="true" volume=".05"></a-sound>
 
           <a-marker preset="custom" type="pattern" url="/markers/1.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
               <!-- <a-box position="0 .5 0" start-animation='name: scene1;'>
               </a-box> -->
 
-			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0.1;' color='blue' start-animation='name: scene1;'>
+			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0.5;' color='blue' start-animation='name: scene1;'>
 				<a-entity
               	id='box1'
               	scale="0.666 0.666 0.666"
@@ -85,7 +85,7 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
-			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0.1;' start-animation='name: scene3;'>
+			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0.5;' start-animation='name: scene3;'>
 	              <a-entity 
 	                gltf-model='/models/Gift_Square_polkadot.glb'
               		scale="0.5 0.5 0.5"
@@ -103,7 +103,7 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/4.patt">
-			<a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0.1;' start-animation='name: scene4;'>
+			<a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0.5;' start-animation='name: scene4;'>
               <a-entity 
                 gltf-model='/models/Gift_Tall.glb'
 
@@ -120,7 +120,7 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/6.patt">
-              <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0.1;' start-animation='name: scene6;'>
+              <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0.5;' start-animation='name: scene6;'>
 	              <a-entity
 	                gltf-model='/models/Gift_wide.glb'
 	              	scale="0.5 0.5 0.5"
@@ -136,7 +136,7 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/11.patt">
-			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0.1;' start-animation='name: scene11;'>
+			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0.5;' start-animation='name: scene11;'>
 	              <a-entity
 	                gltf-model='/models/Gift_wide_green.glb'
 

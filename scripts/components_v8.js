@@ -52,7 +52,7 @@ AFRAME.registerComponent('start-animation', {
         gift.setAttribute('visible', true)
       }     
       this.el.setAttribute('visible', false)
-      console.log(this.el.name + " is not visible")
+      console.log(this.el.name + " is not visible = " + this.el.getAttribute('visible'))
       model.setAttribute('visible', true)
       console.log(this.data.name + " is visible")
     });
@@ -67,10 +67,11 @@ AFRAME.registerComponent('toggle-audio', {
 
     const audioButton = document.getElementById('audioIconContainer')
 //    const launchButton = document.getElementById('launchButton')
-    const audio = document.getElementById('songEntity')
+    const audio = document.getElementById('song')
     const audioToggleIcon = document.getElementById('audioIcon')
     const scene = document.querySelector('a-scene')
     
+    console.log("toggleAudio is ready")
 
     
     audioButton.style.display = 'block'
@@ -110,9 +111,10 @@ AFRAME.registerComponent('toggle-audio', {
       }
     }
     
-    audioButton.onclick = toggleAudio
+    audioButton.addEventListener("click", toggleAudio);
+    //audioButton.addEventListener("click", toggleAudio);
 //    launchButton.onclick = startFireworksAudio
-    scene.onclick = startAudio
+    //scene.onclick = startAudio
   }
 });
 
