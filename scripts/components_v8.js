@@ -34,6 +34,7 @@ AFRAME.registerComponent('color-randomizer', {
 AFRAME.registerComponent('start-animation', {
   schema: {
     name: {type: 'string'},
+    sound_id: {type: 'string'}
   },
   init: function () {
     var el = this.el;
@@ -42,11 +43,10 @@ AFRAME.registerComponent('start-animation', {
     var giftArray = document.getElementsByClassName("gift")
     var sceneArray = document.getElementsByClassName("scene")
     var audioArray = document.getElementsByClassName("audio")
+    var sceneAudio = document.getElementById(this.data.sound_id)
     var song = document.getElementById("song")
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
-
-
 
     el.addEventListener('click', (e) => {
       for (const scene of sceneArray) {
@@ -67,10 +67,11 @@ AFRAME.registerComponent('start-animation', {
         shutterButton.hidden = false
         tapInstructions.style.display = 'none'
         model.setAttribute('visible', true)
+        sceneAudio.components.sound.playSound()
         console.log(this.data.name + " is visible")
         isActive=true
       }
-      else if(isActive) {
+      else{
         shutterButton.hidden = true
         tapInstructions.style.display = 'block'
         song.components.sound.playSound()
@@ -80,25 +81,6 @@ AFRAME.registerComponent('start-animation', {
   }
 });
 
-AFRAME.registerComponent('play-audio', {
-  schema: {
-    src: {type: 'string'},
-  },
-  init: function () {
-    var el = this.el;
-    var model = document.getElementById(this.data.name)
-    var audioArray = document.getElementsByClassName("audio")
-
-
-
-    el.addEventListener('click', (e) => {
-      for (const audio of audioArray) {
-        console.log("Audio: " + audio)
-        audio.components.sound.pauseSound();
-      }
-    });
-  }
-});
 
 AFRAME.registerComponent('toggle-audio', {
   schema: {
