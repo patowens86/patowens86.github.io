@@ -38,9 +38,14 @@ AFRAME.registerComponent('start-animation', {
   init: function () {
     var el = this.el;
     var model = document.getElementById(this.data.name)
+    var isActive = false
     var giftArray = document.getElementsByClassName("gift")
     var sceneArray = document.getElementsByClassName("scene")
+    var audioArray = document.getElementsByClassName("audio")
+    var song = document.getElementById("song")
     const shutterButton = document.getElementById('shutterButton')
+    const tapInstructions = document.getElementById('tapInstructions')
+
 
 
     el.addEventListener('click', (e) => {
@@ -51,12 +56,46 @@ AFRAME.registerComponent('start-animation', {
       for (const gift of giftArray) {
         console.log("Gift " + gift)
         gift.setAttribute('visible', true)
+      }
+      for (const audio of audioArray) {
+        console.log("Audio: " + audio)
+        audio.components.sound.pauseSound();
       }     
-      this.el.setAttribute('visible', false)
-      console.log(this.el.name + " is not visible = " + this.el.getAttribute('visible'))
-      shutterButton.hidden = false
-      model.setAttribute('visible', true)
-      console.log(this.data.name + " is visible")
+      if(!isActive) {
+        this.el.setAttribute('visible', false)
+        console.log(this.el.name + " is not visible = " + this.el.getAttribute('visible'))
+        shutterButton.hidden = false
+        tapInstructions.style.display = 'none'
+        model.setAttribute('visible', true)
+        console.log(this.data.name + " is visible")
+        isActive=true
+      }
+      else if(isActive) {
+        shutterButton.hidden = true
+        tapInstructions.style.display = 'block'
+        song.components.sound.playSound()
+        isActive=false
+      }
+    });
+  }
+});
+
+AFRAME.registerComponent('play-audio', {
+  schema: {
+    src: {type: 'string'},
+  },
+  init: function () {
+    var el = this.el;
+    var model = document.getElementById(this.data.name)
+    var audioArray = document.getElementsByClassName("audio")
+
+
+
+    el.addEventListener('click', (e) => {
+      for (const audio of audioArray) {
+        console.log("Audio: " + audio)
+        audio.components.sound.pauseSound();
+      }
     });
   }
 });
@@ -145,6 +184,7 @@ AFRAME.registerComponent('audio-toggle', {
     });
   }
 });*/
+
 AFRAME.registerComponent('photo-mode', {
   schema: {
     name: {type: 'string'},

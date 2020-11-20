@@ -117,7 +117,7 @@ h2 {
   width: 8%;
 }
 
-#greetingBlurb{
+#tapInstructions{
   display: block;
   position: absolute;
   color: white;
@@ -131,7 +131,7 @@ h2 {
   z-index: 1;
 }
 
-#greetingBlurbText{
+#instructionText{
   background-color: black;
   background-color: rgba(0, 0, 0, 0.4);
 }
