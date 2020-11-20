@@ -39,7 +39,7 @@ AFRAME.registerComponent('start-animation', {
   init: function () {
     var el = this.el;
     var model = document.getElementById(this.data.name)
-    var isActive = false
+    var isNotActive = true
     var giftArray = document.getElementsByClassName("gift")
     var sceneArray = document.getElementsByClassName("scene")
     var audioArray = document.getElementsByClassName("audio")
@@ -50,32 +50,32 @@ AFRAME.registerComponent('start-animation', {
 
     el.addEventListener('click', (e) => {
       for (const scene of sceneArray) {
-        console.log("Scene " + scene)
         scene.setAttribute('visible', false)
       }
       for (const gift of giftArray) {
-        console.log("Gift " + gift)
         gift.setAttribute('visible', true)
       }
       for (const audio of audioArray) {
-        console.log("Audio: " + audio)
         audio.components.sound.pauseSound();
       }     
-      if(!isActive) {
+      if(isNotActive) {
         this.el.setAttribute('visible', false)
-        console.log(this.el.name + " is not visible = " + this.el.getAttribute('visible'))
         shutterButton.hidden = false
         tapInstructions.style.display = 'none'
         model.setAttribute('visible', true)
-        sceneAudio.components.sound.playSound()
-        console.log(this.data.name + " is visible")
-        isActive=true
+        if (sceneAudio!=null)
+         {sceneAudio.components.sound.playSound()}
+      for (const gift of giftArray) {
+        gift.setAttribute('isNotActive', false)
       }
-      else{
+        console.log(this.data.name + " is active")
+      }
+      else {
         shutterButton.hidden = true
         tapInstructions.style.display = 'block'
         song.components.sound.playSound()
-        isActive=false
+        isNotActive=true
+        console.log(this.data.name + " is not active")
       }
     });
   }
@@ -150,22 +150,6 @@ AFRAME.registerComponent('toggle-audio', {
 });
 
 
-/*
-AFRAME.registerComponent('audio-toggle', {
-  schema: {
-    name: {type: 'string'},
-  },
-  init: function () {
-    const audioToggleIcon = document.getElementById('audioIcon')
-    audioToggleIcon.addEventListener('click', (e) => {
-      var sounds = document.getElementsByTagName('a-sound')
-      for(i=0; i<sounds.length; i++) {
-        sounds[i].setAttribute('volume', 0)
-        console.log(sounds[i] + " volume set to 0")
-      }
-    });
-  }
-});*/
 
 AFRAME.registerComponent('photo-mode', {
   schema: {
