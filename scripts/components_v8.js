@@ -143,3 +143,120 @@ AFRAME.registerComponent('audio-toggle', {
     });
   }
 });*/
+AFRAME.registerComponent('photo-mode', {
+  schema: {
+    name: {type: 'string'},
+  },
+  init: function() {
+    const container = document.getElementById('photoModeContainer')
+    const image = document.getElementById('photoModeImage')
+    const shutterButton = document.getElementById('shutterButton')
+    const closeButton = document.getElementById('closeButton')
+    const shareButton = document.getElementById('shareButton')
+    const canvas = document.querySelector('.a-canvas')
+    const replayButton = document.getElementById('replayButton')
+    const audioButton = document.getElementById('audioIconContainer')
+    const shareBlurb = document.getElementById('shareBlurb')
+    const shareBlurbAlt = document.getElementById('shareBlurbAlt')
+    const overlay = document.getElementById('photoOverlay')
+    
+    let shareFile
+    let imageUrl
+    
+    // Container starts hidden so it isn't visible when the page is still loading
+    shutterButton.hidden = true
+    
+    container.style.display = 'block'
+    closeButton.addEventListener('click', () => {
+      container.classList.remove('photo')
+      container.classList.remove('share')
+      canvas.classList.remove('blur')
+      audioButton.style.display = 'block'
+      overlay.setAttribute('visible', false)
+      setTimeout(() => {
+      // Tell the restart-camera script to stop watching for issues
+        window.dispatchEvent(new Event('ensurecameraend'))
+      }, 1000)
+    })
+    shutterButton.addEventListener('click', () => {
+      overlay.setAttribute('visible', true)
+      // Emit a screenshotrequest to the xrweb component
+      this.el.sceneEl.emit('screenshotrequest')
+      // Show the flash while the image is being taken
+      container.classList.add('flash')
+
+    })
+    //return a promise that resolves with a File instance
+    function urlToFile(url, filename, mimeType){
+      mimeType = mimeType || (url.match(/^data:([^;]+);/)||'')[1];
+      return (fetch(url)
+        .then(function(res){return res.arrayBuffer();})
+        .then(function(buf){return new File([buf], filename, {type:mimeType});})
+      );
+    }
+    replayButton.addEventListener('click', () => {
+      location.reload()
+    })
+//    shareButton.addEventListener('click', () => {
+//      // urlToFile(image.src, 'Happy-Eid.jpg').then(res => {
+//      //   navigator.share({
+//      //     title: 'Happy Eid',
+//      //     text: 'Happy Eid!',
+//      //     files: [res]
+//      //   }).then(() => console.log('Shared successfully'))
+//      // })
+//      navigator.share({
+//        title: 'Happy Eid',
+//        files: [shareFile]
+//      })
+//    })
+    
+    shareButton.addEventListener('click', () => {
+      
+      if (navigator.canShare && navigator.canShare({files :[shareFile]} )) {
+        navigator.share({
+          files: [shareFile],
+          title: 'Happy Eid!',
+          text: 'Happy Eid from sixtytwo.co!',
+        })
+        .then(() => console.log('Share was successful.'))
+        .catch((error) => console.log('Sharing failed', error));
+      } else {
+        shareBlurbAlt.style.display = 'block'
+        shareBlurb.hidden = true
+        shareButton.hidden = true
+        replayButton.classList.add('solo')
+        console.log(`Your browser doesn't support one tap share. Long-press the picture to share it.`);
+      }s
+    })
+    
+    this.el.sceneEl.addEventListener('screenshotready', e => {
+      // Hide the flash
+      container.classList.remove('flash')
+      // If an error occurs while trying to take the screenshot, e.detail will be empty.
+      // We could either retry or return control to the user
+      if (!e.detail) {
+        return
+      }
+      // e.detail is the base64 representation of the JPEG screenshot
+      var basestr = 'data:image/jpeg;base64,' + e.detail
+      urlToFile(basestr, 'Merry-Christmas.jpg')
+        .then(res => {
+          shareFile = res
+          imageUrl = URL.createObjectURL(res)
+        }).then(() => {
+          image.src = imageUrl
+        })
+        
+      
+      // Show the photo
+      container.classList.add('photo')
+      canvas.classList.add('blur')
+      audioButton.style.display = 'none'
+      
+      // Tell the restart-camera script to start watching for issues
+      window.dispatchEvent(new Event('ensurecamerastart'))
+    })
+
+  }
+})
