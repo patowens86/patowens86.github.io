@@ -40,6 +40,7 @@ AFRAME.registerComponent('start-animation', {
     var model = document.getElementById(this.data.name)
     var giftArray = document.getElementsByClassName("gift")
     var sceneArray = document.getElementsByClassName("scene")
+    const shutterButton = document.getElementById('shutterButton')
 
 
     el.addEventListener('click', (e) => {
@@ -53,6 +54,7 @@ AFRAME.registerComponent('start-animation', {
       }     
       this.el.setAttribute('visible', false)
       console.log(this.el.name + " is not visible = " + this.el.getAttribute('visible'))
+      shutterButton.hidden = false
       model.setAttribute('visible', true)
       console.log(this.data.name + " is visible")
     });
@@ -164,7 +166,7 @@ AFRAME.registerComponent('photo-mode', {
     let imageUrl
     
     // Container starts hidden so it isn't visible when the page is still loading
-    //shutterButton.hidden = true
+    shutterButton.hidden = true
     
     container.style.display = 'block'
     closeButton.addEventListener('click', () => {
