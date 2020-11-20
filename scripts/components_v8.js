@@ -83,13 +83,22 @@ AFRAME.registerComponent('toggle-audio', {
       if (isPlaying === true) {
         audioToggleIcon.classList.remove('audioOn')
         audioToggleIcon.classList.add('audioOff')
-        audio.components.sound.pauseSound();
+        var sounds = document.getElementsByTagName('a-sound')
+        for(i=0; i<sounds.length; i++) {
+          sounds[i].setAttribute('volume', 0)
+        }
+        console.log(sounds[i] + " volume set to 0")
         isPlaying = false
       }
       else {
         audioToggleIcon.classList.remove('audioOff')
         audioToggleIcon.classList.add('audioOn')
-        audio.components.sound.playSound();
+        var sounds = document.getElementsByTagName('a-sound')
+        for(i=0; i<sounds.length; i++) {
+          sounds[i].setAttribute('volume', 0.5)
+        }
+        console.log(sounds[i] + " volume set to 0.5")
+
         isPlaying = true
       }
     }
