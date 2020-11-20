@@ -158,13 +158,13 @@ AFRAME.registerComponent('photo-mode', {
     const audioButton = document.getElementById('audioIconContainer')
     const shareBlurb = document.getElementById('shareBlurb')
     const shareBlurbAlt = document.getElementById('shareBlurbAlt')
-    const overlay = document.getElementById('photoOverlay')
+    //const overlay = document.getElementById('photoOverlay')
     
     let shareFile
     let imageUrl
     
     // Container starts hidden so it isn't visible when the page is still loading
-    shutterButton.hidden = true
+    //shutterButton.hidden = true
     
     container.style.display = 'block'
     closeButton.addEventListener('click', () => {
@@ -172,14 +172,15 @@ AFRAME.registerComponent('photo-mode', {
       container.classList.remove('share')
       canvas.classList.remove('blur')
       audioButton.style.display = 'block'
-      overlay.setAttribute('visible', false)
+      //overlay.setAttribute('visible', false)
       setTimeout(() => {
       // Tell the restart-camera script to stop watching for issues
         window.dispatchEvent(new Event('ensurecameraend'))
       }, 1000)
     })
     shutterButton.addEventListener('click', () => {
-      overlay.setAttribute('visible', true)
+      console.log("Shutter button clicked")
+      //overlay.setAttribute('visible', true)
       // Emit a screenshotrequest to the xrweb component
       this.el.sceneEl.emit('screenshotrequest')
       // Show the flash while the image is being taken
