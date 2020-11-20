@@ -65,10 +65,9 @@ AFRAME.registerComponent('start-animation', {
         model.setAttribute('visible', true)
         if (sceneAudio!=null)
          {sceneAudio.components.sound.playSound()}
-      for (const gift of giftArray) {
-        gift.setAttribute('isNotActive', false)
-      }
         console.log(this.data.name + " is active")
+
+
       }
       else {
         shutterButton.hidden = true
