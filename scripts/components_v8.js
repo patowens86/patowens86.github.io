@@ -98,7 +98,6 @@ AFRAME.registerComponent('toggle-audio', {
           sounds[i].setAttribute('volume', 0.5)
         }
         console.log(sounds[i] + " volume set to 0.5")
-
         isPlaying = true
       }
     }
