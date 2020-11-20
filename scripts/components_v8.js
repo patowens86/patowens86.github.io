@@ -186,7 +186,8 @@ AFRAME.registerComponent('photo-mode', {
       // Emit a screenshotrequest to the xrweb component
       this.el.sceneEl.emit('screenshotrequest')
       // Show the flash while the image is being taken
-      //container.classList.add('flash')
+      container.classList.add('flash')
+      container.classList.remove('flash')
           // e.detail is the base64 representation of the JPEG screenshot
           var basestr = 'data:image/jpeg;base64,' //+ e.detail
           urlToFile(basestr, 'Merry-Christmas.jpg')
@@ -206,6 +207,7 @@ AFRAME.registerComponent('photo-mode', {
           // Tell the restart-camera script to start watching for issues
           window.dispatchEvent(new Event('ensurecamerastart'))
     })
+
     //return a promise that resolves with a File instance
     function urlToFile(url, filename, mimeType){
       mimeType = mimeType || (url.match(/^data:([^;]+);/)||'')[1];
@@ -252,7 +254,7 @@ AFRAME.registerComponent('photo-mode', {
     
     this.el.sceneEl.addEventListener('screenshotready', e => {
       // Hide the flash
-      //container.classList.remove('flash')
+      container.classList.remove('flash')
       // If an error occurs while trying to take the screenshot, e.detail will be empty.
       // We could either retry or return control to the user
       if (!e.detail) {

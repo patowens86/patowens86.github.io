@@ -227,7 +227,7 @@ h2 {
   display: none;
 }
 #closeButton {
-  background-image: url('./assets/close.png');
+  background-image: url('./assets/close.svg');
   background-color: white;
   display: none;
   width: 8vmin;
