@@ -8,6 +8,9 @@
     <script src="/scripts/play-on-scan.js"></script>
     <script src="/scripts/cursor.js" defer></script>
     <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+    <script src= 
+"https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
+<script type="text/javascript" src="/scripts/webcamjs/webcam.min.js"></script>
 <!--    <style>
 	  .arjs-loader {
 	    height: 100%;
@@ -30,11 +33,18 @@
 	</style> -->
 
 	<head><link rel="stylesheet" href="index.css"></head>
-
+<style>
+#my_camera{
+ width: 320px;
+ height: 240px;
+ border: 1px solid black;
+}
+</style>
     <body style="margin : 0px; overflow: hidden;">
 	<!-- <div class="arjs-loader">
     	<div>Loading, please wait...</div>
   	</div> -->
+  <div id="screenshot">
   <div id="tapInstructions">
     <img src="assets/ic_tap1x.svg" id="tapIcon">
     <p id="instructionText">Tap a <b>gift box</b> to activate a scene.</p>
@@ -48,7 +58,7 @@
 	  <div id="photoModeBG"></div>
 	  <img id="photoModeImage">
 	  <div id="flash"></div>
-	  <div id="shutterButton"></div>
+	  <div id="shutterButton" onclick="take_snapshot()"></div>
 	  <div id="closeButton"></div>
 	  <div id="photoPrompts">
 	      <p id="shareBlurb">Don't forget to share your holiday cheer with <span class="bold">@sixtytwo.co!</span></p>
@@ -60,7 +70,29 @@
 	        <p>Replay</p>
 	      </div>
 	  </div>
+    <div id="my-camera"></div>
+    <div id="results"></div>
 	</div>
+<script language="JavaScript">
+ Webcam.set({
+  width: 320,
+  height: 240,
+  image_format: 'jpeg',
+  jpeg_quality: 90
+ });
+ Webcam.attach( '#my_camera' );
+
+<!-- Code to handle taking the snapshot and displaying it locally -->
+function take_snapshot() {
+ 
+ // take snapshot and get image data
+ Webcam.snap( function(data_uri) {
+  // display results in page
+  document.getElementById('results').innerHTML = 
+  '<img src="'+data_uri+'"/>';
+  } );
+}
+</script>
 
   <a-scene
       vr-mode-ui='enabled: false;'
@@ -182,5 +214,7 @@
               camera cursor="rayOrigin: mouse; fuse: false" raycaster="objects: a-box">
           </a-entity>
         </a-scene>
+      </div>
+      <div id="output"></div>
     </body>
 </html>
