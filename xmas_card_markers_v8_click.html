@@ -29,47 +29,12 @@
 	  }
 	</style> -->
 
-	<head><link rel="stylesheet" href="index.css"></head>
-
-    <body style="margin : 0px; overflow: hidden;">
-	<!-- <div class="arjs-loader">
-    	<div>Loading, please wait...</div>
-  	</div> -->
-  <div id="tapInstructions">
-    <img src="assets/ic_tap1x.svg" id="tapIcon">
-    <p id="instructionText">Tap a <b>gift box</b> to activate a scene.</p>
-  </div>
-
-	<div id="audioIconContainer" style=" z-index: 10">
-	 <div id="audioIcon" class="audioOff"></div>
-	</div>
-
-	<div id="photoModeContainer">
-	  <div id="photoModeBG"></div>
-	  <img id="photoModeImage">
-	  <div id="flash"></div>
-	  <div id="shutterButton"></div>
-	  <div id="closeButton"></div>
-	  <div id="photoPrompts">
-	      <p id="shareBlurb">Don't forget to share your holiday cheer with <span class="bold">@sixtytwo.co!</span></p>
-	      <p id="shareBlurbAlt">Tap and hold to save the picture!</p>
-	      <div id="shareButton">
-	        <p id="shareButtonText">Share</p>
-	      </div>
-	      <div id="replayButton">
-	        <p>Replay</p>
-	      </div>
-	  </div>
-	</div>
 
   <a-scene
       vr-mode-ui='enabled: false;'
-      toggle-audio
-      photo-mode
       renderer="logarithmicDepthBuffer: true;"
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'
-      xrweb
-      xrextras-almost-there>
+>
 <!--
           <a-assets>
             <video id="trello" autoplay="true" loop="true" src="/videos/Trello.mp4"></video>
@@ -89,95 +54,64 @@
           </a-assets> 
       -->
 
-          <a-sound id="song" class="audio" src="/audio/JingleBells_s.mp3" autoplay="true" volume="0"></a-sound>
-          <a-sound id="audio_1" class="audio" src="/audio/WeWishYou_s.mp3" autoplay="false" volume="0"></a-sound>
+
 
           <a-marker preset="custom" type="pattern" url="/markers/1.patt" cursor="rayOrigin: mouse" raycaster="objects: a-box">
-              <!-- <a-box position="0 .5 0" start-animation='name: scene1;'>
-              </a-box> -->
 
-			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0.5;' color='blue' start-animation='name: scene1; sound_id: audio_1'>
-				<a-entity
-              	id='box1'
-              	scale="0.666 0.666 0.666"
-              	position='0 -0.5 0'
-                gltf-model='/models/Gift_Square.glb' 
-              	></a-entity>
+			  <a-box position='0 0.5 0' material='opacity: 0.5;' color='blue' start-animation='name: scene1;'>
 			  </a-box>
    
               <a-entity class="scene" id='scene1'
                 gltf-model='/models/CesiumMan.gltf'
-                animation-mixer
                 visible="false">
-
               </a-entity>
           </a-marker>
+<!--
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
-			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0.5;' start-animation='name: scene3;'>
-	              <a-entity 
-	                gltf-model='/models/Gift_Square_polkadot.glb'
-              		scale="0.5 0.5 0.5"
-              		position='0 -0.5 0'
-	              ></a-entity>
-			  </a-box>
 
-              <a-entity class="scene" id="scene3" visible="false">
-                <a-entity
-                  gltf-model='/models/elf.glb'animation-mixer>
-                </a-entity>
-                <a-entity position= "0 1 -1" scale="1.5 1 1">
-                  <a-video play-on-scan src="/videos/Trello.mp4"></a-video> 
-                </a-entity>
+
+			  <a-box position='0 0.5 0' material='opacity: 0.5;' color='white' start-animation='name: scene3;'>
+			  </a-box>
+   
+              <a-entity class="scene" id='scene3'
+                gltf-model='/models/CesiumMan.gltf'
+                visible="false">
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/4.patt">
-			<a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0.5;' start-animation='name: scene4;'>
-              <a-entity 
-                gltf-model='/models/Gift_Tall.glb'
-              	scale="0.5 0.5 0.5"
-              	position='0 -0.5 0'
-              >
-              </a-entity>
-          	</a-box>
+
+
+			  <a-box position='0 0.5 0' material='opacity: 0.5;' color='white' start-animation='name: scene4;'>
+			  </a-box>
+   
               <a-entity class="scene" id='scene4'
-                gltf-model='/models/rudolph.glb'
-                animation-mixer
-                visible="false"
-              >
+                gltf-model='/models/CesiumMan.gltf'
+                visible="false">
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/6.patt">
-              <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0.5;' start-animation='name: scene6;'>
-	              <a-entity
-	                gltf-model='/models/Gift_wide.glb'
-	              	scale="0.5 0.5 0.5"
-	              	position='0 -0.5 0'
-	              >
-	              </a-entity>
-          	  </a-box>
-              <a-entity class="scene" id='scene6'
-                gltf-model='/models/Santa.glb'
-                animation-mixer
-                visible="false"
-              >
+
+
+			  <a-box position='0 0.5 0' material='opacity: 0.5;' color='white' start-animation='name: scene5;'>
+			  </a-box>
+   
+              <a-entity class="scene" id='scene5'
+                gltf-model='/models/CesiumMan.gltf'
+                visible="false">
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/11.patt">
-			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0.5;' start-animation='name: scene11;'>
-	              <a-entity
-	                gltf-model='/models/Gift_wide_green.glb'
-	              	scale="0.666 0.666 0.666"
-	              	position='0 -0.5 0'
-	              >
-	              </a-entity>
-          	  </a-box>
-              <a-entity class="scene" id='scene11'
-                gltf-model='/models/XmasTree.glb'
-                animation-mixer
-                visible="false"
-              >
+
+
+			  <a-box position='0 0.5 0' material='opacity: 0.5;' color='white' start-animation='name: scene6;'>
+			  </a-box>
+   
+              <a-entity class="scene" id='scene6'
+                gltf-model='/models/CesiumMan.gltf'
+                visible="false">
               </a-entity>
-          </a-marker>
+          </a-marker> 
+      -->
           <a-entity
               camera>
           </a-entity>

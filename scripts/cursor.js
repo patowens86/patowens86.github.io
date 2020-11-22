@@ -62,7 +62,7 @@ cursorComponent.onMouseMove = (function() {
 
     this.el.setAttribute("raycaster", rayCasterConfig);
     if (evt.type === "touchmove") {
-      evt.preventDefault();
+      //evt.preventDefault();
     }
   };
 })();
