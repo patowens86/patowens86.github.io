@@ -33,7 +33,7 @@
   <a-scene
       vr-mode-ui='enabled: false;'
       renderer="logarithmicDepthBuffer: true;"
-      cursor="rayOrigin: mouse" raycaster="objects: a-box"
+
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'
 >
 <!--
@@ -67,7 +67,7 @@
                 visible="false">
               </a-entity>
           </a-marker>
-<!--
+
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
 
 
@@ -112,9 +112,9 @@
                 visible="false">
               </a-entity>
           </a-marker> 
-      -->
+
           <a-entity
-              camera>
+              camera cursor="rayOrigin: mouse" raycaster="objects: a-box">
           </a-entity>
         </a-scene>
     </body>
