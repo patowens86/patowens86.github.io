@@ -67,8 +67,6 @@ AFRAME.registerComponent('start-animation', {
         if (sceneAudio!=null)
          {sceneAudio.components.sound.playSound()}
         console.log(this.data.name + " is active")
-
-
       }
       else {
         shutterButton.hidden = true
