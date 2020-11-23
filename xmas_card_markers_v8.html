@@ -70,11 +70,7 @@
 	        <p>Replay</p>
 	      </div>
 	  </div>
-<div>
-       <div id="Camera" class="Camera"> </div>
-    <br>
-    <input type="button" id="takeshot" value="Capture" onClick="take_snapshot()" />
- </div>
+    <div id="my-camera"></div>
     <div id="results"></div>
 	</div>
 <script language="JavaScript">
@@ -84,7 +80,7 @@
   image_format: 'jpeg',
   jpeg_quality: 90
  });
- Webcam.attach( '#camera' );
+ Webcam.attach( '#my_camera' );
 
 <!-- Code to handle taking the snapshot and displaying it locally -->
 function take_snapshot() {
