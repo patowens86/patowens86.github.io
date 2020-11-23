@@ -1,6 +1,6 @@
 /* If you're feeling fancy you can add interactivity 
     to your site with Javascript */
-
+/*
 AFRAME.registerComponent('navigate-on-click', {
   schema: {
     url: {
@@ -27,9 +27,23 @@ AFRAME.registerComponent('color-randomizer', {
       this.el.setAttribute('color', colors[Math.floor(Math.random() * colors.length)])
     });
   }
-});
+}); */
 
+AFRAME.registerComponent('loading-xmas', {
+  init: function (){
+    var loadingContainer = document.getElementsByClassName("arjs-loader")
+    var loadingImages = document.getElementById("load-Image")
+    console.log("loading screen initialized")
 
+    setTimeout(
+      function() {
+        subDisplay();
+      }, 3000);
+    function subDisplay() {
+        loadingContainer[0].style.display='none'
+    };
+  }
+})
 
 AFRAME.registerComponent('start-animation', {
   schema: {
@@ -141,9 +155,6 @@ AFRAME.registerComponent('toggle-audio', {
     }
     
     audioButton.addEventListener("click", toggleAudio);
-    //audioButton.addEventListener("click", toggleAudio);
-//    launchButton.onclick = startFireworksAudio
-    //scene.onclick = startAudio
   }
 });
 
@@ -242,8 +253,8 @@ AFRAME.registerComponent('photo-mode', {
       if (navigator.canShare && navigator.canShare({files :[shareFile]} )) {
         navigator.share({
           files: [shareFile],
-          title: 'Happy Eid!',
-          text: 'Happy Eid from sixtytwo.co!',
+          title: 'Merry Christmas!',
+          text: 'Merry Christmas from sixtytwo.co!',
         })
         .then(() => console.log('Share was successful.'))
         .catch((error) => console.log('Sharing failed', error));

@@ -7,7 +7,7 @@
     <script src="/scripts/components_v8.js"></script>
     <script src="/scripts/play-on-scan.js"></script>
     <script src="/scripts/cursor.js" defer></script>
-    <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+    <!--<script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script> -->
 <!--    <style>
 	  .arjs-loader {
 	    height: 100%;
@@ -31,6 +31,13 @@
 
 	<head><link rel="stylesheet" href="index.css"></head>
 
+  <div class="arjs-loader">
+    <div>
+      <img id="load-Image" src="graphics/gift-box.gif">
+      Loading, please wait...
+    </div>
+  </div>
+
     <body style="margin : 0px; overflow: hidden;">
 	<!-- <div class="arjs-loader">
     	<div>Loading, please wait...</div>
@@ -51,7 +58,7 @@
 	  <div id="shutterButton"></div>
 	  <div id="closeButton"></div>
 	  <div id="photoPrompts">
-	      <p id="shareBlurb">Don't forget to share your holiday cheer with <span class="bold">@sixtytwo.co!</span></p>
+	      <p id="shareBlurb">Tap and hold to save the picture!</span></p>
 	      <p id="shareBlurbAlt">Tap and hold to save the picture!</p>
 	      <div id="shareButton">
 	        <p id="shareButtonText">Share</p>
@@ -62,14 +69,17 @@
 	  </div>
 	</div>
 
+
+
   <a-scene
       vr-mode-ui='enabled: false;'
       toggle-audio
       photo-mode
+      loading-xmas
       renderer="logarithmicDepthBuffer: true;"
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'
-      xrweb
-      xrextras-almost-there>
+      >
+
 <!--
           <a-assets>
             <video id="trello" autoplay="true" loop="true" src="/videos/Trello.mp4"></video>

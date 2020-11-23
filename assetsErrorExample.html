@@ -1,0 +1,25 @@
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+    //the script I want to run after the page is loaded
+	<script src="myDeferredScript.js" defer></script>
+
+	//If I include a-assets to pre-load models, the deferred script will not run
+	<a-assets>
+		<a-asset-item id="#model" src="myModel.gltf"></a-asset-item>
+	</a-assets>
+
+	<a-scene>
+	  <a-entity gltf-model='#model'></a-entity>
+	</a-scene>
+
+
+
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+    //the script I want to run after the page is loaded
+	<script src="myDeferredScript.js" defer></script>
+
+	<a-scene>
+	  <a-entity gltf-model='myModel.gltf'></a-entity>
+	</a-scene>

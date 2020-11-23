@@ -5,19 +5,46 @@ html {
   font-family: 'Lato';
 }
 #loadBackground{
-  background-image: url('assets/header.svg'), url('assets/bg.png'), linear-gradient(white, rgba(255,255,255,0));
+  background-image: url('graphics/header.svg'), url('graphics/bg.png'), linear-gradient(white, rgba(255,255,255,0));
   background-position:  top, center, center;
   background-size: 200% auto, auto 100%, contain;
+  background-color: 'white';
   background-repeat: no-repeat;
 }
 
-#loadImage{
+#load-Image{
   display: block;
   margin-left: auto;
   margin-right: auto;
   opacity: 1;
-  width: 45%;
-  height: 35%;
+  width: 50%;
+  height: auto;
+  align-content: center;
+
+}
+
+.arjs-loader {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('graphics/header.svg'), url('graphics/bg.png'), linear-gradient(white, rgba(255,255,255,0));
+  background-position:  top, center, center;
+  background-size: 200% auto, auto 100%, contain;
+  background-color: ffffff;
+  background-repeat: no-repeat;
+}
+
+.arjs-loader div {
+  text-align: center;
+  font-size: 1.25em;
+  color: black;
 }
 
 #requestingCameraIcon{
