@@ -34,6 +34,7 @@ AFRAME.registerComponent('loading-xmas', {
     var loadingContainer = document.getElementsByClassName("arjs-loader")
     var loadingImages = document.getElementById("load-Image")
     console.log("loading screen initialized")
+    var hasLoaded = false;
 
     setTimeout(
       function() {
@@ -41,6 +42,7 @@ AFRAME.registerComponent('loading-xmas', {
       }, 3000);
     function subDisplay() {
         loadingContainer[0].style.display='none'
+        hasLoaded = true;
     };
   }
 })
@@ -48,12 +50,14 @@ AFRAME.registerComponent('loading-xmas', {
 AFRAME.registerComponent('start-animation', {
   schema: {
     name: {type: 'string'},
-    sound_id: {type: 'string'}
+    sound_id: {type: 'string'},
+    length: {type: 'int'}
   },
   init: function () {
     var el = this.el;
     var model = document.getElementById(this.data.name)
     var isNotActive = true
+    var scene = document.getElementsByTagName("a-scene")
     var giftArray = document.getElementsByClassName("gift")
     var sceneArray = document.getElementsByClassName("scene")
     var audioArray = document.getElementsByClassName("audio")
@@ -61,35 +65,78 @@ AFRAME.registerComponent('start-animation', {
     var song = document.getElementById("song")
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
+    const scanInstructions = document.getElementById('scanInstructions')
+    var scan = true
+    if (scene.hasLoaded = true){
+      if(scan){
+        tapInstructions.style.display = 'none'
+      }
+      else { scanInstructions.style.display = 'none'}
 
-    el.addEventListener('click', (e) => {
+      el.addEventListener('click', (e) => {
+
+        for (const audio of audioArray) {
+          audio.components.sound.pauseSound();
+        }    
+        if(isNotActive) {
+          this.el.setAttribute('visible', true)
+          sceneStart()
+          console.log(this.data.name + " is active")
+          if(this.data.length) {
+            console.log("timer started")
+            setTimeout(
+              function() {
+                console.log("Scene time ran out")
+                sceneEnd();
+              }, this.data.length);
+        }
+        else {
+          sceneEnd();
+          console.log(this.data.name + " is not active")
+          }
+        }
+      });
+    }
+    function sceneStart(){
       //document.querySelector('a-scene').components.screenshot.capture('perspective')
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
       }
       for (const gift of giftArray) {
-        gift.setAttribute('visible', true)
+        gift.setAttribute('visible', false)
       }
-      for (const audio of audioArray) {
-        audio.components.sound.pauseSound();
-      }     
-      if(isNotActive) {
-        this.el.setAttribute('visible', false)
         shutterButton.hidden = false
-        tapInstructions.style.display = 'none'
+        if(scan)
+        {
+          scanInstructions.style.display = 'none'  
+        }
+        else{
+          tapInstructions.style.display = 'none'          
+        }
         model.setAttribute('visible', true)
         if (sceneAudio!=null)
          {sceneAudio.components.sound.playSound()}
-        console.log(this.data.name + " is active")
-      }
-      else {
+       isNotActive=false;
+    }
+    function sceneEnd() {
+        console.log("scene ending")
         shutterButton.hidden = true
-        tapInstructions.style.display = 'block'
+        if(scan)
+        {
+          scanInstructions.style.display = 'block'  
+        }
+        else{
+          tapInstructions.style.display = 'block'          
+        }
         song.components.sound.playSound()
+        for (const scene of sceneArray) {
+          scene.setAttribute('visible', false)
+        }
+        for (const gift of giftArray) {
+          gift.setAttribute('visible', true)
+        }
         isNotActive=true
-        console.log(this.data.name + " is not active")
-      }
-    });
+    }
   }
 });
 

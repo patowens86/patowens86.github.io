@@ -12,6 +12,30 @@ html {
   background-repeat: no-repeat;
 }
 
+#scanCursor{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 1;
+  width: 35%;
+  height: auto;
+  align-content: center;
+}
+
+#cursorContainer {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: 200% auto, auto 100%, contain;
+  background-repeat: no-repeat;
+}
+
 #load-Image{
   display: block;
   margin-left: auto;
@@ -142,6 +166,33 @@ h2 {
   margin-left: auto;
   margin-right: auto;
   width: 8%;
+}
+
+#scanInstructions{
+ display: block;
+  position: absolute;
+  color: white;
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: center;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  z-index: 1;
+/* 
+  display: block;
+  margin: auto;
+  opacity: 1;
+  width: 100%;
+  height: auto;
+  align-content: center;
+  */
+}
+
+#scanInstructionText{
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 #tapInstructions{
