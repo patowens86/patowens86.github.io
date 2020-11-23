@@ -45,7 +45,7 @@ cursorComponent.onMouseMove = (function() {
 
     left = point.clientX - bounds.left;
     top = point.clientY - bounds.top;
-    mouse.x = (left / bounds.width) * 2 - 1;
+    mouse.x = ((left*2) / bounds.width) * 2 - 1;
     mouse.y = -(top / bounds.height) * 2 + 1;
     origin.setFromMatrixPosition(camera.matrixWorld);
     let matrix = new THREE.Matrix4();
