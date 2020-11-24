@@ -41,7 +41,9 @@ AFRAME.registerComponent('loading-xmas', {
         subDisplay();
       }, 3000);
     function subDisplay() {
-        loadingContainer[0].style.display='none'
+        //loadingContainer[0].style.display='none'
+        loadingContainer[0].remove();
+
         hasLoaded = true;
     };
   }
@@ -74,10 +76,11 @@ AFRAME.registerComponent('start-animation', {
       else { scanInstructions.style.display = 'none'}
 
       el.addEventListener('click', (e) => {
-
-        for (const audio of audioArray) {
-          audio.components.sound.pauseSound();
-        }    
+        if(sceneAudio!=null) {
+          for (const audio of audioArray) {
+            audio.components.sound.pauseSound();
+          }    
+        }
         if(isNotActive) {
           this.el.setAttribute('visible', true)
           sceneStart()
@@ -128,7 +131,10 @@ AFRAME.registerComponent('start-animation', {
         else{
           tapInstructions.style.display = 'block'          
         }
-        song.components.sound.playSound()
+        if(sceneAudio!=null){
+          sceneAudio.components.sound.pauseSound()
+          song.components.sound.playSound()
+        }
         for (const scene of sceneArray) {
           scene.setAttribute('visible', false)
         }
@@ -152,6 +158,7 @@ AFRAME.registerComponent('toggle-audio', {
     const audio = document.getElementById('song')
     const audioToggleIcon = document.getElementById('audioIcon')
     const scene = document.querySelector('a-scene')
+    const song = document.getElementById("song")
     
     console.log("toggleAudio is ready")
 
@@ -179,8 +186,12 @@ AFRAME.registerComponent('toggle-audio', {
         for(i=0; i<sounds.length; i++) {
           sounds[i].setAttribute('volume', 0.5)
         }
+        if(!hasAudioStarted) {
+            song.components.sound.playSound();
+        }
         console.log(sounds[i] + " volume set to 0.5")
         isPlaying = true
+        hasAudioStarted=true
       }
     }
     
