@@ -35,6 +35,7 @@ AFRAME.registerComponent('loading-xmas', {
     var loadingImages = document.getElementById("load-Image")
     console.log("loading screen initialized")
     var hasLoaded = false;
+    document.getElementById('gift_1').addEventListener('loaded', function() { console.log("Gift loaded") })
 
     setTimeout(
       function() {
@@ -53,7 +54,8 @@ AFRAME.registerComponent('start-animation', {
   schema: {
     name: {type: 'string'},
     sound_id: {type: 'string'},
-    length: {type: 'int'}
+    length: {type: 'int'},
+    video: {type: 'string'}
   },
   init: function () {
     var el = this.el;
@@ -63,8 +65,9 @@ AFRAME.registerComponent('start-animation', {
     var giftArray = document.getElementsByClassName("gift")
     var sceneArray = document.getElementsByClassName("scene")
     var audioArray = document.getElementsByClassName("audio")
-    var sceneAudio = document.getElementById(this.data.sound_id)
-    var song = document.getElementById("song")
+    const sceneAudio = document.getElementById(this.data.sound_id)
+    const song = document.getElementById('song')
+    const videoClip = document.getElementById(this.data.video)
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
     const scanInstructions = document.getElementById('scanInstructions')
@@ -216,7 +219,15 @@ AFRAME.registerComponent('toggle-audio', {
   }
 });
 
+/*AFRAME.registerComponent('play-video', {
+  schema: {
+    name: {type: 'string'},
+  },
+  init: function() {
+    const video = document.getElementById('s3_video')
 
+  }
+}) */
 
 AFRAME.registerComponent('photo-mode', {
   schema: {

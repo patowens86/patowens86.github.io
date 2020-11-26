@@ -20,7 +20,7 @@ console.log(marker.hasLoaded);
   replace the curosr.onMouseMove function
 * * * * * * * * * * * * * * * * * * * * * * */
 let cursorComponent = marker.components.cursor;
-cursorComponent.onMouseMove = (function() {
+/*cursorComponent.onMouseMove = (function() {
   console.warn("Cursor.onMouseMove is modified");
   var direction = new THREE.Vector3();
   var mouse = new THREE.Vector2();
@@ -50,9 +50,7 @@ cursorComponent.onMouseMove = (function() {
     origin.setFromMatrixPosition(camera.matrixWorld);
     let matrix = new THREE.Matrix4();
 
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-      The only part we want to modify is the direction calculations
-    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
     direction
       .set(mouse.x, mouse.y, 0.5)
       .applyMatrix4(matrix.getInverse(camera.projectionMatrix))
@@ -67,13 +65,13 @@ cursorComponent.onMouseMove = (function() {
   };
 })();
 
-/* * * * * * * * * * * * * * * * * * * * * *
-               bind the context
-* * * * * * * * * * * * * * * * * * * * * * */
+
+
 cursorComponent.onMouseMove = bind(
   cursorComponent.onMouseMove,
   cursorComponent
 );
+*/
 
 /* * * * * * * * * * * * * * * * * * * * * *
   Update the components event listeners
