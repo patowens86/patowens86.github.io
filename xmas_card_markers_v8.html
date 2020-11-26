@@ -63,13 +63,14 @@
 	<div id="audioIconContainer" style=" z-index: 9998">
 	 <div id="audioIcon" class="audioOff"></div>
 	</div>
-
+  <div id="santaSelfie" style="z-index:9999"></div>
 	<div id="photoModeContainer" style=" z-index: 9998">
 	  <div id="photoModeBG"></div>
 	  <img id="photoModeImage">
 	  <div id="flash"></div>
 	  <div id="shutterButton"></div>
 	  <div id="closeButton"></div>
+
 	  <div id="photoPrompts">
 	      <p id="shareBlurb">Tap and hold to save the picture!</span></p>
 	      <p id="shareBlurbAlt">Tap and hold to save the picture!</p>
@@ -120,24 +121,26 @@
               <!-- <a-box position="0 .5 0" start-animation='name: scene1;'>
               </a-box> -->
 
-			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0;' color='green' start-animation='name: scene1; sound_id: audio_1; length: 5000'>
+			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0;' color='green' start-animation='name: scene1; sound_id: audio_1; length: 10000'>
 				<a-entity
               	id='box1'
               	scale="0.666 0.666 0.666"
               	position='0 -0.5 0'
-                gltf-model='/models/Gift_Square.glb' 
+                gltf-model='/models/Gift_Square.glb'
               	></a-entity>
 			  </a-box>
    
               <a-entity class="scene" id='scene1'
-                gltf-model='/models/CesiumMan.gltf'
+                gltf-model='/models/scene1.glb'
+                rotation="-90 0 -180"
+                scale=".25 .25 .25"
                 animation-mixer
                 visible="false">
 
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
-			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; length: 5000'>
+			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; length: 10000'>
 	              <a-entity 
 	                gltf-model='/models/Gift_Square_polkadot.glb'
               		scale="0.5 0.5 0.5"
@@ -145,12 +148,12 @@
 	              ></a-entity>
 			  </a-box>
 
-              <a-entity class="scene" id="scene3" visible="false">
+              <a-entity class="scene" id="scene3"  visible="false">
                 <a-entity
-                  gltf-model='/models/elf.glb'animation-mixer>
+                  gltf-model='/models/scene2.glb' scale=".5 .5 .5" animation-mixer rotation="90 0 0">
                 </a-entity>
-                <a-entity position= "0 1 -1" scale="1.5 1 1">
-                  <a-video play-on-scan src="/videos/Trello.mp4"></a-video> 
+                <a-entity position= "0 2.75 .8" scale="1.5 1 1">
+                  <a-video src="/videos/scene2.mp4"></a-video>
                 </a-entity>
               </a-entity>
           </a-marker>
