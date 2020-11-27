@@ -8,26 +8,31 @@
     <!-- <script src="/scripts/play-on-scan.js"></script> -->
     <!-- <script src="/scripts/cursor.js" defer></script> -->
     <!--<script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script> -->
-<!--    <style>
-	  .arjs-loader {
-	    height: 100%;
-	    width: 100%;
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    background-color: rgba(0, 0, 0, 0.8);
-	    z-index: 9999;
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-	  }
+<style>
+.arjs-loader {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('graphics/header.svg'), url('graphics/bg.png'), linear-gradient(white, rgba(255,255,255,0));
+  background-position:  top, center, center;
+  background-size: 200% auto, auto 100%, contain;
+  background-color: ffffff;
+  background-repeat: no-repeat;
+}
 
-	  .arjs-loader div {
-	    text-align: center;
-	    font-size: 1.25em;
-	    color: white;
-	  }
-	</style> -->
+.arjs-loader div {
+  text-align: center;
+  font-size: 1.25em;
+  color: black;
+}
+	</style> 
 
 	<head><link rel="stylesheet" href="index.css"></head>
 
@@ -93,7 +98,7 @@
       >
 
 
-          <a-assets timeout="20000">
+          <a-assets timeout="5000">
             <a-asset-item id="s1" src="/models/scene1.glb"></a-asset-item>
             <!-- <a-asset-item id="s1" src="/models/scene1_flipped.glb"></a-asset-item> -->
             <!-- <a-asset-item id="s1" src="/models/scene1.gltf"></a-asset-item> -->
@@ -109,14 +114,14 @@
             <a-asset-item id="gift_11" src="/models/Gift_wide_green.glb"></a-asset-item>
             <video id="s3_video" preload="auto" loop="true" src="/videos/scene3.mp4"></video>
             <audio id="song_file" loop="false" src="/audio/JingleBells_s.mp3"></audio>
-              
+            <!--
             <audio id="s1_audio" autoplay="false" loop="false" src="/audio/scene1.mp3"></sound>
             <audio id="s3_audio" autoplay="false" loop="false" src="/audio/scene2.mp3"></sound>
             <audio id="s4_audio" autoplay="false" loop="false" src="/audio/scene3.mp3"></sound>
             <audio id="s6_audio" autoplay="false" loop="false" src="/audio/scene4.mp3"></sound>
-            <audio id="s11_audio" autoplay="false" loop="false" src="/audio/scene5.mp3"></sound> 
+            <audio id="s11_audio" autoplay="false" loop="false" src="/audio/scene5.mp3"></sound> -->
           </a-assets> 
-
+<!--
 <script>
   document.getElementById('gift_1').addEventListener('loaded', function() { console.log("Gift 1 loaded") })
   document.getElementById('gift_3').addEventListener('loaded', function() { console.log("Gift 3 loaded") })
@@ -139,7 +144,7 @@
     
 
 
-</script>
+</script> -->
 
           <a-sound id="song" class="audio" src="#song_file" volume="0"></a-sound> <!--
           <a-sound id="audio_1" class="audio" src="/audio/WeWishYou_s.mp3" autoplay="false" volume="0"></a-sound> -->

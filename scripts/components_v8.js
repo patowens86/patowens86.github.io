@@ -35,18 +35,19 @@ AFRAME.registerComponent('loading-xmas', {
     var loadingImages = document.getElementById("load-Image")
     console.log("loading screen initialized")
     var hasLoaded = false;
-    document.getElementById('gift_1').addEventListener('loaded', function() { console.log("Gift loaded") })
-
+    //document.getElementById('gift_1').addEventListener('loaded', function() { console.log("Gift loaded") })
+    loadingContainer[0].remove();
+    /*
     setTimeout(
       function() {
         subDisplay();
-      }, 3000);
+      }, 1);
     function subDisplay() {
         //loadingContainer[0].style.display='none'
         loadingContainer[0].remove();
 
         hasLoaded = true;
-    };
+    };*/
   }
 })
 
