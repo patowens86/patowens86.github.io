@@ -5,8 +5,8 @@
     <!-- we import arjs version without NFT but with marker + location based support -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="/scripts/components_v8.js"></script>
-    <!-- <script src="/scripts/play-on-scan.js"></script> -->
-    <!-- <script src="/scripts/cursor.js" defer></script> -->
+    <script src="/scripts/play-on-scan.js"></script>
+    <script src="/scripts/cursor.js" defer></script>
     <!--<script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script> -->
 <!--    <style>
 	  .arjs-loader {
@@ -92,84 +92,54 @@
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'
       >
 
-
-          <a-assets timeout="20000">
-            <a-asset-item id="s1" src="/models/scene1.glb"></a-asset-item>
-            <!-- <a-asset-item id="s1" src="/models/scene1_flipped.glb"></a-asset-item> -->
-            <!-- <a-asset-item id="s1" src="/models/scene1.gltf"></a-asset-item> -->
-            <a-asset-item id="s3" src="/models/scene3.glb"></a-asset-item>
-            <a-asset-item id="s4" src="/models/scene4.glb"></a-asset-item>
-            <a-asset-item id="s6" src="/models/scene6.glb"></a-asset-item>
-            <a-asset-item id="s11" src="/models/scene11.glb"></a-asset-item>
-            <!-- <a-asset-item id="s11" src="/models/scene11.gltf"></a-asset-item> -->
-            <a-asset-item id="gift_1" src="/models/Gift_Square.glb"></a-asset-item>
-            <a-asset-item id="gift_3" src="/models/Gift_Square_polkadot.glb"></a-asset-item>
-            <a-asset-item id="gift_4" src="/models/Gift_Tall.glb"></a-asset-item>
-            <a-asset-item id="gift_6" src="/models/Gift_wide.glb"></a-asset-item>
-            <a-asset-item id="gift_11" src="/models/Gift_wide_green.glb"></a-asset-item>
-            <video id="s3_video" preload="auto" loop="true" src="/videos/scene3.mp4"></video>
-            <audio id="song_file" loop="false" src="/audio/JingleBells_s.mp3"></audio>
-              
-            <audio id="s1_audio" autoplay="false" loop="false" src="/audio/scene1.mp3"></sound>
-            <audio id="s3_audio" autoplay="false" loop="false" src="/audio/scene2.mp3"></sound>
-            <audio id="s4_audio" autoplay="false" loop="false" src="/audio/scene3.mp3"></sound>
-            <audio id="s6_audio" autoplay="false" loop="false" src="/audio/scene4.mp3"></sound>
-            <audio id="s11_audio" autoplay="false" loop="false" src="/audio/scene5.mp3"></sound> 
+<!--
+          <a-assets>
+            <video id="trello" autoplay="true" loop="true" src="/videos/Trello.mp4"></video>
+            <audio id="jingle_bells" autoplay="true" loop="false" src="/audio/JingleBells_s.mp3"></sound>
+            <audio id="oh_xmas" autoplay="true" loop="false" src="/audio/OhXmas_s.mp3"></sound>
+            <audio id="we_wish_you" autoplay="true" loop="false" src="/audio/WeWishYou_s.mp3"></sound>
+            <a-asset-item id="s1" src="/models/CesiumMan.gltf"></a-asset-item>
+            <a-asset-item id="s3" src="/models/elf.glb"></a-asset-item>
+            <a-asset-item id="s4" src="/models/rudolph.glb"></a-asset-item>
+            <a-asset-item id="s6" src="/models/Santa.glb"></a-asset-item>
+            <a-asset-item id="s11" src="/models/XmasTree.glb"></a-asset-item>
+            <a-asset-item id="gift1" src="/models/Gift_Square.glb"></a-asset-item>
+            <a-asset-item id="gift3" src="/models/Gift_Square_polkadot.glb"></a-asset-item>
+            <a-asset-item id="gift4" src="/models/Gift_Tall.glb"></a-asset-item>
+            <a-asset-item id="gift6" src="/models/Gift_wide.glb"></a-asset-item>
+            <a-asset-item id="gift11" src="/models/Gift_wide_green.glb"></a-asset-item>
           </a-assets> 
+      -->
 
-<script>
-  document.getElementById('gift_1').addEventListener('loaded', function() { console.log("Gift 1 loaded") })
-  document.getElementById('gift_3').addEventListener('loaded', function() { console.log("Gift 3 loaded") })
-  document.getElementById('gift_4').addEventListener('loaded', function() { console.log("Gift 4 loaded") })
-  document.getElementById('gift_6').addEventListener('loaded', function() { console.log("Gift 6 loaded") })
-  document.getElementById('gift_11').addEventListener('loaded', function() { console.log("Gift 11 loaded") })
-  document.getElementById('s1').addEventListener('loaded', function() { console.log("s 1 loaded") })
-  document.getElementById('s3').addEventListener('loaded', function() { console.log("s 3 loaded") })
-  document.getElementById('s4').addEventListener('loaded', function() { console.log("s 4 loaded") })
-  document.getElementById('s6').addEventListener('loaded', function() { console.log("s 6 loaded") })
-  document.getElementById('s11').addEventListener('loaded', function() { console.log("s 11 loaded") })
-  document.getElementById('s3_video').addEventListener('loadeddata', function() { console.log("s3 video loaded") })
-  document.getElementById('song_file').addEventListener('loadeddata', function() { console.log("song audio loaded") })
-    document.getElementById('song_file').addEventListener('loadeddata', function() { console.log("song audio loaded") })
-  document.getElementById('s1_audio').addEventListener('loadeddata', function() { console.log("s1 audio loaded") })
-  document.getElementById('s3_audio').addEventListener('loadeddata', function() { console.log("s3 audio loaded") })
-  document.getElementById('s4_audio').addEventListener('loadeddata', function() { console.log("s4 audio loaded") })
-  document.getElementById('s6_audio').addEventListener('loadeddata', function() { console.log("s6 audio loaded") })
-  document.getElementById('s11_audio').addEventListener('loadeddata', function() { console.log("s11 audio loaded") })
-    
-
-
-</script>
-
-          <a-sound id="song" class="audio" src="#song_file" volume="0"></a-sound> <!--
-          <a-sound id="audio_1" class="audio" src="/audio/WeWishYou_s.mp3" autoplay="false" volume="0"></a-sound> -->
+          <a-sound id="song" class="audio" src="/audio/JingleBells_s.mp3" autoplay="true" volume="0"></a-sound>
+          <a-sound id="audio_1" class="audio" src="/audio/WeWishYou_s.mp3" autoplay="false" volume="0"></a-sound>
 
           <a-marker preset="custom" type="pattern" url="/markers/1.patt">
               <!-- <a-box position="0 .5 0" start-animation='name: scene1;'>
               </a-box> -->
 
-			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" opacity='0' start-animation='name: scene1; sound_id: audio_1; length: 25000'>
+			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0;' color='green' start-animation='name: scene1; sound_id: audio_1; length: 10000'>
 				<a-entity
               	id='box1'
               	scale="0.666 0.666 0.666"
               	position='0 -0.5 0'
-                gltf-model='#gift_1'
+                gltf-model='/models/Gift_Square.glb'
               	></a-entity>
 			  </a-box>
    
               <a-entity class="scene" id='scene1'
-                gltf-model='#s1'
-                scale=".65 .65 .65"
+                gltf-model='/models/scene1.glb'
+                rotation="-90 0 -180"
+                scale=".25 .25 .25"
                 animation-mixer
                 visible="false">
 
               </a-entity>
-
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
-			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; length: 25000'>
+			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; length: 10000'>
 	              <a-entity 
-	                gltf-model='#gift_3'
+	                gltf-model='/models/Gift_Square_polkadot.glb'
               		scale="0.5 0.5 0.5"
               		position='0 -0.5 0'
 	              ></a-entity>
@@ -177,63 +147,57 @@
 
               <a-entity class="scene" id="scene3"  visible="false">
                 <a-entity
-                  gltf-model='#s3' scale=".5 .5 .5" animation-mixer rotation="90 0 0">
+                  gltf-model='/models/scene2.glb' scale=".5 .5 .5" animation-mixer rotation="90 0 0">
                 </a-entity>
                 <a-entity position= "0 2.75 .8" scale="1.5 1 1">
-                  <a-video src="#s3_video"></a-video>
+                  <a-video src="/videos/scene2.mp4"></a-video>
                 </a-entity>
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/4.patt">
-			<a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene4; length: 25000'>
+			<a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene4; length: 5000'>
               <a-entity 
-                gltf-model='#gift_4'
+                gltf-model='/models/Gift_Tall.glb'
               	scale="0.5 0.5 0.5"
               	position='0 -0.5 0'
               >
               </a-entity>
           	</a-box>
               <a-entity class="scene" id='scene4'
-                gltf-model='#s4'
+                gltf-model='/models/rudolph.glb'
                 animation-mixer
                 visible="false"
-                scale="0.666 0.666 0.666"
-                rotation='90 0 0'
               >
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/6.patt">
-              <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene6; length: 25000'>
+              <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene6; length: 5000'>
 	              <a-entity
-	                gltf-model='#gift_6'
+	                gltf-model='/models/Gift_wide.glb'
 	              	scale="0.5 0.5 0.5"
 	              	position='0 -0.5 0'
 	              >
 	              </a-entity>
           	  </a-box>
               <a-entity class="scene" id='scene6'
-                gltf-model='#s6'
+                gltf-model='/models/Santa.glb'
                 animation-mixer
-                rotation='90 0 0'
-                scale="0.666 0.666 0.666"
                 visible="false"
               >
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/11.patt">
-			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0;' start-animation='name: scene11; length: 25000'>
+			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0;' start-animation='name: scene11; length: 5000'>
 	              <a-entity
-	                gltf-model='#gift_11'
+	                gltf-model='/models/Gift_wide_green.glb'
 	              	scale="0.666 0.666 0.666"
 	              	position='0 -0.5 0'
 	              >
 	              </a-entity>
           	  </a-box>
               <a-entity class="scene" id='scene11'
-                gltf-model='#s11'
+                gltf-model='/models/XmasTree.glb'
                 animation-mixer
-                rotation='90 0 0'
-                scale="0.666 0.666 0.666"
                 visible="false"
               >
               </a-entity>
