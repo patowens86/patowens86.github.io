@@ -29,6 +29,9 @@ AFRAME.registerComponent('color-randomizer', {
   }
 }); */
 
+
+
+
 AFRAME.registerComponent('loading-xmas', {
   init: function (){
     var loadingContainer = document.getElementsByClassName("arjs-loader")
@@ -56,7 +59,8 @@ AFRAME.registerComponent('start-animation', {
     name: {type: 'string'},
     sound_id: {type: 'string'},
     length: {type: 'int'},
-    video: {type: 'string'}
+    video: {type: 'string'},
+    selfie: {default: 'false'}
   },
   init: function () {
     var el = this.el;
@@ -72,8 +76,12 @@ AFRAME.registerComponent('start-animation', {
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
     const scanInstructions = document.getElementById('scanInstructions')
+    const photoFrame = document.getElementById('selfie_frame')
     var scan = true
-    if (scene.hasLoaded = true){
+    var animationLength = this.data.length
+    var isSelfie = this.data.selfie
+    console.log("Selfie state is = " + isSelfie)
+
       if(scan){
         tapInstructions.style.display = 'none'
       }
@@ -91,11 +99,13 @@ AFRAME.registerComponent('start-animation', {
           console.log(this.data.name + " is active")
           if(this.data.length) {
             console.log("timer started")
-            setTimeout(
-              function() {
-                console.log("Scene time ran out")
-                sceneEnd();
-              }, this.data.length);
+            if(isSelfie == "false"){
+              setTimeout(
+                function() {
+                  console.log("Scene time ran out")
+                  sceneEnd();
+                }, this.data.length);
+            }
         }
         else {
           sceneEnd();
@@ -103,7 +113,13 @@ AFRAME.registerComponent('start-animation', {
           }
         }
       });
+
+    function startSelfie(){
+      photoFrame.setAttribute('visible', true) 
+      photoFrame.components.gif.togglePlayback()
+      console.log("Selfie is paused? = " + photoFrame.components.gif.paused())
     }
+    
     function sceneStart(){
       //document.querySelector('a-scene').components.screenshot.capture('perspective')
       for (const scene of sceneArray) {
@@ -124,6 +140,16 @@ AFRAME.registerComponent('start-animation', {
         if (sceneAudio!=null)
          {sceneAudio.components.sound.playSound()}
        isNotActive=false;
+       console.log("selfie status is = " + isSelfie)
+       if(isSelfie == "true") {
+          setTimeout(
+                function() {
+                  console.log("Scene time ran out")
+                  startSelfie();
+                }, animationLength);
+       }
+
+
     }
     function sceneEnd() {
         console.log("scene ending")
@@ -146,6 +172,11 @@ AFRAME.registerComponent('start-animation', {
           gift.setAttribute('visible', true)
         }
         isNotActive=true
+
+       if(isSelfie) {
+          photoFrame.setAttribute('visible', false) 
+
+       }
     }
   }
 });
@@ -229,7 +260,17 @@ AFRAME.registerComponent('toggle-audio', {
 
   }
 }) */
-
+/*
+AFRAME.registerComponent('tap-anywhere', {
+  init: function () {
+  var sceneEl = document.querySelector('a-scene').querySelector('a-assets');
+  var canvas = document.getElementsByClassName('a-canvas');
+  canvas[0].addEventListener('click', function () { console.log("YEAH HERE NOW") // if (video.paused == true) { // video.play(); // } else { // video.pause(); // } 
+})
+    sceneEl.addEventListener('click', function () { console.log("YEAH HERE NOW") // if (video.paused == true) { // video.play(); // } else { // video.pause(); // } 
+})
+}});
+*/
 AFRAME.registerComponent('photo-mode', {
   schema: {
     name: {type: 'string'},
@@ -241,10 +282,12 @@ AFRAME.registerComponent('photo-mode', {
     const closeButton = document.getElementById('closeButton')
     const shareButton = document.getElementById('shareButton')
     const canvas = document.querySelector('.a-canvas')
-    const replayButton = document.getElementById('replayButton')
+    const retakeButton = document.getElementById('retakeButton')
     const audioButton = document.getElementById('audioIconContainer')
     const shareBlurb = document.getElementById('shareBlurb')
     const shareBlurbAlt = document.getElementById('shareBlurbAlt')
+    const keepButton = document.getElementById('keepButton')
+    const discardButton = document.getElementById('discardButton')
     //const overlay = document.getElementById('photoOverlay')
     
     let shareFile
@@ -252,12 +295,15 @@ AFRAME.registerComponent('photo-mode', {
     
     // Container starts hidden so it isn't visible when the page is still loading
     shutterButton.hidden = true
-    
+/*    canvas.addEventListener('click', () => {
+      console.log("tapped")
+    })*/
     container.style.display = 'block'
     closeButton.addEventListener('click', () => {
       container.classList.remove('photo')
       container.classList.remove('share')
       canvas.classList.remove('blur')
+            selfie_frame.setAttribute('visible', false)
       audioButton.style.display = 'block'
       //overlay.setAttribute('visible', false)
       setTimeout(() => {
@@ -265,6 +311,20 @@ AFRAME.registerComponent('photo-mode', {
         window.dispatchEvent(new Event('ensurecameraend'))
       }, 1000)
     })
+
+    closeButton.addEventListener('click', () => {
+      container.classList.remove('photo')
+      container.classList.remove('share')
+      canvas.classList.remove('blur')
+            selfie_frame.setAttribute('visible', false)
+      audioButton.style.display = 'block'
+      //overlay.setAttribute('visible', false)
+      setTimeout(() => {
+      // Tell the restart-camera script to stop watching for issues
+        window.dispatchEvent(new Event('ensurecameraend'))
+      }, 1000)
+    })
+
     shutterButton.addEventListener('click', () => {
       console.log("Shutter button clicked")
       //overlay.setAttribute('visible', true)
@@ -301,8 +361,17 @@ AFRAME.registerComponent('photo-mode', {
         .then(function(buf){return new File([buf], filename, {type:mimeType});})
       );
     }
-    replayButton.addEventListener('click', () => {
-      location.reload()
+    retakeButton.addEventListener('click', () => {
+      container.classList.remove('photo')
+      container.classList.remove('share')
+      canvas.classList.remove('blur')
+      audioButton.style.display = 'block'
+
+      //overlay.setAttribute('visible', false)
+      setTimeout(() => {
+      // Tell the restart-camera script to stop watching for issues
+        window.dispatchEvent(new Event('ensurecameraend'))
+      }, 1000)
     })
 //    shareButton.addEventListener('click', () => {
 //      // urlToFile(image.src, 'Happy-Eid.jpg').then(res => {
@@ -332,9 +401,10 @@ AFRAME.registerComponent('photo-mode', {
         shareBlurbAlt.style.display = 'block'
         shareBlurb.hidden = true
         shareButton.hidden = true
-        replayButton.classList.add('solo')
+        retakeButton.classList.add('solo')
         console.log(`Your browser doesn't support one tap share. Long-press the picture to share it.`);
-      }s
+      }
+      selfie_frame.setAttribute('visible', false)
     })
     
     this.el.sceneEl.addEventListener('screenshotready', e => {

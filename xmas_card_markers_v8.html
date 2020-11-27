@@ -1,37 +1,39 @@
 
 <html>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
-    <!-- we import arjs version without NFT but with marker + location based support -->
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script src="/scripts/components_v8.js"></script>
-    <!-- <script src="/scripts/play-on-scan.js"></script> -->
-    <!-- <script src="/scripts/cursor.js" defer></script> -->
-    <!--<script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script> -->
-<style>
-.arjs-loader {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('graphics/header.svg'), url('graphics/bg.png'), linear-gradient(white, rgba(255,255,255,0));
-  background-position:  top, center, center;
-  background-size: 200% auto, auto 100%, contain;
-  background-color: ffffff;
-  background-repeat: no-repeat;
-}
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
+  <!-- we import arjs version without NFT but with marker + location based support -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="/scripts/components_v8.js"></script>
+  <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+  <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
+  <!-- <script src="/scripts/play-on-scan.js"></script> -->
+  <!-- <script src="/scripts/cursor.js" defer></script> -->
+  <!--<script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script> -->
+  <style>
+    .arjs-loader {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('graphics/header.svg'), url('graphics/bg.png'), linear-gradient(white, rgba(255,255,255,0));
+      background-position:  top, center, center;
+      background-size: 200% auto, auto 100%, contain;
+      background-color: ffffff;
+      background-repeat: no-repeat;
+    }
 
-.arjs-loader div {
-  text-align: center;
-  font-size: 1.25em;
-  color: black;
-}
+    .arjs-loader div {
+      text-align: center;
+      font-size: 1.25em;
+      color: black;
+    }
 	</style> 
 
 	<head><link rel="stylesheet" href="index.css"></head>
@@ -63,10 +65,10 @@
     <p id="instructionText">Tap a <b>gift box</b> to activate a scene.</p>
   </div>
 
-	<div id="audioIconContainer" style=" z-index: 9998">
+	<div id="audioIconContainer">
 	 <div id="audioIcon" class="audioOff"></div>
 	</div>
-  <div id="santaSelfie" style="z-index:9999"></div>
+  <div id="santaSelfie"></div>
 	<div id="photoModeContainer" style=" z-index: 9998">
 	  <div id="photoModeBG"></div>
 	  <img id="photoModeImage">
@@ -80,13 +82,17 @@
 	      <div id="shareButton">
 	        <p id="shareButtonText">Share</p>
 	      </div>
-	      <div id="replayButton">
-	        <p>Replay</p>
+	      <div id="retakeButton">
+	        <p>Retake</p>
 	      </div>
+        <div id="keepButton">
+          <p id="keepButtonText">Keep</p>
+        </div>
+        <div id="discardButton">
+          <p>Discard</p>
+        </div>
 	  </div>
 	</div>
-
-
 
   <a-scene
       vr-mode-ui='enabled: false;'
@@ -100,6 +106,8 @@
 
           <a-assets timeout="5000">
             <a-asset-item id="s1" src="/models/scene1.glb"></a-asset-item>
+            <a-asset-item id="s1_santa" src="/models/scene1_santa.glb"></a-asset-item>
+            <a-asset-item id="s1_sink" src="/models/scene1_sink.glb"></a-asset-item>
             <!-- <a-asset-item id="s1" src="/models/scene1_flipped.glb"></a-asset-item> -->
             <!-- <a-asset-item id="s1" src="/models/scene1.gltf"></a-asset-item> -->
             <a-asset-item id="s3" src="/models/scene3.glb"></a-asset-item>
@@ -114,6 +122,7 @@
             <a-asset-item id="gift_11" src="/models/Gift_wide_green.glb"></a-asset-item>
             <video id="s3_video" preload="auto" loop="true" src="/videos/scene3.mp4"></video>
             <audio id="song_file" loop="false" src="/audio/JingleBells_s.mp3"></audio>
+            <img id="santa_selfie" loop="false" src="/graphics/SantaSelfie.gif">
             <!--
             <audio id="s1_audio" autoplay="false" loop="false" src="/audio/scene1.mp3"></sound>
             <audio id="s3_audio" autoplay="false" loop="false" src="/audio/scene2.mp3"></sound>
@@ -149,11 +158,16 @@
           <a-sound id="song" class="audio" src="#song_file" volume="0"></a-sound> <!--
           <a-sound id="audio_1" class="audio" src="/audio/WeWishYou_s.mp3" autoplay="false" volume="0"></a-sound> -->
 
+
+
           <a-marker preset="custom" type="pattern" url="/markers/1.patt">
               <!-- <a-box position="0 .5 0" start-animation='name: scene1;'>
               </a-box> -->
 
-			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" opacity='0' start-animation='name: scene1; sound_id: audio_1; length: 25000'>
+
+
+
+			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" opacity='0' start-animation='name: scene1; sound_id: audio_1; length: 18000'>
 				<a-entity
               	id='box1'
               	scale="0.666 0.666 0.666"
@@ -163,11 +177,10 @@
 			  </a-box>
    
               <a-entity class="scene" id='scene1'
-                gltf-model='#s1'
+                gltf-model='#s1_santa'
                 scale=".65 .65 .65"
                 animation-mixer
                 visible="false">
-
               </a-entity>
 
           </a-marker>
@@ -190,7 +203,7 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/4.patt">
-			<a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene4; length: 25000'>
+			<a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene4; length: 29000'>
               <a-entity 
                 gltf-model='#gift_4'
               	scale="0.5 0.5 0.5"
@@ -208,7 +221,7 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/6.patt">
-              <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene6; length: 25000'>
+              <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene6; length: 34000'>
 	              <a-entity
 	                gltf-model='#gift_6'
 	              	scale="0.5 0.5 0.5"
@@ -226,7 +239,7 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/11.patt">
-			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0;' start-animation='name: scene11; length: 25000'>
+			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0;' start-animation='name: scene11; length: 5000; selfie: true'>
 	              <a-entity
 	                gltf-model='#gift_11'
 	              	scale="0.666 0.666 0.666"
@@ -243,8 +256,9 @@
               >
               </a-entity>
           </a-marker>
-          <a-entity
-              camera cursor="rayOrigin: mouse; fuse: true" raycaster="objects: a-box">
+
+          <a-entity id="selfie_frame" visible="false" geometry="primitive:plane;" position='0 0 -2' scale=".7725 1.6 1" material="shader:gif;src:url(/graphics/SantaSelfie.gif);" gif="" autoplay="true"></a-entity>
+          <a-entity camera cursor="rayOrigin: mouse; fuse: true" raycaster="objects: a-box">
           </a-entity>
         </a-scene>
     </body>
