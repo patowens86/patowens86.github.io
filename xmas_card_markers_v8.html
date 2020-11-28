@@ -65,8 +65,8 @@
     <p id="instructionText">Tap a <b>gift box</b> to activate a scene.</p>
   </div>
 
-	<div id="audioIconContainer">
-	 <div id="audioIcon" class="audioOff"></div>
+	<div id="audioIconContainer" style="z-index: 9998">
+	 <div id="audioIcon" class="audioOff" style="z-index: 9999"></div>
 	</div>
   <div id="santaSelfie"></div>
 	<div id="photoModeContainer" style=" z-index: 9998">
@@ -120,7 +120,7 @@
             <a-asset-item id="gift_4" src="/models/Gift_Tall.glb"></a-asset-item>
             <a-asset-item id="gift_6" src="/models/Gift_wide.glb"></a-asset-item>
             <a-asset-item id="gift_11" src="/models/Gift_wide_green.glb"></a-asset-item>
-            <video id="s3_video" preload="auto" loop="true" src="/videos/scene3.mp4"></video>
+            <video id="s3_video" preload="auto" autoplay="true" loop="true" src="/videos/scene3.mp4"></video>
             <audio id="song_file" loop="false" src="/audio/JingleBells_s.mp3"></audio>
             <img id="santa_selfie" loop="false" src="/graphics/SantaSelfie.gif">
             <!--
@@ -198,7 +198,7 @@
                   gltf-model='#s3' scale=".5 .5 .5" animation-mixer rotation="90 0 0">
                 </a-entity>
                 <a-entity position= "0 2.75 .8" scale="1.5 1 1">
-                  <a-video src="#s3_video"></a-video>
+                  <a-video autoplay="true" id="laptop_video" src="#s3_video"></a-video>
                 </a-entity>
               </a-entity>
           </a-marker>

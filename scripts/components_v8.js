@@ -72,7 +72,7 @@ AFRAME.registerComponent('start-animation', {
     var audioArray = document.getElementsByClassName("audio")
     const sceneAudio = document.getElementById(this.data.sound_id)
     const song = document.getElementById('song')
-    const videoClip = document.getElementById(this.data.video)
+    const videoClip = document.getElementById('laptop_video')
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
     const scanInstructions = document.getElementById('scanInstructions')
@@ -125,9 +125,10 @@ AFRAME.registerComponent('start-animation', {
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
       }
-      for (const gift of giftArray) {
-        gift.setAttribute('visible', false)
-      }
+      // for (const gift of giftArray) {
+      //   gift.setAttribute('visible', false)
+      // }
+      el.setAttribute('visible',false)
         shutterButton.hidden = false
         if(scan)
         {
@@ -148,6 +149,7 @@ AFRAME.registerComponent('start-animation', {
                   startSelfie();
                 }, animationLength);
        }
+       videoClip.play()
 
 
     }
