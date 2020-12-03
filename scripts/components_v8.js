@@ -34,24 +34,12 @@ AFRAME.registerComponent('color-randomizer', {
 
 AFRAME.registerComponent('loading-xmas', {
   init: function (){
-    var loadingContainer = document.getElementsByClassName("xload")
-    // var loadingContainer = document.getElementsByClassName("arjs-loader")
-    // var loadingImages = document.getElementById("load-Image")
-    var postloadContainer = document.getElementById("postload")
+    var loadingContainer = document.getElementsByClassName("arjs-loader")
+    var loadingImages = document.getElementById("load-Image")
     console.log("loading screen initialized")
     var hasLoaded = false;
-    var progressBar = document.getElementById("xload__bar_progress")
-    progressBar.style.width = '100%'
-    console.log(progressBar.style.width)
-    
     //document.getElementById('gift_1').addEventListener('loaded', function() { console.log("Gift loaded") })
-    setTimeout(
-    function() {
-      loadingContainer[0].remove();
-      postload.style.display = 'block'
-    }, 3000)
-
-
+    loadingContainer[0].remove();
     /*
     setTimeout(
       function() {
@@ -108,14 +96,6 @@ AFRAME.registerComponent('start-animation', {
         if(isNotActive) {
           this.el.setAttribute('visible', true)
           sceneStart()
-
-          // for (child in el.children)
-          // {
-          for (child in model) {
-            console.log(child.constructor.name)
-          }
-
-          // }
           console.log(this.data.name + " is active")
           if(this.data.length) {
             console.log("timer started")
@@ -124,10 +104,6 @@ AFRAME.registerComponent('start-animation', {
                 function() {
                   console.log("Scene time ran out")
                   sceneEnd();
-                  for (child in el.children)
-                    {
-                      child.emit(this.data.name +"_end")
-                    }
                 }, this.data.length);
             }
         }

@@ -4,7 +4,13 @@
 html {
   font-family: 'Lato';
 }
-
+#loadBackground{
+  background-image: url('graphics/header.svg'), url('graphics/bg.png'), linear-gradient(white, rgba(255,255,255,0));
+  background-position:  top, center, center;
+  background-size: 200% auto, auto 100%, contain;
+  background-color: 'white';
+  background-repeat: no-repeat;
+}
 
 #scanCursor{
   display: block;
@@ -40,13 +46,48 @@ html {
   align-content: center;
 
 }
+/*
+.arjs-loader {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('graphics/header.svg'), url('graphics/bg.png'), linear-gradient(white, rgba(255,255,255,0));
+  background-position:  top, center, center;
+  background-size: 200% auto, auto 100%, contain;
+  background-color: ffffff;
+  background-repeat: no-repeat;
+}
 
+.arjs-loader div {
+  text-align: center;
+  font-size: 1.25em;
+  color: black;
+} */
+
+#requestingCameraIcon{
+  opacity: 0;
+}
 
 #santaSelfie {
   background-image: url('graphics/SantaSelfie.gif')
   background-position: center;
 }
 
+#requestingCameraPermissions{
+  /*background-image: url('assets/camera.png');
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;*/
+  opacity: 0;
+  background-color: transparent;
+}
 #audioIconContainer
 {
   width: 15%;
@@ -67,11 +108,36 @@ html {
 
 }
 
+/*.mainbody{
+    position: absolute;
+    top: 40px; /* Header Height 
+    bottom: 20px;  Footer Height 
+    width: 100%;
+    background-color: white;
+}*/
+
 .audioOn{
-  background-image: url('./icons/SoundIcon_Active_@3x.svg');
+  background-image: url('./assets/ic_volume_on1x.svg');
 }
 .audioOff{
-  background-image: url('./icons/SoundIcon_Mute_@3x.svg');
+  background-image: url('./assets/ic_volume_off1x.svg');
+}
+#nextbutton {
+  width: 50vw;
+  height: auto;
+  position: absolute;
+  bottom: 6vh;
+  left: 25vw;
+  background-color: #AD50FF;
+  border: 0.2em solid white;
+  text-align: center;
+  color: #FFF;
+  border-radius: 100px;
+}
+
+#nextbutton:active {
+  background-color: white;
+  color: #AD50FF;
 }
 
 h2 {
@@ -79,7 +145,36 @@ h2 {
   text-align: center;
   font-family: monospace;
 }
-
+#launchContainer {
+  display: block;
+}
+#launchButton {
+  position: absolute;
+  bottom: 20px;
+  border-radius: 100px;
+  height: auto;
+  width: 85%;
+  background: #23f4cd;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  transition: width 0.5s;
+  pointer-events: auto;
+}
+#launchButton:active {
+  background: #38157b;
+  color: white;
+}
+#launchButton p {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  color: #38157b;
+  margin: 0;
+  padding: 12px 40px;
+  font-family: gilroy;
+}
 #tapIcon{
   display: block;
   margin-left: auto;
@@ -133,6 +228,24 @@ h2 {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+#launchBlurb{
+  display: block;
+  position: absolute;
+  color: white;
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: center;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15vmin;
+  z-index: 1;
+}
+
+#launchBlurbText{
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
 
 #photoModeContainer {
   position: absolute;
@@ -195,7 +308,7 @@ h2 {
   pointer-events: auto;
 }
 #shutterButton {
-  background-image: url('./icons/camera.svg');
+  background-image: url('./assets/camera.svg');
   background-color: #23f4cd;
   width: 15vmin;
   height: 15vmin;
@@ -206,14 +319,14 @@ h2 {
   display: none;
 }
 #closeButton {
-  background-image: url('./icons/close.svg');
-
+  background-image: url('./assets/close.svg');
+  background-color: white;
   display: none;
   width: 8vmin;
   height: 8vmin;
-  left: 92.5%;
+  left: 82.5%;
   transform: translateX(-50%);
-  top: 2.5%;
+  top: 5%;
 }
 .photo #closeButton {
   display: block;
@@ -318,96 +431,3 @@ h2 {
 .share #shareBox {
   display: block;
 }
-
-.xdis {
-  background: rgba(0,0,0,0.7);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-}
-.xdis__widget {
-  text-align: center;
-  background: #fff;
-  position: relative;
-  z-index: 2;
-  padding: 30px 24px 24px 24px;
-  border-radius: 30px 30px 0 0;
-  justify-self: flex-end;
-  margin-top: auto;
-}
-.xdis__title {
-  font: 20px/24px "gilroy", arial, sans-serif;
-}
-.xdis__button {
-  margin-top: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.xdis__button a {
-  width: 48%;
-}
-
-.xm__button {
-  background: #23f4cd;
-  border-radius: 100px;
-  display: block;
-  text-align: center;
-  padding: 12px 40px;
-  font: bold 14px/22px "gilroy", arial, sans-serif;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-  color: #38157b;
-}
-.xm__button--outline {
-  border: 2px solid #23f4cd;
-  color: #38157b;
-  background: none;
-}
-
-.xload {
-  height: 100vh;
-  text-align: center;
-  padding-top: 150px;
-  background: url("/graphics/loading-head.png") center top/contain no-repeat;
-  background-color: ffffff;
-
-}
-.xload img {
-  width: 180px;
-  margin: auto;
-  padding-left: 30px;
-}
-.xload__bar {
-  background: #e6f3f3;
-  border-radius: 100px;
-  height: 4px;
-  width: 120px;
-  margin: 30px auto 0;
-}
-.xload__bar span {
-  display: block;
-  width: 1px;
-  height: 100%;
-  border-radius: 100px;
-  background: #93c1c3;
-  -webkit-transition: all 1s;
-  -o-transition: all 1s;
-  transition: all 1s;
-}  
