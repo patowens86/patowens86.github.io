@@ -1,0 +1,120 @@
+# Blender MTL File: 'XmasCard_Scene1_V8.blend'
+# Material Count: 11
+
+newmtl BEARD
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\Sixty Two\\Christmas Card\\Illustration\\References\\santa-03.jpg
+
+newmtl BOOTS
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.059511 0.029557 0.057805
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\Sixty Two\\Christmas Card\\Illustration\\References\\santa-01.jpg
+
+newmtl GLOVES
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.026241 0.473532 0.208637
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\Sixty Two\\Christmas Card\\Illustration\\References\\santa-06.jpg
+
+newmtl HAT
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\Sixty Two\\Christmas Card\\Illustration\\References\\santa-05.jpg
+
+newmtl Mirror
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\Sixty Two\\Christmas Card\\Illustration\\Table Material\\mirror_Mirror.jpg
+
+newmtl SKIN
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.658375 0.391573 0.337164
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\Sixty Two\\Christmas Card\\Illustration\\References\\santa-04.jpg
+
+newmtl SKIN.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.991102 0.467784 0.473532
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl STACHE
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.467201 0.467201 0.467201
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl XmasRed
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\Sixty Two\\Christmas Card\\Illustration\\References\\santa-02.jpg
+
+newmtl XmasWhite
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl lambert3
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:\\Sixty Two\\Assets\\3d files\\sink\\source\\wireframe wasbak.png

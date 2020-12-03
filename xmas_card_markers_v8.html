@@ -7,37 +7,31 @@
   <script src="/scripts/components_v8.js"></script>
   <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
   <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
-  <!-- <script src="/scripts/play-on-scan.js"></script> -->
-  <!-- <script src="/scripts/cursor.js" defer></script> -->
-  <!--<script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script> -->
-  <style>
-    .arjs-loader {
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-image: url('graphics/header.svg'), url('graphics/bg.png'), linear-gradient(white, rgba(255,255,255,0));
-      background-position:  top, center, center;
-      background-size: 200% auto, auto 100%, contain;
-      background-color: ffffff;
-      background-repeat: no-repeat;
-    }
-
-    .arjs-loader div {
-      text-align: center;
-      font-size: 1.25em;
-      color: black;
-    }
-	</style> 
 
 	<head><link rel="stylesheet" href="index.css"></head>
 
+
+  
+
+<!--   <div class="arjs-loader">
+    <div>
+      <img id="load-Image" src="graphics/gift-box.gif">
+      Loading, please wait...
+    </div>
+  </div> -->
+
+
+
+  <body style="margin : 0px; overflow: hidden;">
+<!-- Loading screen -->
+  <div class="xload" style="z-index: 9999;">
+    <img id="xload-img" src="/graphics/gift-box.gif" alt="" style="z-index: 9999">
+    <div class="xload__bar" style="z-index: 9999">
+    <!-- modify these styles to reflect loading progress from 0 to 100% -->
+      <span id="xload__bar_progress" style="width: 1%"></span>
+    </div>
+  </div>
+<div id="postload" style="display: none">
   <div id="cursorContainer">
 
     <div id="scanInstructions">
@@ -47,16 +41,6 @@
 
   </div>
 
-  <div class="arjs-loader">
-    <div>
-      <img id="load-Image" src="graphics/gift-box.gif">
-      Loading, please wait...
-    </div>
-  </div>
-
-
-
-    <body style="margin : 0px; overflow: hidden;">
 	<!-- <div class="arjs-loader">
     	<div>Loading, please wait...</div>
   	</div> -->
@@ -65,11 +49,12 @@
     <p id="instructionText">Tap a <b>gift box</b> to activate a scene.</p>
   </div>
 
-	<div id="audioIconContainer" style="z-index: 9998">
-	 <div id="audioIcon" class="audioOff" style="z-index: 9999"></div>
+	<div id="audioIconContainer" style=" z-index: 9998">
+	 <div id="audioIcon" class="audioOff" style="z-index: 9998"></div>
 	</div>
   <div id="santaSelfie"></div>
 	<div id="photoModeContainer" style=" z-index: 9998">
+
 	  <div id="photoModeBG"></div>
 	  <img id="photoModeImage">
 	  <div id="flash"></div>
@@ -92,103 +77,112 @@
           <p>Discard</p>
         </div>
 	  </div>
-	</div>
+    <div class="xdis" style="display: none">
+      <div class="xdis__widget">
+        <div class="xdis__title">Discard Photo?</div>
+        <p>If you go back now, you will lose your photo</p>
+        <div class="xdis__button">
+          <div class="xm__button xm__button--outline">Discard</div>
+          <div class="xm__button">Keep</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
 
   <a-scene
       vr-mode-ui='enabled: false;'
       toggle-audio
       photo-mode
-      loading-xmas
+
+      stats
       renderer="logarithmicDepthBuffer: true;"
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'
+            loading-xmas
       >
 
 
-          <a-assets timeout="5000">
-            <a-asset-item id="s1" src="/models/scene1.glb"></a-asset-item>
-            <a-asset-item id="s1_santa" src="/models/scene1_santa.glb"></a-asset-item>
-            <a-asset-item id="s1_sink" src="/models/scene1_sink.glb"></a-asset-item>
-            <!-- <a-asset-item id="s1" src="/models/scene1_flipped.glb"></a-asset-item> -->
-            <!-- <a-asset-item id="s1" src="/models/scene1.gltf"></a-asset-item> -->
-            <a-asset-item id="s3" src="/models/scene3.glb"></a-asset-item>
-            <a-asset-item id="s4" src="/models/scene4.glb"></a-asset-item>
-            <a-asset-item id="s6" src="/models/scene6.glb"></a-asset-item>
-            <a-asset-item id="s11" src="/models/scene11.glb"></a-asset-item>
-            <!-- <a-asset-item id="s11" src="/models/scene11.gltf"></a-asset-item> -->
-            <a-asset-item id="gift_1" src="/models/Gift_Square.glb"></a-asset-item>
-            <a-asset-item id="gift_3" src="/models/Gift_Square_polkadot.glb"></a-asset-item>
-            <a-asset-item id="gift_4" src="/models/Gift_Tall.glb"></a-asset-item>
-            <a-asset-item id="gift_6" src="/models/Gift_wide.glb"></a-asset-item>
-            <a-asset-item id="gift_11" src="/models/Gift_wide_green.glb"></a-asset-item>
-            <video id="s3_video" preload="auto" autoplay="true" loop="true" src="/videos/scene3.mp4"></video>
-            <audio id="song_file" loop="false" src="/audio/JingleBells_s.mp3"></audio>
-            <img id="santa_selfie" loop="false" src="/graphics/SantaSelfie.gif">
-            <!--
-            <audio id="s1_audio" autoplay="false" loop="false" src="/audio/scene1.mp3"></sound>
-            <audio id="s3_audio" autoplay="false" loop="false" src="/audio/scene2.mp3"></sound>
-            <audio id="s4_audio" autoplay="false" loop="false" src="/audio/scene3.mp3"></sound>
-            <audio id="s6_audio" autoplay="false" loop="false" src="/audio/scene4.mp3"></sound>
-            <audio id="s11_audio" autoplay="false" loop="false" src="/audio/scene5.mp3"></sound> -->
-          </a-assets> 
-<!--
-<script>
-  document.getElementById('gift_1').addEventListener('loaded', function() { console.log("Gift 1 loaded") })
-  document.getElementById('gift_3').addEventListener('loaded', function() { console.log("Gift 3 loaded") })
-  document.getElementById('gift_4').addEventListener('loaded', function() { console.log("Gift 4 loaded") })
-  document.getElementById('gift_6').addEventListener('loaded', function() { console.log("Gift 6 loaded") })
-  document.getElementById('gift_11').addEventListener('loaded', function() { console.log("Gift 11 loaded") })
-  document.getElementById('s1').addEventListener('loaded', function() { console.log("s 1 loaded") })
-  document.getElementById('s3').addEventListener('loaded', function() { console.log("s 3 loaded") })
-  document.getElementById('s4').addEventListener('loaded', function() { console.log("s 4 loaded") })
-  document.getElementById('s6').addEventListener('loaded', function() { console.log("s 6 loaded") })
-  document.getElementById('s11').addEventListener('loaded', function() { console.log("s 11 loaded") })
-  document.getElementById('s3_video').addEventListener('loadeddata', function() { console.log("s3 video loaded") })
-  document.getElementById('song_file').addEventListener('loadeddata', function() { console.log("song audio loaded") })
-    document.getElementById('song_file').addEventListener('loadeddata', function() { console.log("song audio loaded") })
-  document.getElementById('s1_audio').addEventListener('loadeddata', function() { console.log("s1 audio loaded") })
-  document.getElementById('s3_audio').addEventListener('loadeddata', function() { console.log("s3 audio loaded") })
-  document.getElementById('s4_audio').addEventListener('loadeddata', function() { console.log("s4 audio loaded") })
-  document.getElementById('s6_audio').addEventListener('loadeddata', function() { console.log("s6 audio loaded") })
-  document.getElementById('s11_audio').addEventListener('loadeddata', function() { console.log("s11 audio loaded") })
-    
-
-
-</script> -->
-
-          <a-sound id="song" class="audio" src="#song_file" volume="0"></a-sound> <!--
-          <a-sound id="audio_1" class="audio" src="/audio/WeWishYou_s.mp3" autoplay="false" volume="0"></a-sound> -->
+        <a-assets timeout="10000">
+          <a-asset-item id="s1" src="/models/scene1.glb"></a-asset-item>
+<!--           <a-asset-item id="s1_obj" src="/models/scene1.obj"></a-asset-item>
+          <a-asset-item id="s1_mat" src="/models/scene1.mtl"></a-asset-item> -->
+          <a-asset-item id="s1_santa" src="/models/scene1_santa.glb"></a-asset-item>
+          <a-asset-item id="s1_sink" src="/models/scene1_sink.glb"></a-asset-item>
+          <!-- <a-asset-item id="s1" src="/models/scene1_flipped.glb"></a-asset-item> -->
+          <!-- <a-asset-item id="s1" src="/models/scene1.gltf"></a-asset-item> -->
+          <a-asset-item id="s3" src="/models/scene3.glb"></a-asset-item>
+          <a-asset-item id="s4" src="/models/scene4.glb"></a-asset-item>
+          <a-asset-item id="s6" src="/models/scene6.glb"></a-asset-item>
+          <a-asset-item id="s11" src="/models/scene11.glb"></a-asset-item>
+          <!-- <a-asset-item id="s11" src="/models/scene11.gltf"></a-asset-item> -->
+          <a-asset-item id="gift_1" src="/models/Gift_1.glb"></a-asset-item>
+          <a-asset-item id="gift_3" src="/models/Gift_3.glb"></a-asset-item>
+          <a-asset-item id="gift_4" src="/models/Gift_4.glb"></a-asset-item>
+          <a-asset-item id="gift_6" src="/models/Gift_6.glb"></a-asset-item>
+          <a-asset-item id="gift_11" src="/models/Gift_11.glb"></a-asset-item>
+          <video id="s3_video" preload="auto" autoplay="true" loop="true" src="/videos/scene3.mp4"></video>
+          <audio id="song_file" loop="false" src="/audio/JingleBells_s.mp3"></audio>
+          <img id="santa_selfie" loop="false" src="/graphics/SantaSelfie.gif">
+          <!--
+          <audio id="s1_audio" autoplay="false" loop="false" src="/audio/scene1.mp3"></sound>
+          <audio id="s3_audio" autoplay="false" loop="false" src="/audio/scene2.mp3"></sound>
+          <audio id="s4_audio" autoplay="false" loop="false" src="/audio/scene3.mp3"></sound>
+          <audio id="s6_audio" autoplay="false" loop="false" src="/audio/scene4.mp3"></sound>
+          <audio id="s11_audio" autoplay="false" loop="false" src="/audio/scene5.mp3"></sound> -->
+        </a-assets> 
 
 
 
-          <a-marker preset="custom" type="pattern" url="/markers/1.patt">
-              <!-- <a-box position="0 .5 0" start-animation='name: scene1;'>
-              </a-box> -->
+        <a-sound id="song" class="audio" src="#song_file" volume="0"></a-sound> <!--
+        <a-sound id="audio_1" class="audio" src="/audio/WeWishYou_s.mp3" autoplay="false" volume="0"></a-sound> -->
 
 
+
+        <a-marker preset="custom" type="pattern" url="/markers/1.patt">
+            <!-- <a-box position="0 .5 0" start-animation='name: scene1;'>
+            </a-box> -->
 
 
 			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" opacity='0' start-animation='name: scene1; sound_id: audio_1; length: 18000'>
 				<a-entity
               	id='box1'
-              	scale="0.666 0.666 0.666"
+              	scale="0.25 0.25 0.25"
               	position='0 -0.5 0'
                 gltf-model='#gift_1'
               	></a-entity>
 			  </a-box>
    
-              <a-entity class="scene" id='scene1'
-                gltf-model='#s1_santa'
-                scale=".65 .65 .65"
+              <a-entity class="scene" id='scene1' scale=".65 .65 .65"
+              visible="false">
+              <a-entity
+                id="scene1_santa_model"
+                rotation="90 0 0"
+                gltf-model="#s1_santa"
+                animation__walktocamera="startEvents: scene1; property: position; dur: 1000; from 0 0 0; to: 0 0 4; easing: easeInOutSine; delay: 1500"
+                animation__turn_1="startEvents: scene1; property: rotation; to: 90 90 0; easing: easeInOutSine; delay: 7000"
+                animation__walktoright="startEvents: scene1; property: position; dur:1000; from: 0 0 4; to: 4 0 4; easing: easeInOutSine; delay: 8000"
+                animation__walktosink="startEvents: scene1; property: position; dur:1000; from: 4 0 4; to: 4 0 1; easing: easeInOutSine; delay: 9000"
+                animation__turn_2="startEvents: scene1; property: rotation; from: 90 90 0; to: 90 180 0; easing: easeInOutSine; delay: 8500"
+                animation__restart="startEvents: scene1_end; property: position; dur: 500; to: 0 0 0;"
                 animation-mixer
-                visible="false">
+                >
               </a-entity>
+
+                <a-entity
+                  gltf-model='#s1_sink'
+                  animation-mixer
+                  ></a-entity>
+              </a-entity>             
+
 
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
 			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; length: 25000'>
 	              <a-entity 
 	                gltf-model='#gift_3'
-              		scale="0.5 0.5 0.5"
+              		scale="0.25 0.25 0.25"
               		position='0 -0.5 0'
 	              ></a-entity>
 			  </a-box>
@@ -206,7 +200,7 @@
 			<a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene4; length: 29000'>
               <a-entity 
                 gltf-model='#gift_4'
-              	scale="0.5 0.5 0.5"
+              	scale="0.25 0.25 0.25"
               	position='0 -0.5 0'
               >
               </a-entity>
@@ -224,7 +218,7 @@
               <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene6; length: 34000'>
 	              <a-entity
 	                gltf-model='#gift_6'
-	              	scale="0.5 0.5 0.5"
+	              	scale="0.25 0.25 0.25"
 	              	position='0 -0.5 0'
 	              >
 	              </a-entity>
@@ -242,7 +236,7 @@
 			  <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0;' start-animation='name: scene11; length: 5000; selfie: true'>
 	              <a-entity
 	                gltf-model='#gift_11'
-	              	scale="0.666 0.666 0.666"
+	              	scale="0.25 0.25 0.25"
 	              	position='0 -0.5 0'
 	              >
 	              </a-entity>
@@ -261,5 +255,37 @@
           <a-entity camera cursor="rayOrigin: mouse; fuse: true" raycaster="objects: a-box">
           </a-entity>
         </a-scene>
+        <script>
+var progress = 0;
+    function loadProgress(percent) {
+      var el = document.getElementById("xload__bar_progress")
+      if (progress <= 100) {
+        progress += percent
+        el.style.width = progress.toString()+ "%"
+      }
+    }
+    document.getElementById('gift_1').addEventListener('loaded', function() { 
+      console.log("Gift 1 loaded") 
+      loadProgress(10)
+    })
+    document.getElementById('gift_3').addEventListener('loaded', function() { console.log("Gift 3 loaded")
+    loadProgress(10) })
+    document.getElementById('gift_4').addEventListener('loaded', function() { console.log("Gift 4 loaded")
+    loadProgress(10) })
+    document.getElementById('gift_6').addEventListener('loaded', function() { console.log("Gift 6 loaded")
+    loadProgress(10) })
+    document.getElementById('gift_11').addEventListener('loaded', function() { console.log("Gift 11 loaded")
+    loadProgress(10) })
+    document.getElementById('s1').addEventListener('loaded', function() { console.log("s 1 loaded")
+    loadProgress(10) })
+    document.getElementById('s3').addEventListener('loaded', function() { console.log("s 3 loaded")
+    loadProgress(10) })
+    document.getElementById('s4').addEventListener('loaded', function() { console.log("s 4 loaded")
+    loadProgress(10) })
+    document.getElementById('s6').addEventListener('loaded', function() { console.log("s 6 loaded")
+    loadProgress(10) })
+    document.getElementById('s11').addEventListener('loaded', function() { console.log("s 11 loaded")
+    loadProgress(9) })
+</script> 
     </body>
 </html>
