@@ -238,7 +238,7 @@ h2 {
 #shareBlurbAlt {
   display: none;
 }
-#shareButton, #retakeButton, #keepButton, #discardButton {
+#shareButton, #retakeButton {
   width: 32vmin;
   text-align: center;
   border: 0.2em solid #23f4cd;
@@ -246,7 +246,7 @@ h2 {
   line-height: 0.75;
   font-size: 1.1em;
 }
-#shareButton p, #retakeButton p, #keepButton p, #discardButton p {
+#shareButton p, #retakeButton p {
     pointer-events: none;
 }
 #shareButton {
@@ -255,13 +255,8 @@ h2 {
   color: #38157b;
 }
 
-#keepButton {
-  background: #23f4cd;
-  right: 4vmax;
-  color: #38157b;
-}
 
-#shareButton:active, #retakeButton:active, #keepButton:active, #discardButton:active  {
+#shareButton:active, #retakeButton:active  {
   border: 0.2em solid #38157b;
   background: #38157b;
   color: white;
@@ -272,21 +267,12 @@ h2 {
   color: #23f4cd;
 }
 
-#discardButton {
-  background: transparent;
-  left: 4vmax;
-  color: #23f4cd;
-}
 
 #retakeButton.solo {
   left: 50%;
   transform: translate(-50%);
 }
 
-#discardButton.solo {
-  left: 50%;
-  transform: translate(-50%);
-}
 .photo #photoPrompts {
   display: block;
 }
@@ -333,13 +319,13 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
 }
 .xdis__widget {
   text-align: center;
   background: #fff;
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   padding: 30px 24px 24px 24px;
   border-radius: 30px 30px 0 0;
   justify-self: flex-end;
@@ -392,7 +378,7 @@ h2 {
 .xload img {
   width: 180px;
   margin: auto;
-  padding-left: 30px;
+  padding-left: 40px;
 }
 .xload__bar {
   background: #e6f3f3;
