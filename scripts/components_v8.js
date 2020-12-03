@@ -1,35 +1,3 @@
-/* If you're feeling fancy you can add interactivity 
-    to your site with Javascript */
-/*
-AFRAME.registerComponent('navigate-on-click', {
-  schema: {
-    url: {
-      default: ''
-    }
-  },
-  init: function () {
-    console.log("hello")
-    console.log(this.el)
-    var data = this.data;
-    var el = this.el;
-    el.addEventListener('click', function () {
-      //window.location.href = data.url;
-      window.open(data.url, '_blank');
-    });
-  }
-});
-
-AFRAME.registerComponent('color-randomizer', {
-  init: function () {
-    let colors = ["red", "green", "blue", "black", "orange", "white"]
-    var el = this.el;
-    el.addEventListener('click', (e) => {     
-      this.el.setAttribute('color', colors[Math.floor(Math.random() * colors.length)])
-    });
-  }
-}); */
-
-
 
 
 AFRAME.registerComponent('loading-xmas', {
@@ -88,7 +56,8 @@ AFRAME.registerComponent('start-animation', {
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
     const scanInstructions = document.getElementById('scanInstructions')
-    const photoFrame = document.getElementById('selfie_frame')
+    const photoFrame = document.getElementById('selfieContainer')
+    const xblink_widget = document.getElementById('cameraflash')
     var scan = true
     var animationLength = this.data.length
     var isSelfie = this.data.selfie
@@ -139,9 +108,11 @@ AFRAME.registerComponent('start-animation', {
       });
 
     function startSelfie(){
-      photoFrame.setAttribute('visible', true) 
-      photoFrame.components.gif.togglePlayback()
-      console.log("Selfie is paused? = " + photoFrame.components.gif.paused())
+      xblink_widget.classList.add('xblink--active')
+      photoFrame.style.display = "block"
+      for (const scene of sceneArray) {
+        scene.setAttribute('visible', false)
+      }
     }
     
     function sceneStart(){
@@ -200,7 +171,7 @@ AFRAME.registerComponent('start-animation', {
         isNotActive=true
 
        if(isSelfie) {
-          photoFrame.setAttribute('visible', false) 
+          photoFrame.style.display = "none" 
 
        }
     }

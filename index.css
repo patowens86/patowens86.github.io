@@ -6,6 +6,124 @@ html {
 }
 
 
+.xdis {
+  background: rgba(0,0,0,0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.xdis__widget {
+  text-align: center;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 30px 24px 24px 24px;
+  border-radius: 30px 30px 0 0;
+  justify-self: flex-end;
+  margin-top: auto;
+}
+.xdis__title {
+  font: 20px/24px "gilroy", arial, sans-serif;
+}
+.xdis__button {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.xdis__button a {
+  width: 48%;
+}
+
+.xm__button {
+  background: #23f4cd;
+  border-radius: 100px;
+  display: block;
+  text-align: center;
+  padding: 12px 40px;
+  font: bold 14px/22px "gilroy", arial, sans-serif;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #38157b;
+}
+.xm__button--outline {
+  border: 2px solid #23f4cd;
+  color: #38157b;
+  background: none;
+}
+
+.xload {
+  height: 100vh;
+  text-align: center;
+  padding-top: 150px;
+  background: url("/graphics/loading-head.png") center top/contain no-repeat;
+  background-color: ffffff;
+
+}
+.xload img {
+  width: 180px;
+  margin: auto;
+  padding-left: 40px;
+}
+.xload__bar {
+  background: #e6f3f3;
+  border-radius: 100px;
+  height: 4px;
+  width: 120px;
+  margin: 30px auto 0;
+}
+.xload__bar span {
+  display: block;
+  width: 1px;
+  height: 100%;
+  border-radius: 100px;
+  background: #93c1c3;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+}  
+
+}
+.xblink {
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  width: 100%;
+  height: 100%;
+}
+.xblink__widget {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  opacity: 0;
+  z-index: 9999;
+}
+.xblink--active {
+  -webkit-animation: xblink 3s linear forwards;
+          animation: xblink 3s linear forwards;
+}
+
 #scanCursor{
   display: block;
   margin-left: auto;
@@ -41,10 +159,19 @@ html {
 
 }
 
+#selfieContainer {
+  position: absolute;
+    width:100%;
+    bottom: 0;
+  height: auto;
+}
 
 #santaSelfie {
-  background-image: url('graphics/SantaSelfie.gif')
-  background-position: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 0;
+  width: 100%;
 }
 
 #audioIconContainer
@@ -163,6 +290,7 @@ h2 {
   z-index: 10;
   opacity: 0;
   transition: 0.5s;
+  z-index: 9999;
 }
 .flash #flash {
   opacity: 1;
@@ -305,95 +433,3 @@ h2 {
   display: block;
 }
 
-.xdis {
-  background: rgba(0,0,0,0.7);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.xdis__widget {
-  text-align: center;
-  background: #fff;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 30px 24px 24px 24px;
-  border-radius: 30px 30px 0 0;
-  justify-self: flex-end;
-  margin-top: auto;
-}
-.xdis__title {
-  font: 20px/24px "gilroy", arial, sans-serif;
-}
-.xdis__button {
-  margin-top: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.xdis__button a {
-  width: 48%;
-}
-
-.xm__button {
-  background: #23f4cd;
-  border-radius: 100px;
-  display: block;
-  text-align: center;
-  padding: 12px 40px;
-  font: bold 14px/22px "gilroy", arial, sans-serif;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-  color: #38157b;
-}
-.xm__button--outline {
-  border: 2px solid #23f4cd;
-  color: #38157b;
-  background: none;
-}
-
-.xload {
-  height: 100vh;
-  text-align: center;
-  padding-top: 150px;
-  background: url("/graphics/loading-head.png") center top/contain no-repeat;
-  background-color: ffffff;
-
-}
-.xload img {
-  width: 180px;
-  margin: auto;
-  padding-left: 40px;
-}
-.xload__bar {
-  background: #e6f3f3;
-  border-radius: 100px;
-  height: 4px;
-  width: 120px;
-  margin: 30px auto 0;
-}
-.xload__bar span {
-  display: block;
-  width: 1px;
-  height: 100%;
-  border-radius: 100px;
-  background: #93c1c3;
-  -webkit-transition: all 1s;
-  -o-transition: all 1s;
-  transition: all 1s;
-}  

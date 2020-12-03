@@ -5,8 +5,8 @@
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="/scripts/components_v8.js"></script>
-  <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
-  <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
+<!--   <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script> --> <!--
+  <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script> -->
 
 	<head><link rel="stylesheet" href="index.css"></head>
 
@@ -24,6 +24,7 @@
 
   <body style="margin : 0px; overflow: hidden;">
 <!-- Loading screen -->
+
   <div class="xload" style="z-index: 9999;">
     <div><img id="xload-img" src="/graphics/gift-box.gif" alt="" style="z-index: 9999"></div>
     <div class="xload__bar" style="z-index: 9999">
@@ -38,7 +39,6 @@
       <img id="scanCursor" src="graphics/scan.png" id="scanID">
       <p id="scanInstructionText">Scan a <b>gift box</b> to activate a scene.</p>
     </div>
-
   </div>
 
 	<!-- <div class="arjs-loader">
@@ -52,7 +52,7 @@
 	<div id="audioIconContainer" style=" z-index: 9998">
 	 <div id="audioIcon" class="audioOff" style="z-index: 9998"></div>
 	</div>
-  <div id="santaSelfie"></div>
+
 	<div id="photoModeContainer" style=" z-index: 9998">
 
 	  <div id="photoModeBG"></div>
@@ -72,8 +72,15 @@
 	      </div>
 
 	  </div>
-
+    <div id="selfieContainer" style="display: none">
+      <img id="santaSelfie" src='/graphics/SantaSelfie.gif'></div>
+    </div>
   </div>
+
+    <div class="xblink">
+  <!-- get .xblink__widget as a container, and add .xblink--active to get a blink effect (you can remove and add the class again to start the animation) -->
+  <div id="cameraflash" class="xblink__widget"></div>
+</div>
 
 </div>
 
@@ -113,6 +120,7 @@
           <a-asset-item id="s4" src="/models/scene4.glb"></a-asset-item>
           <a-asset-item id="s6" src="/models/scene6.glb"></a-asset-item>
           <a-asset-item id="s11" src="/models/scene11.glb"></a-asset-item>
+          <a-asset-item id="s11_phone" src="/models/scene11_phone.glb"></a-asset-item>
           <!-- <a-asset-item id="s11" src="/models/scene11.gltf"></a-asset-item> -->
           <a-asset-item id="gift_1" src="/models/Gift_1.glb"></a-asset-item>
           <a-asset-item id="gift_3" src="/models/Gift_3.glb"></a-asset-item>
@@ -239,16 +247,23 @@
 	              </a-entity>
           	  </a-box>
               <a-entity class="scene" id='scene11'
-                gltf-model='#s11'
-                animation-mixer
-                rotation='90 0 0'
+                
                 scale="0.666 0.666 0.666"
                 visible="false"
               >
+                <a-entity
+                gltf-model='#s11'
+                animation-mixer
+                rotation='90 0 0'></a-entity>
+                <a-entity
+                gltf-model='#s11_phone'
+                animation-mixer
+                position='0 0 3'
+                rotation='0 0 0'></a-entity>
               </a-entity>
           </a-marker>
 
-          <a-entity id="selfie_frame" visible="false" geometry="primitive:plane;" position='0 0 -2' scale=".7725 1.6 1" material="shader:gif;src:url(/graphics/SantaSelfie.gif);" gif="" autoplay="true"></a-entity>
+          <!-- <a-entity id="selfie_frame" visible="false" geometry="primitive:plane;" position='0 0 -2' scale=".7725 1.6 1" material="shader:gif;src:url(/graphics/SantaSelfieRepaired.gif);" gif="" autoplay="true"></a-entity> -->
           <a-entity camera cursor="rayOrigin: mouse; fuse: true" raycaster="objects: a-box">
           </a-entity>
         </a-scene>
