@@ -312,7 +312,6 @@ AFRAME.registerComponent('photo-mode', {
     const audioButton = document.getElementById('audioIconContainer')
     const shareBlurb = document.getElementById('shareBlurb')
     const shareBlurbAlt = document.getElementById('shareBlurbAlt')
-    const keepContainer = document.getElementsByClassName('xdis')[0]
     const keepButton = document.getElementById('keepButton')
     const discardButton = document.getElementById('discardButton')
     //const overlay = document.getElementById('photoOverlay')
@@ -326,13 +325,12 @@ AFRAME.registerComponent('photo-mode', {
       console.log("tapped")
     })*/
     container.style.display = 'block'
-    discardButton.addEventListener('click', () => {
+    closeButton.addEventListener('click', () => {
       container.classList.remove('photo')
       container.classList.remove('share')
       canvas.classList.remove('blur')
-      selfie_frame.setAttribute('visible', false)
+            selfie_frame.setAttribute('visible', false)
       audioButton.style.display = 'block'
-      keepContainer.style.display = 'none'
       //overlay.setAttribute('visible', false)
       setTimeout(() => {
       // Tell the restart-camera script to stop watching for issues
@@ -341,17 +339,16 @@ AFRAME.registerComponent('photo-mode', {
     })
 
     closeButton.addEventListener('click', () => {
-      keepContainer.style.display='block'
+      container.classList.remove('photo')
+      container.classList.remove('share')
+      canvas.classList.remove('blur')
+            selfie_frame.setAttribute('visible', false)
+      audioButton.style.display = 'block'
       //overlay.setAttribute('visible', false)
       setTimeout(() => {
       // Tell the restart-camera script to stop watching for issues
         window.dispatchEvent(new Event('ensurecameraend'))
       }, 1000)
-    })
-
-    keepButton.addEventListener('click', () => {
-      console.log("Keep button clicked")
-      keepContainer.style.display = 'none'
     })
 
     shutterButton.addEventListener('click', () => {
