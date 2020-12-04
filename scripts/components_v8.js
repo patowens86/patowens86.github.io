@@ -411,41 +411,80 @@ AFRAME.registerComponent('photo-mode', {
         let aSceneOrig = document.querySelector("a-canvas")
         let santaSelfie = document.getElementById("santaSelfie")
         let frame = captureVideoFrame("video", "png");
+        let selfieContainer = document.getElementById('selfieContainer')
+
         aScene = resizeCanvas(aScene, frame.width, frame.height);
         frame = frame.dataUri;
          
-        mergeImages([frame, aScene], {//, '/graphics/SantaSelfie.gif'], {
-          width: aScene.width,
-          height: aScene.height
-        }).then(b64 => {
-          // Hide the flash
-          container.classList.remove('flash')
-          // If an error occurs while trying to take the screenshot, e.detail will be empty.
-          // We could either retry or return control to the user
-          if (!b64) {
-            return
-          }
-          // e.detail is the base64 representation of the JPEG screenshot
-          var basestr = b64 //'data:image/jpeg;base64,' + e.detail
-          urlToFile(basestr, 'Merry-Christmas.jpg')
-            .then(res => {
-              shareFile = res
-              imageUrl = URL.createObjectURL(res)
-            }).then(() => {
-              image.src = imageUrl
-            })
-            
-          
-          // Show the photo
-          container.classList.add('photo')
-          canvas.classList.add('blur')
-          audioButton.style.display = 'none'
-          photoFrame.style.display = 'none'
-          
-          // Tell the restart-camera script to start watching for issues
-          window.dispatchEvent(new Event('ensurecamerastart'))
-          console.log(b64)
-        });
+        if(selfieContainer.style.display == "block") {
+            mergeImages([frame, aScene, '/graphics/SantaSelfie.gif'], {
+              width: aScene.width,
+              height: aScene.height
+            }).then(b64 => {
+              // Hide the flash
+              container.classList.remove('flash')
+              // If an error occurs while trying to take the screenshot, e.detail will be empty.
+              // We could either retry or return control to the user
+              if (!b64) {
+                return
+              }
+              // e.detail is the base64 representation of the JPEG screenshot
+              var basestr = b64 //'data:image/jpeg;base64,' + e.detail
+              urlToFile(basestr, 'Merry-Christmas.jpg')
+                .then(res => {
+                  shareFile = res
+                  imageUrl = URL.createObjectURL(res)
+                }).then(() => {
+                  image.src = imageUrl
+                })
+                
+              
+              // Show the photo
+              container.classList.add('photo')
+              canvas.classList.add('blur')
+              audioButton.style.display = 'none'
+              photoFrame.style.display = 'none'
+              
+              // Tell the restart-camera script to start watching for issues
+              window.dispatchEvent(new Event('ensurecamerastart'))
+              console.log(b64)
+            });
+        } else {
+              mergeImages([frame, aScene], {//, '/graphics/SantaSelfie.gif'], {
+              width: aScene.width,
+              height: aScene.height
+            }).then(b64 => {
+              // Hide the flash
+              container.classList.remove('flash')
+              // If an error occurs while trying to take the screenshot, e.detail will be empty.
+              // We could either retry or return control to the user
+              if (!b64) {
+                return
+              }
+              // e.detail is the base64 representation of the JPEG screenshot
+              var basestr = b64 //'data:image/jpeg;base64,' + e.detail
+              urlToFile(basestr, 'Merry-Christmas.jpg')
+                .then(res => {
+                  shareFile = res
+                  imageUrl = URL.createObjectURL(res)
+                }).then(() => {
+                  image.src = imageUrl
+                })
+                
+              
+              // Show the photo
+              container.classList.add('photo')
+              canvas.classList.add('blur')
+              audioButton.style.display = 'none'
+              photoFrame.style.display = 'none'
+              
+              // Tell the restart-camera script to start watching for issues
+              window.dispatchEvent(new Event('ensurecamerastart'))
+              console.log(b64)
+            });
+        }
+
+        
     });
 
     function captureVideoFrame(video, format, width, height) {
