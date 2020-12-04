@@ -414,10 +414,11 @@ AFRAME.registerComponent('photo-mode', {
         let selfieContainer = document.getElementById('selfieContainer')
 
         aScene = resizeCanvas(aScene, frame.width, frame.height);
+        santaSelfie = resizeCanvas(santaSelfie, frame.width, frame.height)
         frame = frame.dataUri;
          
         if(selfieContainer.style.display == "block") {
-            mergeImages([frame, aScene, '/graphics/SantaSelfie.gif'], {
+            mergeImages([frame, aScene, '/graphics/SantaSelfiepng.png'], {
               width: aScene.width,
               height: aScene.height
             }).then(b64 => {
