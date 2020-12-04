@@ -6,6 +6,7 @@ AFRAME.registerComponent('loading-xmas', {
     // var loadingContainer = document.getElementsByClassName("arjs-loader")
     // var loadingImages = document.getElementById("load-Image")
     var postloadContainer = document.getElementById("postload")
+    var trelloVideo = document.getElementById('laptop_video')
     console.log("loading screen initialized")
     var hasLoaded = false;
     var progressBar = document.getElementById("xload__bar_progress")
@@ -19,7 +20,7 @@ AFRAME.registerComponent('loading-xmas', {
       postload.style.display = 'block'
     }, 3000)
 
-
+    laptop_video.play();
     /*
     setTimeout(
       function() {
@@ -33,6 +34,7 @@ AFRAME.registerComponent('loading-xmas', {
     };*/
   }
 })
+
 
 AFRAME.registerComponent('start-animation', {
   schema: {
@@ -87,6 +89,10 @@ AFRAME.registerComponent('start-animation', {
 
           // }
           console.log(this.data.name + " is active")
+          if(this.data.name == "s2"){
+            videoClip.play();  
+          }
+          
           if(this.data.length) {
             console.log("timer started")
             if(isSelfie == "false"){
@@ -326,7 +332,7 @@ AFRAME.registerComponent('photo-mode', {
       console.log("Keep button clicked")
       keepContainer.style.display = 'none'
     })
-
+/*
     shutterButton.addEventListener('click', () => {
       console.log("Shutter button clicked")
       //overlay.setAttribute('visible', true)
@@ -353,7 +359,7 @@ AFRAME.registerComponent('photo-mode', {
           photoFrame.style.display = 'none'
           // Tell the restart-camera script to start watching for issues
           window.dispatchEvent(new Event('ensurecamerastart'))
-    })
+    }) */
 
     //return a promise that resolves with a File instance
     function urlToFile(url, filename, mimeType){
@@ -402,11 +408,16 @@ AFRAME.registerComponent('photo-mode', {
      
     document.getElementById("shutterButton").addEventListener("click", function() {
         let aScene = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
-        let frame = captureVideoFrame("video", "png", aScene.width, aScene.height);
+        let aSceneOrig = document.querySelector("a-canvas")
+        let santaSelfie = document.getElementById("santaSelfie")
+        let frame = captureVideoFrame("video", "png");
         aScene = resizeCanvas(aScene, frame.width, frame.height);
         frame = frame.dataUri;
          
-        mergeImages([frame, aScene]).then(b64 => {
+        mergeImages([frame, aScene], {//, '/graphics/SantaSelfie.gif'], {
+          width: aScene.width,
+          height: aScene.height
+        }).then(b64 => {
           // Hide the flash
           container.classList.remove('flash')
           // If an error occurs while trying to take the screenshot, e.detail will be empty.
@@ -429,6 +440,7 @@ AFRAME.registerComponent('photo-mode', {
           container.classList.add('photo')
           canvas.classList.add('blur')
           audioButton.style.display = 'none'
+          photoFrame.style.display = 'none'
           
           // Tell the restart-camera script to start watching for issues
           window.dispatchEvent(new Event('ensurecamerastart'))
