@@ -45,6 +45,7 @@ AFRAME.registerComponent('start-animation', {
   init: function () {
     var el = this.el;
     var model = document.getElementById(this.data.name)
+    var scene1model = document.getElementById('scene1_santa_model')
     var isNotActive = true
     var scene = document.getElementsByTagName("a-scene")
     var giftArray = document.getElementsByClassName("gift")
@@ -77,7 +78,7 @@ AFRAME.registerComponent('start-animation', {
         if(isNotActive) {
           this.el.setAttribute('visible', true)
           sceneStart()
-
+          //scene1model.emit(scene1)
           // for (child in el.children)
           // {
           // for (child in model) {
@@ -402,7 +403,7 @@ AFRAME.registerComponent('photo-mode', {
     document.getElementById("shutterButton").addEventListener("click", function() {
         let aScene = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
         let frame = captureVideoFrame("video", "png");
-        aScene = resizeCanvas(aScene, frame.width, frame.height);
+        //aScene = resizeCanvas(aScene, frame.width, frame.height);
         frame = frame.dataUri;
          
         mergeImages([frame, aScene]).then(b64 => {
@@ -437,6 +438,7 @@ AFRAME.registerComponent('photo-mode', {
 
     function captureVideoFrame(video, format, width, height) {
         if (typeof video === 'string') {
+          //we select the video source of the camera, not the other videos
             video = document.querySelectorAll(video)[1];
         }
         format = format || 'jpeg';
@@ -482,34 +484,6 @@ AFRAME.registerComponent('photo-mode', {
       }
       // selfie_frame.setAttribute('visible', false)
     })
-    /*
-    this.el.sceneEl.addEventListener('screenshotready', e => {
-      // Hide the flash
-      container.classList.remove('flash')
-      // If an error occurs while trying to take the screenshot, e.detail will be empty.
-      // We could either retry or return control to the user
-      if (!e.detail) {
-        return
-      }
-      // e.detail is the base64 representation of the JPEG screenshot
-      var basestr = 'data:image/jpeg;base64,' + e.detail
-      urlToFile(basestr, 'Merry-Christmas.jpg')
-        .then(res => {
-          shareFile = res
-          imageUrl = URL.createObjectURL(res)
-        }).then(() => {
-          image.src = imageUrl
-        })
-        
-      
-      // Show the photo
-      container.classList.add('photo')
-      canvas.classList.add('blur')
-      audioButton.style.display = 'none'
-      
-      // Tell the restart-camera script to start watching for issues
-      window.dispatchEvent(new Event('ensurecamerastart'))
-    }) */
 
   }
 })

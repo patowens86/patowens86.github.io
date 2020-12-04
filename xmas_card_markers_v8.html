@@ -170,12 +170,12 @@
                 id="scene1_santa_model"
                 rotation="90 0 0"
                 gltf-model="#s1_santa"
-                animation__walktocamera="startEvents: scene1; property: position; dur: 1000; from 0 0 0; to: 0 0 4; easing: easeInOutSine; delay: 1500"
-                animation__turn_1="startEvents: scene1; property: rotation; to: 90 90 0; easing: easeInOutSine; delay: 7000"
-                animation__walktoright="startEvents: scene1; property: position; dur:1000; from: 0 0 4; to: 4 0 4; easing: easeInOutSine; delay: 8000"
-                animation__walktosink="startEvents: scene1; property: position; dur:1000; from: 4 0 4; to: 4 0 1; easing: easeInOutSine; delay: 9000"
-                animation__turn_2="startEvents: scene1; property: rotation; from: 90 90 0; to: 90 180 0; easing: easeInOutSine; delay: 8500"
-                animation__restart="startEvents: scene1_end; property: position; dur: 500; to: 0 0 0;"
+                animation__walktocamera="property: position; dur: 1000; from 0 0 0; to: 0 0 4; easing: easeInOutSine; delay: 1500"
+                animation__turn_1="property: rotation; to: 90 90 0; easing: easeInOutSine; delay: 7000"
+                animation__walktoright="property: position; dur:1000; from: 0 0 4; to: 4 0 4; easing: easeInOutSine; delay: 8000"
+                animation__walktosink="property: position; dur:1000; from: 4 0 4; to: 4 0 1; easing: easeInOutSine; delay: 9000"
+                animation__turn_2="property: rotation; from: 90 90 0; to: 90 180 0; easing: easeInOutSine; delay: 8500"
+                animation__restart="startEvents: scene1_end; property: position; dur: 500; to: 0 0 0; delay 10000;"
                 animation-mixer
                 >
               </a-entity>
@@ -294,15 +294,15 @@ var progress = 0;
     document.getElementById('gift_11').addEventListener('loaded', function() { console.log("Gift 11 loaded")
     loadProgress(10) })
     document.getElementById('s1').addEventListener('loaded', function() { console.log("s 1 loaded")
-    loadProgress(10) })
+    loadProgress(8) })
     document.getElementById('s3').addEventListener('loaded', function() { console.log("s 3 loaded")
-    loadProgress(10) })
+    loadProgress(8) })
     document.getElementById('s4').addEventListener('loaded', function() { console.log("s 4 loaded")
-    loadProgress(10) })
+    loadProgress(8) })
     document.getElementById('s6').addEventListener('loaded', function() { console.log("s 6 loaded")
-    loadProgress(10) })
+    loadProgress(8) })
     document.getElementById('s11').addEventListener('loaded', function() { console.log("s 11 loaded")
-    loadProgress(9) })
+    loadProgress(8) })
 </script> 
     </body>
 </html>
