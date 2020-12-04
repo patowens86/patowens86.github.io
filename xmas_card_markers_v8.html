@@ -1,13 +1,17 @@
 
 <html>
+
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+      <script src="https://unpkg.com/merge-images"></script>
+    <script src="/scripts/capture-video-frame.js"></script>
   <script src="/scripts/components_v8.js"></script>
   <script src="/jquery.js"></script>
 <!--   <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script> --> <!--
   <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script> -->
+
 
 	<head><link rel="stylesheet" href="index.css"></head>
 
@@ -96,7 +100,7 @@
 </div>
 
 
-
+<!-- <canvas id="canvas"></canvas> -->
   <a-scene
       vr-mode-ui='enabled: false;'
       toggle-audio
