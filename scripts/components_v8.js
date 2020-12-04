@@ -117,6 +117,7 @@ AFRAME.registerComponent('start-animation', {
     function startSelfie(){
       xblink_widget.classList.add('xblink--active')
       photoFrame.style.display = "block"
+      shutterButton.hidden = false
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
       }
@@ -131,7 +132,7 @@ AFRAME.registerComponent('start-animation', {
       //   gift.setAttribute('visible', false)
       // }
       el.setAttribute('visible',false)
-        shutterButton.hidden = false
+
         if(scan)
         {
           scanInstructions.style.display = 'none'  
@@ -150,7 +151,7 @@ AFRAME.registerComponent('start-animation', {
                   console.log("Scene time ran out")
                   startSelfie();
                 }, animationLength);
-       }
+       } else {        shutterButton.hidden = false }
        videoClip.play()
 
 
