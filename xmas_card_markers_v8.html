@@ -112,19 +112,13 @@
 
 
         <a-assets timeout="20000">
-          <a-asset-item id="s1" src="/models/scene1.glb"></a-asset-item>
-<!--           <a-asset-item id="s1_obj" src="/models/scene1.obj"></a-asset-item>
-          <a-asset-item id="s1_mat" src="/models/scene1.mtl"></a-asset-item> -->
           <a-asset-item id="s1_santa" src="/models/scene1_santa.glb"></a-asset-item>
           <a-asset-item id="s1_sink" src="/models/scene1_sink.glb"></a-asset-item>
-          <!-- <a-asset-item id="s1" src="/models/scene1_flipped.glb"></a-asset-item> -->
-          <!-- <a-asset-item id="s1" src="/models/scene1.gltf"></a-asset-item> -->
           <a-asset-item id="s3" src="/models/scene3.glb"></a-asset-item>
           <a-asset-item id="s4" src="/models/scene4.glb"></a-asset-item>
           <a-asset-item id="s6" src="/models/scene6.glb"></a-asset-item>
           <a-asset-item id="s11" src="/models/scene11.glb"></a-asset-item>
           <a-asset-item id="s11_phone" src="/models/scene11_phone.glb"></a-asset-item>
-          <!-- <a-asset-item id="s11" src="/models/scene11.gltf"></a-asset-item> -->
           <a-asset-item id="gift_1" src="/models/Gift_1.glb"></a-asset-item>
           <a-asset-item id="gift_3" src="/models/Gift_3.glb"></a-asset-item>
           <a-asset-item id="gift_4" src="/models/Gift_4.glb"></a-asset-item>
@@ -271,36 +265,36 @@
           </a-entity>
         </a-scene>
         <script>
-var progress = 0;
-    function loadProgress(percent) {
-      var el = document.getElementById("xload__bar_progress")
-      if (progress <= 100) {
-        progress += percent
-        el.style.width = progress.toString()+ "%"
-      }
-    }
-    document.getElementById('gift_1').addEventListener('loaded', function() { 
-      console.log("Gift 1 loaded") 
-      loadProgress(10)
-    })
-    document.getElementById('gift_3').addEventListener('loaded', function() { console.log("Gift 3 loaded")
-    loadProgress(10) })
-    document.getElementById('gift_4').addEventListener('loaded', function() { console.log("Gift 4 loaded")
-    loadProgress(10) })
-    document.getElementById('gift_6').addEventListener('loaded', function() { console.log("Gift 6 loaded")
-    loadProgress(10) })
-    document.getElementById('gift_11').addEventListener('loaded', function() { console.log("Gift 11 loaded")
-    loadProgress(10) })
-    document.getElementById('s1').addEventListener('loaded', function() { console.log("s 1 loaded")
-    loadProgress(8) })
-    document.getElementById('s3').addEventListener('loaded', function() { console.log("s 3 loaded")
-    loadProgress(8) })
-    document.getElementById('s4').addEventListener('loaded', function() { console.log("s 4 loaded")
-    loadProgress(8) })
-    document.getElementById('s6').addEventListener('loaded', function() { console.log("s 6 loaded")
-    loadProgress(8) })
-    document.getElementById('s11').addEventListener('loaded', function() { console.log("s 11 loaded")
-    loadProgress(8) })
+          var progress = 0;
+            function loadProgress(percent) {
+              var el = document.getElementById("xload__bar_progress")
+              if (progress <= 100) {
+                progress += percent
+                el.style.width = progress.toString()+ "%"
+              }
+            }
+            document.getElementById('gift_1').addEventListener('loaded', function() { 
+              console.log("Gift 1 loaded") 
+              loadProgress(10)
+            })
+            document.getElementById('gift_3').addEventListener('loaded', function() { console.log("Gift 3 loaded")
+            loadProgress(10) })
+            document.getElementById('gift_4').addEventListener('loaded', function() { console.log("Gift 4 loaded")
+            loadProgress(10) })
+            document.getElementById('gift_6').addEventListener('loaded', function() { console.log("Gift 6 loaded")
+            loadProgress(10) })
+            document.getElementById('gift_11').addEventListener('loaded', function() { console.log("Gift 11 loaded")
+            loadProgress(10) })
+            document.getElementById('s1_santa').addEventListener('loaded', function() { console.log("s 1 loaded")
+            loadProgress(8) })
+            document.getElementById('s3').addEventListener('loaded', function() { console.log("s 3 loaded")
+            loadProgress(8) })
+            document.getElementById('s4').addEventListener('loaded', function() { console.log("s 4 loaded")
+            loadProgress(8) })
+            document.getElementById('s6').addEventListener('loaded', function() { console.log("s 6 loaded")
+            loadProgress(8) })
+            document.getElementById('s11').addEventListener('loaded', function() { console.log("s 11 loaded")
+            loadProgress(8) })
 </script> 
     </body>
 </html>
