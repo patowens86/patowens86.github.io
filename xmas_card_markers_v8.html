@@ -130,7 +130,7 @@
           <a-asset-item id="gift_4" src="/models/Gift_4.glb"></a-asset-item>
           <a-asset-item id="gift_6" src="/models/Gift_6.glb"></a-asset-item>
           <a-asset-item id="gift_11" src="/models/Gift_11.glb"></a-asset-item>
-          <video id="s3_video" preload="auto" autoplay="true" loop="true" src="/videos/scene3.mp4"></video>
+          <video id="s3_video" preload="auto" autoplay="false" loop="true" src="/videos/scene3.mp4"></video>
           <audio id="song_file" loop="false" src="/audio/JingleBells_s.mp3"></audio>
    <!--        <img id="santa_selfie" loop="false" src="/graphics/SantaSelfie.gif"> -->
           <!--
@@ -200,7 +200,7 @@
                   gltf-model='#s3' scale=".5 .5 .5" animation-mixer rotation="90 0 0">
                 </a-entity>
                 <a-entity position= "0 2.75 .8" scale="1.5 1 1">
-                  <a-video autoplay="true" id="laptop_video" src="#s3_video"></a-video>
+                  <a-video autoplay="false" id="laptop_video" src="#s3_video"></a-video>
                 </a-entity>
               </a-entity>
           </a-marker>
@@ -267,7 +267,7 @@
           </a-marker>
 
           <!-- <a-entity id="selfie_frame" visible="false" geometry="primitive:plane;" position='0 0 -2' scale=".7725 1.6 1" material="shader:gif;src:url(/graphics/SantaSelfieRepaired.gif);" gif="" autoplay="true"></a-entity> -->
-          <a-entity camera cursor="rayOrigin: mouse; fuse: true" raycaster="objects: a-box">
+          <a-entity id="fuseCursor" camera cursor="rayOrigin: mouse; fuse: true" raycaster="objects: a-box">
           </a-entity>
         </a-scene>
         <script>

@@ -47,7 +47,8 @@ AFRAME.registerComponent('start-animation', {
   init: function () {
     var el = this.el;
     var model = document.getElementById(this.data.name)
-    var scene1model = document.getElementById('scene1_santa_model')
+    // var scene1model = document.getElementById('scene1_santa_model')
+    var cursor = document.getElementById('fuseCursor')
     var isNotActive = true
     var scene = document.getElementsByTagName("a-scene")
     const closeButton = document.getElementById('closeButton')
@@ -92,6 +93,7 @@ AFRAME.registerComponent('start-animation', {
           console.log(this.data.name + " is active")
           if(this.data.name == "s2"){
             videoClip.play();  
+            console.log("playing video")
           }
           
           if(this.data.length) {
@@ -99,12 +101,13 @@ AFRAME.registerComponent('start-animation', {
             if(isSelfie == "false"){
               setTimeout(
                 function() {
-                  console.log("Scene time ran out")
-                  sceneEnd();
-                  for (child in el.children)
-                    {
-                      child.emit(this.data.name +"_end")
-                    }
+                  isSceneActiveCheck()
+                  
+                  //sceneEnd();
+                  // for (child in el.children)
+                  //   {
+                  //     child.emit(this.data.name +"_end")
+                  //   }
                 }, this.data.length);
             }
         }
@@ -133,9 +136,17 @@ AFRAME.registerComponent('start-animation', {
       }
     }
     
+    function isSceneActiveCheck() {
+      if (isNotActive == false) {
+        sceneEnd()
+        console.log("scene timed out")
+      }
+      else { console.log("scene was already finished")}
+    }
+    
     function sceneStart(){
       //document.querySelector('a-scene').components.screenshot.capture('perspective')
-      
+      cursor.setAttribute('cursor', 'rayOrigin: mouse; fuse: false')
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
       }
@@ -159,7 +170,6 @@ AFRAME.registerComponent('start-animation', {
        if(isSelfie == "true") {
           setTimeout(
                 function() {
-                  console.log("Scene time ran out")
                   startSelfie();
                 }, animationLength);
        } else {
@@ -167,6 +177,7 @@ AFRAME.registerComponent('start-animation', {
         closeButton.hidden = false}
 
        videoClip.play()
+
 
 
     }
@@ -197,6 +208,7 @@ AFRAME.registerComponent('start-animation', {
           photoFrame.style.display = "none" 
 
        }
+       cursor.setAttribute('cursor', 'rayOrigin: mouse; fuse: true')
     }
   }
 });
