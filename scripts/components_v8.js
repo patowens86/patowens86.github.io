@@ -402,8 +402,8 @@ AFRAME.registerComponent('photo-mode', {
      
     document.getElementById("shutterButton").addEventListener("click", function() {
         let aScene = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
-        let frame = captureVideoFrame("video", "png");
-        //aScene = resizeCanvas(aScene, frame.width, frame.height);
+        let frame = captureVideoFrame("video", "png", aScene.width, aScene.height);
+        aScene = resizeCanvas(aScene, frame.width, frame.height);
         frame = frame.dataUri;
          
         mergeImages([frame, aScene]).then(b64 => {
