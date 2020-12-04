@@ -72,7 +72,7 @@ html {
   height: 100vh;
   text-align: center;
   padding-top: 150px;
-  background: url("/graphics/loading-head.png") center top/contain no-repeat;
+  background: url("/graphics/loading-head.svg") center top/contain no-repeat;
   background-color: ffffff;
 
 }
@@ -117,7 +117,7 @@ html {
   height: 100%;
   background: #fff;
   opacity: 0;
-  z-index: 9999;
+  
 }
 .xblink--active {
   -webkit-animation: xblink 3s linear forwards;

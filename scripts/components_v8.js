@@ -80,9 +80,9 @@ AFRAME.registerComponent('start-animation', {
 
           // for (child in el.children)
           // {
-          for (child in model) {
-            console.log(child.constructor.name)
-          }
+          // for (child in model) {
+          //   console.log(child.constructor.name)
+          // }
 
           // }
           console.log(this.data.name + " is active")
@@ -286,6 +286,7 @@ AFRAME.registerComponent('photo-mode', {
     const keepContainer = document.getElementsByClassName('xdis')[0]
     const keepButton = document.getElementById('keepButton')
     const discardButton = document.getElementById('discardButton')
+    const photoFrame = document.getElementById('selfieContainer')
     //const overlay = document.getElementById('photoOverlay')
     
     let shareFile
@@ -301,7 +302,7 @@ AFRAME.registerComponent('photo-mode', {
       container.classList.remove('photo')
       container.classList.remove('share')
       canvas.classList.remove('blur')
-      selfie_frame.setAttribute('visible', false)
+      photoFrame.style.display = 'none'
       audioButton.style.display = 'block'
       keepContainer.style.display = 'none'
       //overlay.setAttribute('visible', false)
@@ -348,7 +349,7 @@ AFRAME.registerComponent('photo-mode', {
           container.classList.add('photo')
           canvas.classList.add('blur')
           audioButton.style.display = 'none'
-          
+          photoFrame.style.display = 'none'
           // Tell the restart-camera script to start watching for issues
           window.dispatchEvent(new Event('ensurecamerastart'))
     })
@@ -404,7 +405,7 @@ AFRAME.registerComponent('photo-mode', {
         retakeButton.classList.add('solo')
         console.log(`Your browser doesn't support one tap share. Long-press the picture to share it.`);
       }
-      selfie_frame.setAttribute('visible', false)
+      // selfie_frame.setAttribute('visible', false)
     })
     
     this.el.sceneEl.addEventListener('screenshotready', e => {

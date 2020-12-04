@@ -5,6 +5,7 @@
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="/scripts/components_v8.js"></script>
+  <script src="/jquery.js"></script>
 <!--   <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script> --> <!--
   <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script> -->
 
@@ -25,7 +26,8 @@
   <body style="margin : 0px; overflow: hidden;">
 <!-- Loading screen -->
 
-  <div class="xload" style="z-index: 9999;">
+  <div class="xload" style="  height: 100vh; text-align: center; padding-top: 150px; background: url('/graphics/loading-head.svg') center top/contain no-repeat;
+  background-color: ffffff;z-index: 9999;">
     <div><img id="xload-img" src="/graphics/gift-box.gif" alt="" style="z-index: 9999"></div>
     <div class="xload__bar" style="z-index: 9999">
     <!-- modify these styles to reflect loading progress from 0 to 100% -->
@@ -49,30 +51,30 @@
     <p id="instructionText">Tap a <b>gift box</b> to activate a scene.</p>
   </div>
 
-	<div id="audioIconContainer" style=" z-index: 9998">
-	 <div id="audioIcon" class="audioOff" style="z-index: 9998"></div>
+	<div id="audioIconContainer" style=" z-index: 9999">
+	 <div id="audioIcon" class="audioOff" style="z-index: 9999"></div>
 	</div>
 
-	<div id="photoModeContainer" style=" z-index: 9998">
+	<div id="photoModeContainer" style=" z-index: 9999">
 
 	  <div id="photoModeBG"></div>
 	  <img id="photoModeImage">
 	  <div id="flash"></div>
-	  <div id="shutterButton"></div>
+	  <div id="shutterButton" style="z-index:9999"></div>
 	  <div id="closeButton"></div>
 
 	  <div id="photoPrompts">
-	      <p id="shareBlurb">Tap and hold to save the picture!</span></p>
-	      <p id="shareBlurbAlt">Tap and hold to save the picture!</p>
-	      <div id="shareButton">
+	      <p id="shareBlurb" style="z-index:11">Tap and hold to save the picture!</span></p>
+	      <p id="shareBlurbAlt" style="z-index:11">Tap and hold to save the picture!</p>
+	      <div id="shareButton" style="z-index:11">
 	        <p id="shareButtonText">Share</p>
 	      </div>
-	      <div id="retakeButton">
+	      <div id="retakeButton" style="z-index:11">
 	        <p>Retake</p>
 	      </div>
 
 	  </div>
-    <div id="selfieContainer" style="display: none">
+    <div id="selfieContainer" style="display: none; z-index: 10">
       <img id="santaSelfie" src='/graphics/SantaSelfie.gif'></div>
     </div>
   </div>
@@ -81,19 +83,18 @@
   <!-- get .xblink__widget as a container, and add .xblink--active to get a blink effect (you can remove and add the class again to start the animation) -->
   <div id="cameraflash" class="xblink__widget"></div>
 </div>
-
-</div>
-
       <div class="xdis" style="display: none; z-index: 9999">
       <div class="xdis__widget">
         <div class="xdis__title">Discard Photo?</div>
         <p>If you go back now, you will lose your photo</p>
         <div class="xdis__button">
-          <div id="discardButton" class="xm__button xm__button--outline" style="z-index: 9998">Discard</div>
-          <div id="keepButton" class="xm__button" style="z-index: 9998">Keep</div>
+          <div id="discardButton" class="xm__button xm__button--outline" style="z-index: 9999">Discard</div>
+          <div id="keepButton" class="xm__button" style="z-index: 9999">Keep</div>
         </div>
       </div>
     </div>
+</div>
+
 
 
   <a-scene
@@ -129,7 +130,7 @@
           <a-asset-item id="gift_11" src="/models/Gift_11.glb"></a-asset-item>
           <video id="s3_video" preload="auto" autoplay="true" loop="true" src="/videos/scene3.mp4"></video>
           <audio id="song_file" loop="false" src="/audio/JingleBells_s.mp3"></audio>
-          <img id="santa_selfie" loop="false" src="/graphics/SantaSelfie.gif">
+   <!--        <img id="santa_selfie" loop="false" src="/graphics/SantaSelfie.gif"> -->
           <!--
           <audio id="s1_audio" autoplay="false" loop="false" src="/audio/scene1.mp3"></sound>
           <audio id="s3_audio" autoplay="false" loop="false" src="/audio/scene2.mp3"></sound>
