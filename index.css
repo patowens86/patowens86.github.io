@@ -180,7 +180,7 @@ html {
   height: auto;
   position: absolute;
   top: 2vmin;
-  right: 2vmin;
+  left: 2vmin;
   border-radius: 50%;
 }
 #audioIcon{
@@ -336,7 +336,7 @@ h2 {
 #closeButton {
   background-image: url('./icons/close.svg');
 
-  display: none;
+ 
   width: 8vmin;
   height: 8vmin;
   left: 92.5%;

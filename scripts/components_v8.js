@@ -50,6 +50,7 @@ AFRAME.registerComponent('start-animation', {
     var scene1model = document.getElementById('scene1_santa_model')
     var isNotActive = true
     var scene = document.getElementsByTagName("a-scene")
+    const closeButton = document.getElementById('closeButton')
     var giftArray = document.getElementsByClassName("gift")
     var sceneArray = document.getElementsByClassName("scene")
     var audioArray = document.getElementsByClassName("audio")
@@ -114,10 +115,19 @@ AFRAME.registerComponent('start-animation', {
         }
       });
 
+
+    closeButton.addEventListener('click', () => {
+      if (isNotActive == false) {
+        sceneEnd();
+      }
+      //else {closeButton.removeEventListener('click')}
+    })
+
     function startSelfie(){
       xblink_widget.classList.add('xblink--active')
       photoFrame.style.display = "block"
       shutterButton.hidden = false
+      closeButton.hidden = false
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
       }
@@ -125,6 +135,7 @@ AFRAME.registerComponent('start-animation', {
     
     function sceneStart(){
       //document.querySelector('a-scene').components.screenshot.capture('perspective')
+      
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
       }
@@ -151,7 +162,10 @@ AFRAME.registerComponent('start-animation', {
                   console.log("Scene time ran out")
                   startSelfie();
                 }, animationLength);
-       } else {        shutterButton.hidden = false }
+       } else {
+        shutterButton.hidden = false
+        closeButton.hidden = false}
+
        videoClip.play()
 
 
@@ -159,6 +173,7 @@ AFRAME.registerComponent('start-animation', {
     function sceneEnd() {
         console.log("scene ending")
         shutterButton.hidden = true
+        closeButton.hidden = true
         if(scan)
         {
           scanInstructions.style.display = 'block'  
@@ -295,6 +310,7 @@ AFRAME.registerComponent('photo-mode', {
     const keepButton = document.getElementById('keepButton')
     const discardButton = document.getElementById('discardButton')
     const photoFrame = document.getElementById('selfieContainer')
+    var photoHasBeenTaken = false;
     //const overlay = document.getElementById('photoOverlay')
     
     let shareFile
@@ -302,6 +318,7 @@ AFRAME.registerComponent('photo-mode', {
     
     // Container starts hidden so it isn't visible when the page is still loading
     shutterButton.hidden = true
+    closeButton.hidden = true
 /*    canvas.addEventListener('click', () => {
       console.log("tapped")
     })*/
@@ -318,20 +335,27 @@ AFRAME.registerComponent('photo-mode', {
       // Tell the restart-camera script to stop watching for issues
         window.dispatchEvent(new Event('ensurecameraend'))
       }, 1000)
+      photoHasBeenTaken = false
     })
 
     closeButton.addEventListener('click', () => {
-      keepContainer.style.display='block'
-      //overlay.setAttribute('visible', false)
-      setTimeout(() => {
-      // Tell the restart-camera script to stop watching for issues
-        window.dispatchEvent(new Event('ensurecameraend'))
-      }, 1000)
+      if (photoHasBeenTaken == true) {
+        keepContainer.style.display='block'
+      
+
+        //overlay.setAttribute('visible', false)
+        setTimeout(() => {
+        // Tell the restart-camera script to stop watching for issues
+          window.dispatchEvent(new Event('ensurecameraend'))
+        }, 1000)
+        photoHasBeenTaken = false
+      }
     })
 
     keepButton.addEventListener('click', () => {
       console.log("Keep button clicked")
       keepContainer.style.display = 'none'
+      photoHasBeenTaken = true
     })
 /*
     shutterButton.addEventListener('click', () => {
@@ -417,6 +441,8 @@ AFRAME.registerComponent('photo-mode', {
         aScene = resizeCanvas(aScene, frame.width, frame.height);
         santaSelfie = resizeCanvas(santaSelfie, frame.width, frame.height)
         frame = frame.dataUri;
+
+        photoHasBeenTaken = true;
          
         if(selfieContainer.style.display == "block") {
             mergeImages([frame, aScene, '/graphics/SantaSelfiepng.png'], {
