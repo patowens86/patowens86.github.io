@@ -475,7 +475,7 @@ AFRAME.registerComponent('photo-mode', {
         aSceneHeight = frame.height
         console.log("adjusted ascene height: " + frame.height)
         //console.log("adjusted ascene height: " + aScene.height)
-        console.log("adjusted ascene width: " + frame.height*(aSceneWidth/aSceneHeight))
+        console.log("adjusted ascene width: " + (frame.height*(aSceneWidth/aSceneHeight))*.8)
         santaSelfie = resizeCanvas(santaSelfie, frame.width, frame.height)
         frame = frame.dataUri;
 
