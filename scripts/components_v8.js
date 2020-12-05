@@ -468,6 +468,8 @@ AFRAME.registerComponent('photo-mode', {
         console.log("frame width: " + frame.width)
 
         aScene = resizeCanvas(aScene, frame.height*(aSceneWidth/aSceneHeight), frame.height);
+        aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)
+        aSceneHeight = frame.height
         console.log("adjusted ascene height: " + frame.height)
         //console.log("adjusted ascene height: " + aScene.height)
         console.log("adjusted ascene width: " + frame.height*(aSceneWidth/aSceneHeight))
@@ -514,8 +516,8 @@ AFRAME.registerComponent('photo-mode', {
             });
         } else {
             mergeImages( [
-              {src: frame, x: (frame.width/2), y: (frame.height/2)},
-              {src: aScene, x: (frame.height*(aSceneWidth/aSceneHeight))/2, y: (frame.height/2)}], {//, '/graphics/SantaSelfie.gif'], {
+              {src: frame, x: -(frame.width/3), y: 0},
+              {src: aScene, x: -(aSceneWidth/3), y: 0}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
               height: frame.height, 
               quality: 1
