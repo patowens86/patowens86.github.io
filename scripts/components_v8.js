@@ -454,6 +454,8 @@ AFRAME.registerComponent('photo-mode', {
         let aScene = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
         console.log("ascene height: " + aScene.height)
         console.log("ascene width: " + aScene.width)
+        aSceneWidth = aScene.width;
+        aSceneHeight = aScene.height;
         let aSceneOrig = document.querySelector("a-canvas")
         let santaSelfie = document.getElementById("santaSelfie")
         let frame = captureVideoFrame("video", "png", sceneWidth);
@@ -465,9 +467,10 @@ AFRAME.registerComponent('photo-mode', {
         console.log("frame height: " + frame.height)
         console.log("frame width: " + frame.width)
 
-        aScene = resizeCanvas(aScene, frame.width*(sceneHeight/sceneWidth), frame.height);
+        aScene = resizeCanvas(aScene, frame.height*(aSceneWidth/aSceneHeight), frame.height);
         console.log("adjusted ascene height: " + frame.height)
-        console.log("adjusted ascene width: " + frame.width*(sceneHeight/sceneWidth))
+        //console.log("adjusted ascene height: " + aScene.height)
+        console.log("adjusted ascene width: " + frame.height*(aSceneWidth/aSceneHeight))
         santaSelfie = resizeCanvas(santaSelfie, frame.width, frame.height)
         frame = frame.dataUri;
 
@@ -512,7 +515,7 @@ AFRAME.registerComponent('photo-mode', {
         } else {
             mergeImages( [
               {src: frame, x: (frame.width/2), y: (frame.height/2)},
-              {src: aScene, x: (aScene.width/2), y: (aScene.height/2)}], {//, '/graphics/SantaSelfie.gif'], {
+              {src: aScene, x: (frame.height*(aSceneWidth/aSceneHeight))/2, y: (frame.height/2)}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
               height: frame.height, 
               quality: 1
