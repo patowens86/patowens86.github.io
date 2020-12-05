@@ -143,7 +143,7 @@ AFRAME.registerComponent('start-animation', {
       }
       else { console.log("scene was already finished")}
     }
-    
+
     function sceneStart(){
       //document.querySelector('a-scene').components.screenshot.capture('perspective')
       cursor.setAttribute('cursor', 'rayOrigin: mouse; fuse: false')
@@ -327,6 +327,8 @@ AFRAME.registerComponent('photo-mode', {
     
     let shareFile
     let imageUrl
+
+
     
     // Container starts hidden so it isn't visible when the page is still loading
     shutterButton.hidden = true
@@ -444,11 +446,22 @@ AFRAME.registerComponent('photo-mode', {
     }
      
     document.getElementById("shutterButton").addEventListener("click", function() {
+        let sceneHeight = $(window).height()
+        let sceneWidth = $(window).width()
+        let sceneHeightHalf = sceneHeight/2
+        let sceneWidthHalf = sceneWidth/2
+
         let aScene = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
         let aSceneOrig = document.querySelector("a-canvas")
         let santaSelfie = document.getElementById("santaSelfie")
-        let frame = captureVideoFrame("video", "png");
+        let frame = captureVideoFrame("video", "png", sceneWidth);
         let selfieContainer = document.getElementById('selfieContainer')
+
+
+        console.log("window height: " + sceneHeight)
+        console.log("window width: " + sceneWidth)
+        console.log("frame height: " + frame.height)
+        console.log("frame width: " + frame.width)
 
         aScene = resizeCanvas(aScene, frame.width, frame.height);
         santaSelfie = resizeCanvas(santaSelfie, frame.width, frame.height)
@@ -457,9 +470,12 @@ AFRAME.registerComponent('photo-mode', {
         photoHasBeenTaken = true;
          
         if(selfieContainer.style.display == "block") {
-            mergeImages([frame, aScene, '/graphics/SantaSelfiepng.png'], {
-              width: aScene.width,
-              height: aScene.height
+            mergeImages([
+              {frame, x: (frame.width/2), y: (frame.height/2)},
+              {aScene, x: (frame.width/2), y: (frame.height/2)},
+              '/graphics/SantaSelfiepng.png'], {
+              width: frame.width,
+              height: frame.height
             }).then(b64 => {
               // Hide the flash
               container.classList.remove('flash')
@@ -490,9 +506,12 @@ AFRAME.registerComponent('photo-mode', {
               console.log(b64)
             });
         } else {
-              mergeImages([frame, aScene], {//, '/graphics/SantaSelfie.gif'], {
-              width: aScene.width,
-              height: aScene.height
+            mergeImages( [
+              {src: frame, x: (frame.width/2), y: (frame.height/2)},
+              {src: aScene, x: (frame.width/2), y: (frame.height/2)}], {//, '/graphics/SantaSelfie.gif'], {
+              width: sceneWidth,
+              height: frame.height, 
+              quality: 1
             }).then(b64 => {
               // Hide the flash
               container.classList.remove('flash')
@@ -520,7 +539,8 @@ AFRAME.registerComponent('photo-mode', {
               
               // Tell the restart-camera script to start watching for issues
               window.dispatchEvent(new Event('ensurecamerastart'))
-              console.log(b64)
+              //Show the b64 data
+              ////console.log(b64)
             });
         }
 
@@ -537,11 +557,12 @@ AFRAME.registerComponent('photo-mode', {
         if (!video || (format !== 'png' && format !== 'jpeg')) {
             return false;
         }
+        console.log("video widht: " + video.videoWidth + "  Video height: " + video.videoHeight)
         var canvas = document.createElement("CANVAS");
         canvas.width = width || video.videoWidth;
         canvas.height = height || video.videoHeight;
         canvas.getContext('2d').drawImage(video, 0, 0);
-        var dataUri = canvas.toDataURL('image/' + format);
+        var dataUri = canvas.toDataURL('image/' + format, 1);
         var data = dataUri.split(',')[1];
         var mimeType = dataUri.split(';')[0].slice(5)
  
