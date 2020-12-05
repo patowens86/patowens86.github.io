@@ -458,15 +458,18 @@ AFRAME.registerComponent('photo-mode', {
         aSceneHeight = aScene.height;
         let aSceneOrig = document.querySelector("a-canvas")
         let santaSelfie = document.getElementById("santaSelfie")
-        let frame = captureVideoFrame("video", "png", sceneWidth);
+        let actualFrameHeight = 0
+        let frame = captureVideoFrame("video", "png");
         let selfieContainer = document.getElementById('selfieContainer')
+
 
 
         console.log("window height: " + sceneHeight)
         console.log("window width: " + sceneWidth)
         console.log("frame height: " + frame.height)
         console.log("frame width: " + frame.width)
-
+        //console.log("frame width: " + frame.style.width)
+        console.log("actual frame height: " + actualFrameHeight)
         aScene = resizeCanvas(aScene, frame.height*(aSceneWidth/aSceneHeight), frame.height);
         aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)
         aSceneHeight = frame.height
@@ -559,7 +562,11 @@ AFRAME.registerComponent('photo-mode', {
     function captureVideoFrame(video, format, width, height) {
         if (typeof video === 'string') {
           //we select the video source of the camera, not the other videos
-            video = document.querySelectorAll(video)[1];
+            video = document.getElementById('arjs-video');
+            console.log("video style width: " + video.style.width)
+            console.log("video style height: " + video.style.height)
+            actualFrameHeight = parseInt(video.style.height, 10)
+            console.log(parseInt(actualFrameHeight, 10))
         }
         format = format || 'jpeg';
  
@@ -568,8 +575,8 @@ AFRAME.registerComponent('photo-mode', {
         }
         console.log("video widht: " + video.videoWidth + "  Video height: " + video.videoHeight)
         var canvas = document.createElement("CANVAS");
-        canvas.width = width || video.videoWidth;
-        canvas.height = height || video.videoHeight;
+        canvas.width = width || parseInt(video.style.width, 10);
+        canvas.height = height || parseInt(video.style.height, 10);
         canvas.getContext('2d').drawImage(video, 0, 0);
         var dataUri = canvas.toDataURL('image/' + format, 1);
         var data = dataUri.split(',')[1];
