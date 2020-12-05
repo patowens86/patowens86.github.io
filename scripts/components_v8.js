@@ -470,7 +470,7 @@ AFRAME.registerComponent('photo-mode', {
         console.log("frame width: " + frame.width)
         //console.log("frame width: " + frame.style.width)
         console.log("actual frame height: " + actualFrameHeight)
-        aScene = resizeCanvas(aScene, frame.height*(aSceneWidth/aSceneHeight), frame.height);
+        aScene = resizeCanvas(aScene, (frame.height*(aSceneWidth/aSceneHeight))*.8, frame.height);
         aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)
         aSceneHeight = frame.height
         console.log("adjusted ascene height: " + frame.height)
@@ -563,10 +563,10 @@ AFRAME.registerComponent('photo-mode', {
         if (typeof video === 'string') {
           //we select the video source of the camera, not the other videos
             video = document.getElementById('arjs-video');
-            console.log("video style width: " + video.style.width)
-            console.log("video style height: " + video.style.height)
-            actualFrameHeight = parseInt(video.style.height, 10)
-            console.log(parseInt(actualFrameHeight, 10))
+            videoStyleWidth = parseInt(video.style.width , 10)
+            videoStyleHeight = parseInt(video.style.height, 10)
+            console.log("video style width: " + videoStyleWidth)
+            console.log("video style height: " + videoStyleHeight)
         }
         format = format || 'jpeg';
  
@@ -575,8 +575,8 @@ AFRAME.registerComponent('photo-mode', {
         }
         console.log("video widht: " + video.videoWidth + "  Video height: " + video.videoHeight)
         var canvas = document.createElement("CANVAS");
-        canvas.width = width || parseInt(video.style.width, 10);
-        canvas.height = height || parseInt(video.style.height, 10);
+        canvas.width = width || videoStyleWidth
+        canvas.height = height || videoStyleHeight
         canvas.getContext('2d').drawImage(video, 0, 0);
         var dataUri = canvas.toDataURL('image/' + format, 1);
         var data = dataUri.split(',')[1];
