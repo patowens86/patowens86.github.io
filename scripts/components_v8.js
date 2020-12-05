@@ -471,7 +471,7 @@ AFRAME.registerComponent('photo-mode', {
         //console.log("frame width: " + frame.style.width)
         console.log("actual frame height: " + actualFrameHeight)
         aScene = resizeCanvas(aScene, (frame.height*(aSceneWidth/aSceneHeight))*.8, frame.height);
-        aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)
+        aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)*.8
         aSceneHeight = frame.height
         console.log("adjusted ascene height: " + frame.height)
         //console.log("adjusted ascene height: " + aScene.height)
