@@ -452,6 +452,8 @@ AFRAME.registerComponent('photo-mode', {
         let sceneWidthHalf = sceneWidth/2
 
         let aScene = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
+        console.log("ascene height: " + aScene.height)
+        console.log("ascene width: " + aScene.width)
         let aSceneOrig = document.querySelector("a-canvas")
         let santaSelfie = document.getElementById("santaSelfie")
         let frame = captureVideoFrame("video", "png", sceneWidth);
@@ -463,7 +465,9 @@ AFRAME.registerComponent('photo-mode', {
         console.log("frame height: " + frame.height)
         console.log("frame width: " + frame.width)
 
-        aScene = resizeCanvas(aScene, frame.width, frame.height);
+        aScene = resizeCanvas(aScene, frame.width, frame.height*(sceneWidth/sceneHeight));
+        console.log("adjusted ascene height: " + aScene.height)
+        console.log("adjusted ascene width: " + aScene.width)
         santaSelfie = resizeCanvas(santaSelfie, frame.width, frame.height)
         frame = frame.dataUri;
 
@@ -472,7 +476,7 @@ AFRAME.registerComponent('photo-mode', {
         if(selfieContainer.style.display == "block") {
             mergeImages([
               {frame, x: (frame.width/2), y: (frame.height/2)},
-              {aScene, x: (frame.width/2), y: (frame.height/2)},
+              {aScene, x: (aScene.width/2), y: (aScene.height/2)},
               '/graphics/SantaSelfiepng.png'], {
               width: frame.width,
               height: frame.height
@@ -508,7 +512,7 @@ AFRAME.registerComponent('photo-mode', {
         } else {
             mergeImages( [
               {src: frame, x: (frame.width/2), y: (frame.height/2)},
-              {src: aScene, x: (frame.width/2), y: (frame.height/2)}], {//, '/graphics/SantaSelfie.gif'], {
+              {src: aScene, x: (aScene.width/2), y: (aScene.height/2)}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
               height: frame.height, 
               quality: 1
