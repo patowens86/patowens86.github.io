@@ -470,6 +470,7 @@ AFRAME.registerComponent('photo-mode', {
     }
      
     document.getElementById("shutterButton").addEventListener("click", function() {
+        console.log("version .05" + 1)
         console.log("clicking shutter button at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         $('.flash').show().animate({opacity: 1}, 300) 
         let sceneHeight = $(window).height()
@@ -487,7 +488,7 @@ AFRAME.registerComponent('photo-mode', {
         console.log("getting canvas screenshot at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         let scene = document.querySelector("a-scene")
         scene.setAttribute('screenshot', {
-          width: sceneHeight*2,
+          width: sceneWidth,
           height: sceneHeight
         })
         console.log(scene.components.screenshot.height + ' ' + scene.components.screenshot.width)
@@ -512,9 +513,9 @@ AFRAME.registerComponent('photo-mode', {
         // //console.log("frame width: " + frame.style.width)
         // console.log("actual frame height: " + actualFrameHeight)
         console.log("resizing ascene canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
-        aScene = resizeCanvas(aScene, (frame.height*(aSceneWidth/aSceneHeight))*.75, frame.height);
+        aScene = resizeCanvas(aScene, sceneWidth*2, sceneHeight)
         console.log("finished ascene resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
-        aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)*.75
+        aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)
         aSceneHeight = frame.height
         // console.log("adjusted ascene height: " + frame.height)
         // //console.log("adjusted ascene height: " + aScene.height)
@@ -565,7 +566,7 @@ AFRAME.registerComponent('photo-mode', {
         // } else {
             mergeImages( [
               {src: frame, x: -(frame.width/3), y: 0},
-              {src: aScene, x: -(aSceneWidth/3), y: 0}, 
+              {src: aScene, x: -(sceneWidth/2), y: 0}, 
               {src: '/graphics/sixtytwo_small.png', x: 0, y: 0}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
               height: frame.height, 
