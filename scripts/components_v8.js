@@ -450,6 +450,12 @@ AFRAME.registerComponent('photo-mode', {
         let sceneWidth = $(window).width()
         // let sceneHeightHalf = sceneHeight/2
         // let sceneWidthHalf = sceneWidth/2
+              // Show the photo
+              container.classList.add('photo')
+              canvas.classList.add('blur')
+              audioButton.style.display = 'none'
+              photoFrame.style.display = 'none'
+
 
         let aScene = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
         // console.log("ascene height: " + aScene.height)
@@ -520,7 +526,8 @@ AFRAME.registerComponent('photo-mode', {
         // } else {
             mergeImages( [
               {src: frame, x: -(frame.width/3), y: 0},
-              {src: aScene, x: -(aSceneWidth/3), y: 0}], {//, '/graphics/SantaSelfie.gif'], {
+              {src: aScene, x: -(aSceneWidth/3), y: 0}, 
+              {src: '/graphics/sixtytwo_small.png', x: 0, y: 0}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
               height: frame.height, 
               quality: 1
@@ -543,11 +550,7 @@ AFRAME.registerComponent('photo-mode', {
                 })
                 
               
-              // Show the photo
-              container.classList.add('photo')
-              canvas.classList.add('blur')
-              audioButton.style.display = 'none'
-              photoFrame.style.display = 'none'
+
               
               // Tell the restart-camera script to start watching for issues
               window.dispatchEvent(new Event('ensurecamerastart'))
