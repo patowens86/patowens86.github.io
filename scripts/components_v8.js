@@ -10,6 +10,7 @@ AFRAME.registerComponent('loading-xmas', {
     console.log("loading screen initialized")
     var hasLoaded = false;
     var progressBar = document.getElementById("xload__bar_progress")
+        var audioArray = document.getElementsByClassName("audio")
     progressBar.style.width = '100%'
     console.log(progressBar.style.width)
     
@@ -21,6 +22,9 @@ AFRAME.registerComponent('loading-xmas', {
     }, 3000)
 
     laptop_video.play();
+    for (const audio of audioArray) {
+      audio.components.sound.pauseSound();
+    }
     /*
     setTimeout(
       function() {
@@ -67,6 +71,8 @@ AFRAME.registerComponent('start-animation', {
     var animationLength = this.data.length
     var isSelfie = this.data.selfie
     console.log("Selfie state is = " + isSelfie)
+
+
 
       if(scan){
         tapInstructions.style.display = 'none'
@@ -156,6 +162,9 @@ AFRAME.registerComponent('start-animation', {
             startSelfie()
           }, 500)
     }
+    function playAudio(){
+
+    }
 
     function sceneStart(){
       //document.querySelector('a-scene').components.screenshot.capture('perspective')
@@ -191,9 +200,6 @@ AFRAME.registerComponent('start-animation', {
         closeButton.hidden = false}
 
        videoClip.play()
-
-
-
     }
     function sceneEnd() {
         console.log("scene ending")
@@ -245,7 +251,6 @@ AFRAME.registerComponent('toggle-audio', {
 
     
     audioButton.style.display = 'block'
-    console.log("Audio button's display set to block? = " + audioButton.style.display)
     
     let isPlaying = false
     let hasAudioStarted = false
@@ -268,6 +273,10 @@ AFRAME.registerComponent('toggle-audio', {
           sounds[i].setAttribute('volume', 0.5)
         }
         if(!hasAudioStarted) {
+            var sounds = document.getElementsByTagName('a-sound')
+            for(i=0; i<sounds.length; i++) {
+              sounds[i].components.sound.pauseSound();
+            }
             song.components.sound.playSound();
         }
         console.log(sounds[i] + " volume set to 0.5")
