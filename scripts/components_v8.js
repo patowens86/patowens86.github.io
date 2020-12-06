@@ -131,11 +131,26 @@ AFRAME.registerComponent('start-animation', {
 
     el.addEventListener('click', function () {
       console.log("model clicked, time to play video")
-          setTimeout(
-            function() {
-              videoClip.play()
-              console.log("video now playing")
-            }, 2000)
+        video = document.getElementById("laptop_video");
+        video.setAttribute("src", "/videos/Scene3_smaller.mp4");
+        // video.setAttribute("width", "16");
+        // video.setAttribute("height", "9");
+        //video.setAttribute("rotation", "0 180 0");
+        //video.setAttribute("position", "-2 2 -4.15");
+                    video.load();
+        video.addEventListener("loaded", function() {
+            console.log("video has loaded")
+
+            video.play();
+        });
+      // videoClip.load()
+      //     setTimeout(
+      //       function() {
+      //         videoClip.play()
+      //         console.log("video now playing")
+      //         console.log(videoClip.playing)
+      //         console.log(videoClip.isPlaying)
+      //       }, 2000)
           //videoClip.play();
           // this.style.display = 'none';
         })
