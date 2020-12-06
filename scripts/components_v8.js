@@ -368,16 +368,18 @@ AFRAME.registerComponent('photo-mode', {
       photoFrame.style.display = 'none'
       audioButton.style.display = 'block'
       keepContainer.style.display = 'none'
+
       //overlay.setAttribute('visible', false)
       setTimeout(() => {
       // Tell the restart-camera script to stop watching for issues
         window.dispatchEvent(new Event('ensurecameraend'))
       }, 1000)
       photoHasBeenTaken = false
+            closeButton.removeEventListener('click', promptKeep)
     })
 
-    closeButton.addEventListener('click', () => {
-      if (photoHasBeenTaken == true) {
+    function promptKeep() {
+        if (photoHasBeenTaken == true) {
         keepContainer.style.display='block'
       
 
@@ -388,7 +390,9 @@ AFRAME.registerComponent('photo-mode', {
         }, 1000)
         photoHasBeenTaken = false
       }
-    })
+    }
+
+    
 
     keepButton.addEventListener('click', () => {
       console.log("Keep button clicked")
@@ -434,6 +438,7 @@ AFRAME.registerComponent('photo-mode', {
     }
     retakeButton.addEventListener('click', () => {
       container.classList.remove('photo')
+              closeButton.removeEventListener('click', promptKeep)
       container.classList.remove('share')
       canvas.classList.remove('blur')
       audioButton.style.display = 'block'
@@ -473,6 +478,7 @@ AFRAME.registerComponent('photo-mode', {
 
         //console.log("clicking shutter button at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         $('.flash').show().animate({opacity: 1}, 300) 
+        closeButton.addEventListener('click', promptKeep)
         let sceneHeight = $(window).height()
         let sceneWidth = $(window).width()
         //console.log(sceneHeight)
