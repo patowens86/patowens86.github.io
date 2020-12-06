@@ -446,6 +446,8 @@ AFRAME.registerComponent('photo-mode', {
     }
      
     document.getElementById("shutterButton").addEventListener("click", function() {
+        console.log("clicking shutter button at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
+
         // let sceneHeight = $(window).height()
         let sceneWidth = $(window).width()
         // let sceneHeightHalf = sceneHeight/2
@@ -456,7 +458,7 @@ AFRAME.registerComponent('photo-mode', {
               audioButton.style.display = 'none'
               photoFrame.style.display = 'none'
 
-
+        console.log("getting canvas screenshot at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         let aScene = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
         // console.log("ascene height: " + aScene.height)
         // console.log("ascene width: " + aScene.width)
@@ -465,6 +467,7 @@ AFRAME.registerComponent('photo-mode', {
         let aSceneOrig = document.querySelector("a-canvas")
         let santaSelfie = document.getElementById("santaSelfie")
         // let actualFrameHeight = 0
+        console.log("capturing video frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         let frame = captureVideoFrame("video", "jpeg");
         // let selfieContainer = document.getElementById('selfieContainer')
 
@@ -476,17 +479,21 @@ AFRAME.registerComponent('photo-mode', {
         // console.log("frame width: " + frame.width)
         // //console.log("frame width: " + frame.style.width)
         // console.log("actual frame height: " + actualFrameHeight)
+        console.log("resizing ascene canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         aScene = resizeCanvas(aScene, (frame.height*(aSceneWidth/aSceneHeight))*.75, frame.height);
+        console.log("finished ascene resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)*.75
         aSceneHeight = frame.height
         // console.log("adjusted ascene height: " + frame.height)
         // //console.log("adjusted ascene height: " + aScene.height)
         // console.log("adjusted ascene width: " + (frame.height*(aSceneWidth/aSceneHeight))*.75)
+        console.log("resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         santaSelfie = resizeCanvas(santaSelfie, frame.width, frame.height)
+        console.log("frinished resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         frame = frame.dataUri;
 
         photoHasBeenTaken = true;
-         
+         console.log("merging images at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         // if(selfieContainer.style.display == "block") {
         //     mergeImages([
         //       {frame, x: (frame.width/2), y: (frame.height/2)},
