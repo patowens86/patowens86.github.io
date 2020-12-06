@@ -21,7 +21,7 @@ AFRAME.registerComponent('loading-xmas', {
       postload.style.display = 'block'
     }, 3000)
 
-    laptop_video.play();
+    trelloVideo.play();
     for (const audio of audioArray) {
       audio.components.sound.pauseSound();
     }
@@ -566,7 +566,7 @@ AFRAME.registerComponent('photo-mode', {
               {src: frame, x: -(frame.width/3), y: 0},
               {src: aScene, x: -(sceneWidth/2), y: 0}, 
               //TODO figure out how to get the selfie to show up correctly
-              {src: santaSelfie, x: 0, y: (frame.height-721)}], {//, '/graphics/SantaSelfie.gif'], {
+              {src: santaSelfie, x: sceneWidth-371, y: (frame.height-721)}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
               height: frame.height, 
               quality: 1
