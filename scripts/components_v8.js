@@ -448,7 +448,7 @@ AFRAME.registerComponent('photo-mode', {
     document.getElementById("shutterButton").addEventListener("click", function() {
         console.log("clicking shutter button at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
 
-        // let sceneHeight = $(window).height()
+        let sceneHeight = $(window).height()
         let sceneWidth = $(window).width()
         // let sceneHeightHalf = sceneHeight/2
         // let sceneWidthHalf = sceneWidth/2
@@ -459,9 +459,15 @@ AFRAME.registerComponent('photo-mode', {
               photoFrame.style.display = 'none'
 
         console.log("getting canvas screenshot at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
-        let aScene = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
-        // console.log("ascene height: " + aScene.height)
-        // console.log("ascene width: " + aScene.width)
+        let scene = document.querySelector("a-scene")
+        scene.setAttribute('screenshot', {
+          width: sceneWidth*2,
+          height: sceneHeight
+        })
+        console.log(scene.components.screenshot.height + ' ' + scene.components.screenshot.width)
+        let aScene = scene.components.screenshot.getCanvas("perspective");
+        console.log("ascene height: " + aScene.height)
+        console.log("ascene width: " + aScene.width)
         aSceneWidth = aScene.width;
         aSceneHeight = aScene.height;
         let aSceneOrig = document.querySelector("a-canvas")
