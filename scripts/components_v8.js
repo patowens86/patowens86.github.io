@@ -450,6 +450,8 @@ AFRAME.registerComponent('photo-mode', {
 
         let sceneHeight = $(window).height()
         let sceneWidth = $(window).width()
+        console.log(sceneHeight)
+        console.log(sceneWidth)
         // let sceneHeightHalf = sceneHeight/2
         // let sceneWidthHalf = sceneWidth/2
               // Show the photo
