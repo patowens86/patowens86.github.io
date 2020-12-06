@@ -463,7 +463,7 @@ AFRAME.registerComponent('photo-mode', {
         console.log("getting canvas screenshot at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         let scene = document.querySelector("a-scene")
         scene.setAttribute('screenshot', {
-          width: sceneWidth*2,
+          width: sceneHeight*2,
           height: sceneHeight
         })
         console.log(scene.components.screenshot.height + ' ' + scene.components.screenshot.width)
