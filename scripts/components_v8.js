@@ -102,7 +102,7 @@ AFRAME.registerComponent('start-animation', {
 
           // }
           console.log(this.data.name + " is active")
-          if(this.data.name == "s2"){
+          if(this.data.name == "scene3"){
             videoClip.play();  
             console.log("playing video")
           }
@@ -129,6 +129,11 @@ AFRAME.registerComponent('start-animation', {
         }
       });
 
+    el.addEventListener('click', function () {
+      console.log("model clicked, time to play video")
+          videoClip.play();
+          // this.style.display = 'none';
+        })
 
     closeButton.addEventListener('click', () => {
       if (isNotActive == false) {
