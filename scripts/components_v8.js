@@ -61,7 +61,7 @@ AFRAME.registerComponent('start-animation', {
     var audioArray = document.getElementsByClassName("audio")
     const sceneAudio = document.getElementById(this.data.sound_id)
     const song = document.getElementById('song')
-    const videoClip = document.getElementById('laptop_video')
+    var videoClip = document.getElementById('laptop_video')
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
     const scanInstructions = document.getElementById('scanInstructions')
@@ -131,7 +131,12 @@ AFRAME.registerComponent('start-animation', {
 
     el.addEventListener('click', function () {
       console.log("model clicked, time to play video")
-          videoClip.play();
+          setTimeout(
+            function() {
+              videoClip.play()
+              console.log("video now playing")
+            }, 2000)
+          //videoClip.play();
           // this.style.display = 'none';
         })
 
