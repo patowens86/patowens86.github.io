@@ -471,12 +471,12 @@ AFRAME.registerComponent('photo-mode', {
      
     document.getElementById("shutterButton").addEventListener("click", function() {
         console.log("version .05" + 1)
-        console.log("clicking shutter button at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
+        //console.log("clicking shutter button at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         $('.flash').show().animate({opacity: 1}, 300) 
         let sceneHeight = $(window).height()
         let sceneWidth = $(window).width()
-        console.log(sceneHeight)
-        console.log(sceneWidth)
+        //console.log(sceneHeight)
+        //console.log(sceneWidth)
         // let sceneHeightHalf = sceneHeight/2
         // let sceneWidthHalf = sceneWidth/2
               // Show the photo
@@ -485,22 +485,22 @@ AFRAME.registerComponent('photo-mode', {
               audioButton.style.display = 'none'
               photoFrame.style.display = 'none'
 
-        console.log("getting canvas screenshot at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
+        //console.log("getting canvas screenshot at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         let scene = document.querySelector("a-scene")
         scene.setAttribute('screenshot', {
           width: sceneWidth,
           height: sceneHeight
         })
-        console.log(scene.components.screenshot.height + ' ' + scene.components.screenshot.width)
+        //console.log(scene.components.screenshot.height + ' ' + scene.components.screenshot.width)
         let aScene = scene.components.screenshot.getCanvas("perspective");
-        console.log("ascene height: " + aScene.height)
-        console.log("ascene width: " + aScene.width)
+        //console.log("ascene height: " + aScene.height)
+        //console.log("ascene width: " + aScene.width)
         aSceneWidth = aScene.width;
         aSceneHeight = aScene.height;
         let aSceneOrig = document.querySelector("a-canvas")
         let santaSelfie = document.getElementById("santaSelfie")
         // let actualFrameHeight = 0
-        console.log("capturing video frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
+        //console.log("capturing video frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         let frame = captureVideoFrame("video", "jpeg");
         // let selfieContainer = document.getElementById('selfieContainer')
 
@@ -512,21 +512,21 @@ AFRAME.registerComponent('photo-mode', {
         // console.log("frame width: " + frame.width)
         // //console.log("frame width: " + frame.style.width)
         // console.log("actual frame height: " + actualFrameHeight)
-        console.log("resizing ascene canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
+        //console.log("resizing ascene canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         aScene = resizeCanvas(aScene, sceneWidth*2, sceneHeight)
-        console.log("finished ascene resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
+        //console.log("finished ascene resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)
         aSceneHeight = frame.height
         // console.log("adjusted ascene height: " + frame.height)
         // //console.log("adjusted ascene height: " + aScene.height)
         // console.log("adjusted ascene width: " + (frame.height*(aSceneWidth/aSceneHeight))*.75)
-        console.log("resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
+        //console.log("resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         santaSelfie = resizeCanvas(santaSelfie, frame.width, frame.height)
-        console.log("frinished resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
+        //console.log("frinished resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         frame = frame.dataUri;
 
         photoHasBeenTaken = true;
-         console.log("merging images at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
+         //console.log("merging images at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         // if(selfieContainer.style.display == "block") {
         //     mergeImages([
         //       {frame, x: (frame.width/2), y: (frame.height/2)},
