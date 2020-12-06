@@ -446,78 +446,78 @@ AFRAME.registerComponent('photo-mode', {
     }
      
     document.getElementById("shutterButton").addEventListener("click", function() {
-        let sceneHeight = $(window).height()
+        // let sceneHeight = $(window).height()
         let sceneWidth = $(window).width()
-        let sceneHeightHalf = sceneHeight/2
-        let sceneWidthHalf = sceneWidth/2
+        // let sceneHeightHalf = sceneHeight/2
+        // let sceneWidthHalf = sceneWidth/2
 
         let aScene = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
-        console.log("ascene height: " + aScene.height)
-        console.log("ascene width: " + aScene.width)
+        // console.log("ascene height: " + aScene.height)
+        // console.log("ascene width: " + aScene.width)
         aSceneWidth = aScene.width;
         aSceneHeight = aScene.height;
         let aSceneOrig = document.querySelector("a-canvas")
         let santaSelfie = document.getElementById("santaSelfie")
-        let actualFrameHeight = 0
-        let frame = captureVideoFrame("video", "png");
-        let selfieContainer = document.getElementById('selfieContainer')
+        // let actualFrameHeight = 0
+        let frame = captureVideoFrame("video", "jpeg");
+        // let selfieContainer = document.getElementById('selfieContainer')
 
 
 
-        console.log("window height: " + sceneHeight)
-        console.log("window width: " + sceneWidth)
-        console.log("frame height: " + frame.height)
-        console.log("frame width: " + frame.width)
-        //console.log("frame width: " + frame.style.width)
-        console.log("actual frame height: " + actualFrameHeight)
+        // console.log("window height: " + sceneHeight)
+        // console.log("window width: " + sceneWidth)
+        // console.log("frame height: " + frame.height)
+        // console.log("frame width: " + frame.width)
+        // //console.log("frame width: " + frame.style.width)
+        // console.log("actual frame height: " + actualFrameHeight)
         aScene = resizeCanvas(aScene, (frame.height*(aSceneWidth/aSceneHeight))*.75, frame.height);
         aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)*.75
         aSceneHeight = frame.height
-        console.log("adjusted ascene height: " + frame.height)
-        //console.log("adjusted ascene height: " + aScene.height)
-        console.log("adjusted ascene width: " + (frame.height*(aSceneWidth/aSceneHeight))*.75)
+        // console.log("adjusted ascene height: " + frame.height)
+        // //console.log("adjusted ascene height: " + aScene.height)
+        // console.log("adjusted ascene width: " + (frame.height*(aSceneWidth/aSceneHeight))*.75)
         santaSelfie = resizeCanvas(santaSelfie, frame.width, frame.height)
         frame = frame.dataUri;
 
         photoHasBeenTaken = true;
          
-        if(selfieContainer.style.display == "block") {
-            mergeImages([
-              {frame, x: (frame.width/2), y: (frame.height/2)},
-              {aScene, x: (aScene.width/2), y: (aScene.height/2)},
-              '/graphics/SantaSelfiepng.png'], {
-              width: frame.width,
-              height: frame.height
-            }).then(b64 => {
-              // Hide the flash
-              container.classList.remove('flash')
-              // If an error occurs while trying to take the screenshot, e.detail will be empty.
-              // We could either retry or return control to the user
-              if (!b64) {
-                return
-              }
-              // e.detail is the base64 representation of the JPEG screenshot
-              var basestr = b64 //'data:image/jpeg;base64,' + e.detail
-              urlToFile(basestr, 'Merry-Christmas.jpg')
-                .then(res => {
-                  shareFile = res
-                  imageUrl = URL.createObjectURL(res)
-                }).then(() => {
-                  image.src = imageUrl
-                })
+        // if(selfieContainer.style.display == "block") {
+        //     mergeImages([
+        //       {frame, x: (frame.width/2), y: (frame.height/2)},
+        //       {aScene, x: (aScene.width/2), y: (aScene.height/2)},
+        //       '/graphics/SantaSelfiepng.png'], {
+        //       width: frame.width,
+        //       height: frame.height
+        //     }).then(b64 => {
+        //       // Hide the flash
+        //       container.classList.remove('flash')
+        //       // If an error occurs while trying to take the screenshot, e.detail will be empty.
+        //       // We could either retry or return control to the user
+        //       if (!b64) {
+        //         return
+        //       }
+        //       // e.detail is the base64 representation of the JPEG screenshot
+        //       var basestr = b64 //'data:image/jpeg;base64,' + e.detail
+        //       urlToFile(basestr, 'Merry-Christmas.jpg')
+        //         .then(res => {
+        //           shareFile = res
+        //           imageUrl = URL.createObjectURL(res)
+        //         }).then(() => {
+        //           image.src = imageUrl
+        //         })
                 
               
-              // Show the photo
-              container.classList.add('photo')
-              canvas.classList.add('blur')
-              audioButton.style.display = 'none'
-              photoFrame.style.display = 'none'
+        //       // Show the photo
+        //       container.classList.add('photo')
+        //       canvas.classList.add('blur')
+        //       audioButton.style.display = 'none'
+        //       photoFrame.style.display = 'none'
               
-              // Tell the restart-camera script to start watching for issues
-              window.dispatchEvent(new Event('ensurecamerastart'))
-              console.log(b64)
-            });
-        } else {
+        //       // Tell the restart-camera script to start watching for issues
+        //       window.dispatchEvent(new Event('ensurecamerastart'))
+        //       // console.log(b64)
+        //     });
+        // } else {
             mergeImages( [
               {src: frame, x: -(frame.width/3), y: 0},
               {src: aScene, x: -(aSceneWidth/3), y: 0}], {//, '/graphics/SantaSelfie.gif'], {
@@ -554,26 +554,26 @@ AFRAME.registerComponent('photo-mode', {
               //Show the b64 data
               ////console.log(b64)
             });
-        }
+        // }
 
         
     });
 
     function captureVideoFrame(video, format, width, height) {
-        if (typeof video === 'string') {
-          //we select the video source of the camera, not the other videos
+        // if (typeof video === 'string') {
+        //   //we select the video source of the camera, not the other videos
             video = document.getElementById('arjs-video');
             videoStyleWidth = parseInt(video.style.width , 10)
             videoStyleHeight = parseInt(video.style.height, 10)
-            console.log("video style width: " + videoStyleWidth)
-            console.log("video style height: " + videoStyleHeight)
-        }
-        format = format || 'jpeg';
+            // console.log("video style width: " + videoStyleWidth)
+            // console.log("video style height: " + videoStyleHeight)
+        // }
+        // format = format || 'jpeg';
  
-        if (!video || (format !== 'png' && format !== 'jpeg')) {
-            return false;
-        }
-        console.log("video widht: " + video.videoWidth + "  Video height: " + video.videoHeight)
+        // if (!video || (format !== 'png' && format !== 'jpeg')) {
+        //     return false;
+        // }
+        // console.log("video widht: " + video.videoWidth + "  Video height: " + video.videoHeight)
         var canvas = document.createElement("CANVAS");
         canvas.width = width || videoStyleWidth
         canvas.height = height || videoStyleHeight
@@ -590,7 +590,7 @@ AFRAME.registerComponent('photo-mode', {
             arr[i] = bytes.charCodeAt(i);
         }
         var blob = new Blob([ arr ], { type: mimeType });
-        return { blob: blob, dataUri: dataUri, format: format, width: canvas.width, height: canvas.height };
+        return { blob: blob, dataUri: dataUri, format: format, width: videoStyleWidth, height: videoStyleHeight };
     };
 
     shareButton.addEventListener('click', () => {
