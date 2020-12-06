@@ -62,7 +62,7 @@ AFRAME.registerComponent('start-animation', {
     const tapInstructions = document.getElementById('tapInstructions')
     const scanInstructions = document.getElementById('scanInstructions')
     const photoFrame = document.getElementById('selfieContainer')
-    const xblink_widget = document.getElementById('cameraflash')
+    // const xblink_widget = document.getElementById('cameraflash')
     var scan = true
     var animationLength = this.data.length
     var isSelfie = this.data.selfie
@@ -127,7 +127,7 @@ AFRAME.registerComponent('start-animation', {
     })
 
     function startSelfie(){
-      xblink_widget.classList.add('xblink--active')
+      // xblink_widget.classList.add('xblink--active')
       photoFrame.style.display = "block"
       shutterButton.hidden = false
       closeButton.hidden = false
@@ -142,6 +142,19 @@ AFRAME.registerComponent('start-animation', {
         console.log("scene timed out")
       }
       else { console.log("scene was already finished")}
+    }
+
+    function flash(){
+      console.log("flashing!")
+      $('.flash')
+       .show()  //show the hidden div
+       .animate({opacity: 1}, 500) 
+       .fadeOut(300)
+       .css({'opacity': 1})
+       setTimeout(
+          function() {
+            startSelfie()
+          }, 500)
     }
 
     function sceneStart(){
@@ -170,7 +183,8 @@ AFRAME.registerComponent('start-animation', {
        if(isSelfie == "true") {
           setTimeout(
                 function() {
-                  startSelfie();
+                  flash()
+                  //startSelfie();
                 }, animationLength);
        } else {
         shutterButton.hidden = false
@@ -328,7 +342,7 @@ AFRAME.registerComponent('photo-mode', {
     let shareFile
     let imageUrl
 
-
+    $('.flash').hide()
     
     // Container starts hidden so it isn't visible when the page is still loading
     shutterButton.hidden = true
@@ -337,6 +351,16 @@ AFRAME.registerComponent('photo-mode', {
       console.log("tapped")
     })*/
     container.style.display = 'block'
+
+    // function flash(){
+    //   console.log("flashing!")
+    //   $('.flash')
+    //    .show()  //show the hidden div
+    //    .animate({opacity: 1}, 300) 
+    //    .fadeOut(300)
+    //    .css({'opacity': 1});
+    // }
+
     discardButton.addEventListener('click', () => {
       container.classList.remove('photo')
       container.classList.remove('share')
@@ -447,7 +471,7 @@ AFRAME.registerComponent('photo-mode', {
      
     document.getElementById("shutterButton").addEventListener("click", function() {
         console.log("clicking shutter button at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
-
+        $('.flash').show().animate({opacity: 1}, 300) 
         let sceneHeight = $(window).height()
         let sceneWidth = $(window).width()
         console.log(sceneHeight)
@@ -572,7 +596,8 @@ AFRAME.registerComponent('photo-mode', {
               //Show the b64 data
               ////console.log(b64)
             });
-        // }
+            $('.flash').fadeOut(300).css({'opacity': 1});// }
+
 
         
     });
