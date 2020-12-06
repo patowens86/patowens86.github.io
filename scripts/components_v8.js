@@ -470,7 +470,7 @@ AFRAME.registerComponent('photo-mode', {
     }
      
     document.getElementById("shutterButton").addEventListener("click", function() {
-        console.log("version .05" + 1)
+
         //console.log("clicking shutter button at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         $('.flash').show().animate({opacity: 1}, 300) 
         let sceneHeight = $(window).height()
