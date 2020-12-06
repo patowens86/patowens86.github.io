@@ -96,7 +96,7 @@
     background-color: #fff;
     opacity: 0;" ></div>
 </div>
-<img id="selfiePNG" src='/graphics/SantaSelfiepng.png' style="position: absolute; left:0; bottom: 0; width: 100%">
+<!-- <img id="selfiePNG" src='/graphics/SantaSelfiepng.png' style="position: absolute; left:0; bottom: 0; width: 100%" style="display: none"> -->
       <div class="xdis" style="display: none; z-index: 9999">
       <div class="xdis__widget">
         <div class="xdis__title">Discard Photo?</div>
@@ -126,7 +126,10 @@
           <a-asset-item id="s1_santa" src="/models/scene1_santa.glb"></a-asset-item>
           <a-asset-item id="s1_sink" src="/models/scene1_sink.glb"></a-asset-item>
           <a-asset-item id="s3" src="/models/scene3.glb"></a-asset-item>
-          <a-asset-item id="s4" src="/models/scene4.glb"></a-asset-item>
+          <a-asset-item id="s4_santa" src="/models/scene4_santa.glb"></a-asset-item>
+          <a-asset-item id="s4_sink" src="/models/scene4_sink.glb"></a-asset-item>
+          <a-asset-item id="s4_thoughts" src="/models/scene4_thoughts.glb"></a-asset-item>
+          <a-asset-item id="s4_cookie" src="/models/scene4_thoughts.glb"></a-asset-item>
           <a-asset-item id="s6" src="/models/scene6.glb"></a-asset-item>
           <a-asset-item id="s11" src="/models/scene11.glb"></a-asset-item>
           <a-asset-item id="s11_phone" src="/models/scene11_phone.glb"></a-asset-item>
@@ -223,12 +226,76 @@
               </a-entity>
           	</a-box>
               <a-entity class="scene" id='scene4'
-                gltf-model='#s4'
                 animation-mixer
                 visible="false"
                 scale="0.666 0.666 0.666"
-                rotation='90 0 0'
+                rotation='0 0 0'
               >
+                          <a-entity
+                                  position="1.5 0 0"
+                                  rotation="0 270 0"
+                                  scale=".7 .7 .7"
+                                  gltf-model="#s4_sink"
+                                  animation__scale="property: scale; dur: 500; from: .7 .7 .7; to: 0 0 0 ; easing: easeInOutSine; delay: 6000"
+                                  animation-mixer
+                                  >
+                          </a-entity>
+                          <a-entity rotation="0 0 0">
+                            <a-entity
+                                    position="0 0 0"
+                                    rotation="0 90 0"
+                                    gltf-model="#s4_santa"
+                                    animation__turnaround="property: rotation; dur: 500; from: 0 90 0; to: 0 0 0; easing: easeInOutSine; delay: 5500"
+                                    animation-mixer
+                                    >
+                            </a-entity>
+                          </a-entity>
+                          <a-entity
+                                  geometry="primitive: sphere"
+                                  scale = "0 0 0"
+                                  position=".46 1.4 .89"
+                                  rotation="76 -72 -111"
+                                  animation__scale="property: scale; dur: 500; from: 0 0 0; to: .137 .069 .137; easing: easeInOutSine; delay: 8000"
+                                  animation__moveup="property: position; dur: 1250; from: .46 1.4 .89; to: .51 1.89 0.909; easing: easeInOutSine; delay: 8300"
+                                  animation__pump1="property: position; dur: 750; from: .51 1.89 0.909; to: .51 1.84 0.909; easing: easeInOutSine; delay: 9700"
+                                  animation__pump1d="property: position; dur: 600; from: .51 1.84 0.909; to: .51 1.89 0.909; easing: easeInOutSine; delay: 10400"
+                                  animation__pump2="property: position; dur: 600; from: .51 1.89 0.909; to: .51 1.84 0.909; easing: easeInOutSine; delay: 11400"
+                                  animation__pump2d="property: position; dur: 600; from: .51 1.84 0.909; to: .51 1.89 0.909; easing: easeInOutSine; delay: 12100"
+                                  animation__pump3="property: position; dur: 600; from: .51 1.89 0.909; to: .51 1.84 0.909; easing: easeInOutSine; delay: 13100"
+                                  animation__pump3d="property: position; dur: 600; from: .51 1.84 0.909; to: .51 1.89 0.909; easing: easeInOutSine; delay: 13800"
+                                  animation__movedown="property: position; dur: 2000; from: .51 1.89 0.909; to: .46 1.4 1.1; easing: easeInOutSine; delay: 15000"
+                                  animation__scaledown="property: scale; dur: 1000; from: .137 .069 .137; to: 0 0 0; easing: easeInOutSine; delay: 15500"
+                                  >
+                          </a-entity>
+                        
+                          <a-entity
+                                  gltf-model="#s4_thoughts"
+                                  rotation = "0 0 0"
+                                animation-mixer="loop: once">
+                          </a-entity>
+                          
+
+<!--                           <a-entity id="bubble 1"
+                                  geometry="primitive: sphere"
+                                  scale = "0 0 0"
+                                  position = ".6 2 .2"
+                                  animation__scale="property: scale; dur: 100; from: 0 0 0; to: .1 .1 .1; easing: easeOutElastic; delay: 10000"
+                                  animation__scaledown="property: scale; dur: 100; from: .1 .1 .1; to: 0 0 0; easing: easeOutElastic; delay: 13500"
+                          ></a-entity>
+                          <a-entity id="bubble 2"
+                                  geometry="primitive: sphere"
+                                  scale = "0 0 0"
+                                  position = ".78 2.35 .2"
+                                  animation__scale="property: scale; dur: 100; from: 0 0 0; to: .1 .1 .1; easing: easeOutElastic; delay: 10500"
+                                  animation__scaledown="property: scale; dur: 100; from: .1 .1 .1; to: 0 0 0; easing: easeOutElastic; delay: 13000"
+                          ></a-entity>
+                          <a-entity id="bubble big"
+                                  geometry="primitive: sphere"
+                                  scale = "0 0 0"
+                                  position = "1.89 3.2 .2"
+                                  animation__scale="property: scale; dur: 100; from: 0 0 0; to: .1 .1 .1; easing: easeOutElastic; delay: 11000"
+                                  animation__scaledown="property: scale; dur: 100; from: .1 .1 .1; to: 0 0 0; easing: easeOutElastic; delay: 12500"
+                          ></a-entity> -->
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/6.patt">
@@ -304,7 +371,7 @@
             loadProgress(8) })
             document.getElementById('s3').addEventListener('loaded', function() { console.log("s 3 loaded")
             loadProgress(8) })
-            document.getElementById('s4').addEventListener('loaded', function() { console.log("s 4 loaded")
+            document.getElementById('s4_santa').addEventListener('loaded', function() { console.log("s 4 loaded")
             loadProgress(8) })
             document.getElementById('s6').addEventListener('loaded', function() { console.log("s 6 loaded")
             loadProgress(8) })
