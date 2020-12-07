@@ -54,13 +54,14 @@ AFRAME.registerComponent('start-animation', {
     // var scene1model = document.getElementById('scene1_santa_model')
     var cursor = document.getElementById('fuseCursor')
     var isNotActive = true
+    var isPlaying = false
     var scene = document.getElementsByTagName("a-scene")
     const closeButton = document.getElementById('closeButton')
     var giftArray = document.getElementsByClassName("gift")
     var sceneArray = document.getElementsByClassName("scene")
     var audioArray = document.getElementsByClassName("audio")
     var audio_source = this.data.audio_src
-    const sceneAudio = document.getElementById(this.data.audio_src)
+    var sceneAudio// = document.getElementById(this.data.audio_src)
     const song = document.getElementById('song')
     var videoClip = document.getElementById('laptop_video')
     const shutterButton = document.getElementById('shutterButton')
@@ -72,6 +73,9 @@ AFRAME.registerComponent('start-animation', {
     var animationLength = this.data.length
     var isSelfie = this.data.selfie
     var experienceHasStarted = false
+    console.log("this is the combined name: " + model.getAttribute('id') + "_model")
+    var currentScene = model.getAttribute('id')
+    var animations = document.getElementsByClassName(currentScene + "_model")
     console.log("Selfie state is = " + isSelfie)
 
 
@@ -131,6 +135,7 @@ AFRAME.registerComponent('start-animation', {
       });
 
     el.addEventListener('click', function () {
+      tryStartAnimation()
       console.log("model clicked, time to play video")
         video = document.getElementById("laptop_video");
         video.setAttribute("src", "/videos/Scene3_smaller.mp4");
@@ -184,6 +189,60 @@ AFRAME.registerComponent('start-animation', {
       else { console.log("scene was already finished")}
     }
 
+      function tryStartAnimation(){
+        console.log("start_" + currentScene)
+        console.log("Trying to start animation")
+        if (!isPlaying /*&& isNotActive*/) {startAnimation()}
+      }
+
+    function startAnimation() {
+        console.log("starting animation")
+      // document.getElementById("test").emit("startScene1")
+        
+        for (var anim of animations){
+          console.log("starting animation for #" + anim)
+          anim.setAttribute("animation-mixer", "clip: *; duration: " + animationLength/1000)
+          anim.emit("start_" + currentScene)
+        }
+        
+        if (audio_source!=null)
+         {
+          //var scene_audio = document.createElement("a-sound")
+          // if(!experienceHasStarted) {
+            
+          // }
+           console.log("Current id for auidio is: " + currentScene + "_audio")
+            sceneAudio = document.getElementById(currentScene + "_audio")
+                      console.log(audio_source)
+            sceneAudio.setAttribute('src', audio_source)
+
+            //sceneAudio.setAttribute('volume', .5)
+            sceneAudio.components.sound.playSound()
+            console.log("Scene audio is playing: " + sceneAudio.isPlaying)
+          
+        }
+
+        setTimeout( function() {
+
+          // document.getElementById("test").emit("startScene1")
+            for (var anim of animations){
+              anim.setAttribute("animation-mixer", "clip: '';")
+              anim.emit("restart_" + currentScene)
+
+            }
+        // if (isActive) {
+          console.log("looping animation!")
+          isPlaying = false
+          //startAnimation()
+        }
+        //   else{ 
+        //     console.log("ending loop!")
+        //     isPlaying = false }
+
+        // }
+        , animationLength)
+      }
+
     function flash(){
       console.log("flashing!")
       $('.flash')
@@ -219,11 +278,7 @@ AFRAME.registerComponent('start-animation', {
           tapInstructions.style.display = 'none'          
         }
         model.setAttribute('visible', true)
-        if (sceneAudio!=null)
-         {
-          var scene_audio = document.createElement("a-sound")
-          sceneAudio.setAttribute('src', audio_source)
-          sceneAudio.components.sound.playSound()}
+
        isNotActive=false;
        console.log("selfie status is = " + isSelfie)
        if(isSelfie == "true") {
@@ -313,10 +368,10 @@ AFRAME.registerComponent('toggle-audio', {
           sounds[i].setAttribute('volume', 0.5)
         }
         if(!hasAudioStarted) {
-            var sounds = document.getElementsByTagName('a-sound')
-            for(i=0; i<sounds.length; i++) {
-              sounds[i].components.sound.pauseSound();
-            }
+            // var sounds = document.getElementsByTagName('a-sound')
+            // for(i=0; i<sounds.length; i++) {
+            //   sounds[i].components.sound.pauseSound();
+            // }
             song.components.sound.playSound();
         }
         console.log(sounds[i] + " volume set to 0.5")
@@ -332,15 +387,15 @@ AFRAME.registerComponent('toggle-audio', {
 //        isPlaying = true
 //    }
     
-    const startAudio = () => {
-      if (hasAudioStarted === false) {
-        audioToggleIcon.classList.remove('audioOff')
-        audioToggleIcon.classList.add('audioOn')
-        audio.components.sound.playSound();
-        isPlaying = true
-        hasAudioStarted = true
-      }
-    }
+    // const startAudio = () => {
+    //   if (hasAudioStarted === false) {
+    //     audioToggleIcon.classList.remove('audioOff')
+    //     audioToggleIcon.classList.add('audioOn')
+    //     audio.components.sound.playSound();
+    //     isPlaying = true
+    //     hasAudioStarted = true
+    //   }
+    // }
     
     audioButton.addEventListener("click", toggleAudio);
   }
