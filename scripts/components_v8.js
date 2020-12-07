@@ -43,7 +43,7 @@ AFRAME.registerComponent('loading-xmas', {
 AFRAME.registerComponent('start-animation', {
   schema: {
     name: {type: 'string'},
-    sound_id: {type: 'string'},
+    audio_src: {type: 'string'},
     length: {type: 'int'},
     video: {type: 'string'},
     selfie: {default: 'false'}
@@ -59,7 +59,8 @@ AFRAME.registerComponent('start-animation', {
     var giftArray = document.getElementsByClassName("gift")
     var sceneArray = document.getElementsByClassName("scene")
     var audioArray = document.getElementsByClassName("audio")
-    const sceneAudio = document.getElementById(this.data.sound_id)
+    var audio_source = this.data.audio_src
+    const sceneAudio = document.getElementById(this.data.audio_src)
     const song = document.getElementById('song')
     var videoClip = document.getElementById('laptop_video')
     const shutterButton = document.getElementById('shutterButton')
@@ -137,7 +138,7 @@ AFRAME.registerComponent('start-animation', {
         // video.setAttribute("height", "9");
         //video.setAttribute("rotation", "0 180 0");
         //video.setAttribute("position", "-2 2 -4.15");
-                    video.load();
+        video.load();
         video.addEventListener("loaded", function() {
             console.log("video has loaded")
 
@@ -219,7 +220,10 @@ AFRAME.registerComponent('start-animation', {
         }
         model.setAttribute('visible', true)
         if (sceneAudio!=null)
-         {sceneAudio.components.sound.playSound()}
+         {
+          var scene_audio = document.createElement("a-sound")
+          sceneAudio.setAttribute('src', audio_source)
+          sceneAudio.components.sound.playSound()}
        isNotActive=false;
        console.log("selfie status is = " + isSelfie)
        if(isSelfie == "true") {
@@ -247,6 +251,7 @@ AFRAME.registerComponent('start-animation', {
         }
         if(sceneAudio!=null){
           sceneAudio.components.sound.pauseSound()
+          song.setAttribute("src", "/audio/JingleBells_s.mp3");
           song.components.sound.playSound()
         }
         for (const scene of sceneArray) {
@@ -584,8 +589,8 @@ AFRAME.registerComponent('photo-mode', {
 
         photoHasBeenTaken = true;
          // console.log("merging images at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
-        console.log(el.getAttribute('selfieMode'))
-        if(el.getAttribute('selfieMode')) {
+        console.log("selfie mode is:" + el.getAttribute('selfieMode'))
+        if(el.getAttribute('selfieMode') == "true") {
           console.log("merging with selfie frame")
             mergeImages( [
               {src: frame, x: -(frame.width/3), y: 0},
