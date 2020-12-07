@@ -651,11 +651,11 @@ AFRAME.registerComponent('photo-mode', {
           console.log("merging with selfie frame")
             mergeImages( [
               {src: frame, x: -(frame.width/3), y: 0},
-              {src: aScene, x: -(sceneWidth/2), y: 0}, 
+              //{src: aScene, x: -(sceneWidth/2), y: 0}, 
               //TODO figure out how to get the selfie to show up correctly
               {src: santaSelfie, x: sceneWidth-371, y: (frame.height-721)}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
-              height: frame.height, 
+              height: 721, 
               quality: 1
             }).then(b64 => {
               // Hide the flash
