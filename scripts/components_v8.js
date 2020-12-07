@@ -197,6 +197,7 @@ AFRAME.registerComponent('start-animation', {
 
     function startAnimation() {
         console.log("starting animation")
+        isPlaying = true
       // document.getElementById("test").emit("startScene1")
         
         for (var anim of animations){
@@ -209,7 +210,7 @@ AFRAME.registerComponent('start-animation', {
          {
           //var scene_audio = document.createElement("a-sound")
           // if(!experienceHasStarted) {
-            
+
           // }
            console.log("Current id for auidio is: " + currentScene + "_audio")
             sceneAudio = document.getElementById(currentScene + "_audio")
@@ -228,6 +229,7 @@ AFRAME.registerComponent('start-animation', {
             for (var anim of animations){
               anim.setAttribute("animation-mixer", "clip: '';")
               anim.emit("restart_" + currentScene)
+              console.log("emitting restart: " + "restart_" + currentScene)
 
             }
         // if (isActive) {

@@ -129,7 +129,7 @@
           <a-asset-item id="s4_santa" src="/models/scene4_santa.glb"></a-asset-item>
           <a-asset-item id="s4_sink" src="/models/scene4_sink.glb"></a-asset-item>
           <a-asset-item id="s4_thoughts" src="/models/scene4_thoughts.glb"></a-asset-item>
-          <a-asset-item id="s4_cookie" src="/models/scene4_thoughts.glb"></a-asset-item>
+          <a-asset-item id="s4_cookie" src="/models/scene4_cookie.glb"></a-asset-item>
           <a-asset-item id="s6" src="/models/scene6.glb"></a-asset-item>
           <a-asset-item id="s11" src="/models/scene11.glb"></a-asset-item>
           <a-asset-item id="s11_phone" src="/models/scene11_phone.glb"></a-asset-item>
@@ -218,7 +218,7 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/4.patt">
-			<a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene4;audio_src: "url(/audio/scene4.mp3)"; length: 29000'>
+			<a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene4;audio_src: "url(/audio/scene4.mp3)"; length: 25000'>
               <a-entity 
                 gltf-model='#gift_4'
               	scale="0.25 0.25 0.25"
@@ -232,48 +232,52 @@
                 scale="0.666 0.666 0.666"
                 rotation='0 0 0'
               >
-                          <a-entity
-                                  position="1.5 0 0"
-                                  rotation="0 270 0"
-                                  scale=".7 .7 .7"
-                                  gltf-model="#s4_sink"
-                                  animation__scale="property: scale; dur: 500; from: .7 .7 .7; to: 0 0 0 ; easing: easeInOutSine; delay: 6000"
-                                  animation-mixer
-                                  >
-                          </a-entity>
-                          <a-entity rotation="0 0 0">
-                            <a-entity
-                                    position="0 0 0"
-                                    rotation="0 90 0"
-                                    gltf-model="#s4_santa"
-                                    animation__turnaround="property: rotation; dur: 500; from: 0 90 0; to: 0 0 0; easing: easeInOutSine; delay: 5500"
-                                    animation-mixer
-                                    >
-                            </a-entity>
-                          </a-entity>
-                          <a-entity
-                                  geometry="primitive: sphere"
-                                  scale = "0 0 0"
-                                  position=".46 1.4 .89"
-                                  rotation="76 -72 -111"
-                                  animation__scale="property: scale; dur: 500; from: 0 0 0; to: .137 .069 .137; easing: easeInOutSine; delay: 8000"
-                                  animation__moveup="property: position; dur: 1250; from: .46 1.4 .89; to: .51 1.89 0.909; easing: easeInOutSine; delay: 8300"
-                                  animation__pump1="property: position; dur: 750; from: .51 1.89 0.909; to: .51 1.84 0.909; easing: easeInOutSine; delay: 9700"
-                                  animation__pump1d="property: position; dur: 600; from: .51 1.84 0.909; to: .51 1.89 0.909; easing: easeInOutSine; delay: 10400"
-                                  animation__pump2="property: position; dur: 600; from: .51 1.89 0.909; to: .51 1.84 0.909; easing: easeInOutSine; delay: 11400"
-                                  animation__pump2d="property: position; dur: 600; from: .51 1.84 0.909; to: .51 1.89 0.909; easing: easeInOutSine; delay: 12100"
-                                  animation__pump3="property: position; dur: 600; from: .51 1.89 0.909; to: .51 1.84 0.909; easing: easeInOutSine; delay: 13100"
-                                  animation__pump3d="property: position; dur: 600; from: .51 1.84 0.909; to: .51 1.89 0.909; easing: easeInOutSine; delay: 13800"
-                                  animation__movedown="property: position; dur: 2000; from: .51 1.89 0.909; to: .46 1.4 1.1; easing: easeInOutSine; delay: 15000"
-                                  animation__scaledown="property: scale; dur: 1000; from: .137 .069 .137; to: 0 0 0; easing: easeInOutSine; delay: 15500"
-                                  >
-                          </a-entity>
-                        
-                          <a-entity
-                                  gltf-model="#s4_thoughts"
-                                  rotation = "0 0 0"
-                                animation-mixer="loop: once">
-                          </a-entity>
+       <a-entity
+                class = "scene4_model"
+                position="1.5 0 0"
+                rotation="0 270 0"
+                scale=".7 .7 .7"
+                gltf-model="#s4_sink"
+                animation__scale="startEvents: start_scene4; pauseEvents: restart_scene4; property: scale; dur: 500; from: .7 .7 .7; to: 0 0 0 ; easing: easeInOutSine; delay: 6000"
+                animation__restart_scale="startEvents: restart_scene4; property: position; dur: 1; to: .7 .7 .7; easing: easeInOutSine; autoplay: false"
+                >
+        </a-entity>
+        <a-entity
+                class = "scene4_model"
+                position="0 0 0"
+                rotation="90 90 0"
+                gltf-model="#s4_santa"
+                animation__turnaround="startEvents: start_scene4; pauseEvents: restart_scene4; property: rotation; dur: 500; from: 90 90 0; to: 90 0 0; easing: easeInOutSine; delay: 5500"
+                animation__restart_position="startEvents: restart_scene4; property: position; dur: 1; to: 0 0 0; easing: easeInOutSine; autoplay: false"
+                animation__restart_rotation="startEvents: restart_scene4; property: position; dur: 1; to: 90 90 0; easing: easeInOutSine; autoplay: false"
+                animation-mixer="clip: ''"
+                >
+        </a-entity>
+        <a-entity
+                class = "scene4_model"
+                gltf-model="#s4_cookie"
+                scale = "0 0 0"
+                position=".46 1.4 .89"
+                rotation="0 0 0"
+                animation__scale="startEvents: start_scene4; pauseEvents: restart_scene4; property: scale; dur: 500; from: 0 0 0; to: 1.37 .69 1.37; easing: easeInOutSine; delay: 6800"
+                animation__moveup="startEvents: start_scene4; pauseEvents: restart_scene4; property: position; dur: 1250; from: .46 1.4 .89; to: .51 1.89 0.909; easing: easeInOutSine; delay: 7100"
+                animation__pump1="startEvents: start_scene4; pauseEvents: restart_scene4; property: position; dur: 750; from: .51 1.89 0.909; to: .51 1.84 0.909; easing: easeInOutSine; delay: 8700"
+                animation__pump1d="startEvents: start_scene4; pauseEvents: restart_scene4; property: position; dur: 600; from: .51 1.84 0.909; to: .51 1.89 0.909; easing: easeInOutSine; delay: 8900"
+                animation__pump2="startEvents: start_scene4; pauseEvents: restart_scene4; property: position; dur: 600; from: .51 1.89 0.909; to: .51 1.84 0.909; easing: easeInOutSine; delay: 9900"
+                animation__pump2d="startEvents: start_scene4; pauseEvents: restart_scene4; property: position; dur: 600; from: .51 1.84 0.909; to: .51 1.89 0.909; easing: easeInOutSine; delay: 10600"
+                animation__pump3="startEvents: start_scene4; pauseEvents: restart_scene4; property: position; dur: 600; from: .51 1.89 0.909; to: .51 1.84 0.909; easing: easeInOutSine; delay: 11600"
+                animation__pump3d="startEvents: start_scene4; pauseEvents: restart_scene4; property: position; dur: 600; from: .51 1.84 0.909; to: .51 1.89 0.909; easing: easeInOutSine; delay: 12300"
+                animation__movedown="startEvents: start_scene4; pauseEvents: restart_scene4; property: position; dur: 2000; from: .51 1.89 0.909; to: .46 1.4 1.1; easing: easeInOutSine; delay: 13500"
+                animation__scaledown="startEvents: start_scene4; pauseEvents: restart_scene4; property: scale; dur: 1000; from: 1.37 .69 1.37; to: 0 0 0; easing: easeInOutSine; delay: 14000"
+                animation__restart_position="startEvents: restart_scene4; property: position; dur: 1; to: .46 1.4 .89; easing: easeInOutSine; autoplay: false"
+                >
+        </a-entity>
+      
+        <a-entity
+                class = "scene4_model"
+                gltf-model="#s4_thoughts"
+              animation-mixer="clip: ''">
+        </a-entity>
                           
 
 <!--                           <a-entity id="bubble 1"
