@@ -48,6 +48,7 @@ AFRAME.registerComponent('start-animation', {
     audio_src: {type: 'string'},
     length: {type: 'int'},
     video: {type: 'string'},
+    video_src: {type: 'string'},
     selfie: {default: 'false'}
   },
   init: function () {
@@ -65,7 +66,9 @@ AFRAME.registerComponent('start-animation', {
     var audio_source = this.data.audio_src
     var sceneAudio// = document.getElementById(this.data.audio_src)
     const song = document.getElementById('song')
-    var videoClip = document.getElementById(this.data.video)
+    var videoClipName = this.data.video
+
+    console.log("VideoClip name: " + videoClipName)
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
     const scanInstructions = document.getElementById('scanInstructions')
@@ -112,11 +115,20 @@ AFRAME.registerComponent('start-animation', {
           // }
 
           // }
-          console.log(this.data.name + " is active")
-          if(this.data.name == "scene3"){
-            videoClip.play();  
-            console.log("playing video")
-          }
+          // console.log(this.data.name + " is active")
+          // if(this.data.name == "scene3"){
+          //   console.log("videoclip name: " + videoClipName)
+          //   var videoClip = document.getElementById("laptop_video")
+          //   console.log("videoclip: " + videoClip)
+          //   videoClip.play();  
+          //   console.log("playing video")
+          // } else if (this.data.name == "scene6") {
+          //   console.log("videoclip name: " + videoClipName)
+          //   var videoClip = document.getElementById("phone_video")
+          //   console.log("videoclip: " + videoClip)
+          //   videoClip.play();  
+          //   console.log("playing video")
+          // }
           
           if(this.data.length) {
             console.log("timer started")
@@ -143,24 +155,27 @@ AFRAME.registerComponent('start-animation', {
     el.addEventListener('click', function () {
       tryStartAnimation()
       console.log("model clicked, time to play video")
-        if(currentScene=="scene3")
-        {
-        video = document.getElementById("laptop_video");
-        video.setAttribute("src", "/videos/Scene3.mp4");}
-        if(currentScene=="scene6")
-        {
-        video = document.getElementById("phone_video");
-        video.setAttribute("src", "/videos/Scene6.mp4");}        
-        // video.setAttribute("width", "16");
-        // video.setAttribute("height", "9");
-        //video.setAttribute("rotation", "0 180 0");
-        //video.setAttribute("position", "-2 2 -4.15");
-        video.load();
-        video.addEventListener("loaded", function() {
-            console.log("video has loaded")
+      if(currentScene =="scene3" || currentScene =="scene6") {
+        if(currentScene=="scene3") 
+          {
+            video = document.getElementById("laptop_video");
+            video.setAttribute("src", "/videos/Scene3.mp4");
+            //video.muted = true;
+          }
+          else if(currentScene=="scene6")
+          {
+            video = document.getElementById("phone_video");
+            video.setAttribute("src", "/videos/Scene6.mp4");
+            //video.muted = true;
+          }        
+          video.load();
+          video.addEventListener("loaded", function() {
+              console.log("video has loaded")
 
-            video.play();
-        });
+              video.play();
+            })
+        }    
+      })
       // videoClip.load()
       //     setTimeout(
       //       function() {
@@ -171,7 +186,7 @@ AFRAME.registerComponent('start-animation', {
       //       }, 2000)
           //videoClip.play();
           // this.style.display = 'none';
-        })
+        // })
 
     closeButton.addEventListener('click', () => {
       if (isNotActive == false) {
@@ -305,6 +320,7 @@ AFRAME.registerComponent('start-animation', {
         shutterButton.hidden = false
         // shutterButton.addEventListener('click',)
         closeButton.style.display = 'block'}
+        var videoClip = document.getElementById(videoClipName)
         if(videoClip!=null){
           videoClip.play()   
         }
@@ -357,13 +373,17 @@ AFRAME.registerComponent('toggle-audio', {
     const audioButton = document.getElementById('audioIconContainer')
 //    const launchButton = document.getElementById('launchButton')
     const audio = document.getElementById('song')
+    const videos = document.getElementsByClassName('video_with_sound')
     const audioToggleIcon = document.getElementById('audioIcon')
     const scene = document.querySelector('a-scene')
     const song = document.getElementById("song")
+
     
     console.log("toggleAudio is ready")
 
-    
+      for (video of videos) {
+        video.muted = "muted";
+      }
     audioButton.style.display = 'block'
     
     let isPlaying = false
@@ -376,6 +396,9 @@ AFRAME.registerComponent('toggle-audio', {
         for(i=0; i<sounds.length; i++) {
           sounds[i].setAttribute('volume', 0)
         }
+        for (video of videos) {
+          video.muted = "muted";
+        }
         console.log(sounds[i] + " volume set to 0")
         isPlaying = false
       }
@@ -385,6 +408,9 @@ AFRAME.registerComponent('toggle-audio', {
         var sounds = document.getElementsByTagName('a-sound')
         for(i=0; i<sounds.length; i++) {
           sounds[i].setAttribute('volume', 0.5)
+        }
+        for (video of videos) {
+          video.muted = "muted";
         }
         if(!hasAudioStarted) {
             // var sounds = document.getElementsByTagName('a-sound')
