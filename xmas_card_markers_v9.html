@@ -205,7 +205,7 @@
 
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
-			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; audio_src: "url(/audio/scene3.mp3)"; length: 45000'>
+			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; audio_src: "url(/audio/scene3.mp3)";video: "laptop_video"; video_src: "/videos/scene3.mp4" length: 45000'>
 	              <a-entity 
 	                gltf-model='#gift_3'
               		scale="0.25 0.25 0.25"
@@ -223,7 +223,7 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/4.patt">
-			<a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene4;audio_src: "url(/audio/scene4.mp3)"; length: 25000'>
+			<a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene4; audio_src: "url(/audio/scene4.mp3)"; length: 25000'>
               <a-entity 
                 gltf-model='#gift_4'
               	scale="0.25 0.25 0.25"
@@ -281,7 +281,10 @@
         <a-entity
                 class = "scene4_model"
                 gltf-model="#s4_thoughts"
-              animation-mixer="clip: ''">
+                position = ".8 1.8 -.5"
+                scale="0 0 0"
+                animation__scaleup="startEvents: start_scene4; pauseEvents: restart_scene4; property: scale; dur: 1000; from: 0 0 0; to: 1 1 1; easing: easeInOutElastic; delay: 9000"
+                animation__scaleup="startEvents: start_scene4; pauseEvents: restart_scene4; property: scale; dur: 1000; from: 1 1 1; to: 0 0 0; easing: easeInOutElastic; delay: 20000">
         </a-entity>
                           
 
@@ -309,7 +312,7 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/6.patt">
-              <a-box class="gift" position='0 0.5 0' scale="1.5 2 1.5" material='opacity: 0;' start-animation='name: scene6; audio_src: "url(/audio/scene6.mp3)"; length: 34000'>
+              <a-box class="gift" position='0 0.5 0' scale="1.5 2 1.5" material='opacity: 0;' start-animation='name: scene6; audio_src: "url(/audio/scene6.mp3)"; video: "phone_video"; video_src: "/videos/scene6.mp4"; length: 30000'>
 	              <a-entity
 	                gltf-model='#gift_6'
 	              	scale="0.375 0.25 0.375"
@@ -327,12 +330,12 @@
                   class="scene6_model"
                   position="0 .5 0"
                   rotation="90 0 0"
-                  animation__turn="startEvents: start_scene6; pauseEvents: restart_scene6; property: rotation; dur: 3000; from: 90 0 0; to: 90 20 0; easing: easeInOutQuad; delay: 25000; autoplay: false"
-                  animation__restart="property: rotation; dur: 50; from: 90 20 0; to: 90 0 0; easing: easeInOutQuad; autoplay: false"
+                  animation__turn="startEvents: start_scene6; pauseEvents: restart_scene6; property: rotation; dur: 3000; from: 90 0 0; to: 90 20 0; easing: easeInOutQuad; delay: 19000; autoplay: false"
+                  animation__restart="startEvents: restart_scene6; property: rotation; dur: 50; from: 90 20 0; to: 90 0 0; easing: easeInOutQuad; autoplay: false"
                   animation-mixer>
-                  <a-entity id="phone" position="0.7366 0.61112 -1.5423" rotation="43.213049866561825 -108.38528018930757 -102.82071408299701">
-                        <a-entity geometry="" scale="0 0 0" material="color: #38157B" animation__scale="property: scale; dur: 500; from: 0 0 0; to: 0.2 0.4 0.05; easing: easeInOutQuad; delay: 1500">
-                        </a-entity>
+                  <a-entity id="phone" position="0.7366 0.61112 -1.5423" rotation="43.213049866561825 -108.38528018930757 -102.82071408299701" animation__scale="property: scale; dur: 500; from: 0 0 0; to: 0.2 0.4 0.05; easing: easeInOutQuad; delay: 1000">
+  <!--                       <a-entity geometry="" scale="0 0 0" material="color: #38157B" animation__scale="property: scale; dur: 500; from: 0 0 0; to: 0.2 0.4 0.05; easing: easeInOutQuad; delay: 1000">
+                        </a-entity> -->
                   </a-entity>
                 </a-entity>
                 <a-entity id="chair"
@@ -341,9 +344,11 @@
                           rotation="0 0 0">
                 </a-entity>
                 <a-entity position="2 0 1" 
-                  animation__grabandturn="startEvents: start_scene6; pauseEvents: restart_scene6; property: rotation; dur: 1000; from: 0 0 0; to: 0 -180 0; easing: easeInOutQuad; delay: 10000;" 
-                  animation__walkaway="startEvents: start_scene6; pauseEvents: restart_scene6; property: position; dur: 3000; from: 2 0 1; to: 2 0 4; easing: easeInOutQuad; delay: 12000;" 
-                  animation__disappear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 100; from: 1 1 1; to: 0 0 0; easing: easeInOutQuad; delay: 14800;">
+                  animation__grabandturn="startEvents: start_scene6; pauseEvents: restart_scene6; property: rotation; dur: 1000; from: 0 0 0; to: 0 -180 0; easing: easeInOutQuad; delay: 24000;" 
+                  animation__walkaway="startEvents: start_scene6; pauseEvents: restart_scene6; property: position; dur: 3000; from: 2 0 1; to: 2 0 4; easing: easeInOutQuad; delay: 25000;" 
+                  animation__disappear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 100; from: 1 1 1; to: 0 0 0; easing: easeInOutQuad; delay: 27800;"
+                  animation__restart="startEvents: restart_scene6; property: position; dur: 100; from: 2 0 4; to: 2 0 1; easing: easeInOutQuad;"
+                  animation__restart_scale="startEvents: restart_scene6; property: scale; dur: 100; from: 0 0 0; to: 1 1 1; easing: easeInOutQuad;">
                     <a-entity id="gifts" position="0 0 -1"
                               class="scene6_model"
                               gltf-model="#s6_gifts">
@@ -356,20 +361,22 @@
                       position="2 0 4"
                       rotation="90 180 0"
                       scale="0 0 0"
-                      animation__appear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 100; from: 0 0 0; to: 1 1 1; easing: easeInOutQuad; delay: 4000;"
-                      animation__walktopresents="startEvents: start_scene6; pauseEvents: restart_scene6; property: position; dur: 3000; from: 2 0 4; to: 2 0 1; easing: easeInOutQuad; delay: 4000;"
-                      animation__grabandturn="startEvents: start_scene6; pauseEvents: restart_scene6; property: rotation; dur: 1000; from: 90 180 0; to: 90 0 0; easing: easeInOutQuad; delay: 10000;"
-                      animation__walkaway="startEvents: start_scene6; pauseEvents: restart_scene6; property: position; dur: 3000; from: 2 0 1; to: 2 0 4; easing: easeInOutQuad; delay: 12000;"
-                      animation__disappear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 100; from: 1 1 1; to: 0 0 0; easing: easeInOutQuad; delay: 14800;"
+                      animation__appear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 100; from: 0 0 0; to: 1 1 1; easing: easeInOutQuad; delay: 20000;"
+                      animation__walktopresents="startEvents: start_scene6; pauseEvents: restart_scene6; property: position; dur: 3000; from: 2 0 4; to: 2 0 1; easing: easeInOutQuad; delay: 20000;"
+                      animation__grabandturn="startEvents: start_scene6; pauseEvents: restart_scene6; property: rotation; dur: 1000; from: 90 180 0; to: 90 0 0; easing: easeInOutQuad; delay: 240000;"
+                      animation__walkaway="startEvents: start_scene6; pauseEvents: restart_scene6; property: position; dur: 3000; from: 2 0 1; to: 2 0 4; easing: easeInOutQuad; delay: 25000;"
+                      animation__disappear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 100; from: 1 1 1; to: 0 0 0; easing: easeInOutQuad; delay: 27800;"
                       animation__restart="startEvents: restart_scene6; property: rotation; dur: 50; from: 90 0 0; to: 90 180 0; easing: easeInOutQuad; autoplay: false"
                       >
                   </a-entity>
                   <a-entity id="bubble"
                       class="scene6_model"
                       gltf-model="#s6_bubble"
+                      animation__appear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 0 0 0; to: 1 1 1; easing: easeInOutQuad; delay: 1000;"
+                      animation__disappear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 1 1 1; to: 0 0 0; easing: easeInOutQuad; delay: 29000;"
                       animation-mixer>
-                    <a-entity position= "0 3.5 .3" scale="1 1.5 1">
-                      <a-video id="phone_video" src="#s3_video"></a-video>
+                    <a-entity position= "0 4.57 -.657" scale="1.75 2.25 1">
+                      <a-video id="phone_video" src="#s6_video"></a-video>
                     </a-entity>
                   </a-entity>
               </a-entity>

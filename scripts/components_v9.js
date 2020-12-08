@@ -65,7 +65,7 @@ AFRAME.registerComponent('start-animation', {
     var audio_source = this.data.audio_src
     var sceneAudio// = document.getElementById(this.data.audio_src)
     const song = document.getElementById('song')
-    var videoClip = document.getElementById('laptop_video')
+    var videoClip = document.getElementById(this.data.video)
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
     const scanInstructions = document.getElementById('scanInstructions')
@@ -143,8 +143,14 @@ AFRAME.registerComponent('start-animation', {
     el.addEventListener('click', function () {
       tryStartAnimation()
       console.log("model clicked, time to play video")
+        if(currentScene=="scene3")
+        {
         video = document.getElementById("laptop_video");
-        video.setAttribute("src", "/videos/Scene3_smaller.mp4");
+        video.setAttribute("src", "/videos/Scene3.mp4");}
+        if(currentScene=="scene6")
+        {
+        video = document.getElementById("phone_video");
+        video.setAttribute("src", "/videos/Scene6.mp4");}        
         // video.setAttribute("width", "16");
         // video.setAttribute("height", "9");
         //video.setAttribute("rotation", "0 180 0");
@@ -299,8 +305,10 @@ AFRAME.registerComponent('start-animation', {
         shutterButton.hidden = false
         // shutterButton.addEventListener('click',)
         closeButton.style.display = 'block'}
-
-       videoClip.play()
+        if(videoClip!=null){
+          videoClip.play()   
+        }
+       
     }
     // function hideSceneEnd() {
     //   closeButton.style.display = 'none'
