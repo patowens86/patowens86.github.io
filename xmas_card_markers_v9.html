@@ -1,6 +1,6 @@
 
 <html>
-  <script>console.log("version .9" + 01)</script>
+  <script>console.log("version .90" + 2)</script>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <!-- we import arjs version without NFT but with marker + location based support -->
@@ -126,8 +126,8 @@
         <a-assets timeout="20000">
           <a-asset-item id="s1_santa" src="/models/scene1_santa.glb"></a-asset-item>
           <a-asset-item id="s1_sink" src="/models/scene1_sink.glb"></a-asset-item>
-          <a-asset-item id="s3" src="/models/scene3.glb"></a-asset-item>
-          <a-asset-item id="s4_santa" src="/models/scene4_santa.glb"></a-asset-item>
+          <a-asset-item id="s3" src="/models/scene3_santa_new.glb"></a-asset-item>
+          <a-asset-item id="s4_santa" src="/models/scene4_santa_new.glb"></a-asset-item>
           <a-asset-item id="s4_sink" src="/models/scene4_sink.glb"></a-asset-item>
           <a-asset-item id="s4_thoughts" src="/models/scene4_thoughts.glb"></a-asset-item>
           <a-asset-item id="s4_cookie" src="/models/scene4_cookie.glb"></a-asset-item>
@@ -137,7 +137,7 @@
           <a-asset-item id="s6_gifts" src="/models/scene6_gifts.glb"></a-asset-item>
           <a-asset-item id="s6_phone" src="/models/scene6_phone.glb"></a-asset-item>
           <a-asset-item id="s6_bubble" src="/models/scene6_bubble.glb"></a-asset-item>
-          <a-asset-item id="s11" src="/models/scene11.glb"></a-asset-item>
+          <a-asset-item id="s11_santa" src="/models/scene11_santa.glb"></a-asset-item>
           <a-asset-item id="s11_phone" src="/models/scene11_phone.glb"></a-asset-item>
           <a-asset-item id="gift_1" src="/models/Gift_1.glb"></a-asset-item>
           <a-asset-item id="gift_3" src="/models/Gift_3.glb"></a-asset-item>
@@ -397,7 +397,8 @@
                 visible="false"
               >
                 <a-entity
-                gltf-model='#s11'
+                gltf-model='#s11_santa'
+                class="scene11_model"
                 animation-mixer="clip: ''"
                 rotation='90 0 0'></a-entity>
                 <a-entity
@@ -442,7 +443,7 @@
             loadProgress(8) })
             document.getElementById('s6_santa').addEventListener('loaded', function() { console.log("s 6 loaded")
             loadProgress(8) })
-            document.getElementById('s11').addEventListener('loaded', function() { console.log("s 11 loaded")
+            document.getElementById('s11_santa').addEventListener('loaded', function() { console.log("s 11 loaded")
             loadProgress(8) })
 </script> 
     </body>

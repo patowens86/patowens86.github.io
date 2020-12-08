@@ -81,6 +81,8 @@ AFRAME.registerComponent('start-animation', {
     console.log("this is the combined name: " + model.getAttribute('id') + "_model")
     var currentScene = model.getAttribute('id')
     var animations = document.getElementsByClassName(currentScene + "_model")
+    console.log(currentScene + "_model")
+    console.log("animation for " + currentScene + " exists?" + animations)
     console.log("Selfie state is = " + isSelfie)
 
 
