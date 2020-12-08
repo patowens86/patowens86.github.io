@@ -72,6 +72,7 @@ AFRAME.registerComponent('start-animation', {
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
     const scanInstructions = document.getElementById('scanInstructions')
+    const pointer = document.getElementById('pointer')
     const photoFrame = document.getElementById('selfieContainer')
     // const xblink_widget = document.getElementById('cameraflash')
     var scan = true
@@ -303,7 +304,8 @@ AFRAME.registerComponent('start-animation', {
 
         if(scan)
         {
-          scanInstructions.style.display = 'none'  
+          scanInstructions.style.display = 'none' 
+          pointer.setAttribute('material','visible: false') 
         }
         else{
           tapInstructions.style.display = 'none'          
@@ -337,7 +339,8 @@ AFRAME.registerComponent('start-animation', {
         closeButton.style.display = 'none'
         if(scan)
         {
-          scanInstructions.style.display = 'block'  
+          scanInstructions.style.display = 'block'
+                    pointer.setAttribute('material','visible: true')   
         }
         else{
           tapInstructions.style.display = 'block'          
