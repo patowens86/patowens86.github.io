@@ -145,8 +145,8 @@
           <a-asset-item id="gift_4" src="/models/Gift_4.glb"></a-asset-item>
           <a-asset-item id="gift_6" src="/models/Gift_6.glb"></a-asset-item>
           <a-asset-item id="gift_11" src="/models/Gift_11.glb"></a-asset-item>
-          <video muted id="s3_video" src="/videos/scene3.mp4"></video>
-          <video muted id="s6_video" src="/videos/scene6.mp4"></video>
+          <video muted id="s3_video" src="/videos/scene3_noaudio.mp4"></video>
+          <video muted id="s6_video" src="/videos/scene6_noaudio.mp4"></video>
           <audio id="song_file" loop="false" src="/audio/song.mp3"></audio>
 <!--           <img id="santa_selfie" loop="false" src="/graphics/SantaSelfie.gif"> -->
           
@@ -206,7 +206,7 @@
 
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
-			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; audio_src: "url(/audio/scene3.mp3)";video: "laptop_video"; video_src: "/videos/scene3.mp4"; length: 45000'>
+			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; audio_src: "url(/audio/scene3.mp3)";video: "laptop_video"; video_src: "/videos/scene3_noaudio.mp4"; length: 45000'>
 	              <a-entity 
 	                gltf-model='#gift_3'
               		scale="0.25 0.25 0.25"
@@ -316,7 +316,7 @@
               </a-entity>
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/6.patt">
-              <a-box class="gift" position='0 0.5 0' scale="1.5 2 1.5" material='opacity: 0;' start-animation='name: scene6; audio_src: "url(/audio/scene6.mp3)"; video: "phone_video"; video_src: "/videos/scene6.mp4"; length: 30000'>
+              <a-box class="gift" position='0 0.5 0' scale="1.5 2 1.5" material='opacity: 0;' start-animation='name: scene6; audio_src: "url(/audio/scene6.mp3)"; video: "phone_video"; video_src: "/videos/scene6_noaudio.mp4"; length: 30000'>
 	              <a-entity
 	                gltf-model='#gift_6'
 	              	scale="0.375 0.25 0.375"
