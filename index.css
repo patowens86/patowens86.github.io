@@ -195,10 +195,10 @@ html {
 }
 
 .audioOn{
-  background-image: url('./icons/SoundIcon_Active_@3x.svg');
+  background-image: url('./icons/SoundIcon_Active_@3x_new.svg');
 }
 .audioOff{
-  background-image: url('./icons/SoundIcon_Mute_@3x.svg');
+  background-image: url('./icons/SoundIcon_Mute_@3x_new.svg');
 }
 
 h2 {
@@ -239,6 +239,7 @@ h2 {
 #scanInstructionText{
   background-color: black;
   background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 7%/95%;
 }
 
 #tapInstructions{
@@ -273,7 +274,7 @@ h2 {
 .photo #photoModeBG {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 5;  
   transition: 0.5s;
 }
@@ -311,7 +312,7 @@ h2 {
   transition: 0s;
   pointer-events: auto;
 }
-#shutterButton, #closeButton, #shareButton, #retakeButton {
+#shutterButton, #closeButton, #shareButton, #retakeButton, #endSceneButton{
   position: absolute;
   bottom: 2vmax;
   border-radius: 10vmin;
@@ -332,15 +333,29 @@ h2 {
   display: none;
 }
 #closeButton {
-  background-image: url('./icons/close.svg');
-
+  background-image: url('./icons/close_new.svg');
+  display: none;
  
-  width: 8vmin;
-  height: 8vmin;
-  left: 92.5%;
+  width: 16vmin;
+  height: 16vmin;
+  left: 87.5%;
   transform: translateX(-50%);
   top: 2.5%;
 }
+
+#endSceneButton {
+  display: block;
+  background-image: url('./icons/endscene.svg');
+  width: 64vmin;
+  height: 16vmin;
+  left: 80%;
+  transform: translateX(-50%);
+  top: .75%;
+    border-radius: 50%/100%
+
+}
+
+
 .photo #closeButton {
   display: block;
 }

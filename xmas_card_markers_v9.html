@@ -59,7 +59,7 @@
 	<div id="audioIconContainer" style=" z-index: 9999">
 	 <div id="audioIcon" class="audioOff" style="z-index: 9999"></div>
 	</div>
-
+    <div id="endSceneButton" style="display: none; z-index: 9998"></div>
 	<div id="photoModeContainer" style=" z-index: 9999">
 
 	  <div id="photoModeBG"></div>
@@ -67,6 +67,7 @@
 	  <div id="flash"></div>
 	  <div id="shutterButton" style="z-index:9999"></div>
 	  <div id="closeButton"></div>
+
 
 	  <div id="photoPrompts">
 	      <p id="shareBlurb" style="z-index:11">Tap and hold to save the picture!</span></p>
@@ -143,9 +144,9 @@
           <a-asset-item id="gift_4" src="/models/Gift_4.glb"></a-asset-item>
           <a-asset-item id="gift_6" src="/models/Gift_6.glb"></a-asset-item>
           <a-asset-item id="gift_11" src="/models/Gift_11.glb"></a-asset-item>
-          <video id="s3_video" src="/videos/Scene3_smaller.mp4"></video>
-          <video id="s6_video" src="/videos/Scene6.mp4"></video>
-    <!--       <audio id="song_file" loop="false" src="/audio/JingleBells_s.mp3"></audio> -->
+          <video id="s3_video" src="/videos/scene3.mp4"></video>
+          <video id="s6_video" src="/videos/scene6.mp4"></video>
+          <audio id="song_file" loop="false" src="/audio/song.mp3"></audio>
 <!--           <img id="santa_selfie" loop="false" src="/graphics/SantaSelfie.gif"> -->
           
 <!--           <audio id="s1_audio" loop="false" src="url(/audio/scene1.mp3)"></sound> -->
@@ -204,7 +205,7 @@
 
           </a-marker>
           <a-marker preset="custom" type="pattern" url="/markers/3.patt">
-			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; audio_src: "url(/audio/scene3.mp3)"; length: 25000'>
+			  <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; audio_src: "url(/audio/scene3.mp3)"; length: 45000'>
 	              <a-entity 
 	                gltf-model='#gift_3'
               		scale="0.25 0.25 0.25"
@@ -367,6 +368,9 @@
                       class="scene6_model"
                       gltf-model="#s6_bubble"
                       animation-mixer>
+                    <a-entity position= "0 3.5 .3" scale="1 1.5 1">
+                      <a-video id="phone_video" src="#s3_video"></a-video>
+                    </a-entity>
                   </a-entity>
               </a-entity>
           </a-marker>

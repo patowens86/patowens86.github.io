@@ -23,7 +23,7 @@ AFRAME.registerComponent('loading-xmas', {
     }, 3000)
 
     trelloVideo.play();
-    //phoneVideo.play();
+    phoneVideo.play();
     for (const audio of audioArray) {
       audio.components.sound.pauseSound();
     }
@@ -58,7 +58,7 @@ AFRAME.registerComponent('start-animation', {
     var isNotActive = true
     var isPlaying = false
     var scene = document.getElementsByTagName("a-scene")
-    const closeButton = document.getElementById('closeButton')
+    const closeButton = document.getElementById('endSceneButton')
     var giftArray = document.getElementsByClassName("gift")
     var sceneArray = document.getElementsByClassName("scene")
     var audioArray = document.getElementsByClassName("audio")
@@ -82,6 +82,7 @@ AFRAME.registerComponent('start-animation', {
 
 
 
+
       if(scan){
         tapInstructions.style.display = 'none'
       }
@@ -91,7 +92,8 @@ AFRAME.registerComponent('start-animation', {
 
       el.addEventListener('click', (e) => {
         if(!experienceHasStarted) {
-          //song.components.sound.playSound();
+          song.setAttribute("src", "/audio/song.mp3");
+          song.components.sound.playSound()
           experienceHasStarted = true;
         }
         if(sceneAudio!=null) {
@@ -179,7 +181,7 @@ AFRAME.registerComponent('start-animation', {
       document.querySelector("a-scene").setAttribute('selfieMode', "true")
       console.log(document.querySelector("a-scene").getAttribute('selfieMode'))
       shutterButton.hidden = false
-      closeButton.hidden = false
+      closeButton.style.display = 'block'
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
       }
@@ -295,14 +297,18 @@ AFRAME.registerComponent('start-animation', {
                 }, animationLength);
        } else {
         shutterButton.hidden = false
-        closeButton.hidden = false}
+        // shutterButton.addEventListener('click',)
+        closeButton.style.display = 'block'}
 
        videoClip.play()
     }
+    // function hideSceneEnd() {
+    //   closeButton.style.display = 'none'
+    // }
     function sceneEnd() {
         console.log("scene ending")
         shutterButton.hidden = true
-        closeButton.hidden = true
+        closeButton.style.display = 'none'
         if(scan)
         {
           scanInstructions.style.display = 'block'  
@@ -312,8 +318,7 @@ AFRAME.registerComponent('start-animation', {
         }
         if(sceneAudio!=null){
           sceneAudio.components.sound.pauseSound()
-          song.setAttribute("src", "/audio/JingleBells_s.mp3");
-          song.components.sound.playSound()
+
         }
         for (const scene of sceneArray) {
           scene.setAttribute('visible', false)
