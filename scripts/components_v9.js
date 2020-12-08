@@ -159,13 +159,13 @@ AFRAME.registerComponent('start-animation', {
         if(currentScene=="scene3") 
           {
             video = document.getElementById("laptop_video");
-            video.setAttribute("src", "/videos/Scene3.mp4");
+            video.setAttribute("src", "/videos/scene3.mp4");
             //video.muted = true;
           }
           else if(currentScene=="scene6")
           {
             video = document.getElementById("phone_video");
-            video.setAttribute("src", "/videos/Scene6.mp4");
+            video.setAttribute("src", "/videos/scene6.mp4");
             //video.muted = true;
           }        
           video.load();
