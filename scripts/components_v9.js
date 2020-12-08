@@ -72,6 +72,7 @@ AFRAME.registerComponent('start-animation', {
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
     const scanInstructions = document.getElementById('scanInstructions')
+    const sInstructions = document.getElementById('selfieInstructions')
     const pointer = document.getElementById('pointer')
     const photoFrame = document.getElementById('selfieContainer')
     // const xblink_widget = document.getElementById('cameraflash')
@@ -93,7 +94,7 @@ AFRAME.registerComponent('start-animation', {
         tapInstructions.style.display = 'none'
       }
       else { scanInstructions.style.display = 'none'}
-
+      selfieInstructions.style.display = 'none'
       el.addEventListener('fusing', (e) => {console.log("fusing")})
 
       el.addEventListener('click', (e) => {
@@ -205,6 +206,7 @@ AFRAME.registerComponent('start-animation', {
       document.querySelector("a-scene").setAttribute('selfieMode', "true")
       console.log(document.querySelector("a-scene").getAttribute('selfieMode'))
       shutterButton.hidden = false
+ selfieInstructions.style.display = 'none'
       closeButton.style.display = 'block'
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
@@ -315,14 +317,17 @@ AFRAME.registerComponent('start-animation', {
        isNotActive=false;
        console.log("selfie status is = " + isSelfie)
        if(isSelfie == "true") {
+           selfieInstructions.style.display = 'block'
           setTimeout(
                 function() {
                   flash()
-                  //startSelfie();
+                  //startSelfie();ah, rain
+
                 }, animationLength);
        } else {
         shutterButton.hidden = false
         // shutterButton.addEventListener('click',)
+
         closeButton.style.display = 'block'}
         var videoClip = document.getElementById(videoClipName)
         if(videoClip!=null){
