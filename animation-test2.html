@@ -13,41 +13,41 @@ console.log($(window).width())
     <a-scene embedded arjs >
       <a-assets>
         <!-- Replace the value of src with the link to the model you want to test. -->
-        <a-asset-item id="scene1_santa" src="/models/scene1_santa.glb"></a-asset-item>
+        <a-asset-item id="scene1_santa" src="\models\Outdated\CesiumMan.gltf"></a-asset-item>
 
       </a-assets>
 
       
    <a-entity
-          position="0 6 -25"
+          position="-2 0 -25"
           rotation="90 0 0"
           gltf-model="#scene1_santa"
           animation-mixer
           >
         </a-entity>
    <a-entity
-          position="0 3 -25"
+          position="-2 -3 -25"
           rotation="90 0 0"
           gltf-model="#scene1_santa"
           animation-mixer="clip: *"
           >
         </a-entity>
    <a-entity
-          position="0 1 -25"
+          position="-2 1 -25"
           rotation="90 0 0"
           gltf-model="#scene1_santa"
           animation-mixer="clip: ''"
           >
         </a-entity>
       <a-entity
-          position="0 -3 -25"
+          position="2 -3 -25"
           rotation="90 0 0"
           gltf-model="#scene1_santa"
           animation-mixer="timeScale: .5"
           >
         </a-entity>
       <a-entity id="matrix"
-          position="0 -6 -25"
+          position="2 -6 -25"
           rotation="90 0 0"
           gltf-model="#scene1_santa"
           animation-mixer="timeScale: '0'"
