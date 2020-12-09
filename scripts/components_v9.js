@@ -68,6 +68,8 @@ AFRAME.registerComponent('start-animation', {
     const song = document.getElementById('song')
     var videoClipName = this.data.video
 
+
+
     console.log("VideoClip name: " + videoClipName)
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
@@ -86,6 +88,9 @@ AFRAME.registerComponent('start-animation', {
     console.log(currentScene + "_model")
     console.log("animation for " + currentScene + " exists?" + animations)
     console.log("Selfie state is = " + isSelfie)
+    var marker = document.getElementById('marker_' + currentScene)
+    var warning = document.getElementById('markerLostInstructions')
+    var markers = document.getElementsByClassName('marker')
 
 
 
@@ -333,7 +338,12 @@ AFRAME.registerComponent('start-animation', {
         if(videoClip!=null){
           videoClip.play()   
         }
-       
+      marker.addEventListener("markerFound",
+          markerFoundWarning
+      )
+      marker.addEventListener("markerLost",
+          markerLostWarning
+      )
     }
     // function hideSceneEnd() {
     //   closeButton.style.display = 'none'
@@ -369,7 +379,27 @@ AFRAME.registerComponent('start-animation', {
        document.querySelector("a-scene").setAttribute('selfieMode', "false")
        cursor.setAttribute('cursor', 'rayOrigin: mouse; fuse: true')
 
+      marker.removeEventListener("markerFound",
+          markerFoundWarning
+      )
+      marker.removeEventListener("markerLost",
+          markerLostWarning
+      )
+      warning.style.display = 'none'
+      console.log("Removing marker event listeners")
+
     }
+
+    function markerFoundWarning() {
+        console.log("marker1 found")
+        warning.style.display = "none"     
+    }
+    function markerLostWarning() {
+        console.log("marker1 lost")
+        warning.style.display = "block"
+    }
+
+
   }
 });
 
