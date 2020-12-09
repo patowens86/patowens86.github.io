@@ -413,17 +413,17 @@ AFRAME.registerComponent('toggle-audio', {
     const audioButton = document.getElementById('audioIconContainer')
 //    const launchButton = document.getElementById('launchButton')
     const audio = document.getElementById('song')
-    const videos = document.getElementsByClassName('video_with_sound')
+    // const videos = document.getElementsByClassName('video_with_sound')
     const audioToggleIcon = document.getElementById('audioIcon')
     const scene = document.querySelector('a-scene')
     const song = document.getElementById("song")
-
+    var markers = document.getElementsByClassName('marker')
     
     console.log("toggleAudio is ready")
 
-      for (video of videos) {
-        video.muted = "muted";
-      }
+      // for (video of videos) {
+      //   video.muted = "muted";
+      // }
     audioButton.style.display = 'block'
     
     let isPlaying = false
@@ -436,9 +436,9 @@ AFRAME.registerComponent('toggle-audio', {
         for(i=0; i<sounds.length; i++) {
           sounds[i].setAttribute('volume', 0)
         }
-        for (video of videos) {
-          video.muted = "muted";
-        }
+        // for (video of videos) {
+        //   video.muted = "muted";
+        // }
         console.log(sounds[i] + " volume set to 0")
         isPlaying = false
       }
@@ -449,9 +449,9 @@ AFRAME.registerComponent('toggle-audio', {
         for(i=0; i<sounds.length; i++) {
           sounds[i].setAttribute('volume', 0.5)
         }
-        for (video of videos) {
-          video.muted = "muted";
-        }
+        // for (video of videos) {
+        //   video.muted = "muted";
+        // }
         if(!hasAudioStarted) {
             // var sounds = document.getElementsByTagName('a-sound')
             // for(i=0; i<sounds.length; i++) {
@@ -464,6 +464,14 @@ AFRAME.registerComponent('toggle-audio', {
         hasAudioStarted=true
       }
     }
+
+    for (var marker of markers) {
+      marker.addEventListener('click', (e) => {
+      if(!hasAudioStarted) {
+        toggleAudio()
+      }
+    }
+    )}
     
 //    const startFireworksAudio = () => {
 //        audioToggleIcon.classList.remove('audioOff')
