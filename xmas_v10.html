@@ -1,6 +1,6 @@
 
 <html>
-  <script>console.log("version .90" + 3)</script>
+  <script>console.log("version 1.0" + 1)</script>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <!-- we import arjs version without NFT but with marker + location based support -->
@@ -210,12 +210,13 @@
 
 
         <a-entity
+                class="gift"
                 id='box1'
-                scale="0.5 0.5 0.5"
+                scale="0.4 0.4 0.4"
                 position='0 0 0'
                 gltf-model='#gift_1'
         >
-                  <a-box class="gift" position='0 0.875 0' scale="1.75 1.75 1.75" opacity='0.5' start-animation='name: scene1; audio_src: "url(/audio/scene1.mp3)"; length: 18000'>
+                  <a-box  position='0 0.875 0' scale="1.75 1.75 1.75" opacity='0.5' start-animation='name: scene1; audio_src: "url(/audio/scene1.mp3)"; length: 18000'>
         </a-entity>
 
 
@@ -247,13 +248,14 @@
 
           </a-marker>
           <a-marker class="marker" id="marker_scene3" preset="custom" type="pattern" url="/markers/3.patt" size=".03">
-        <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; audio_src: "url(/audio/scene3.mp3)";video: "laptop_video"; video_src: "/videos/scene3_noaudio.mp4"; length: 45000'>
-                <a-entity 
+            <a-entity    
+                  class="gift"              
                   gltf-model='#gift_3'
-                  scale="0.25 0.25 0.25"
-                  position='0 -0.5 0'
-                ></a-entity>
-        </a-box>
+                  scale="0.4 0.4 0.4">
+              <a-box  position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; audio_src: "url(/audio/scene3.mp3)";video: "laptop_video"; video_src: "/videos/scene3_noaudio.mp4"; length: 45000'>
+              </a-box>
+            </a-entity>
+
 
               <a-entity class="scene" id="scene3"  visible="false">
                 <a-entity class="scene3_model"
@@ -269,14 +271,14 @@
               </a-entity>
           </a-marker>
           <a-marker class="marker" id="marker_scene4" preset="custom" type="pattern" url="/markers/4.patt" size=".03">
-      <a-box class="gift" position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene4; audio_src: "url(/audio/scene4.mp3)"; length: 25000'>
-              <a-entity 
-                gltf-model='#gift_4'
-                scale="0.25 0.25 0.25"
-                position='0 -0.5 0'
-              >
-              </a-entity>
-            </a-box>
+
+
+            <a-entity class="gift" gltf-model='#gift_4'
+                scale="0.4 0.4 0.4">
+                <a-box  position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene4; audio_src: "url(/audio/scene4.mp3)"; length: 25000'></a-box>
+
+            </a-entity>
+
               <a-entity class="scene" id='scene4'
                 animation-mixer
                 visible="false"
@@ -358,14 +360,12 @@
               </a-entity>
           </a-marker>
           <a-marker class="marker" id="marker_scene6" preset="custom" type="pattern" url="/markers/6.patt" size=".03">
-              <a-box class="gift" position='0 0.5 0' scale="1 1.333 1" material='opacity: 0;' start-animation='name: scene6; audio_src: "url(/audio/scene6.mp3)"; video: "phone_video"; video_src: "/videos/scene6_noaudio.mp4"; length: 30000'>
-                <a-entity
-                  gltf-model='#gift_6'
-                  scale="0.375 0.25 0.375"
-                  position='0 -0.5 0'
-                >
-                </a-entity>
-              </a-box>
+            <a-entity   
+            class="gift"                
+            gltf-model='#gift_6'
+                  scale="0.3 0.3 0.3">
+              <a-box  position='0 1.5 0' scale="2 3 2" material='opacity: 0;' start-animation='name: scene6; audio_src: "url(/audio/scene6.mp3)"; video: "phone_video"; video_src: "/videos/scene6_noaudio.mp4"; length: 30000'>
+
               <a-entity class="scene" id='scene6'
                 rotation='0 0 0'
                 scale="0.45 0.45 0.45"
@@ -430,14 +430,14 @@
               </a-entity>
           </a-marker>
           <a-marker class="marker" id="marker_scene11" preset="custom" type="pattern" url="/markers/11.patt" size=".03">
-        <a-box class="gift" position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0;' start-animation='name: scene11; audio_src: "url(/audio/scene11.mp3)"; length: 10500; selfie: true'>
-                <a-entity
-                  gltf-model='#gift_11'
-                  scale="0.25 0.25 0.25"
-                  position='0 -0.5 0'
-                >
-                </a-entity>
-              </a-box>
+        <a-entity
+          class="gift" 
+          gltf-model='#gift_11'
+          scale="0.25 0.25 0.25">
+            <a-box position='0 0.5 0' scale="1.5 1.5 1.5" material='opacity: 0;' start-animation='name: scene11; audio_src: "url(/audio/scene11.mp3)"; length: 10500; selfie: true'> </a-box>
+
+        </a-entity>
+
               <a-entity class="scene" id='scene11'
                 scale="0.666 0.666 0.666"
                 visible="false"
@@ -457,7 +457,7 @@
 
           <!-- <a-entity id="selfie_frame" visible="false" geometry="primitive:plane;" position='0 0 -2' scale=".7725 1.6 1" material="shader:gif;src:url(/graphics/SantaSelfieRepaired.gif);" gif="" autoplay="true"></a-entity> -->
           <a-entity id="fuseCursor" camera>
-                <a-entity id="pointer" cursor="rayOrigin: mouse; fuse: true; fuseTimeout: 4000" raycaster="objects: .gift" position="0 0 -1" scale=".2 .2 .2" geometry="primitive: plane" material="src: url(graphics/scan.png);
+                <a-entity id="pointer" cursor="rayOrigin: mouse; fuse: true; fuseTimeout: 4000" raycaster="objects: a-box" position="0 0 -1" scale=".2 .2 .2" geometry="primitive: plane" material="src: url(graphics/scan.png);
             opacity: 0.5"
 
             animation="startEvents: fusing;
