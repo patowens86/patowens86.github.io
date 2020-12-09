@@ -113,9 +113,6 @@ AFRAME.registerComponent('start-animation', {
             audio.components.sound.pauseSound();
           }    
         }
-        for (var gift of giftArray) {
-          gift.sceneEnd()
-        }
         if(isNotActive) {
           this.el.setAttribute('visible', true)
           sceneStart()
@@ -380,10 +377,7 @@ AFRAME.registerComponent('start-animation', {
 
        }
        document.querySelector("a-scene").setAttribute('selfieMode', "false")
-       cursor.setAttribute('raycaster', 'a-sphere')
-
        cursor.setAttribute('cursor', 'rayOrigin: mouse; fuse: true')
-              cursor.setAttribute('raycaster', 'a-box')
 
       marker.removeEventListener("markerFound",
           markerFoundWarning
