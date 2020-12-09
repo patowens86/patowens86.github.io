@@ -2,7 +2,7 @@
 <html>
   <script>console.log("version .90" + 3)</script>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
       <script src="https://unpkg.com/merge-images"></script>
@@ -141,7 +141,7 @@
 
       <p id="markerLostInstructionText" style="  background-color: black;
   background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 7%/95%;">Did you lose Santa? Try to re-focus camera on the marker."</p>
+  border-radius: 7%/95%;">Did you lose Santa? Try to re-focus camera on the marker.</p>
     </div>
 
 </div>
@@ -201,7 +201,6 @@
         <a-sound id="scene4_audio" class="audio" src="url(/audio/scene4.mp3)" volume="0"></a-sound> 
         <a-sound id="scene6_audio" class="audio" src="url(/audio/scene6.mp3)" volume="0"></a-sound> 
         <a-sound id="scene11_audio" class="audio" src="url(/audio/scene11.mp3)" volume="0"></a-sound> 
-
         <a-marker class="marker" id="marker_scene1" preset="custom" type="pattern" url="/markers/1.patt">
             <!-- <a-box position="0 .5 0" start-animation='name: scene1;'>
             </a-box> -->
