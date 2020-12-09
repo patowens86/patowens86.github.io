@@ -449,7 +449,7 @@
           </a-marker>
 
           <!-- <a-entity id="selfie_frame" visible="false" geometry="primitive:plane;" position='0 0 -2' scale=".7725 1.6 1" material="shader:gif;src:url(/graphics/SantaSelfieRepaired.gif);" gif="" autoplay="true"></a-entity> -->
-          <a-entity id="fuseCursor" camera>
+          <a-entity id="fuseCursor" camera look-controls="magicWindowTrackingEnabled: false">
                 <a-entity id="pointer" cursor="rayOrigin: mouse; fuse: true; fuseTimeout: 4000" raycaster="objects: a-box" position="0 0 -1" scale=".2 .2 .2" geometry="primitive: plane" material="src: url(graphics/scan.png);
             opacity: 0.5"
 
