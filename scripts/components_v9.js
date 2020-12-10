@@ -99,6 +99,9 @@ AFRAME.registerComponent('start-animation', {
         
         pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: true; fuseTimeout: 4000')
         pointer.setAttribute('visible', true)
+        pointer.setAttribute('animation', 'property: position; from: 0 -.1 -.8; to: 0 0 -1; easing: easeOutSine; dur: 1000; autoplay: true')
+        pointer.setAttribute('animation__scan', 'startEvents: fusing; property: scale; from: .2 .2 .2; to: 0.1 0.1 0.1; easing: easeOutSine; dur: 4000') 
+        pointer.setAttribute('animation__out', "startEvents: mouseleave; property: scale; to: .2 .2 .2; dur: 100;")
         scanButton.style.display = 'none'
         scanInstructionText.innerHTML = 'Scan a <b>Gift Box</b> to activate a scene.'
         
@@ -172,6 +175,7 @@ AFRAME.registerComponent('start-animation', {
 
     el.addEventListener('click', function () {
       tryStartAnimation()
+      pointer.setAttribute('animation', 'property: position; from: 0 0 -1; to: 0 -.1 -.8;  easing: easeOutSine; dur: 1000; autoplay: true')
       console.log("model clicked, time to play video")
       if(currentScene =="scene3" || currentScene =="scene6") {
         if(currentScene=="scene3") 
