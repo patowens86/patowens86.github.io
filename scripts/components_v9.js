@@ -66,7 +66,7 @@ AFRAME.registerComponent('dynamic-cursor', {
         dynamicScanCursor.setAttribute('position','0 0 -1')
         dynamicScanCursor.setAttribute('scale','.2 .2 .2')
         dynamicScanCursor.setAttribute('geometry', 'primitive: plane')
-        dynamicScanCursor.setAttribute('material', 'src: url(graphics/scan.png); opacity: 0.5')
+        dynamicScanCursor.setAttribute('material', 'src: #scanbox; opacity: 0.5; shader: flat')
         dynamicScanCursor.setAttribute('cursor', 'rayOrigin: mouse; fuse: true; fuseTimeout: 4000')
         dynamicScanCursor.setAttribute('raycaster', 'objects: a-box')
         dynamicScanCursor.setAttribute('visible', true)

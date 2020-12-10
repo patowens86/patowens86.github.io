@@ -440,6 +440,7 @@ h2 {
   left: 35%;
   right: 35%;
   color: #38157b;
+    border: 0.2em solid #ffffff;
 }
 
 #shareButton:active, #retakeButton:active, #scanButton:active  {

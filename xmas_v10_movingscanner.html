@@ -66,9 +66,6 @@
             <div id="scanButton" style="z-index:9999">
           <p id="scanButtonText">Scan</p>
         </div>
-                    <div id="cancelButton" style="display: none;z-index:9999">
-          <p id="cancelButtonText">Cancel</p>
-        </div>
   <div id="photoModeContainer" style=" z-index: 9999">
 
     <div id="photoModeBG"></div>
@@ -161,7 +158,7 @@
       toggle-audio
       screenshot="width: 1024; height: 1024;"
       photo-mode
-      
+      dynamic-cursor
       renderer="logarithmicDepthBuffer: true;"
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'
       loading-xmas
@@ -191,7 +188,6 @@
           <a-asset-item id="gift_4" src="/models/Gift_4.glb"></a-asset-item>
           <a-asset-item id="gift_6" src="/models/Gift_6.glb"></a-asset-item>
           <a-asset-item id="gift_11" src="/models/Gift_11.glb"></a-asset-item>
-          <img id="scanbox" src="/graphics/scan.png">
 <!--           <video muted id="s3_video" src="/videos/scene3_noaudio.mp4"></video>
           <video muted id="s6_video" src="/videos/scene6_noaudio.mp4"></video>
           <audio id="song_file" loop="true" src="/audio/song.mp3"></audio> -->
@@ -447,7 +443,7 @@
           </a-marker>
 
           <!-- <a-entity id="selfie_frame" visible="false" geometry="primitive:plane;" position='0 0 -2' scale=".7725 1.6 1" material="shader:gif;src:url(/graphics/SantaSelfieRepaired.gif);" gif="" autoplay="true"></a-entity> -->
-          <a-entity id="fuseCursor" camera dynamic-cursor="scanning: false">
+          <a-entity id="fuseCursor" camera>
             <!-- <a-box scale=".1 .1 .1" position="0 0 -2"></a-box> -->
 <!--                 <a-entity visible="false" id="pointer" position="0 0 -1" scale=".2 .2 .2" geometry="primitive: plane" material="src: url(graphics/scan.png);
             opacity: 0.5"
