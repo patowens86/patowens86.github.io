@@ -41,6 +41,69 @@ AFRAME.registerComponent('loading-xmas', {
   }
 })
 
+AFRAME.registerComponent('dynamic-cursor', {
+  init: function(){
+    console.log("Dynamic cursor loaded")
+
+    var camera = document.getElementById('fuseCursor')
+    var dynamicScanCursor;
+    const scanButton = document.getElementById('scanButton')
+    const cancelButton = document.getElementById('cancelButton')
+    const scanButtonText = document.getElementById('scanButtonText')
+    console.log("Does scan button have value: " + scanButton)
+    var scanning = false
+
+    scanButton.addEventListener('click', startScan)
+    cancelButton.addEventListener('click', cancelScan)
+
+    function startScan() {
+      {
+
+
+        console.log('scan button clicked')
+        var dynamicScanCursor = document.createElement('a-entity');
+        dynamicScanCursor.setAttribute('id', 'dynamic scan cursor')
+        dynamicScanCursor.setAttribute('position','0 0 -1')
+        dynamicScanCursor.setAttribute('scale','.2 .2 .2')
+        dynamicScanCursor.setAttribute('geometry', 'primitive: plane')
+        dynamicScanCursor.setAttribute('material', 'src: url(graphics/scan.png); opacity: 0.5')
+        dynamicScanCursor.setAttribute('cursor', 'rayOrigin: mouse; fuse: true; fuseTimeout: 4000')
+        dynamicScanCursor.setAttribute('raycaster', 'objects: a-box')
+        dynamicScanCursor.setAttribute('visible', true)
+        dynamicScanCursor.setAttribute('animation', 'property: position; from: 0 -.1 -.8; to: 0 0 -1; easing: easeOutSine; dur: 1000; autoplay: true')
+        dynamicScanCursor.setAttribute('animation__scan', 'startEvents: fusing; property: scale; from: .2 .2 .2; to: 0.1 0.1 0.1; easing: easeOutSine; dur: 4000') 
+        dynamicScanCursor.setAttribute('animation__out', "startEvents: mouseleave; property: scale; to: .2 .2 .2; dur: 100;")
+        camera.appendChild(dynamicScanCursor)
+                cancelButton.style.display = 'block'
+        scanButton.style.display = 'none'
+        scanInstructionText.innerHTML = 'Scan a <b>Gift Box</b> to activate a scene.'
+        // scanButtonText.innerHTML = "Cancel"
+        // scanButton.style.background = "#ffffff"
+        // scanButton.style.border = "0.2em solid #ffffff";
+        scanning = true
+      
+
+      
+    }
+    }
+
+    function cancelScan() {
+        console.log("canceling scan")
+        cancelButton.style.display = 'none'
+        scanButton.style.display = 'block'
+        // scanButtonText.innerHTML = "Scan"
+        // scanButton.style.background = "#23f4cd"
+        // scanButton.style.border = "0.2em solid #23f4cd";
+        scanning = false
+        camera.removeChild(document.getElementById('dynamic scan cursor'))
+        // pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: false; fuseTimeout: 4000')
+        // pointer.setAttribute('visible', false)
+        // scanButton.addEventListener('click', startScan)
+        // pointer.setAttribute('animation', 'property: position; from: 0 0 -1; to: 0 -.1 -.8;  easing: easeOutSine; dur: 1000; autoplay: true')
+        // pointer.setAttribute('animation__out', "property: scale; to: .2 .2 .2; dur: 100;")
+    }
+  }
+})
 
 AFRAME.registerComponent('start-animation', {
   schema: {
@@ -61,6 +124,7 @@ AFRAME.registerComponent('start-animation', {
     var scene = document.getElementsByTagName("a-scene")
     const closeButton = document.getElementById('endSceneButton')
     const scanButton = document.getElementById('scanButton')
+    const scanButtonText = document.getElementById('scanButtonText')
     var giftArray = document.getElementsByClassName("gift")
     var sceneArray = document.getElementsByClassName("scene")
     var audioArray = document.getElementsByClassName("audio")
@@ -92,20 +156,13 @@ AFRAME.registerComponent('start-animation', {
     var marker = document.getElementById('marker_' + currentScene)
     var warning = document.getElementById('markerLostInstructions')
     var markers = document.getElementsByClassName('marker')
+    var scanning = false
+    var dynamicScanCursor;
 
 
-      scanButton.addEventListener('click', (e) => {
-        console.log('scan button clicked')
-        
-        pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: true; fuseTimeout: 4000')
-        pointer.setAttribute('visible', true)
-        pointer.setAttribute('animation', 'property: position; from: 0 -.1 -.8; to: 0 0 -1; easing: easeOutSine; dur: 1000; autoplay: true')
-        pointer.setAttribute('animation__scan', 'startEvents: fusing; property: scale; from: .2 .2 .2; to: 0.1 0.1 0.1; easing: easeOutSine; dur: 4000') 
-        pointer.setAttribute('animation__out', "startEvents: mouseleave; property: scale; to: .2 .2 .2; dur: 100;")
-        scanButton.style.display = 'none'
-        scanInstructionText.innerHTML = 'Scan a <b>Gift Box</b> to activate a scene.'
-        
-      })
+      // scanButton.addEventListener('click', startScan)
+
+
 
       if(scan){
         tapInstructions.style.display = 'none'
@@ -175,7 +232,7 @@ AFRAME.registerComponent('start-animation', {
 
     el.addEventListener('click', function () {
       tryStartAnimation()
-      pointer.setAttribute('animation', 'property: position; from: 0 0 -1; to: 0 -.1 -.8;  easing: easeOutSine; dur: 1000; autoplay: true')
+      // pointer.setAttribute('animation', 'property: position; from: 0 0 -1; to: 0 -.1 -.8;  easing: easeOutSine; dur: 1000; autoplay: true')
       console.log("model clicked, time to play video")
       if(currentScene =="scene3" || currentScene =="scene6") {
         if(currentScene=="scene3") 
@@ -319,8 +376,10 @@ AFRAME.registerComponent('start-animation', {
     }
 
     function sceneStart(){
+                      cancelButton.style.display = 'none'
+        //scanButton.style.display = 'none'
       //document.querySelector('a-scene').components.screenshot.capture('perspective')
-      pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: false')
+      cursor.removeChild(document.getElementById('dynamic scan cursor'))
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
       }
@@ -332,7 +391,7 @@ AFRAME.registerComponent('start-animation', {
         if(scan)
         {
           scanInstructions.style.display = 'none' 
-          pointer.setAttribute('material','visible: false') 
+          // pointer.setAttribute('material','visible: false') 
         }
         else{
           tapInstructions.style.display = 'none'          
@@ -372,11 +431,12 @@ AFRAME.registerComponent('start-animation', {
         console.log("scene ending")
         shutterButton.hidden = true
         closeButton.style.display = 'none'
-        scanInstructionText.innerHTML = 'Find a <b>Gift Box</b> and press <b>Scan</b>.'
+        //cancelButton.style.display = 'none'
+        scanButton.style.display = 'block'
         if(scan)
         {
           scanInstructions.style.display = 'block'
-                    pointer.setAttribute('material','visible: true')   
+                    // pointer.setAttribute('material','visible: true')   
         }
         else{
           tapInstructions.style.display = 'block'          
@@ -399,8 +459,8 @@ AFRAME.registerComponent('start-animation', {
        }
        document.querySelector("a-scene").setAttribute('selfieMode', "false")
 
-        pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: false; fuseTimeout: 4000')
-        pointer.setAttribute('visible', false)
+        // pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: false; fuseTimeout: 4000')
+        // pointer.setAttribute('visible', false)
         scanButton.style.display = 'block'
 
       marker.removeEventListener("markerFound",
@@ -424,6 +484,49 @@ AFRAME.registerComponent('start-animation', {
     }
 
 
+      // function startScan() {
+      //   {
+      //   console.log('scan button clicked')
+      //   var dynamicScanCursor = document.createElement('a-entity');
+      //   dynamicScanCursor.setAttribute('id', 'scanCursor')
+      //   dynamicScanCursor.setAttribute('position','0 0 -1')
+      //   dynamicScanCursor.setAttribute('scale','.2 .2 .2')
+      //   dynamicScanCursor.setAttribute('geometry', 'primitive: plane')
+      //   dynamicScanCursor.setAttribute('material', 'src: url(graphics/scan.png); opacity: 0.5')
+      //   dynamicScanCursor.setAttribute('cursor', 'rayOrigin: mouse; fuse: true; fuseTimeout: 4000')
+      //   dynamicScanCursor.setAttribute('raycaster', 'objects: a-box')
+      //   dynamicScanCursor.setAttribute('visible', true)
+      //   dynamicScanCursor.setAttribute('animation', 'property: position; from: 0 -.1 -.8; to: 0 0 -1; easing: easeOutSine; dur: 1000; autoplay: true')
+      //   dynamicScanCursor.setAttribute('animation__scan', 'startEvents: fusing; property: scale; from: .2 .2 .2; to: 0.1 0.1 0.1; easing: easeOutSine; dur: 4000') 
+      //   dynamicScanCursor.setAttribute('animation__out', "startEvents: mouseleave; property: scale; to: .2 .2 .2; dur: 100;")
+      //   cursor.appendChild(dynamicScanCursor)
+      //   if (!scanning)
+      //   {
+      //     scanButtonText.innerHTML = "Cancel"
+      //     scanButton.style.background = "#ffffff"
+      //     scanButton.style.border = "0.2em solid #ffffff";
+      //     scanning = true
+      //   }
+      //   else {
+      //      cancelScan()
+      //   }
+      //   scanInstructionText.innerHTML = 'Scan a <b>Gift Box</b> to activate a scene.'
+        
+      // }
+      // }
+
+      // function cancelScan() {
+      //     scanButtonText.innerHTML = "Scan"
+      //     scanButton.style.background = "#23f4cd"
+      //     scanButton.style.border = "0.2em solid #23f4cd";
+      //     scanning = false
+      //     //cursor.removeChild(dynamicScanCursor)
+      //     // pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: false; fuseTimeout: 4000')
+      //     // pointer.setAttribute('visible', false)
+      //     // scanButton.addEventListener('click', startScan)
+      //     // pointer.setAttribute('animation', 'property: position; from: 0 0 -1; to: 0 -.1 -.8;  easing: easeOutSine; dur: 1000; autoplay: true')
+      //     // pointer.setAttribute('animation__out', "property: scale; to: .2 .2 .2; dur: 100;")
+      // }
   }
 });
 

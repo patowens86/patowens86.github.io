@@ -66,6 +66,9 @@
             <div id="scanButton" style="z-index:9999">
           <p id="scanButtonText">Scan</p>
         </div>
+                    <div id="cancelButton" style="display: none;z-index:9999">
+          <p id="cancelButtonText">Cancel</p>
+        </div>
   <div id="photoModeContainer" style=" z-index: 9999">
 
     <div id="photoModeBG"></div>
@@ -158,6 +161,7 @@
       toggle-audio
       screenshot="width: 1024; height: 1024;"
       photo-mode
+      
       renderer="logarithmicDepthBuffer: true;"
       embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'
       loading-xmas
@@ -380,6 +384,7 @@
                   animation__walkaway="startEvents: start_scene6; pauseEvents: restart_scene6; property: position; dur: 3000; from: 2 0 1; to: 2 0 4; easing: easeInOutQuad; delay: 25000;" 
                   animation__disappear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 100; from: 1 1 1; to: 0 0 0; easing: easeInOutQuad; delay: 27800;"
                   animation__restart="startEvents: restart_scene6; property: position; dur: 100; from: 2 0 4; to: 2 0 1; easing: easeInOutQuad;"
+                  animation__restart="startEvents: restart_scene6; property: rotation; dur: 100; from: 0 -180 0; to: 0 0 0; easing: easeInOutQuad;"
                   animation__restart_scale="startEvents: restart_scene6; property: scale; dur: 100; from: 0 0 0; to: 1 1 1; easing: easeInOutQuad;">
                     <a-entity id="gifts" position="0 0 -1"
                               class="scene6_model"
@@ -441,9 +446,9 @@
           </a-marker>
 
           <!-- <a-entity id="selfie_frame" visible="false" geometry="primitive:plane;" position='0 0 -2' scale=".7725 1.6 1" material="shader:gif;src:url(/graphics/SantaSelfieRepaired.gif);" gif="" autoplay="true"></a-entity> -->
-          <a-entity id="fuseCursor" camera>
+          <a-entity id="fuseCursor" camera dynamic-cursor="scanning: false">
             <!-- <a-box scale=".1 .1 .1" position="0 0 -2"></a-box> -->
-                <a-entity visible="false" id="pointer" cursor="rayOrigin: mouse; fuse: false; fuseTimeout: 4000" raycaster="objects: a-box" position="0 0 -1" scale=".2 .2 .2" geometry="primitive: plane" material="src: url(graphics/scan.png);
+<!--                 <a-entity visible="false" id="pointer" position="0 0 -1" scale=".2 .2 .2" geometry="primitive: plane" material="src: url(graphics/scan.png);
             opacity: 0.5"
 
 
@@ -457,11 +462,8 @@
               property: scale;
                to: .2 .2 .2;
                dur: 100"
-            animation__colorchange="startEvents: mouseleave; isRawProperty: true;
-                          components.material.color; type: color;
-                           to: black;
-                           dur: 1000"
-               ></a-entity>
+
+               ></a-entity> -->
   <!--           <a-entity geometry="primitive: ring" position="0 0 -10" material="color: black; shader: flat" animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"> -->
           </a-entity>
         </a-scene>
