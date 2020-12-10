@@ -8,12 +8,12 @@ AFRAME.registerComponent('loading-xmas', {
     var postloadContainer = document.getElementById("postload")
     var trelloVideo = document.getElementById('laptop_video')
     var phoneVideo = document.getElementById('phone_video')
-    console.log("loading screen initialized")
+    // console.log("loading screen initialized")
     var hasLoaded = false;
     var progressBar = document.getElementById("xload__bar_progress")
         var audioArray = document.getElementsByClassName("audio")
     progressBar.style.width = '100%'
-    console.log(progressBar.style.width)
+    // console.log(progressBar.style.width)
     
     //document.getElementById('gift_1').addEventListener('loaded', function() { console.log("Gift loaded") })
     setTimeout(
@@ -43,14 +43,14 @@ AFRAME.registerComponent('loading-xmas', {
 
 AFRAME.registerComponent('dynamic-cursor', {
   init: function(){
-    console.log("Dynamic cursor loaded")
+    // console.log("Dynamic cursor loaded")
 
     var camera = document.getElementById('fuseCursor')
     var dynamicScanCursor;
     const scanButton = document.getElementById('scanButton')
     const cancelButton = document.getElementById('cancelButton')
     const scanButtonText = document.getElementById('scanButtonText')
-    console.log("Does scan button have value: " + scanButton)
+    // console.log("Does scan button have value: " + scanButton)
     var scanning = false
 
     scanButton.addEventListener('click', startScan)
@@ -60,7 +60,7 @@ AFRAME.registerComponent('dynamic-cursor', {
       {
 
 
-        console.log('scan button clicked')
+        // console.log('scan button clicked')
         var dynamicScanCursor = document.createElement('a-entity');
         dynamicScanCursor.setAttribute('id', 'dynamic scan cursor')
         dynamicScanCursor.setAttribute('position','0 0 -1')
@@ -88,7 +88,7 @@ AFRAME.registerComponent('dynamic-cursor', {
     }
 
     function cancelScan() {
-        console.log("canceling scan")
+        // console.log("canceling scan")
         cancelButton.style.display = 'none'
         scanButton.style.display = 'block'
         // scanButtonText.innerHTML = "Scan"
@@ -135,7 +135,7 @@ AFRAME.registerComponent('start-animation', {
 
 
 
-    console.log("VideoClip name: " + videoClipName)
+    // console.log("VideoClip name: " + videoClipName)
     const shutterButton = document.getElementById('shutterButton')
     const tapInstructions = document.getElementById('tapInstructions')
     const scanInstructions = document.getElementById('scanInstructions')
@@ -147,12 +147,12 @@ AFRAME.registerComponent('start-animation', {
     var animationLength = this.data.length
     var isSelfie = this.data.selfie
     var experienceHasStarted = false
-    console.log("this is the combined name: " + model.getAttribute('id') + "_model")
+    // console.log("this is the combined name: " + model.getAttribute('id') + "_model")
     var currentScene = model.getAttribute('id')
     var animations = document.getElementsByClassName(currentScene + "_model")
-    console.log(currentScene + "_model")
-    console.log("animation for " + currentScene + " exists?" + animations)
-    console.log("Selfie state is = " + isSelfie)
+    // console.log(currentScene + "_model")
+    // console.log("animation for " + currentScene + " exists?" + animations)
+    // console.log("Selfie state is = " + isSelfie)
     var marker = document.getElementById('marker_' + currentScene)
     var warning = document.getElementById('markerLostInstructions')
     var markers = document.getElementsByClassName('marker')
@@ -169,7 +169,7 @@ AFRAME.registerComponent('start-animation', {
       }
       else { scanInstructions.style.display = 'none'}
       selfieInstructions.style.display = 'none'
-      el.addEventListener('fusing', (e) => {console.log("fusing")})
+      // el.addEventListener('fusing', (e) => {console.log("fusing")})
 
       el.addEventListener('click', (e) => {
         if(!experienceHasStarted) {
@@ -209,7 +209,7 @@ AFRAME.registerComponent('start-animation', {
           // }
           
           if(this.data.length) {
-            console.log("timer started")
+            // console.log("timer started")
             if(isSelfie == "false"){
               setTimeout(
                 function() {
@@ -225,7 +225,7 @@ AFRAME.registerComponent('start-animation', {
         }
         else {
           sceneEnd();
-          console.log(this.data.name + " is not active")
+          // console.log(this.data.name + " is not active")
           }
         }
       });
@@ -233,7 +233,7 @@ AFRAME.registerComponent('start-animation', {
     el.addEventListener('click', function () {
       tryStartAnimation()
       // pointer.setAttribute('animation', 'property: position; from: 0 0 -1; to: 0 -.1 -.8;  easing: easeOutSine; dur: 1000; autoplay: true')
-      console.log("model clicked, time to play video")
+      // console.log("model clicked, time to play video")
       if(currentScene =="scene3" || currentScene =="scene6") {
         if(currentScene=="scene3") 
           {
@@ -249,7 +249,7 @@ AFRAME.registerComponent('start-animation', {
           }        
           video.load();
           video.addEventListener("loaded", function() {
-              console.log("video has loaded")
+              // console.log("video has loaded")
 
               video.play();
             })
@@ -277,7 +277,7 @@ AFRAME.registerComponent('start-animation', {
     function startSelfie(){
       // xblink_widget.classList.add('xblink--active')
       photoFrame.style.display = "block"
-      console.log("setting selfie mode to true")
+      // console.log("setting selfie mode to true")
       marker.removeEventListener("markerFound",
           markerFoundWarning
       )
@@ -285,7 +285,7 @@ AFRAME.registerComponent('start-animation', {
           markerLostWarning
       )
       document.querySelector("a-scene").setAttribute('selfieMode', "true")
-      console.log(document.querySelector("a-scene").getAttribute('selfieMode'))
+      // console.log(document.querySelector("a-scene").getAttribute('selfieMode'))
       shutterButton.hidden = false
 
  selfieInstructions.style.display = 'none'
@@ -298,24 +298,24 @@ AFRAME.registerComponent('start-animation', {
     function isSceneActiveCheck() {
       if (isNotActive == false) {
         sceneEnd()
-        console.log("scene timed out")
+        // console.log("scene timed out")
       }
       else { console.log("scene was already finished")}
     }
 
       function tryStartAnimation(){
-        console.log("start_" + currentScene)
-        console.log("Trying to start animation")
+        // console.log("start_" + currentScene)
+        // console.log("Trying to start animation")
         if (!isPlaying /*&& isNotActive*/) {startAnimation()}
       }
 
     function startAnimation() {
-        console.log("starting animation")
+        // console.log("starting animation")
         isPlaying = true
       // document.getElementById("test").emit("startScene1")
         
         for (var anim of animations){
-          console.log("starting animation for #" + anim)
+          // console.log("starting animation for #" + anim)
           anim.setAttribute("animation-mixer", "clip: *; duration: " + animationLength/1000)
           anim.emit("start_" + currentScene)
         }
@@ -326,14 +326,14 @@ AFRAME.registerComponent('start-animation', {
           // if(!experienceHasStarted) {
 
           // }
-           console.log("Current id for auidio is: " + currentScene + "_audio")
+           // console.log("Current id for auidio is: " + currentScene + "_audio")
             sceneAudio = document.getElementById(currentScene + "_audio")
                       console.log(audio_source)
             sceneAudio.setAttribute('src', audio_source)
 
             //sceneAudio.setAttribute('volume', .5)
             sceneAudio.components.sound.playSound()
-            console.log("Scene audio is playing: " + sceneAudio.isPlaying)
+            // console.log("Scene audio is playing: " + sceneAudio.isPlaying)
           
         }
 
@@ -343,11 +343,11 @@ AFRAME.registerComponent('start-animation', {
             for (var anim of animations){
               anim.setAttribute("animation-mixer", "clip: '';")
               anim.emit("restart_" + currentScene)
-              console.log("emitting restart: " + "restart_" + currentScene)
+              // console.log("emitting restart: " + "restart_" + currentScene)
 
             }
         // if (isActive) {
-          console.log("looping animation!")
+          // console.log("looping animation!")
           isPlaying = false
           //startAnimation()
         }
@@ -360,7 +360,7 @@ AFRAME.registerComponent('start-animation', {
       }
 
     function flash(){
-      console.log("flashing!")
+      // console.log("flashing!")
       $('.flash')
        .show()  //show the hidden div
        .animate({opacity: 1}, 500) 
@@ -399,7 +399,7 @@ AFRAME.registerComponent('start-animation', {
         model.setAttribute('visible', true)
 
        isNotActive=false;
-       console.log("selfie status is = " + isSelfie)
+       // console.log("selfie status is = " + isSelfie)
        if(isSelfie == "true") {
            selfieInstructions.style.display = 'block'
           setTimeout(
@@ -428,7 +428,7 @@ AFRAME.registerComponent('start-animation', {
     //   closeButton.style.display = 'none'
     // }
     function sceneEnd() {
-        console.log("scene ending")
+        // console.log("scene ending")
         shutterButton.hidden = true
         closeButton.style.display = 'none'
         //cancelButton.style.display = 'none'
@@ -470,16 +470,16 @@ AFRAME.registerComponent('start-animation', {
           markerLostWarning
       )
       warning.style.display = 'none'
-      console.log("Removing marker event listeners")
+      // console.log("Removing marker event listeners")
 
     }
 
     function markerFoundWarning() {
-        console.log("marker1 found")
+        // console.log("marker1 found")
         warning.style.display = "none"     
     }
     function markerLostWarning() {
-        console.log("marker1 lost")
+        // console.log("marker1 lost")
         warning.style.display = "block"
     }
 
@@ -546,7 +546,7 @@ AFRAME.registerComponent('toggle-audio', {
     const song = document.getElementById("song")
     var markers = document.getElementsByClassName('marker')
     
-    console.log("toggleAudio is ready")
+    // console.log("toggleAudio is ready")
 
       // for (video of videos) {
       //   video.muted = "muted";
@@ -566,7 +566,7 @@ AFRAME.registerComponent('toggle-audio', {
         // for (video of videos) {
         //   video.muted = "muted";
         // }
-        console.log(sounds[i] + " volume set to 0")
+        // console.log(sounds[i] + " volume set to 0")
         isPlaying = false
       }
       else {
@@ -586,7 +586,7 @@ AFRAME.registerComponent('toggle-audio', {
             // }
             song.components.sound.playSound();
         }
-        console.log(sounds[i] + " volume set to 0.5")
+        // console.log(sounds[i] + " volume set to 0.5")
         isPlaying = true
         hasAudioStarted=true
       }
@@ -723,7 +723,7 @@ AFRAME.registerComponent('photo-mode', {
     
 
     keepButton.addEventListener('click', () => {
-      console.log("Keep button clicked")
+      // console.log("Keep button clicked")
       keepContainer.style.display = 'none'
       photoHasBeenTaken = true
     })
@@ -809,8 +809,8 @@ AFRAME.registerComponent('photo-mode', {
         closeButton.addEventListener('click', promptKeep)
         let sceneHeight = $(window).height()
         let sceneWidth = $(window).width()
-        console.log(sceneHeight)
-        console.log(sceneWidth)
+        // console.log(sceneHeight)
+        // console.log(sceneWidth)
         // let sceneHeightHalf = sceneHeight/2
         // let sceneWidthHalf = sceneWidth/2
               // Show the photo
@@ -825,10 +825,10 @@ AFRAME.registerComponent('photo-mode', {
           width: sceneWidth * 3,
           height: sceneHeight * 3
         })
-        console.log(scene.components.screenshot.height + ' ' + scene.components.screenshot.width)
+        // console.log(scene.components.screenshot.height + ' ' + scene.components.screenshot.width)
         let aScene = scene.components.screenshot.getCanvas("perspective");
-        console.log("ascene height: " + aScene.height)
-        console.log("ascene width: " + aScene.width)
+        // console.log("ascene height: " + aScene.height)
+        // console.log("ascene width: " + aScene.width)
         aSceneWidth = aScene.width;
         aSceneHeight = aScene.height;
         let aSceneOrig = document.querySelector("a-canvas")
@@ -841,10 +841,10 @@ AFRAME.registerComponent('photo-mode', {
 
 
 
-        console.log("window height: " + sceneHeight)
-        console.log("window width: " + sceneWidth)
-        console.log("frame height: " + frame.height)
-        console.log("frame width: " + frame.width)
+        // console.log("window height: " + sceneHeight)
+        // console.log("window width: " + sceneWidth)
+        // console.log("frame height: " + frame.height)
+        // console.log("frame width: " + frame.width)
         //console.log("frame width: " + frame.style.width)
         // console.log("actual frame height: " + actualFrameHeight)
         //console.log("resizing ascene canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
@@ -852,7 +852,7 @@ AFRAME.registerComponent('photo-mode', {
         //console.log("finished ascene resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)
         aSceneHeight = frame.height
-        console.log("adjusted ascene height: " + frame.height)
+        // console.log("adjusted ascene height: " + frame.height)
         //console.log("adjusted ascene height: " + aScene.height)
         // console.log("adjusted ascene width: " + (frame.height*(aSceneWidth/aSceneHeight))*.75)
         //console.log("resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
@@ -864,9 +864,9 @@ AFRAME.registerComponent('photo-mode', {
 
         photoHasBeenTaken = true;
          // console.log("merging images at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
-        console.log("selfie mode is:" + el.getAttribute('selfieMode'))
+        // console.log("selfie mode is:" + el.getAttribute('selfieMode'))
         if(el.getAttribute('selfieMode') == "true") {
-          console.log("merging with selfie frame")
+          // console.log("merging with selfie frame")
             mergeImages( [
               {src: frame, x: -(frame.width/3), y: 0},
               //{src: aScene, x: -(sceneWidth/2), y: 0}, 
@@ -905,7 +905,7 @@ AFRAME.registerComponent('photo-mode', {
               // console.log(b64)
             });
         } else {
-          console.log("merging without selfie frame")
+          // console.log("merging without selfie frame")
             mergeImages( [
               {src: frame, x: -(frame.width/3), y: 0},
               {src: aScene, x: -(sceneWidth/2), y: 0}, 
@@ -952,15 +952,15 @@ AFRAME.registerComponent('photo-mode', {
             video = document.getElementById('arjs-video');
             videoStyleWidth = parseInt(video.style.width , 10)
             videoStyleHeight = parseInt(video.style.height, 10)
-            console.log("video style width: " + videoStyleWidth)
-            console.log("video style height: " + videoStyleHeight)
+            // console.log("video style width: " + videoStyleWidth)
+            // console.log("video style height: " + videoStyleHeight)
         // }
         // format = format || 'jpeg';
  
         // if (!video || (format !== 'png' && format !== 'jpeg')) {
         //     return false;
         // }
-        console.log("video widht: " + video.videoWidth + "  Video height: " + video.videoHeight)
+        // console.log("video widht: " + video.videoWidth + "  Video height: " + video.videoHeight)
         var canvas = document.createElement("CANVAS");
         canvas.width = width || videoStyleWidth
         canvas.height = height || videoStyleHeight
@@ -995,7 +995,7 @@ AFRAME.registerComponent('photo-mode', {
         shareBlurb.hidden = true
         shareButton.hidden = true
         retakeButton.classList.add('solo')
-        console.log(`Your browser doesn't support one tap share. Long-press the picture to share it.`);
+        // console.log(`Your browser doesn't support one tap share. Long-press the picture to share it.`);
       }
       // selfie_frame.setAttribute('visible', false)
     })
