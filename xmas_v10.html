@@ -44,7 +44,7 @@
 
     <div id="scanInstructions">
       <img id="scanCursor" id="scanID">
-      <p id="scanInstructionText">Scan a <b>gift box</b> in a well-lit environment to activate a scene.</p>
+      <p id="scanInstructionText">Find a Gift Box and press Scan.</p>
     </div>
     <div id="selfieInstructions">
       <p id="selfieInstructionText">Get ready for a photo with <b>Santa</b></p>
@@ -56,13 +56,16 @@
     </div> -->
   <div id="tapInstructions">
     <img src="assets/ic_tap1x.svg" id="tapIcon">
-    <p id="instructionText">Tap a <b>gift box</b> to activate a scene.</p>
+    <p id="instructionText">Position the card in a well-lit environment and press Scan.</p>
   </div>
 
   <div id="audioIconContainer" style=" z-index: 9999">
    <div id="audioIcon" class="audioOff" style="z-index: 9999"></div>
   </div>
     <div id="endSceneButton" style="display: none; z-index: 9999"></div>
+            <div id="scanButton" style="z-index:9999">
+          <p id="scanButtonText">Scan</p>
+        </div>
   <div id="photoModeContainer" style=" z-index: 9999">
 
     <div id="photoModeBG"></div>
@@ -78,6 +81,7 @@
         <div id="shareButton" style="z-index:11">
           <p id="shareButtonText">Share</p>
         </div>
+
         <div id="retakeButton" style="z-index:11">
           <p>Retake</p>
         </div>
@@ -438,7 +442,8 @@
 
           <!-- <a-entity id="selfie_frame" visible="false" geometry="primitive:plane;" position='0 0 -2' scale=".7725 1.6 1" material="shader:gif;src:url(/graphics/SantaSelfieRepaired.gif);" gif="" autoplay="true"></a-entity> -->
           <a-entity id="fuseCursor" camera>
-                <a-entity id="pointer" cursor="rayOrigin: mouse; fuse: true; fuseTimeout: 4000" raycaster="objects: a-box" position="0 0 -1" scale=".2 .2 .2" geometry="primitive: plane" material="src: url(graphics/scan.png);
+            <!-- <a-box scale=".1 .1 .1" position="0 0 -2"></a-box> -->
+                <a-entity visible="false" id="pointer" cursor raycaster="objects: a-box" position="0 0 -1" scale=".2 .2 .2" geometry="primitive: plane" material="src: url(graphics/scan.png);
             opacity: 0.5"
 
             animation="startEvents: fusing;

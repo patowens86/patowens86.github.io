@@ -342,7 +342,7 @@ h2 {
   transition: 0s;
   pointer-events: auto;
 }
-#shutterButton, #closeButton, #shareButton, #retakeButton, #endSceneButton{
+#shutterButton, #closeButton, #shareButton, #retakeButton, #endSceneButton, #scanButton{
   position: absolute;
   bottom: 2vmax;
   border-radius: 10vmin;
@@ -409,7 +409,7 @@ h2 {
 #shareBlurbAlt {
   display: none;
 }
-#shareButton, #retakeButton {
+#shareButton, #retakeButton, #scanButton {
   width: 32vmin;
   text-align: center;
   border: 0.2em solid #23f4cd;
@@ -417,7 +417,7 @@ h2 {
   line-height: 0.75;
   font-size: 1.1em;
 }
-#shareButton p, #retakeButton p {
+#shareButton p, #retakeButton p, #scanButton p {
     pointer-events: none;
 }
 #shareButton {
@@ -426,8 +426,15 @@ h2 {
   color: #38157b;
 }
 
+#scanButton {
+  display: block;
+    background: #23f4cd;
+  left: 35%;
+  right: 35%;
+  color: #38157b;
+}
 
-#shareButton:active, #retakeButton:active  {
+#shareButton:active, #retakeButton:active, #scanButton:active  {
   border: 0.2em solid #38157b;
   background: #38157b;
   color: white;

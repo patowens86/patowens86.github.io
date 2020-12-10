@@ -60,6 +60,7 @@ AFRAME.registerComponent('start-animation', {
     var isPlaying = false
     var scene = document.getElementsByTagName("a-scene")
     const closeButton = document.getElementById('endSceneButton')
+    const scanButton = document.getElementById('scanButton')
     var giftArray = document.getElementsByClassName("gift")
     var sceneArray = document.getElementsByClassName("scene")
     var audioArray = document.getElementsByClassName("audio")
@@ -93,7 +94,15 @@ AFRAME.registerComponent('start-animation', {
     var markers = document.getElementsByClassName('marker')
 
 
-
+      scanButton.addEventListener('click', (e) => {
+        console.log('scan button clicked')
+        
+        pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: true; fuseTimeout: 4000')
+        pointer.setAttribute('visible', true)
+        scanButton.style.display = 'none'
+        scanInstructionText.innerHTML = 'Scan a Gift Box to activate a scene.'
+        
+      })
 
       if(scan){
         tapInstructions.style.display = 'none'
@@ -307,7 +316,7 @@ AFRAME.registerComponent('start-animation', {
 
     function sceneStart(){
       //document.querySelector('a-scene').components.screenshot.capture('perspective')
-      cursor.setAttribute('cursor', 'rayOrigin: mouse; fuse: false')
+      pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: false')
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
       }
@@ -384,7 +393,10 @@ AFRAME.registerComponent('start-animation', {
 
        }
        document.querySelector("a-scene").setAttribute('selfieMode', "false")
-       cursor.setAttribute('cursor', 'rayOrigin: mouse; fuse: true')
+
+        pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: false; fuseTimeout: 4000')
+        pointer.setAttribute('visible', false)
+        scanButton.style.display = 'block'
 
       marker.removeEventListener("markerFound",
           markerFoundWarning
