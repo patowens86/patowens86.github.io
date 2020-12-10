@@ -100,7 +100,7 @@ AFRAME.registerComponent('start-animation', {
         pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: true; fuseTimeout: 4000')
         pointer.setAttribute('visible', true)
         scanButton.style.display = 'none'
-        scanInstructionText.innerHTML = 'Scan a Gift Box to activate a scene.'
+        scanInstructionText.innerHTML = 'Scan a <b>Gift Box</b> to activate a scene.'
         
       })
 
@@ -368,6 +368,7 @@ AFRAME.registerComponent('start-animation', {
         console.log("scene ending")
         shutterButton.hidden = true
         closeButton.style.display = 'none'
+        scanInstructionText.innerHTML = 'Find a <b>Gift Box</b> and press <b>Scan</b>.'
         if(scan)
         {
           scanInstructions.style.display = 'block'
