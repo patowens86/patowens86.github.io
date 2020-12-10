@@ -208,9 +208,16 @@ AFRAME.registerComponent('start-animation', {
       // xblink_widget.classList.add('xblink--active')
       photoFrame.style.display = "block"
       console.log("setting selfie mode to true")
+      marker.removeEventListener("markerFound",
+          markerFoundWarning
+      )
+      marker.removeEventListener("markerLost",
+          markerLostWarning
+      )
       document.querySelector("a-scene").setAttribute('selfieMode', "true")
       console.log(document.querySelector("a-scene").getAttribute('selfieMode'))
       shutterButton.hidden = false
+
  selfieInstructions.style.display = 'none'
       closeButton.style.display = 'block'
       for (const scene of sceneArray) {
