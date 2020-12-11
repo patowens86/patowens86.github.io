@@ -454,11 +454,11 @@ AFRAME.registerComponent('start-animation', {
 
     function markerFoundPlacement() {
         console.log("marker1 found")
-        el.setAttribute('position', '0 0 0')     
+        el.setAttribute('position', {x: 0, y: 1, z: 0})
     }
     function markerLostPlacement() {
         console.log("marker1 found")
-        el.setAttribute('position', '100 0 0')     
+        el.setAttribute('position', {x: 100, y: 1, z: 0})     
     }
 
   }
