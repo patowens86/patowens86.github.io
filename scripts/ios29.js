@@ -367,13 +367,10 @@ AFRAME.registerComponent('start-animation', {
             startSelfie()
           }, 500)
     }
-    function playAudio(){
-
-    }
 
     function sceneStart(){
-                      cancelButton.style.display = 'none'
-        //scanButton.style.display = 'none'
+      cancelButton.style.display = 'none'
+      //scanButton.style.display = 'none'
       //document.querySelector('a-scene').components.screenshot.capture('perspective')
       cursor.removeChild(document.getElementById('dynamic scan cursor'))
       for (const scene of sceneArray) {
@@ -384,35 +381,26 @@ AFRAME.registerComponent('start-animation', {
       }
       el.setAttribute('visible',false)
 
-
-
-          scanInstructions.style.display = 'none' 
+      scanInstructions.style.display = 'none' 
           // pointer.setAttribute('material','visible: false') 
 
-
-       
-
-        model.setAttribute('visible', true)
-
-       isNotActive=false;
-       // console.log("selfie status is = " + isSelfie)
-       if(isSelfie == "true") {
-           selfieInstructions.style.display = 'block'
-          setTimeout(
-                function() {
-                  flash()
-                  //startSelfie();ah, rain
-
-                }, animationLength);
-       } else {
-        shutterButton.hidden = false
-        // shutterButton.addEventListener('click',)
-
-        closeButton.style.display = 'block'}
-        var videoClip = document.getElementById(videoClipName)
-        if(videoClip!=null){
-          videoClip.play()   
-        }
+      model.setAttribute('visible', true)
+     isNotActive=false;
+     // console.log("selfie status is = " + isSelfie)
+     if(isSelfie == "true") {
+         selfieInstructions.style.display = 'block'
+        setTimeout(
+              function() {
+                flash()
+              }, animationLength);
+     } else {
+      shutterButton.hidden = false
+      // shutterButton.addEventListener('click',)
+      closeButton.style.display = 'block'}
+      var videoClip = document.getElementById(videoClipName)
+      if(videoClip!=null){
+        videoClip.play()   
+      }
       marker.addEventListener("markerFound",
           markerFoundWarning
       )
@@ -423,6 +411,8 @@ AFRAME.registerComponent('start-animation', {
     // function hideSceneEnd() {
     //   closeButton.style.display = 'none'
     // }
+
+
     function sceneEnd() {
         // console.log("scene ending")
         shutterButton.hidden = true
