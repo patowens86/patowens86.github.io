@@ -227,30 +227,29 @@ AFRAME.registerComponent('start-animation', {
         }
       });
 
-    el.addEventListener('click', function () {
-      tryStartAnimation()
-      // pointer.setAttribute('animation', 'property: position; from: 0 0 -1; to: 0 -.1 -.8;  easing: easeOutSine; dur: 1000; autoplay: true')
-      // console.log("model clicked, time to play video")
-      if(currentScene =="scene3" || currentScene =="scene6") {
-        if(currentScene=="scene3") 
-          {
-            video = document.getElementById("laptop_video");
-            video.setAttribute("src", "/videos/scene3_noaudio.mp4");
-            //video.muted = true;
-          }
-          else if(currentScene=="scene6")
-          {
-            video = document.getElementById("phone_video");
-            video.setAttribute("src", "/videos/scene6_noaudio.mp4");
-            //video.muted = true;
-          }        
-          video.load();
-          video.addEventListener("loaded", function() {
-              // console.log("video has loaded")
-              video.play();
-            })
-        }    
-      })
+    // el.addEventListener('click', function () {
+    //   tryStartAnimation()
+    //   // pointer.setAttribute('animation', 'property: position; from: 0 0 -1; to: 0 -.1 -.8;  easing: easeOutSine; dur: 1000; autoplay: true')
+    //   // console.log("model clicked, time to play video")
+    //   if(currentScene =="scene3") 
+    //       {
+    //         video = document.getElementById("laptop_video");
+    //         video.setAttribute("src", "/videos/scene3_noaudio.mp4");
+    //         //video.muted = true;
+    //       }
+    //       else if(currentScene=="scene6")
+    //       {
+    //         video = document.getElementById("phone_video");
+    //         video.setAttribute("src", "/videos/scene6_noaudio.mp4");
+    //         //video.muted = true;
+    //       }        
+    //       // video.load();
+    //       // video.addEventListener("loaded", function() {
+    //       //     // console.log("video has loaded")
+    //       //     video.play();
+    //       //   })
+    //     }    
+    //   })
       // videoClip.load()
       //     setTimeout(
       //       function() {
@@ -385,6 +384,22 @@ AFRAME.registerComponent('start-animation', {
           // pointer.setAttribute('material','visible: false') 
 
       model.setAttribute('visible', true)
+      if (!isPlaying /*&& isNotActive*/) {startAnimation()}
+      // tryStartAnimation()
+      // pointer.setAttribute('animation', 'property: position; from: 0 0 -1; to: 0 -.1 -.8;  easing: easeOutSine; dur: 1000; autoplay: true')
+      // console.log("model clicked, time to play video")
+      if(currentScene =="scene3") 
+          {
+            video = document.getElementById("laptop_video");
+            video.setAttribute("src", "/videos/scene3_noaudio.mp4");
+            //video.muted = true;
+          }
+          else if(currentScene=="scene6")
+          {
+            video = document.getElementById("phone_video");
+            video.setAttribute("src", "/videos/scene6_noaudio.mp4");
+            //video.muted = true;
+          }
      isNotActive=false;
      // console.log("selfie status is = " + isSelfie)
      if(isSelfie == "true") {
