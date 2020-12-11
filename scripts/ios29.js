@@ -247,7 +247,6 @@ AFRAME.registerComponent('start-animation', {
           video.load();
           video.addEventListener("loaded", function() {
               // console.log("video has loaded")
-
               video.play();
             })
         }    
