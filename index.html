@@ -6,7 +6,7 @@
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="https://unpkg.com/merge-images"></script>
   <script src="/scripts/capture-video-frame.js"></script>
-  <script src="/scripts/xmas_card.js"></script>
+  <script src="/scripts/v10.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
@@ -34,7 +34,7 @@
 
     <div id="scanInstructions">
       <img id="scanCursor" id="scanID">
-      <p id="scanInstructionText">Place the card in a well-lit environment and press <b>Scan</b></p>
+      <p id="scanInstructionText">Make sure you are in a well-lit environment and press <b>Scan</b> to start</p>
     </div>
     <div id="selfieInstructions">
       <p id="selfieInstructionText">Get ready for a photo with <b>Santa</b></p>
@@ -323,7 +323,7 @@
           </a-marker>
           <a-marker class="marker" id="marker_scene6" preset="custom" type="pattern" url="/markers/6.patt" size=".03">
             <a-entity   
-            class="gift"                
+            class="gift"
             gltf-model='#gift_6'
                   scale="0.3 0.3 0.3">
               <a-box  position='0 1.5 0' scale="2 3 2" material='opacity: 0;' start-animation='name: scene6; audio_src: "url(/audio/scene6.mp3)"; video: "phone_video"; video_src: "/videos/scene6_noaudio.mp4"; length: 30000'></a-box>
@@ -359,7 +359,7 @@
                   animation__walkaway="startEvents: start_scene6; pauseEvents: restart_scene6; property: position; dur: 3000; from: 2 0 1; to: 2 0 4; easing: easeInOutQuad; delay: 25000;" 
                   animation__disappear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 100; from: 1 1 1; to: 0 0 0; easing: easeInOutQuad; delay: 27800;"
                   animation__restart="startEvents: restart_scene6; property: position; dur: 100; from: 2 0 4; to: 2 0 1; easing: easeInOutQuad;"
-                  animation__restart="startEvents: restart_scene6; property: rotation; dur: 100; from: 0 -180 0; to: 0 0 0; easing: easeInOutQuad;"
+                  animation__restart_rotation="startEvents: restart_scene6; property: rotation; dur: 100; from: 0 -180 0; to: 0 0 0; easing: easeInOutQuad;"
                   animation__restart_scale="startEvents: restart_scene6; property: scale; dur: 100; from: 0 0 0; to: 1 1 1; easing: easeInOutQuad;">
                     <a-entity id="gifts" position="0 0 -1"
                               class="scene6_model"
