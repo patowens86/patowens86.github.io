@@ -22,8 +22,8 @@ AFRAME.registerComponent('loading-xmas', {
       postload.style.display = 'block'
     }, 3000)
 
-    trelloVideo.play();
-    phoneVideo.play();
+    //trelloVideo.play();
+    //phoneVideo.play();
     for (const audio of audioArray) {
       audio.components.sound.pauseSound();
     }
@@ -414,7 +414,7 @@ AFRAME.registerComponent('start-animation', {
       closeButton.style.display = 'block'}
       var videoClip = document.getElementById(videoClipName)
       if(videoClip!=null){
-        videoClip.play()   
+        //videoClip.play()   
       }
       marker.addEventListener("markerFound",
           markerFoundWarning
