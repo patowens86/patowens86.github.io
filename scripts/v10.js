@@ -6,8 +6,8 @@ AFRAME.registerComponent('loading-xmas', {
     // var loadingContainer = document.getElementsByClassName("arjs-loader")
     // var loadingImages = document.getElementById("load-Image")
     var postloadContainer = document.getElementById("postload")
-    var trelloVideo = document.getElementById('laptop_video')
-    var phoneVideo = document.getElementById('phone_video')
+    var laptopVideo = document.getElementById('laptop_gif')
+    var phoneVideo = document.getElementById('phone_gif')
     console.log("loading screen initialized")
     var hasLoaded = false;
     var progressBar = document.getElementById("xload__bar_progress")
@@ -206,6 +206,7 @@ AFRAME.registerComponent('start-animation', {
       tryStartAnimation()
 
       console.log("model clicked, time to play video / gif")
+
       // if(currentScene =="scene3" || currentScene =="scene6") {
       //   if(currentScene=="scene3") 
       //     {
@@ -286,7 +287,7 @@ AFRAME.registerComponent('start-animation', {
         }
         
         // if (currentScene=="scene3") {
-          
+
         //   document.getElementById('laptop_gif').play()
         // }
 
@@ -634,8 +635,9 @@ AFRAME.registerComponent('photo-mode', {
     }
     retakeButton.addEventListener('click', () => {
       container.classList.remove('photo')
-      photoFrame.style.display = "block"
-              closeButton.removeEventListener('click', promptKeep)
+      if(el.getAttribute('selfieMode') == "true")
+        {photoFrame.style.display = "block"}
+      closeButton.removeEventListener('click', promptKeep)
       container.classList.remove('share')
       canvas.classList.remove('blur')
       audioButton.style.display = 'block'
