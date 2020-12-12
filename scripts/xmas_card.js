@@ -6,8 +6,8 @@ AFRAME.registerComponent('loading-xmas', {
     // var loadingContainer = document.getElementsByClassName("arjs-loader")
     // var loadingImages = document.getElementById("load-Image")
     var postloadContainer = document.getElementById("postload")
-    var laptopVideo = document.getElementById('scene3_gif')
-    var phoneVideo = document.getElementById('scene6_gif')
+    // var laptopVideo = document.getElementById('scene3_gif')
+    // var phoneVideo = document.getElementById('scene6_gif')
     console.log("loading screen initialized")
     var hasLoaded = false;
     var progressBar = document.getElementById("xload__bar_progress")
@@ -22,8 +22,8 @@ AFRAME.registerComponent('loading-xmas', {
       postload.style.display = 'block'
     }, 3000)
 
-    laptopVideo.setAttribute("material", "shader:gif;src:url(/videos/scene3_noaudio.gif);autoplay: false")
-    phoneVideo.setAttribute("material", "shader:gif;src:url(/videos/scene6_noaudio.gif);autoplay: false")
+    // laptopVideo.pause();
+    // phoneVideo.pause();
     for (const audio of audioArray) {
       audio.components.sound.pauseSound();
     }
