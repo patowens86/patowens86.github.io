@@ -6,8 +6,8 @@ AFRAME.registerComponent('loading-xmas', {
     // var loadingContainer = document.getElementsByClassName("arjs-loader")
     // var loadingImages = document.getElementById("load-Image")
     var postloadContainer = document.getElementById("postload")
-    var laptopVideo = document.getElementById('laptop_gif')
-    var phoneVideo = document.getElementById('phone_gif')
+    // var laptopVideo = document.getElementById('scene3_gif')
+    // var phoneVideo = document.getElementById('scene6_gif')
     console.log("loading screen initialized")
     var hasLoaded = false;
     var progressBar = document.getElementById("xload__bar_progress")
@@ -22,8 +22,8 @@ AFRAME.registerComponent('loading-xmas', {
       postload.style.display = 'block'
     }, 3000)
 
-    // trelloVideo.play();
-    // phoneVideo.play();
+    // laptopVideo.pause();
+    // phoneVideo.pause();
     for (const audio of audioArray) {
       audio.components.sound.pauseSound();
     }
@@ -102,7 +102,7 @@ AFRAME.registerComponent('start-animation', {
     name: {type: 'string'},
     audio_src: {type: 'string'},
     length: {type: 'int'},
-    video: {type: 'string'},
+    video: {default: false},
     video_src: {type: 'string'},
     selfie: {default: 'false'}
   },
@@ -206,7 +206,14 @@ AFRAME.registerComponent('start-animation', {
       tryStartAnimation()
 
       console.log("model clicked, time to play video / gif")
+      if(videoClipName)
+      {
+        console.log(currentScene+"_gif")
+        var video = document.getElementById(currentScene + "_gif")
 
+        video.currentTime = 0;
+        video.play();
+      }
       // if(currentScene =="scene3" || currentScene =="scene6") {
       //   if(currentScene=="scene3") 
       //     {
