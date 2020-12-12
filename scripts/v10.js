@@ -6,8 +6,8 @@ AFRAME.registerComponent('loading-xmas', {
     // var loadingContainer = document.getElementsByClassName("arjs-loader")
     // var loadingImages = document.getElementById("load-Image")
     var postloadContainer = document.getElementById("postload")
-    var laptopVideo = document.getElementById('scene3_gif')
-    var phoneVideo = document.getElementById('scene6_gif')
+    // var laptopVideo = document.getElementById('scene3_gif')
+    // var phoneVideo = document.getElementById('scene6_gif')
     console.log("loading screen initialized")
     var hasLoaded = false;
     var progressBar = document.getElementById("xload__bar_progress")
@@ -22,8 +22,8 @@ AFRAME.registerComponent('loading-xmas', {
       postload.style.display = 'block'
     }, 3000)
 
-    laptopVideo.pause();
-    phoneVideo.pause();
+    // laptopVideo.pause();
+    // phoneVideo.pause();
     for (const audio of audioArray) {
       audio.components.sound.pauseSound();
     }
@@ -209,14 +209,8 @@ AFRAME.registerComponent('start-animation', {
       {
         console.log(currentScene+"_gif")
         var video = document.getElementById(currentScene + "_gif")
-        
-        if(currentScene == "scene3") {
-          // loadingLaptop.setAttribute("visible", false)
-          video.setAttribute('material', {shader: "gif", src: '#laptop_video'})
-        }
-        else {
-          video.setAttribute('material', {shader: "gif", src: '#phone_video'})
-        }
+
+        video.currentTime = 0;
         video.play();
       }
       // if(currentScene =="scene3" || currentScene =="scene6") {
@@ -315,7 +309,6 @@ AFRAME.registerComponent('start-animation', {
             sceneAudio.setAttribute('src', audio_source)
 
             //sceneAudio.setAttribute('volume', .5)
-            sceneAudio.components.sound.currentTime = 0;
             sceneAudio.components.sound.playSound()
             console.log("Scene audio is playing: " + sceneAudio.isPlaying)
           
@@ -418,7 +411,6 @@ AFRAME.registerComponent('start-animation', {
         closeButton.style.display = 'none'
         //cancelButton.style.display = 'none'
         scanButton.style.display = 'block'
-
         // if(scan)
         // {
           scanInstructions.style.display = 'block'
@@ -448,15 +440,6 @@ AFRAME.registerComponent('start-animation', {
         // pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: false; fuseTimeout: 4000')
         // pointer.setAttribute('visible', false)
         scanButton.style.display = 'block'
-      if(videoClipName)
-      {
-        console.log(currentScene+"_gif")
-        var video = document.getElementById(currentScene + "_gif")
-
-        video.currentTime = 0;
-        video.pause();
-        video.removeAttribute("material")
-      }
 
       marker.removeEventListener("markerFound",
           markerFoundWarning
