@@ -209,9 +209,8 @@ AFRAME.registerComponent('start-animation', {
       {
         console.log(currentScene+"_gif")
         var video = document.getElementById(currentScene + "_gif")
-
-        video.currentTime = 0;
-        video.play();
+        video.setAttribute("material", "autoplay: true")
+        console.log("is video playing?: " + video.isPlaying)
       }
       // if(currentScene =="scene3" || currentScene =="scene6") {
       //   if(currentScene=="scene3") 
@@ -260,7 +259,7 @@ AFRAME.registerComponent('start-animation', {
       console.log(document.querySelector("a-scene").getAttribute('selfieMode'))
       shutterButton.hidden = false
 
- selfieInstructions.style.display = 'none'
+      selfieInstructions.style.display = 'none'
       closeButton.style.display = 'block'
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
@@ -440,6 +439,18 @@ AFRAME.registerComponent('start-animation', {
         // pointer.setAttribute('cursor', 'rayOrigin: mouse; fuse: false; fuseTimeout: 4000')
         // pointer.setAttribute('visible', false)
         scanButton.style.display = 'block'
+
+      if(videoClipName)
+      {
+        var video = document.getElementById(currentScene + "_gif")
+        video.removeAttribute("material")
+        if(currentScene=="scene3")
+          {video.setAttribute("material", "shader:gif;src:url(/videos/scene3_noaudio.gif);autoplay: false")}
+        if(currentScene=="scene6") {
+          video.setAttribute("material", "shader:gif;src:url(/videos/scene6_noaudio.gif);autoplay: false")
+        }
+        console.log("is video playing?: " + video.isPlaying)
+      }
 
       marker.removeEventListener("markerFound",
           markerFoundWarning
