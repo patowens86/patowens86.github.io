@@ -7,6 +7,8 @@
   <script src="https://unpkg.com/merge-images"></script>
   <script src="/scripts/capture-video-frame.js"></script>
   <script src="/scripts/v10.js"></script>
+  <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+<script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
@@ -249,9 +251,10 @@
                   gltf-model='#s3_furniture' scale=".4 .4 .4"  rotation="0 0 0">
                 </a-entity>
                 <a-entity gltf-model="#s3_bubble" scale=".5 .5 .5" position="0 1.65 .34"></a-entity>
-                <a-entity position= "0 2.25 .4" scale="1.5 1 1">
+                <a-entity id="laptop_gif" position="0 2.25 .4" geometry="primitive: plane; height: 1; width: 1.5" material="shader:gif;src:url(/videos/scene3-noaudio.gif);"></a-entity>
+<!--                 <a-entity position= "0 2.25 .4" scale="1.5 1 1">
                   <a-video class="video_with_sound" id="laptop_video" src="#s3_video"></a-video>
-                </a-entity>
+                </a-entity> -->
               </a-entity>
           </a-marker>
           <a-marker class="marker" id="marker_scene4" preset="custom" type="pattern" url="/markers/4.patt" size=".03">
@@ -388,9 +391,10 @@
                       animation__appear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 0 0 0; to: 1 1 1; easing: easeInOutQuad; delay: 1000;"
                       animation__disappear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 1 1 1; to: 0 0 0; easing: easeInOutQuad; delay: 29000;"
                       >
-                    <a-entity position= "0 4.57 -.657" scale="1.75 2.25 1">
+                    <a-entity id="phone_gif" position="0 4.57 -.657" geometry="primitive: plane; height: 2; width: 1.5" material="shader:gif;src:url(/videos/scene6_noaudio.gif);"></a-entity>
+<!--                     <a-entity position= "0 4.57 -.657" scale="1.75 2.25 1">
                       <a-video class="video_with_sound" id="phone_video" src="#s6_video"></a-video>
-                    </a-entity>
+                    </a-entity> -->
                   </a-entity>
               </a-entity>
           </a-marker>

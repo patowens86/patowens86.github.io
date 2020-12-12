@@ -22,8 +22,8 @@ AFRAME.registerComponent('loading-xmas', {
       postload.style.display = 'block'
     }, 3000)
 
-    trelloVideo.play();
-    phoneVideo.play();
+    // trelloVideo.play();
+    // phoneVideo.play();
     for (const audio of audioArray) {
       audio.components.sound.pauseSound();
     }
@@ -205,30 +205,30 @@ AFRAME.registerComponent('start-animation', {
     el.addEventListener('click', function () {
       tryStartAnimation()
 
-      console.log("model clicked, time to play video")
-      if(currentScene =="scene3" || currentScene =="scene6") {
-        if(currentScene=="scene3") 
-          {
-            video = document.getElementById("laptop_video");
-            video.setAttribute("src", "/videos/scene3_noaudio.mp4");
-            video.play();
-            //video.muted = true;
-          }
-          else if(currentScene=="scene6")
-          {
-            video = document.getElementById("phone_video");
-            video.setAttribute("src", "/videos/scene6_noaudio.mp4");
-            video.play();
-            //video.muted = true;
-          }        
+      console.log("model clicked, time to play video / gif")
+      // if(currentScene =="scene3" || currentScene =="scene6") {
+      //   if(currentScene=="scene3") 
+      //     {
+      //       video = document.getElementById("laptop_video");
+      //       video.setAttribute("src", "/videos/scene3_noaudio.mp4");
+      //       video.play();
+      //       //video.muted = true;
+      //     }
+      //     else if(currentScene=="scene6")
+      //     {
+      //       video = document.getElementById("phone_video");
+      //       video.setAttribute("src", "/videos/scene6_noaudio.mp4");
+      //       video.play();
+      //       //video.muted = true;
+      //     }        
           
-          // video.addEventListener("loaded", function() {
-          //     console.log("video has loaded")
+      //     // video.addEventListener("loaded", function() {
+      //     //     console.log("video has loaded")
 
               
-          //   })
-          // video.load();
-        }    
+      //     //   })
+      //     // video.load();
+      //   }    
       })
 
 
@@ -285,6 +285,11 @@ AFRAME.registerComponent('start-animation', {
           anim.emit("start_" + currentScene)
         }
         
+        // if (currentScene=="scene3") {
+          
+        //   document.getElementById('laptop_gif').play()
+        // }
+
         if (audio_source!=null)
          {
           //var scene_audio = document.createElement("a-sound")
@@ -378,11 +383,11 @@ AFRAME.registerComponent('start-animation', {
         // shutterButton.addEventListener('click',)
 
         closeButton.style.display = 'block'}
-        var videoClip = document.getElementById(videoClipName)
-        if(videoClip!=null){
-          videoClip.currentTime = 0;
-          videoClip.play()   
-        }
+        // var videoClip = document.getElementById(videoClipName)
+        // if(videoClip!=null){
+        //   videoClip.currentTime = 0;
+        //   videoClip.play()   
+        // }
       marker.addEventListener("markerFound",
           markerFoundWarning
       )
