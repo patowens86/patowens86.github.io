@@ -6,8 +6,8 @@ AFRAME.registerComponent('loading-xmas', {
     // var loadingContainer = document.getElementsByClassName("arjs-loader")
     // var loadingImages = document.getElementById("load-Image")
     var postloadContainer = document.getElementById("postload")
-    var trelloVideo = document.getElementById('laptop_video')
-    var phoneVideo = document.getElementById('phone_video')
+    var laptopVideo = document.getElementById('scene3_gif')
+    var phoneVideo = document.getElementById('scene6_gif')
     console.log("loading screen initialized")
     var hasLoaded = false;
     var progressBar = document.getElementById("xload__bar_progress")
@@ -22,8 +22,8 @@ AFRAME.registerComponent('loading-xmas', {
       postload.style.display = 'block'
     }, 3000)
 
-    trelloVideo.play();
-    phoneVideo.play();
+    laptopVideo.setAttribute("material", "shader:gif;src:url(/videos/scene3_noaudio.gif);autoplay: false")
+    phoneVideo.setAttribute("material", "shader:gif;src:url(/videos/scene6_noaudio.gif);autoplay: false")
     for (const audio of audioArray) {
       audio.components.sound.pauseSound();
     }
@@ -102,8 +102,7 @@ AFRAME.registerComponent('start-animation', {
     name: {type: 'string'},
     audio_src: {type: 'string'},
     length: {type: 'int'},
-    video: {type: 'string'},
-    video_src: {type: 'string'},
+    video: {default: false},
     selfie: {default: 'false'}
   },
   init: function () {
@@ -135,7 +134,7 @@ AFRAME.registerComponent('start-animation', {
     const pointer = document.getElementById('pointer')
     const photoFrame = document.getElementById('selfieContainer')
     // const xblink_widget = document.getElementById('cameraflash')
-    var scan = true
+    // var scan = true
     var animationLength = this.data.length
     var isSelfie = this.data.selfie
     var experienceHasStarted = false
@@ -156,10 +155,12 @@ AFRAME.registerComponent('start-animation', {
 
 
 
-      if(scan){
-        tapInstructions.style.display = 'none'
-      }
-      else { scanInstructions.style.display = 'none'}
+      // if(scan){
+      //   tapInstructions.style.display = 'none'
+      // }
+      // else { 
+        scanInstructions.style.display = 'none'
+      // }
       selfieInstructions.style.display = 'none'
       el.addEventListener('fusing', (e) => {console.log("fusing")})
 
@@ -203,27 +204,37 @@ AFRAME.registerComponent('start-animation', {
     el.addEventListener('click', function () {
       tryStartAnimation()
 
-      console.log("model clicked, time to play video")
-      if(currentScene =="scene3" || currentScene =="scene6") {
-        if(currentScene=="scene3") 
-          {
-            video = document.getElementById("laptop_video");
-            video.setAttribute("src", "/videos/scene3_noaudio.mp4");
-            //video.muted = true;
-          }
-          else if(currentScene=="scene6")
-          {
-            video = document.getElementById("phone_video");
-            video.setAttribute("src", "/videos/scene6_noaudio.mp4");
-            //video.muted = true;
-          }        
-          video.load();
-          video.addEventListener("loaded", function() {
-              console.log("video has loaded")
+      console.log("model clicked, time to play video / gif")
+      if(videoClipName)
+      {
+        console.log(currentScene+"_gif")
+        var video = document.getElementById(currentScene + "_gif")
+        video.setAttribute("material", "autoplay: true")
+        console.log("is video playing?: " + video.isPlaying)
+      }
+      // if(currentScene =="scene3" || currentScene =="scene6") {
+      //   if(currentScene=="scene3") 
+      //     {
+      //       video = document.getElementById("laptop_video");
+      //       video.setAttribute("src", "/videos/scene3_noaudio.mp4");
+      //       video.play();
+      //       //video.muted = true;
+      //     }
+      //     else if(currentScene=="scene6")
+      //     {
+      //       video = document.getElementById("phone_video");
+      //       video.setAttribute("src", "/videos/scene6_noaudio.mp4");
+      //       video.play();
+      //       //video.muted = true;
+      //     }        
+          
+      //     // video.addEventListener("loaded", function() {
+      //     //     console.log("video has loaded")
 
-              video.play();
-            })
-        }    
+              
+      //     //   })
+      //     // video.load();
+      //   }    
       })
 
 
@@ -248,7 +259,7 @@ AFRAME.registerComponent('start-animation', {
       console.log(document.querySelector("a-scene").getAttribute('selfieMode'))
       shutterButton.hidden = false
 
- selfieInstructions.style.display = 'none'
+      selfieInstructions.style.display = 'none'
       closeButton.style.display = 'block'
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
@@ -280,6 +291,11 @@ AFRAME.registerComponent('start-animation', {
           anim.emit("start_" + currentScene)
         }
         
+        // if (currentScene=="scene3") {
+
+        //   document.getElementById('laptop_gif').play()
+        // }
+
         if (audio_source!=null)
          {
           //var scene_audio = document.createElement("a-sound")
@@ -348,14 +364,14 @@ AFRAME.registerComponent('start-animation', {
       }
       el.setAttribute('visible',false)
 
-        if(scan)
-        {
+        // if(scan)
+        // {
           scanInstructions.style.display = 'none' 
           // pointer.setAttribute('material','visible: false') 
-        }
-        else{
-          tapInstructions.style.display = 'none'          
-        }
+        // }
+        // else{
+        //   tapInstructions.style.display = 'none'          
+        // }
         model.setAttribute('visible', true)
 
        isNotActive=false;
@@ -373,10 +389,11 @@ AFRAME.registerComponent('start-animation', {
         // shutterButton.addEventListener('click',)
 
         closeButton.style.display = 'block'}
-        var videoClip = document.getElementById(videoClipName)
-        if(videoClip!=null){
-          videoClip.play()   
-        }
+        // var videoClip = document.getElementById(videoClipName)
+        // if(videoClip!=null){
+        //   videoClip.currentTime = 0;
+        //   videoClip.play()   
+        // }
       marker.addEventListener("markerFound",
           markerFoundWarning
       )
@@ -393,14 +410,14 @@ AFRAME.registerComponent('start-animation', {
         closeButton.style.display = 'none'
         //cancelButton.style.display = 'none'
         scanButton.style.display = 'block'
-        if(scan)
-        {
+        // if(scan)
+        // {
           scanInstructions.style.display = 'block'
                     // pointer.setAttribute('material','visible: true')   
-        }
-        else{
-          tapInstructions.style.display = 'block'          
-        }
+        // }
+        // else{
+        //   tapInstructions.style.display = 'block'          
+        // }
         if(sceneAudio!=null){
           sceneAudio.components.sound.pauseSound()
 
@@ -423,6 +440,18 @@ AFRAME.registerComponent('start-animation', {
         // pointer.setAttribute('visible', false)
         scanButton.style.display = 'block'
 
+      if(videoClipName)
+      {
+        var video = document.getElementById(currentScene + "_gif")
+        video.removeAttribute("material")
+        if(currentScene=="scene3")
+          {video.setAttribute("material", "shader:gif;src:url(/videos/scene3_noaudio.gif);autoplay: false")}
+        if(currentScene=="scene6") {
+          video.setAttribute("material", "shader:gif;src:url(/videos/scene6-noaudio-min.gif);autoplay: false")
+        }
+        console.log("is video playing?: " + video.isPlaying)
+      }
+
       marker.removeEventListener("markerFound",
           markerFoundWarning
       )
@@ -434,6 +463,9 @@ AFRAME.registerComponent('start-animation', {
 
     }
 
+    marker.addEventListener("markerFound", markerFoundPlacement)
+    marker.addEventListener("markerLost", markerLostPlacement)
+
     function markerFoundWarning() {
         console.log("marker1 found")
         warning.style.display = "none"     
@@ -441,6 +473,15 @@ AFRAME.registerComponent('start-animation', {
     function markerLostWarning() {
         console.log("marker1 lost")
         warning.style.display = "block"
+    }
+
+    function markerFoundPlacement() {
+        console.log("marker1 found")
+        el.setAttribute('position', {x: 0, y: 1, z: 0})
+    }
+    function markerLostPlacement() {
+        console.log("marker1 found")
+        el.setAttribute('position', {x: 100, y: 1, z: 0})     
     }
 
   }
@@ -611,8 +652,9 @@ AFRAME.registerComponent('photo-mode', {
     }
     retakeButton.addEventListener('click', () => {
       container.classList.remove('photo')
-      photoFrame.style.display = "block"
-              closeButton.removeEventListener('click', promptKeep)
+      if(el.getAttribute('selfieMode') == "true")
+        {photoFrame.style.display = "block"}
+      closeButton.removeEventListener('click', promptKeep)
       container.classList.remove('share')
       canvas.classList.remove('blur')
       audioButton.style.display = 'block'
