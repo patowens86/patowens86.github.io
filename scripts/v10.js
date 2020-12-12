@@ -288,7 +288,7 @@ AFRAME.registerComponent('start-animation', {
         
         for (var anim of animations){
           console.log("starting animation for #" + anim)
-          anim.setAttribute("animation-mixer", "clip: *;")
+          anim.setAttribute("animation-mixer", "clip: *; duration: " + animationLength/1000)
           anim.emit("start_" + currentScene)
         }
         
