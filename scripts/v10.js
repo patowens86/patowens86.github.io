@@ -103,7 +103,6 @@ AFRAME.registerComponent('start-animation', {
     audio_src: {type: 'string'},
     length: {type: 'int'},
     video: {default: false},
-    video_src: {type: 'string'},
     selfie: {default: 'false'}
   },
   init: function () {
