@@ -180,8 +180,8 @@
           <a-asset-item id="gift_4" src="/models/Gift_4.glb"></a-asset-item>
           <a-asset-item id="gift_6" src="/models/Gift_6.glb"></a-asset-item>
           <a-asset-item id="gift_11" src="/models/Gift_11.glb"></a-asset-item>
-          <img preload id="laptop_video" src="/videos/scene3_noaudio.gif">
-          <img preload id="phone_video" src="/videos/scene6_noaudio.gif">
+          <img preload id="laptop_video" autoplay="false" src="/videos/scene3_noaudio.gif">
+          <img preload id="phone_video" autoplay="false" src="/videos/scene6-noaudio-min.gif">
           <img id="scanbox" src="/graphics/scan.png">
         </a-assets> 
 
@@ -230,6 +230,7 @@
                     rotation = "0 90 0"
                     position = "-1.5 0 3"
                     animation__scale="startEvents: start_scene1; pauseEvents: restart_scene1; property: scale; from: 0 0 0; to: 1 1 1; dur: 250; easing: easeOutSine; delay: 8250; autoplay: false"
+                    animation__restart="startEvents: restart_scene1; property: scale; from: 1 1 1; to: 0 0 0; dur: 250; easing: easeOutSine; delay: 8250; autoplay: false"
                     ></a-entity>
               </a-entity>
 
@@ -252,8 +253,12 @@
                 <a-entity id="furniture"
                   gltf-model='#s3_furniture' scale=".4 .4 .4"  rotation="0 0 0">
                 </a-entity>
-                <a-entity gltf-model="#s3_bubble" scale=".5 .5 .5" position="0 1.65 .34"></a-entity>
-                <a-entity id="scene3_gif" autoplay="false" position="0 2.25 .4" geometry="primitive: plane; height: 1; width: 1.5" material="shader:gif;src:url(/videos/scene3_noaudio.gif);"></a-entity>
+                <a-entity scale="0 0 0" class="scene3_model" animation__scale="startEvents: start_scene3; pauseEvents: restart_scene3; property: scale; dur: 500; from: 0 0 0; to: 1 1 1 ; easing: easeInOutSine; delay: 3000; autoplay: false"
+                animation__restart="startEvents: restart_scene3; property: scale; dur: 500; from: 1 1 1; to: 0 0 0 ; easing: easeInOutSine; autoplay: false">
+                  <a-entity gltf-model="#s3_bubble" scale=".5 .5 .5" position="0 1.65 .34"></a-entity>
+                 <a-entity id="scene3_gif" autoplay="false" position="0 2.25 .4" geometry="primitive: plane; height: 1; width: 1.5"></a-entity>
+               </a-entity>
+
 <!--                 <a-entity position= "0 2.25 .4" scale="1.5 1 1">
                   <a-video class="video_with_sound" id="laptop_video" src="#s3_video"></a-video>
                 </a-entity> -->
@@ -350,7 +355,7 @@
                   animation__restart="startEvents: restart_scene6; property: rotation; dur: 50; from: 0 20 0; to: 0 0 0; easing: easeInOutQuad; autoplay: false"
                   animation-mixer="clip: ''">
                     <a-entity id="phone" position="0.7366 0.61112 -1.5423" rotation="43.213049866561825 -108.38528018930757 -102.82071408299701" animation__scale="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 0 0 0; to: 0.2 0.4 0.05; easing: easeInOutQuad; delay: 1000"
-                    animation__retart="startEvents: restart_scene6; property: scale; dur: 500; from: 0.2 0.4 0.05; to: 0 0 0; easing: easeInOutQuad; delay: 1000">
+                    animation__retart="startEvents: restart_scene6; property: scale; dur: 500; from: 0.2 0.4 0.05; to: 0 0 0; easing: easeInOutQuad;">
 
                     </a-entity>
                 </a-entity>
@@ -390,10 +395,11 @@
                   <a-entity id="bubble"
                       class="scene6_model"
                       gltf-model="#s6_bubble"
-                      animation__appear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 0 0 0; to: 1 1 1; easing: easeInOutQuad; delay: 1000;"
+                      scale="0 0 0"
+                      animation__appear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 0 0 0; to: 1 1 1; easing: easeInOutQuad; delay: 2000;"
                       animation__disappear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 1 1 1; to: 0 0 0; easing: easeInOutQuad; delay: 29000;"
                       >
-                    <a-entity id="scene6_gif" autoplay="false" position="0 4.57 -.657" geometry="primitive: plane; height: 2; width: 1.5" material="shader:gif;src:url(/videos/scene6_noaudio.gif);"></a-entity>
+                    <a-entity id="scene6_gif" autoplay="false" position="0 4.57 -.657" geometry="primitive: plane; height: 2; width: 1.5"></a-entity>
 <!--                     <a-entity position= "0 4.57 -.657" scale="1.75 2.25 1">
                       <a-video class="video_with_sound" id="phone_video" src="#s6_video"></a-video>
                     </a-entity> -->
