@@ -177,28 +177,28 @@
         <a-assets timeout="20000">
           <a-asset-item id="s1_santa" src="/models/scene1_santa.glb"></a-asset-item>
           <a-asset-item id="s1_sink" src="/models/scene1_sink.glb"></a-asset-item>
-          <a-asset-item id="s3" src="/models/scene3_santa_new.glb"></a-asset-item>
+          <a-asset-item id="s3" src="/models/scene3_santa.glb"></a-asset-item>
           <a-asset-item id="s3_bubble" src="/models/scene3_bubble.glb"></a-asset-item>
           <a-asset-item id="s3_furniture" src="/models/scene3_furniture.glb"></a-asset-item>
-          <a-asset-item id="s4_santa" src="/models/scene4_santa_new.glb"></a-asset-item>
+          <a-asset-item id="s4_santa" src="/models/scene4_santa.glb"></a-asset-item>
           <a-asset-item id="s4_sink" src="/models/scene4_sink.glb"></a-asset-item>
           <a-asset-item id="s4_thoughts" src="/models/scene4_thoughts.glb"></a-asset-item>
           <a-asset-item id="s4_cookie" src="/models/scene4_cookie.glb"></a-asset-item>
-          <a-asset-item id="s6_santa" src="/models/scene6_santa_new.glb"></a-asset-item>
+          <a-asset-item id="s6_santa" src="/models/scene6_santa.glb"></a-asset-item>
           <a-asset-item id="s6_chair" src="/models/scene6_chair.glb"></a-asset-item>
           <a-asset-item id="s6_elf" src="/models/scene6_elf.glb"></a-asset-item>
           <a-asset-item id="s6_gifts" src="/models/scene6_gifts.glb"></a-asset-item>
           <a-asset-item id="s6_phone" src="/models/scene6_phone.glb"></a-asset-item>
           <a-asset-item id="s6_bubble" src="/models/scene6_bubble.glb"></a-asset-item>
-          <a-asset-item id="s11_santa" src="/models/scene11_santa_new.glb"></a-asset-item>
+          <a-asset-item id="s11_santa" src="/models/scene11_santa.glb"></a-asset-item>
           <a-asset-item id="s11_phone" src="/models/scene11_phone.glb"></a-asset-item>
           <a-asset-item id="gift_1" src="/models/Gift_1.glb"></a-asset-item>
           <a-asset-item id="gift_3" src="/models/Gift_3.glb"></a-asset-item>
           <a-asset-item id="gift_4" src="/models/Gift_4.glb"></a-asset-item>
           <a-asset-item id="gift_6" src="/models/Gift_6.glb"></a-asset-item>
           <a-asset-item id="gift_11" src="/models/Gift_11.glb"></a-asset-item>
-          <img preload id="laptop_video" src="/videos/scene3_noaudio.gif">
-          <img preload id="phone_video" src="/videos/scene6-noaudio-min.gif">
+          <img preload id="laptop_video" src="/videos/scene3.gif">
+          <img preload id="phone_video" src="/videos/scene6.gif">
           <img id="scanbox" src="/graphics/scan.png">
         </a-assets> 
 
@@ -270,7 +270,7 @@
                   gltf-model='#s3_furniture' scale=".4 .4 .4"  rotation="0 0 0">
                 </a-entity>
                 <a-entity gltf-model="#s3_bubble" scale=".5 .5 .5" position="0 1.65 .34"></a-entity>
-                <a-entity id="scene3_gif" autoplay="false" position="0 2.25 .4" geometry="primitive: plane; height: 1; width: 1.5" material="shader:gif;src:url(/videos/scene3_noaudio.gif);autoplay: false" gif=""></a-entity>
+                <a-entity id="scene3_gif" autoplay="false" position="0 2.25 .4" geometry="primitive: plane; height: 1; width: 1.5" material="shader:gif;src:url(/videos/scene3.gif);autoplay: false" gif=""></a-entity>
 <!--                 <a-entity position= "0 2.25 .4" scale="1.5 1 1">
                   <a-video class="video_with_sound" id="laptop_video" src="#s3_video"></a-video>
                 </a-entity> -->
@@ -410,7 +410,7 @@
                       animation__appear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 0 0 0; to: 1 1 1; easing: easeInOutQuad; delay: 1000;"
                       animation__disappear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 1 1 1; to: 0 0 0; easing: easeInOutQuad; delay: 29000;"
                       >
-                    <a-entity id="scene6_gif" autoplay="false" position="0 4.57 -.657" geometry="primitive: plane; height: 2; width: 1.5" material="shader:gif;src:url(/videos/scene6-noaudio-min.gif);autoplay: false" gif=""></a-entity>
+                    <a-entity id="scene6_gif" autoplay="false" position="0 4.57 -.657" geometry="primitive: plane; height: 2; width: 1.5" material="shader:gif;src:url(/videos/scene6.gif);autoplay: false" gif=""></a-entity>
 <!--                     <a-entity position= "0 4.57 -.657" scale="1.75 2.25 1">
                       <a-video class="video_with_sound" id="phone_video" src="#s6_video"></a-video>
                     </a-entity> -->
