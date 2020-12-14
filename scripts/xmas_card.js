@@ -41,34 +41,6 @@ AFRAME.registerComponent('loading-xmas', {
   }
 })
 
-AFRAME.registerComponent('hard-stop', {
-  schema: {
-    hasBeenPaused: {default: false},
-
-  },
-  init: function() {
-    console.log("hard stop initialized")
-  },
-  tick: function() {
-    if(!this.data.hasBeenPaused) {
-      console.log("not null")
-      this.el.pause()
-      this.data.hasBeenPaused = true;
-      this.el.removeAttribute('hard-stop')
-    }
-    // var scene3Gif = document.getElementById("scene3_gif")
-    // if (scene3Gif != null) {
-    //   console.log("not null")
-    //   this.el.pause()
-    // }
-    // else{
-    //   console.log("null")
-    //   //this.el = document.getElementById("scene3_gif")
-    // }
-    
-  }
-})
-
 AFRAME.registerComponent('dynamic-cursor', {
   init: function(){
     console.log("Dynamic cursor loaded")
@@ -102,7 +74,7 @@ AFRAME.registerComponent('dynamic-cursor', {
         dynamicScanCursor.setAttribute('animation__scan', 'startEvents: fusing; property: scale; from: .2 .2 .2; to: 0.1 0.1 0.1; easing: easeOutSine; dur: 4000') 
         dynamicScanCursor.setAttribute('animation__out', "startEvents: mouseleave; property: scale; to: .2 .2 .2; dur: 100;")
         camera.appendChild(dynamicScanCursor)
-        cancelButton.style.display = 'block'
+                cancelButton.style.display = 'block'
         scanButton.style.display = 'none'
         scanInstructionText.innerHTML = 'Scan a <b>Gift Box</b> to activate a scene.'
         // scanButtonText.innerHTML = "Cancel"
@@ -232,13 +204,8 @@ AFRAME.registerComponent('start-animation', {
       if(videoClipName)
       {
         // console.log(currentScene+"_gif")
-        // var video = document.getElementById(currentScene + "_gif")
-        video = document.getElementById('laptop_vid')
-        video.play()
-        console.log('playing video')
-        // video.setAttribute("material", "shader:gif;src:#laptop_video; autoplay: true")
-        // video.setAttribute("gif", "")
-        //video.setAttribute("material", "autoplay: true")
+        var video = document.getElementById(currentScene + "_gif")
+        video.setAttribute("material", "autoplay: true")
         // console.log("is video playing?: " + video.isPlaying)
       }
       // if(currentScene =="scene3" || currentScene =="scene6") {
@@ -472,7 +439,12 @@ AFRAME.registerComponent('start-animation', {
       if(videoClipName)
       {
         var video = document.getElementById(currentScene + "_gif")
-        video.pause()
+        video.removeAttribute("material")
+        if(currentScene=="scene3")
+          {video.setAttribute("material", "shader:gif;src:url(/videos/scene3.gif);autoplay: false")}
+        if(currentScene=="scene6") {
+          video.setAttribute("material", "shader:gif;src:url(/videos/scene6.gif);autoplay: false")
+        }
         // console.log("is video playing?: " + video.isPlaying)
       }
 

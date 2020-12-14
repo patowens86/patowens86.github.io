@@ -5,7 +5,7 @@
 
 
   <head>
-  <script>console.log("version 1.0" + 8)</script>
+  <script>console.log("version 1.0" + 7)</script>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -13,7 +13,7 @@
   <script src="/scripts/capture-video-frame.js"></script>
   <script src="/scripts/xmas_card.js"></script>
   <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
-  <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
+<script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
 
     <link rel="stylesheet" href="index.css">
 
@@ -28,6 +28,14 @@
 
   gtag('config', 'UA-67916101-1');
 </script>
+
+<script>
+  const uA = navigator.userAgent;
+  const vendor = navigator.vendor;
+  if (!/Safari/i.test(uA) && /iPad|iPhone|iPod/.test(uA) ){
+    alert("Oops we see you're not using the right browser! Santa’s hanging out in Safari on iOS devices so be sure to open the experience from your phone’s Safari browser.");
+  }
+  </script>
 
 
   </head>
@@ -197,7 +205,6 @@
           <a-asset-item id="gift_4" src="/models/Gift_4.glb"></a-asset-item>
           <a-asset-item id="gift_6" src="/models/Gift_6.glb"></a-asset-item>
           <a-asset-item id="gift_11" src="/models/Gift_11.glb"></a-asset-item>
-          <video preload id="laptop_vid" src="/videos/scene6_noaudio.mp4" loop crossorigin playsinline></video>
           <img preload id="laptop_video" src="/videos/scene3.gif">
           <img preload id="phone_video" src="/videos/scene6.gif">
           <img id="scanbox" src="/graphics/scan.png">
@@ -263,7 +270,7 @@
             </a-entity>
 
 
-              <a-entity class="scene" id="scene3"  visible="visible">
+              <a-entity class="scene" id="scene3"  visible="false">
                 <a-entity class="scene3_model"
                   gltf-model='#s3' scale=".5 .5 .5" animation-mixer="clip:''" rotation="0 0 0">
                 </a-entity>
@@ -271,11 +278,10 @@
                   gltf-model='#s3_furniture' scale=".4 .4 .4"  rotation="0 0 0">
                 </a-entity>
                 <a-entity gltf-model="#s3_bubble" scale=".5 .5 .5" position="0 1.65 .34"></a-entity>
-<!--                 <a-entity id="scene3_gif" autoplay="false" position="0 2.25 .4" geometry="primitive: plane; height: 1; width: 1.5" material="shader:gif;src:#laptop_video" gif="" hard-stop></a-entity> -->
-                
-                <a-entity position= "0 2.25 .4" scale="1.5 1 1">
-                  <a-video id="s6_vid" src="#laptop_vid" autoplay="false" webkit-playsinline></a-video>
-                </a-entity>
+                <a-entity id="scene3_gif" autoplay="false" position="0 2.25 .4" geometry="primitive: plane; height: 1; width: 1.5" material="shader:gif;src:url(/videos/scene3.gif);autoplay: false" gif=""></a-entity>
+<!--                 <a-entity position= "0 2.25 .4" scale="1.5 1 1">
+                  <a-video class="video_with_sound" id="laptop_video" src="#s3_video"></a-video>
+                </a-entity> -->
               </a-entity>
           </a-marker>
           <a-marker class="marker" id="marker_scene4" preset="custom" type="pattern" url="/markers/4.patt" size=".03">
@@ -358,7 +364,7 @@
               <a-entity class="scene" id='scene6'
                 rotation='0 0 0'
                 scale="0.45 0.45 0.45"
-                visible="visible"
+                visible="false"
               >
                 <a-entity id="santa"
                   gltf-model="#s6_santa"
@@ -412,7 +418,7 @@
                       animation__appear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 0 0 0; to: 1 1 1; easing: easeInOutQuad; delay: 1000;"
                       animation__disappear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 1 1 1; to: 0 0 0; easing: easeInOutQuad; delay: 29000;"
                       >
-                    <a-entity id="scene6_gif" autoplay="false" position="0 4.57 -.657" geometry="primitive: plane; height: 2; width: 1.5" material="shader:gif;src:url(/videos/scene6.gif);" gif="" hard-stop></a-entity>
+                    <a-entity id="scene6_gif" autoplay="false" position="0 4.57 -.657" geometry="primitive: plane; height: 2; width: 1.5" material="shader:gif;src:url(/videos/scene6.gif);autoplay: false" gif=""></a-entity>
 <!--                     <a-entity position= "0 4.57 -.657" scale="1.75 2.25 1">
                       <a-video class="video_with_sound" id="phone_video" src="#s6_video"></a-video>
                     </a-entity> -->
