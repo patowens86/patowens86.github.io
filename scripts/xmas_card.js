@@ -54,6 +54,7 @@ AFRAME.registerComponent('hard-stop', {
       console.log("not null")
       this.el.pause()
       this.data.hasBeenPaused = true;
+      this.el.removeAttribute('hard-stop')
     }
     // var scene3Gif = document.getElementById("scene3_gif")
     // if (scene3Gif != null) {
@@ -231,9 +232,10 @@ AFRAME.registerComponent('start-animation', {
       if(videoClipName)
       {
         // console.log(currentScene+"_gif")
-        var video = document.getElementById(currentScene + "_gif")
-        video.removeAttribute("hard-stop")
+        // var video = document.getElementById(currentScene + "_gif")
+        video = document.getElementById('laptop_vid')
         video.play()
+        console.log('playing video')
         // video.setAttribute("material", "shader:gif;src:#laptop_video; autoplay: true")
         // video.setAttribute("gif", "")
         //video.setAttribute("material", "autoplay: true")
@@ -470,12 +472,7 @@ AFRAME.registerComponent('start-animation', {
       if(videoClipName)
       {
         var video = document.getElementById(currentScene + "_gif")
-        video.removeAttribute("material")
-        if(currentScene=="scene3")
-          {video.setAttribute("material", "shader:gif;src:url(/videos/scene3.gif);autoplay: false")}
-        if(currentScene=="scene6") {
-          video.setAttribute("material", "shader:gif;src:url(/videos/scene6.gif);autoplay: false")
-        }
+        video.pause()
         // console.log("is video playing?: " + video.isPlaying)
       }
 

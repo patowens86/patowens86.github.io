@@ -197,6 +197,7 @@
           <a-asset-item id="gift_4" src="/models/Gift_4.glb"></a-asset-item>
           <a-asset-item id="gift_6" src="/models/Gift_6.glb"></a-asset-item>
           <a-asset-item id="gift_11" src="/models/Gift_11.glb"></a-asset-item>
+          <video preload id="laptop_vid" src="/videos/scene3_noaudio.mp4" loop crossorigin playsinline></video>
           <img preload id="laptop_video" src="/videos/scene3.gif">
           <img preload id="phone_video" src="/videos/scene6.gif">
           <img id="scanbox" src="/graphics/scan.png">
@@ -270,11 +271,11 @@
                   gltf-model='#s3_furniture' scale=".4 .4 .4"  rotation="0 0 0">
                 </a-entity>
                 <a-entity gltf-model="#s3_bubble" scale=".5 .5 .5" position="0 1.65 .34"></a-entity>
-                <a-entity id="scene3_gif" autoplay="false" position="0 2.25 .4" geometry="primitive: plane; height: 1; width: 1.5" material="shader:gif;src:#laptop_video" gif="" hard-stop></a-entity>
+<!--                 <a-entity id="scene3_gif" autoplay="false" position="0 2.25 .4" geometry="primitive: plane; height: 1; width: 1.5" material="shader:gif;src:#laptop_video" gif="" hard-stop></a-entity> -->
                 
-<!--                 <a-entity position= "0 2.25 .4" scale="1.5 1 1">
-                  <a-video class="video_with_sound" id="laptop_video" src="#s3_video"></a-video>
-                </a-entity> -->
+                <a-entity position= "0 2.25 .4" scale="1.5 1 1">
+                  <a-video id="s6_vid" src="#laptop_vid" autoplay="false" webkit-playsinline></a-video>
+                </a-entity>
               </a-entity>
           </a-marker>
           <a-marker class="marker" id="marker_scene4" preset="custom" type="pattern" url="/markers/4.patt" size=".03">
