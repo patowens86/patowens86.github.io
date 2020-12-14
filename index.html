@@ -197,7 +197,8 @@
           <a-asset-item id="gift_4" src="/models/Gift_4.glb"></a-asset-item>
           <a-asset-item id="gift_6" src="/models/Gift_6.glb"></a-asset-item>
           <a-asset-item id="gift_11" src="/models/Gift_11.glb"></a-asset-item>
-          <video preload id="laptop_vid" src="/videos/scene3_noaudio.mp4" loop crossorigin playsinline></video>
+          <video preload id="laptop_vid" src="/videos/scene3.mp4" loop crossorigin playsinline volume=0></video>
+          <video preload id="phone_vid" src="/videos/scene6.mp4" loop crossorigin playsinline volume=0></video>
           <img preload id="laptop_video" src="/videos/scene3.gif">
           <img preload id="phone_video" src="/videos/scene6.gif">
           <img id="scanbox" src="/graphics/scan.png">
@@ -258,12 +259,12 @@
                   class="gift"              
                   gltf-model='#gift_3'
                   scale="0.4 0.4 0.4">
-              <a-box  position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3; audio_src: "url(/audio/scene3.mp3)";video: true; length: 45000'>
+              <a-box  position='0 0.5 0' scale="2 2 2" material='opacity: 0;' start-animation='name: scene3;video: laptop_vid; length: 45000'>
               </a-box>
             </a-entity>
 
 
-              <a-entity class="scene" id="scene3"  visible="visible">
+              <a-entity class="scene" id="scene3"  visible="false">
                 <a-entity class="scene3_model"
                   gltf-model='#s3' scale=".5 .5 .5" animation-mixer="clip:''" rotation="0 0 0">
                 </a-entity>
@@ -350,7 +351,7 @@
             class="gift"
             gltf-model='#gift_6'
                   scale="0.3 0.3 0.3">
-              <a-box  position='0 1.5 0' scale="2 3 2" material='opacity: 0;' start-animation='name: scene6; audio_src: "url(/audio/scene6.mp3)"; video: true; length: 30000'></a-box>
+              <a-box  position='0 1.5 0' scale="2 3 2" material='opacity: 0;' start-animation='name: scene6; video: phone_vid; length: 30000'></a-box>
             </a-entity>
 
 
@@ -358,7 +359,7 @@
               <a-entity class="scene" id='scene6'
                 rotation='0 0 0'
                 scale="0.45 0.45 0.45"
-                visible="visible"
+                visible="false"
               >
                 <a-entity id="santa"
                   gltf-model="#s6_santa"
@@ -408,14 +409,15 @@
                   </a-entity>
                   <a-entity id="bubble"
                       class="scene6_model"
+                      scale = "0 0 0"
                       gltf-model="#s6_bubble"
                       animation__appear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 0 0 0; to: 1 1 1; easing: easeInOutQuad; delay: 1000;"
                       animation__disappear="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 1 1 1; to: 0 0 0; easing: easeInOutQuad; delay: 29000;"
                       >
-                    <a-entity id="scene6_gif" autoplay="false" position="0 4.57 -.657" geometry="primitive: plane; height: 2; width: 1.5" material="shader:gif;src:url(/videos/scene6.gif);" gif="" hard-stop></a-entity>
-<!--                     <a-entity position= "0 4.57 -.657" scale="1.75 2.25 1">
-                      <a-video class="video_with_sound" id="phone_video" src="#s6_video"></a-video>
-                    </a-entity> -->
+<!--                     <a-entity id="scene6_gif" autoplay="false" position="0 4.57 -.657" geometry="primitive: plane; height: 2; width: 1.5" material="shader:gif;src:url(/videos/scene6.gif);" gif="" hard-stop></a-entity> -->
+                    <a-entity position= "0 4.57 -.657" scale="1.5 2 1">
+                      <a-video class="video_with_sound" id="phone_video" src="#phone_vid"></a-video>
+                    </a-entity>
                   </a-entity>
               </a-entity>
           </a-marker>
