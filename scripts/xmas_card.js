@@ -263,6 +263,9 @@ AFRAME.registerComponent('start-animation', {
         scene.setAttribute('visible', false)
       }
       discardButton.addEventListener('click', sceneEnd, {once: true})
+      discardButton.addEventListener('click', (e) => {
+        song.components.sound.playSound()
+      }, {once: true})
       // discardButton.addEventListener('click', () => {
       //   discardButton.removeEventListener('click',sceneEnd)
       // })
@@ -380,7 +383,8 @@ AFRAME.registerComponent('start-animation', {
        isNotActive=false;
        // console.log("selfie status is = " + isSelfie)
        if(isSelfie == "true") {
-           selfieInstructions.style.display = 'block'
+          selfieInstructions.style.display = 'block'
+          song.components.sound.pauseSound()
           setTimeout(
                 function() {
                   flash()
