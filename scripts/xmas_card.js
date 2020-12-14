@@ -155,7 +155,7 @@ AFRAME.registerComponent('start-animation', {
       //   tapInstructions.style.display = 'none'
       // }
       // else { 
-        scanInstructions.style.display = 'none'
+        scanInstructions.style.display = 'block'
       // }
       selfieInstructions.style.display = 'none'
       el.addEventListener('fusing', (e) => {console.log("fusing")})
