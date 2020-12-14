@@ -310,6 +310,7 @@ AFRAME.registerComponent('start-animation', {
             sceneAudio.setAttribute('src', audio_source)
 
             //sceneAudio.setAttribute('volume', .5)
+            sceneAudio.components.sound.currentTime = 0;
             sceneAudio.components.sound.playSound()
             // console.log("Scene audio is playing: " + sceneAudio.isPlaying)
           
