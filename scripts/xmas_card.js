@@ -245,6 +245,7 @@ AFRAME.registerComponent('start-animation', {
       // xblink_widget.classList.add('xblink--active')
       photoFrame.style.display = "block"
       // console.log("setting selfie mode to true")
+
       marker.removeEventListener("markerFound",
           markerFoundWarning
       )
@@ -256,10 +257,15 @@ AFRAME.registerComponent('start-animation', {
       shutterButton.hidden = false
 
       selfieInstructions.style.display = 'none'
-      closeButton.style.display = 'block'
+      closeButton.style.display = 'none'
+      document.getElementById('audioIconContainer').style.display = 'none'
       for (const scene of sceneArray) {
         scene.setAttribute('visible', false)
       }
+      discardButton.addEventListener('click', sceneEnd, {once: true})
+      // discardButton.addEventListener('click', () => {
+      //   discardButton.removeEventListener('click',sceneEnd)
+      // })
     }
     
     function isSceneActiveCheck() {
@@ -649,7 +655,13 @@ AFRAME.registerComponent('photo-mode', {
     retakeButton.addEventListener('click', () => {
       container.classList.remove('photo')
       if(el.getAttribute('selfieMode') == "true")
-        {photoFrame.style.display = "block"}
+        {
+          photoFrame.style.display = "block"
+          // discardButton.addEventListener('click', () => {
+          //   document.getElementById("scanButton").style.display = "block"
+          //   shutterButton.hidden = true
+          // })
+        }
       closeButton.removeEventListener('click', promptKeep)
       container.classList.remove('share')
       canvas.classList.remove('blur')
