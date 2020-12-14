@@ -328,7 +328,7 @@ AFRAME.registerComponent('start-animation', {
         //   document.getElementById('laptop_gif').play()
         // }
         console.log(currentScene)
-        if (currentScene == "scene6" || currentScene == "scene3") {
+        
         console.log("video clip name: " + videoClipName)
         // var video = document.getElementById(currentScene + "_gif")
         video = document.getElementById(videoClipName)
@@ -336,8 +336,8 @@ AFRAME.registerComponent('start-animation', {
         video.play()
         // video.volume = .5
         console.log('playing video')
-       }
-       else {
+       
+       
 
           //var scene_audio = document.createElement("a-sound")
           // if(!experienceHasStarted) {
@@ -352,7 +352,7 @@ AFRAME.registerComponent('start-animation', {
             sceneAudio.components.sound.playSound()
             // console.log("Scene audio is playing: " + sceneAudio.isPlaying)
           
-        }
+        
 
         setTimeout( function() {
 
