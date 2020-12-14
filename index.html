@@ -256,6 +256,7 @@
                     rotation = "0 90 0"
                     position = "-1.5 0 3"
                     animation__scale="startEvents: start_scene1; pauseEvents: restart_scene1; property: scale; from: 0 0 0; to: 1 1 1; dur: 250; easing: easeOutSine; delay: 8250; autoplay: false"
+                    animation__restart="startEvents: start_scene1; restart_scene1; property: scale; from: 1 1 1; to: 0 0 0; dur: 250; easing: easeOutSine; autoplay: false"
                     ></a-entity>
               </a-entity>
 
@@ -375,7 +376,7 @@
                   animation__turn="startEvents: start_scene6; pauseEvents: restart_scene6; property: rotation; dur: 3000; from: 0 0 0; to: 0 20 0; easing: easeInOutQuad; delay: 19000; autoplay: false"
                   animation__restart="startEvents: restart_scene6; property: rotation; dur: 50; from: 0 20 0; to: 0 0 0; easing: easeInOutQuad; autoplay: false"
                   animation-mixer="clip: ''">
-                    <a-entity class="scene6_model" id="phone" position="0.521 1.641 0.636" geometry="primitive: box" scale="0 0 0" rotation="15.35 21.95 0" material="color: #38157B" animation="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 0 0 0; to: .2 .4 .05; easing: easeInOutQuad; delay: 1000;" animation__restart="startEvent: restart_scene6; property: scale; from: 0 0 0; to 0.2 .4 .05; dur; 500;">
+                    <a-entity class="scene6_model" id="phone" position="0.521 1.641 0.636" geometry="primitive: box" scale="0 0 0" rotation="15.35 21.95 0" material="color: #38157B" animation="startEvents: start_scene6; pauseEvents: restart_scene6; property: scale; dur: 500; from: 0 0 0; to: .2 .4 .05; easing: easeInOutQuad; delay: 1000;" animation__restart="startEvent: restart_scene6; property: scale; from: 0.2 .4 .05; to: 0 0 0; dur: 500;">
 
                     </a-entity>
                 </a-entity>
