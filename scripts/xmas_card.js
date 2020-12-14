@@ -41,33 +41,33 @@ AFRAME.registerComponent('loading-xmas', {
   }
 })
 
-// AFRAME.registerComponent('hard-stop', {
-//   schema: {
-//     hasBeenPaused: {default: false},
+AFRAME.registerComponent('hard-stop', {
+  schema: {
+    hasBeenPaused: {default: false},
 
-//   },
-//   init: function() {
-//     console.log("hard stop initialized")
-//   },
-//   tick: function() {
-//     if(!this.data.hasBeenPaused) {
-//       console.log("not null")
-//       this.el.pause()
-//       this.data.hasBeenPaused = true;
-//       this.el.removeAttribute('hard-stop')
-//     }
-//     // var scene3Gif = document.getElementById("scene3_gif")
-//     // if (scene3Gif != null) {
-//     //   console.log("not null")
-//     //   this.el.pause()
-//     // }
-//     // else{
-//     //   console.log("null")
-//     //   //this.el = document.getElementById("scene3_gif")
-//     // }
+  },
+  init: function() {
+    console.log("hard stop initialized")
+  },
+  tick: function() {
+    if(!this.data.hasBeenPaused) {
+      console.log("not null")
+      this.el.pause()
+      this.data.hasBeenPaused = true;
+      this.el.removeAttribute('hard-stop')
+    }
+    // var scene3Gif = document.getElementById("scene3_gif")
+    // if (scene3Gif != null) {
+    //   console.log("not null")
+    //   this.el.pause()
+    // }
+    // else{
+    //   console.log("null")
+    //   //this.el = document.getElementById("scene3_gif")
+    // }
     
-//   }
-// })
+  }
+})
 
 AFRAME.registerComponent('dynamic-cursor', {
   init: function(){
@@ -130,7 +130,7 @@ AFRAME.registerComponent('start-animation', {
     name: {type: 'string'},
     audio_src: {type: 'string'},
     length: {type: 'int'},
-    video: {type: 'string'},
+    video: {default: false},
     selfie: {default: 'false'}
   },
   init: function () {
@@ -232,13 +232,10 @@ AFRAME.registerComponent('start-animation', {
       if(videoClipName)
       {
         // console.log(currentScene+"_gif")
-        // console.log("video clip name: " + videoClipName)
-        // // var video = document.getElementById(currentScene + "_gif")
-        // video = document.getElementById(videoClipName)
-        // video.currentTime = 0 
-        // video.play()
-        // video.volume = .5
-        // console.log('playing video')
+        // var video = document.getElementById(currentScene + "_gif")
+        video = document.getElementById('laptop_vid')
+        video.play()
+        console.log('playing video')
         // video.setAttribute("material", "shader:gif;src:#laptop_video; autoplay: true")
         // video.setAttribute("gif", "")
         //video.setAttribute("material", "autoplay: true")
@@ -327,18 +324,9 @@ AFRAME.registerComponent('start-animation', {
 
         //   document.getElementById('laptop_gif').play()
         // }
-        console.log(currentScene)
-        if (currentScene == "scene6" || currentScene == "scene3") {
-        console.log("video clip name: " + videoClipName)
-        // var video = document.getElementById(currentScene + "_gif")
-        video = document.getElementById(videoClipName)
-        video.currentTime = 0
-        video.play()
-        video.volume = .5
-        console.log('playing video')
-       }
-       else {
 
+        if (audio_source!=null)
+         {
           //var scene_audio = document.createElement("a-sound")
           // if(!experienceHasStarted) {
 
@@ -451,8 +439,6 @@ AFRAME.registerComponent('start-animation', {
         closeButton.style.display = 'none'
         //cancelButton.style.display = 'none'
         scanButton.style.display = 'block'
-
-
         // if(scan)
         // {
           scanInstructions.style.display = 'block'
@@ -485,9 +471,8 @@ AFRAME.registerComponent('start-animation', {
 
       if(videoClipName)
       {
-        var video = document.getElementById(videoClipName)
+        var video = document.getElementById(currentScene + "_gif")
         video.pause()
-        video.volume =0
         // console.log("is video playing?: " + video.isPlaying)
       }
 
