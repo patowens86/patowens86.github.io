@@ -234,6 +234,7 @@ AFRAME.registerComponent('start-animation', {
         // console.log(currentScene+"_gif")
         // var video = document.getElementById(currentScene + "_gif")
         video = document.getElementById('laptop_vid')
+        video = document.getElementById('phone_vid')
         video.play()
         console.log('playing video')
         // video.setAttribute("material", "shader:gif;src:#laptop_video; autoplay: true")
