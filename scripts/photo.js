@@ -871,7 +871,7 @@ AFRAME.registerComponent('photo-mode', {
         canvas.height = height || video.videoHeight
         //         canvas.width = width || videoStyleWidth
         // canvas.height = height || videoStyleHeight
-        canvas.getContext('2d').drawImage(video, (canvas.width/3), 0, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
+        canvas.getContext('2d').drawImage(video, 0, 0);
         var dataUri = canvas.toDataURL('image/' + format, 1);
         var data = dataUri.split(',')[1];
         var mimeType = dataUri.split(';')[0].slice(5)
