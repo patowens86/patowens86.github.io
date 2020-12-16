@@ -29,6 +29,8 @@ AFRAME.registerComponent('photo-mode', {
     let shareFile
     let imageUrl
 
+
+
     $('.flash').hide()
     
     // Container starts hidden so it isn't visible when the page is still loading
@@ -122,8 +124,8 @@ AFRAME.registerComponent('photo-mode', {
         closeButton.addEventListener('click', promptKeep)
         let sceneHeight = $(window).height()
         let sceneWidth = $(window).width()
-        // console.log(sceneHeight)
-        // console.log(sceneWidth)
+        console.log(sceneHeight)
+        console.log(sceneWidth)
         // let sceneHeightHalf = sceneHeight/2
         // let sceneWidthHalf = sceneWidth/2
               // Show the photo
@@ -134,14 +136,18 @@ AFRAME.registerComponent('photo-mode', {
 
         //console.log("getting canvas screenshot at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         let scene = document.querySelector("a-scene")
+            var video = document.getElementById('arjs-video')
+
+    scene.setAttribute('arjs', 'sourceWidth: 640; sourceHeight: 360; displayWidth: video.videoWidth; displayHeight: video.videoHeight')
+    console.log(scene.getAttribute('arjs'))
         scene.setAttribute('screenshot', {
           width: sceneWidth * 3,
           height: sceneHeight * 3
         })
-        // console.log(scene.components.screenshot.height + ' ' + scene.components.screenshot.width)
+        console.log(scene.components.screenshot.height + ' ' + scene.components.screenshot.width)
         let aScene = scene.components.screenshot.getCanvas("perspective");
-        // console.log("ascene height: " + aScene.height)
-        // console.log("ascene width: " + aScene.width)
+        console.log("ascene height: " + aScene.height)
+        console.log("ascene width: " + aScene.width)
         aSceneWidth = aScene.width;
         aSceneHeight = aScene.height;
         let aSceneOrig = document.querySelector("a-canvas")
@@ -154,20 +160,20 @@ AFRAME.registerComponent('photo-mode', {
 
 
 
-        // console.log("window height: " + sceneHeight)
-        // console.log("window width: " + sceneWidth)
-        // console.log("frame height: " + frame.height)
-        // console.log("frame width: " + frame.width)
-        //console.log("frame width: " + frame.style.width)
+        console.log("window height: " + sceneHeight)
+        console.log("window width: " + sceneWidth)
+        console.log("frame height: " + frame.height)
+        console.log("frame width: " + frame.width)
+        // console.log("frame width: " + frame.style.width)
         // console.log("actual frame height: " + actualFrameHeight)
-        //console.log("resizing ascene canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
+        console.log("resizing ascene canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         aScene = resizeCanvas(aScene, sceneWidth*2, sceneHeight)
         //console.log("finished ascene resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)
         aSceneHeight = frame.height
         console.log("adjusted ascene height: " + frame.height)
-        //console.log("adjusted ascene height: " + aScene.height)
-        // console.log("adjusted ascene width: " + (frame.height*(aSceneWidth/aSceneHeight))*.75)
+        console.log("adjusted ascene height: " + aScene.height)
+        console.log("adjusted ascene width: " + (frame.height*(aSceneWidth/aSceneHeight))*.75)
         //console.log("resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         //var santaSelfie = new Image()
         var santaSelfie = '/graphics/SantaSelfiepng.png'
@@ -220,11 +226,11 @@ AFRAME.registerComponent('photo-mode', {
         } else {
           console.log("merging without selfie frame")
             mergeImages( [
-              {src: frame, x: -(frame.width/3), y: 0},
-              {src: aScene, x: -(sceneWidth/2), y: 0}, 
-              {src: '/graphics/sixtytwo_small.png', x: 0, y: 0}], {//, '/graphics/SantaSelfie.gif'], {
-              width: sceneWidth,
-              height: frame.height, 
+              {src: frame},//, x: -(frame.width/3), y: 0},
+              {src: aScene},//, x: -(sceneWidth/2), y: 0}, 
+              ],{//src: '/graphics/sixtytwo_small.png', x: 0, y: 0}], {//, '/graphics/SantaSelfie.gif'], {
+              width: 812,
+              height: 1082, 
               quality: 1
             }).then(b64 => {
               // Hide the flash
@@ -263,6 +269,7 @@ AFRAME.registerComponent('photo-mode', {
         // if (typeof video === 'string') {
         //   //we select the video source of the camera, not the other videos
             video = document.getElementById('arjs-video');
+
             videoStyleWidth = parseInt(video.style.width , 10)
             videoStyleHeight = parseInt(video.style.height, 10)
             // console.log("video style width: " + videoStyleWidth)
@@ -273,10 +280,11 @@ AFRAME.registerComponent('photo-mode', {
         // if (!video || (format !== 'png' && format !== 'jpeg')) {
         //     return false;
         // }
-        // console.log("video widht: " + video.videoWidth + "  Video height: " + video.videoHeight)
+        console.log("video widht: " + video.videoWidth + "  Video height: " + video.videoHeight)
         var canvas = document.createElement("CANVAS");
-        canvas.width = width || videoStyleWidth
-        canvas.height = height || videoStyleHeight
+
+        canvas.width = width || video.videoWidth//videoStyleWidth
+        canvas.height = height || video.videoHeight//videoStyleHeight
         canvas.getContext('2d').drawImage(video, 0, 0);
         var dataUri = canvas.toDataURL('image/' + format, 1);
         var data = dataUri.split(',')[1];
@@ -290,7 +298,7 @@ AFRAME.registerComponent('photo-mode', {
             arr[i] = bytes.charCodeAt(i);
         }
         var blob = new Blob([ arr ], { type: mimeType });
-        return { blob: blob, dataUri: dataUri, format: format, width: videoStyleWidth, height: videoStyleHeight };
+        return { blob: blob, dataUri: dataUri, format: format, width: canvas.width, height: canvas.height };//videoStyleWidth, height: videoStyleHeight };
     };
 
     shareButton.addEventListener('click', () => {
