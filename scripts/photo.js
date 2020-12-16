@@ -752,7 +752,7 @@ AFRAME.registerComponent('photo-mode', {
         //console.log("frame width: " + frame.style.width)
         // console.log("actual frame height: " + actualFrameHeight)
         //console.log("resizing ascene canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
-        aScene = resizeCanvas(aScene, 1280, 1280)
+        aScene = resizeCanvas(aScene, 960, 1280)
         // aScene = resizeCanvas(aScene, sceneWidth*2, sceneHeight)
         //console.log("finished ascene resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)
@@ -882,7 +882,7 @@ AFRAME.registerComponent('photo-mode', {
             arr[i] = bytes.charCodeAt(i);
         }
         var blob = new Blob([ arr ], { type: mimeType });
-        return { blob: blob, dataUri: dataUri, format: format, width: videoStyleWidth, height: videoStyleHeight };
+        return { blob: blob, dataUri: dataUri, format: format, width: 960, height: 1280 };
     };
 
     shareButton.addEventListener('click', () => {
