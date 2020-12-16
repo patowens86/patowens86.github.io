@@ -854,9 +854,9 @@ AFRAME.registerComponent('photo-mode', {
     function captureVideoFrame(video, format, width, height) {
         // if (typeof video === 'string') {
         //   //we select the video source of the camera, not the other videos
-            // video = document.getElementById('arjs-video');
-            // videoStyleWidth = parseInt(video.style.width , 10)
-            // videoStyleHeight = parseInt(video.style.height, 10)
+            video = document.getElementById('arjs-video');
+            videoStyleWidth = parseInt(video.style.width , 10)
+            videoStyleHeight = parseInt(video.style.height, 10)
             // console.log("video style width: " + videoStyleWidth)
             // console.log("video style height: " + videoStyleHeight)
         // }
@@ -867,8 +867,8 @@ AFRAME.registerComponent('photo-mode', {
         // }
         // console.log("video widht: " + video.videoWidth + "  Video height: " + video.videoHeight)
         var canvas = document.createElement("CANVAS");
-        canvas.width = 960
-        canvas.height = 1280
+        canvas.width = width || videoStyleWidth
+        canvas.height = height || videoStyleHeight
         canvas.getContext('2d').drawImage(video, 0, 0);
         var dataUri = canvas.toDataURL('image/' + format, 1);
         var data = dataUri.split(',')[1];
