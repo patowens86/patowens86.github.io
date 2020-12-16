@@ -812,8 +812,8 @@ AFRAME.registerComponent('photo-mode', {
         } else {
           console.log("merging without selfie frame")
             mergeImages( [
-              {src: frame, x: -460), y: 0},
-              {src: aScene, x: -460, y: 0}, 
+              {src: frame, x: -(frame.width/2), y: 0},
+              {src: aScene, x: -(sceneWidth/2), y: 0}, 
               {src: '/graphics/sixtytwo_small.png', x: 0, y: 0}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
               height: frame.height, 
