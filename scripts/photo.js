@@ -816,7 +816,7 @@ AFRAME.registerComponent('photo-mode', {
               {src: aScene, x: -(sceneWidth/2), y: 0}, 
               {src: '/graphics/sixtytwo_small.png', x: 0, y: 0}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
-              height: frame.height, 
+              height: video = document.getElementById('arjs-video').videoHeight, 
               quality: 1
             }).then(b64 => {
               // Hide the flash
@@ -867,9 +867,11 @@ AFRAME.registerComponent('photo-mode', {
         // }
         // console.log("video widht: " + video.videoWidth + "  Video height: " + video.videoHeight)
         var canvas = document.createElement("CANVAS");
-        canvas.width = width || videoStyleWidth
-        canvas.height = height || videoStyleHeight
-        canvas.getContext('2d').drawImage(video, 0, 0);
+        canvas.width = width || video.videoWidth
+        canvas.height = height || video.videoHeight
+        //         canvas.width = width || videoStyleWidth
+        // canvas.height = height || videoStyleHeight
+        canvas.getContext('2d').drawImage(video, (canvas.width/3), 0, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
         var dataUri = canvas.toDataURL('image/' + format, 1);
         var data = dataUri.split(',')[1];
         var mimeType = dataUri.split(';')[0].slice(5)
@@ -882,7 +884,7 @@ AFRAME.registerComponent('photo-mode', {
             arr[i] = bytes.charCodeAt(i);
         }
         var blob = new Blob([ arr ], { type: mimeType });
-        return { blob: blob, dataUri: dataUri, format: format, width: 960, height: 1280 };
+        return { blob: blob, dataUri: dataUri, format: format, width: canvas.width, height: canvas.height };
     };
 
     shareButton.addEventListener('click', () => {
