@@ -815,8 +815,8 @@ AFRAME.registerComponent('photo-mode', {
               {src: frame, x: -(frame.width/2), y: 0},
               {src: aScene, x: -(sceneWidth/2), y: 0}, 
               {src: '/graphics/sixtytwo_small.png', x: 0, y: 0}], {//, '/graphics/SantaSelfie.gif'], {
-              width: sceneWidth,
-              height: document.getElementById('arjs-video').videoHeight, 
+              width: 2000,
+              height: 2000, 
               quality: 1
             }).then(b64 => {
               // Hide the flash
