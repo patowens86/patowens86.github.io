@@ -12,6 +12,9 @@ AFRAME.registerComponent('loading-xmas', {
     var hasLoaded = false;
     var progressBar = document.getElementById("xload__bar_progress")
     var audioArray = document.getElementsByClassName("audio")
+    // var versionNumText = document.getElementById("versionnumber")
+    // versionnumber.innerHTML = "Version 1.01"
+
     progressBar.style.width = '100%'
     // console.log(progressBar.style.width)
     
