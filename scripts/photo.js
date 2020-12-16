@@ -752,7 +752,7 @@ AFRAME.registerComponent('photo-mode', {
         //console.log("frame width: " + frame.style.width)
         // console.log("actual frame height: " + actualFrameHeight)
         //console.log("resizing ascene canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
-        aScene = resizeCanvas(aScene, 960, 1280)
+        aScene = resizeCanvas(aScene, document.getElementById('arjs-video').videoWidth*.666, document.getElementById('arjs-video').videoHeight)
         // aScene = resizeCanvas(aScene, sceneWidth*2, sceneHeight)
         //console.log("finished ascene resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         aSceneWidth = frame.height*(aSceneWidth/aSceneHeight)
