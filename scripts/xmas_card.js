@@ -777,7 +777,7 @@ AFRAME.registerComponent('photo-mode', {
         var adjustedPositionYSantaFrame = frame.height-721
         var adjustedPositionXSantaFrame = sceneWidth-371
                 console.log(adjustedPositionYSantaFrame)
-        console.log(adjustedPositionxSantaFrame)
+        console.log(adjustedPositionXSantaFrame)
         // var adjustedPositionYSixtyTwo = frame.height-200
 
         //console.log("frinished resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
