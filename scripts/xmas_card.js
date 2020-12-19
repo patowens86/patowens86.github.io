@@ -770,15 +770,6 @@ AFRAME.registerComponent('photo-mode', {
         //console.log("resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         //var santaSelfie = new Image()
         var santaSelfie = '/graphics/santa_sixtytwo.png'
-        var happyHolidays = '/graphics/HappyHolidays_small.png'
-        var snow = '/graphics/snow_v2.png'
-        console.log(frame.height)
-        console.log(scene.width)
-        var adjustedPositionYSantaFrame = frame.height-721
-        var adjustedPositionXSantaFrame = sceneWidth-371
-                console.log(adjustedPositionYSantaFrame)
-        console.log(adjustedPositionXSantaFrame)
-        // var adjustedPositionYSixtyTwo = frame.height-200
 
         //console.log("frinished resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         frame = frame.dataUri;
@@ -789,14 +780,12 @@ AFRAME.registerComponent('photo-mode', {
         if(el.getAttribute('selfieMode') == "true") {
           console.log("merging with selfie frame")
             mergeImages( [
-                 {src: frame, x: -(frame.width/3), y: 0},
+              {src: frame, x: -(frame.width/3), y: 0},
               //{src: aScene, x: -(sceneWidth/2), y: 0}, 
               //TODO figure out how to get the selfie to show up correctly
-              {src: snow, x: 0, y: 0},
-              {src: santaSelfie, x: adjustedPositionXSantaFrame, y: adjustedPositionYSantaFrame},
-              {src: happyHolidays, x: 20, y: 20}], {//, '/graphics/SantaSelfie.gif'], {
+              {src: santaSelfie, x: sceneWidth-371, y: (frame.height-721)}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
-              height: frame.height, 
+              height: 721, 
               quality: 1
             }).then(b64 => {
               // Hide the flash
