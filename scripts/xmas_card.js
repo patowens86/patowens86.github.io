@@ -47,6 +47,7 @@ AFRAME.registerComponent('dynamic-cursor', {
 
     var camera = document.getElementById('fuseCursor')
     var dynamicScanCursor;
+    var cursorLoad;
     const scanButton = document.getElementById('scanButton')
     const cancelButton = document.getElementById('cancelButton')
     const scanButtonText = document.getElementById('scanButtonText')
@@ -67,13 +68,20 @@ AFRAME.registerComponent('dynamic-cursor', {
         dynamicScanCursor.setAttribute('scale','.2 .2 .2')
         dynamicScanCursor.setAttribute('geometry', 'primitive: plane')
         dynamicScanCursor.setAttribute('material', 'src: #scanbox; opacity: 0.5; shader: flat')
-        dynamicScanCursor.setAttribute('cursor', 'rayOrigin: mouse; fuse: true; fuseTimeout: 4000')
+        dynamicScanCursor.setAttribute('cursor', 'rayOrigin: mouse; fuse: true; fuseTimeout: 3000')
         dynamicScanCursor.setAttribute('raycaster', 'objects: a-box')
         dynamicScanCursor.setAttribute('visible', true)
         dynamicScanCursor.setAttribute('animation', 'property: position; from: 0 -.1 -.8; to: 0 0 -1; easing: easeOutSine; dur: 1000; autoplay: true')
         dynamicScanCursor.setAttribute('animation__scan', 'startEvents: fusing; property: scale; from: .2 .2 .2; to: 0.1 0.1 0.1; easing: easeOutSine; dur: 4000') 
         dynamicScanCursor.setAttribute('animation__out', "startEvents: mouseleave; property: scale; to: .2 .2 .2; dur: 100;")
         camera.appendChild(dynamicScanCursor)
+        var cursorLoad = document.createElement('a-entity')
+        cursorLoad.setAttribute('id', 'cursor load')
+        cursorLoad.setAttribute('scale', '.5 .5 .5')
+        cursorLoad.setAttribute('geometry', 'primitive: plane')
+        cursorLoad.setAttribute('visible', 'false')
+        cursorLoad.setAttribute('material', 'shader:gif;src:url(/graphics/simple_loading.gif);transparent:true')
+        dynamicScanCursor.appendChild(cursorLoad)
                 cancelButton.style.display = 'block'
         scanButton.style.display = 'none'
         scanInstructionText.innerHTML = 'Scan a <b>Gift Box</b> to activate a scene.'
@@ -82,7 +90,10 @@ AFRAME.registerComponent('dynamic-cursor', {
         // scanButton.style.border = "0.2em solid #ffffff";
         scanning = true
       
-
+        dynamicScanCursor.addEventListener('fusing', (e) => {
+          cursorLoad.setAttribute('visible', 'true')
+        })
+        dynamicScanCursor.addEventListener('mouseleave', (e) => {cursorLoad.setAttribute('visible', 'false')})
       
     }
     }
