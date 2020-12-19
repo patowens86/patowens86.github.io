@@ -783,7 +783,8 @@ AFRAME.registerComponent('photo-mode', {
               {src: frame, x: -(frame.width/3), y: 0},
               //{src: aScene, x: -(sceneWidth/2), y: 0}, 
               //TODO figure out how to get the selfie to show up correctly
-              {src: santaSelfie, x: sceneWidth-371, y: (frame.height-721)}], {//, '/graphics/SantaSelfie.gif'], {
+              {src: santaSelfie, x: sceneWidth-371, y: (frame.height-721)},
+              {src: '/graphics/sixtytwo_small.png', x: 0, y: (frame.height-721)}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
               height: 721, 
               quality: 1
