@@ -796,7 +796,7 @@ AFRAME.registerComponent('photo-mode', {
               {src: santaSelfie, x: adjustedPositionXSantaFrame, y: adjustedPositionYSantaFrame},
               {src: happyHolidays, x: 20, y: 20}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
-              height: 721, 
+              height: frame.height, 
               quality: 1
             }).then(b64 => {
               // Hide the flash
