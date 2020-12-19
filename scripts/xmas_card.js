@@ -772,9 +772,10 @@ AFRAME.registerComponent('photo-mode', {
         var santaSelfie = '/graphics/santa_sixtytwo.png'
         var happyHolidays = '/graphics/HappyHolidays_small.png'
         var snow = '/graphics/snow_v2.png'
-
+        console.log(frame.height)
+        console.log(scene.width)
         var adjustedPositionYSantaFrame = frame.height-721
-        var adjustedPositionXSantaFrame = frame.height-371
+        var adjustedPositionXSantaFrame = scene.width-371
         // var adjustedPositionYSixtyTwo = frame.height-200
 
         //console.log("frinished resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
@@ -789,7 +790,7 @@ AFRAME.registerComponent('photo-mode', {
                  {src: frame, x: -(frame.width/3), y: 0},
               //{src: aScene, x: -(sceneWidth/2), y: 0}, 
               //TODO figure out how to get the selfie to show up correctly
-              {src: santaSelfie, x: 0, y: 0},
+              {src: santaSelfie, x: adjustedPositionXSantaFrame, y: adjustedPositionYSantaFrame},
               {src: happyHolidays, x: 20, y: 20},
               {src: snow, x: 0, y: 0}], {//, '/graphics/SantaSelfie.gif'], {
               width: sceneWidth,
