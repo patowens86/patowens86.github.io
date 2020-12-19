@@ -769,7 +769,7 @@ AFRAME.registerComponent('photo-mode', {
         // console.log("adjusted ascene width: " + (frame.height*(aSceneWidth/aSceneHeight))*.75)
         //console.log("resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         //var santaSelfie = new Image()
-        var santaSelfie = '/graphics/santa_selfie_v3.png'
+        var santaSelfie = '/graphics/santa_selfie_v5.png'
 
         //console.log("frinished resizing canvas frame at " + new Date().toLocaleTimeString() + " ." + new Date().getMilliseconds())
         frame = frame.dataUri;
